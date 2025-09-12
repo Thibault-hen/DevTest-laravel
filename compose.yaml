@@ -1,0 +1,22 @@
+services: 
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: devtestuser
+      POSTGRES_PASSWORD: devtestpass
+      POSTGRES_DB: devtest
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+  
+  redis:
+    image: redis:8
+    container_name: devtest_redis
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+volumes:
+  db_data:
+  redis_data:
