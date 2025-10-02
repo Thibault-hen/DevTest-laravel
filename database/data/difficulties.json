@@ -1,0 +1,14 @@
+[
+    {
+        "level": "Facile",
+        "color": "#00FF00"
+    },
+    {
+        "level": "Intermédiaire",
+        "color": "#FFFF00"
+    },
+    {
+        "level": "Difficile",
+        "color": "#FF0000"
+    }
+]

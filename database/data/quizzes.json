@@ -1,0 +1,98 @@
+[
+  {
+    "title": "Introduction à PHP",
+    "description": "Un quiz simple pour vérifier tes bases en PHP",
+    "duration": 10,
+    "is_published": true,
+    "image_url": "icons/php.svg",
+    "image_text": "PHP icon",
+    "themes": ["PHP"],       
+    "tags": ["Backend"],  
+    "questions": [
+      {
+        "content": "Quelle est l'extension des fichiers PHP ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": ".php", "is_correct": true },
+          { "content": ".html", "is_correct": false },
+          { "content": ".js", "is_correct": false },
+          { "content": ".phtml", "is_correct": false }
+        ]
+      },
+      {
+        "content": "Quel mot-clé sert à définir une fonction en PHP ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "function", "is_correct": true },
+          { "content": "def", "is_correct": false },
+          { "content": "func", "is_correct": false },
+          { "content": "declare", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Docker pour les DevOps",
+    "description": "Vérifie si tu connais les bases de Docker et de la containerisation",
+    "duration": 20,
+    "is_published": true,
+    "image_url": "icons/docker.svg",
+    "image_text": "Docker icon",
+    "themes": ["Docker"],
+    "tags": ["DevOps"],
+    "questions": [
+      {
+        "content": "Quel fichier définit les instructions pour construire une image Docker ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "Dockerfile", "is_correct": true },
+          { "content": "docker-compose.yml", "is_correct": false },
+          { "content": "Containerfile", "is_correct": false },
+          { "content": "Makefile", "is_correct": false }
+        ]
+      },
+      {
+        "content": "Quelle commande permet de voir les containers en cours d'exécution ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "docker ps", "is_correct": true },
+          { "content": "docker run", "is_correct": false },
+          { "content": "docker start", "is_correct": false },
+          { "content": "docker logs", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "JavaScript pour les Frontend",
+    "description": "Questions de base sur le langage JavaScript",
+    "duration": 15,
+    "is_published": false,
+    "image_url": "icons/javascript.svg",
+    "image_text": "JavaScript icon",
+    "themes": ["JavaScript"],
+    "tags": ["Frontend"],     
+    "questions": [
+      {
+        "content": "Quel mot-clé permet de déclarer une variable réassignable en ES6 ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "let", "is_correct": true },
+          { "content": "var", "is_correct": false },
+          { "content": "const", "is_correct": false },
+          { "content": "mutable", "is_correct": false }
+        ]
+      },
+      {
+        "content": "Que retourne typeof null en JavaScript ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "\"object\"", "is_correct": true },
+          { "content": "\"null\"", "is_correct": false },
+          { "content": "\"undefined\"", "is_correct": false },
+          { "content": "\"number\"", "is_correct": false }
+        ]
+      }
+    ]
+  }
+]

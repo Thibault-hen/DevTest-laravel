@@ -17,6 +17,23 @@ export function updateTheme(value: Appearance) {
     }
 }
 
+const toggleTheme = () => {
+    if (typeof window === 'undefined') {
+        return;
+    }
+
+    const isDark = document.documentElement.classList.contains('dark');
+    document.documentElement.classList.toggle('dark', !isDark);
+
+    const value = isDark ? 'light' : 'dark';
+    localStorage.setItem('appearance', value);
+
+    // Store in cookie for SSR...
+    setCookie('appearance', value);
+
+    updateTheme(value);
+};
+
 const setCookie = (name: string, value: string, days = 365) => {
     if (typeof document === 'undefined') {
         return;
@@ -88,5 +105,7 @@ export function useAppearance() {
     return {
         appearance,
         updateAppearance,
+        toggleTheme,
+        getStoredAppearance,
     };
 }
