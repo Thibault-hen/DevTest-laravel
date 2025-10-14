@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Result extends Model
 {
     use HasUuids;
+
+    protected $table = 'result';
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

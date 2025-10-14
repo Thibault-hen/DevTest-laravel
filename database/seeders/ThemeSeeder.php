@@ -2,28 +2,28 @@
 
 namespace Database\Seeders;
 
-use App\Models\Tag;
+use App\Models\Theme;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 
-class TagsSeeder extends Seeder
+class ThemeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $jsonPath = database_path('data/tags.json');
+        $jsonPath = database_path('data/themes.json');
 
         if (!File::exists($jsonPath)) {
             $this->command->error("File not found: {$jsonPath}");
             return;
         }
 
-        $tags = json_decode(File::get($jsonPath), true);
+        $themes = json_decode(File::get($jsonPath), true);
 
-        foreach ($tags as $tag) {
-            Tag::create($tag);
+        foreach ($themes as $theme) {
+            Theme::create($theme);
         }
     }
 }

@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('quiz', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('title');
+            $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->integer('duration')->default(0);
             $table->string('image_url')->nullable();
@@ -21,6 +22,7 @@ return new class extends Migration {
             $table->uuid("author_id");
             $table->uuid('difficulty_id')->nullable();
 
+            $table->index('created_at');
             $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('difficulty_id')->references('id')->on('difficulty')->onDelete('set null');
             $table->timestamps();

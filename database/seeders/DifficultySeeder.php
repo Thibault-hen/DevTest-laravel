@@ -7,7 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 
-class DifficultiesSeeder extends Seeder
+class DifficultySeeder extends Seeder
 {
     /**
      * Run the database seeds.

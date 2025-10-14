@@ -6,27 +6,53 @@
     "is_published": true,
     "image_url": "icons/php.svg",
     "image_text": "PHP icon",
-    "themes": ["PHP"],       
-    "tags": ["Backend"],  
+    "themes": [
+      "PHP"
+    ],
+    "category": "Backend",
     "questions": [
       {
         "content": "Quelle est l'extension des fichiers PHP ?",
         "is_multiple": false,
         "answers": [
-          { "content": ".php", "is_correct": true },
-          { "content": ".html", "is_correct": false },
-          { "content": ".js", "is_correct": false },
-          { "content": ".phtml", "is_correct": false }
+          {
+            "content": ".php",
+            "is_correct": true
+          },
+          {
+            "content": ".html",
+            "is_correct": false
+          },
+          {
+            "content": ".js",
+            "is_correct": false
+          },
+          {
+            "content": ".phtml",
+            "is_correct": false
+          }
         ]
       },
       {
         "content": "Quel mot-clé sert à définir une fonction en PHP ?",
         "is_multiple": false,
         "answers": [
-          { "content": "function", "is_correct": true },
-          { "content": "def", "is_correct": false },
-          { "content": "func", "is_correct": false },
-          { "content": "declare", "is_correct": false }
+          {
+            "content": "function",
+            "is_correct": true
+          },
+          {
+            "content": "def",
+            "is_correct": false
+          },
+          {
+            "content": "func",
+            "is_correct": false
+          },
+          {
+            "content": "declare",
+            "is_correct": false
+          }
         ]
       }
     ]
@@ -38,27 +64,53 @@
     "is_published": true,
     "image_url": "icons/docker.svg",
     "image_text": "Docker icon",
-    "themes": ["Docker"],
-    "tags": ["DevOps"],
+    "themes": [
+      "Docker"
+    ],
+    "category": "DevOps",
     "questions": [
       {
         "content": "Quel fichier définit les instructions pour construire une image Docker ?",
         "is_multiple": false,
         "answers": [
-          { "content": "Dockerfile", "is_correct": true },
-          { "content": "docker-compose.yml", "is_correct": false },
-          { "content": "Containerfile", "is_correct": false },
-          { "content": "Makefile", "is_correct": false }
+          {
+            "content": "Dockerfile",
+            "is_correct": true
+          },
+          {
+            "content": "docker-compose.yml",
+            "is_correct": false
+          },
+          {
+            "content": "Containerfile",
+            "is_correct": false
+          },
+          {
+            "content": "Makefile",
+            "is_correct": false
+          }
         ]
       },
       {
         "content": "Quelle commande permet de voir les containers en cours d'exécution ?",
         "is_multiple": false,
         "answers": [
-          { "content": "docker ps", "is_correct": true },
-          { "content": "docker run", "is_correct": false },
-          { "content": "docker start", "is_correct": false },
-          { "content": "docker logs", "is_correct": false }
+          {
+            "content": "docker ps",
+            "is_correct": true
+          },
+          {
+            "content": "docker run",
+            "is_correct": false
+          },
+          {
+            "content": "docker start",
+            "is_correct": false
+          },
+          {
+            "content": "docker logs",
+            "is_correct": false
+          }
         ]
       }
     ]
@@ -70,27 +122,681 @@
     "is_published": false,
     "image_url": "icons/javascript.svg",
     "image_text": "JavaScript icon",
-    "themes": ["JavaScript"],
-    "tags": ["Frontend"],     
+    "themes": [
+      "JavaScript"
+    ],
+    "category": "Frontend",
     "questions": [
       {
         "content": "Quel mot-clé permet de déclarer une variable réassignable en ES6 ?",
         "is_multiple": false,
         "answers": [
-          { "content": "let", "is_correct": true },
-          { "content": "var", "is_correct": false },
-          { "content": "const", "is_correct": false },
-          { "content": "mutable", "is_correct": false }
+          {
+            "content": "let",
+            "is_correct": true
+          },
+          {
+            "content": "var",
+            "is_correct": false
+          },
+          {
+            "content": "const",
+            "is_correct": false
+          },
+          {
+            "content": "mutable",
+            "is_correct": false
+          }
         ]
       },
       {
         "content": "Que retourne typeof null en JavaScript ?",
         "is_multiple": false,
         "answers": [
-          { "content": "\"object\"", "is_correct": true },
-          { "content": "\"null\"", "is_correct": false },
-          { "content": "\"undefined\"", "is_correct": false },
-          { "content": "\"number\"", "is_correct": false }
+          {
+            "content": "\"object\"",
+            "is_correct": true
+          },
+          {
+            "content": "\"null\"",
+            "is_correct": false
+          },
+          {
+            "content": "\"undefined\"",
+            "is_correct": false
+          },
+          {
+            "content": "\"number\"",
+            "is_correct": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "ES6 Avancé",
+    "description": "Quiz intermédiaire sur les nouvelles fonctionnalités de JavaScript",
+    "duration": 20,
+    "is_published": true,
+    "image_url": "icons/javascript.svg",
+    "image_text": "JavaScript icon",
+    "themes": [
+      "JavaScript"
+    ],
+    "category": "Frontend",
+    "questions": [
+      {
+        "content": "Quelle méthode transforme un tableau en chaîne de caractères ?",
+        "is_multiple": false,
+        "answers": [
+          {
+            "content": "join()",
+            "is_correct": true
+          },
+          {
+            "content": "split()",
+            "is_correct": false
+          },
+          {
+            "content": "map()",
+            "is_correct": false
+          },
+          {
+            "content": "reduce()",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "content": "Que fait l’opérateur '??' en JavaScript ?",
+        "is_multiple": false,
+        "answers": [
+          {
+            "content": "Renvoie la valeur de droite si la gauche est null ou undefined",
+            "is_correct": true
+          },
+          {
+            "content": "Renvoie la valeur de gauche si elle est falsy",
+            "is_correct": false
+          },
+          {
+            "content": "Concatène deux valeurs",
+            "is_correct": false
+          },
+          {
+            "content": "Crée une nouvelle variable",
+            "is_correct": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "PHP Intermédiaire",
+    "description": "Approfondissement des fonctions et tableaux en PHP",
+    "duration": 15,
+    "is_published": true,
+    "image_url": "icons/php.svg",
+    "image_text": "PHP icon",
+    "themes": [
+      "PHP"
+    ],
+    "category": "Backend",
+    "questions": [
+      {
+        "content": "Quelle fonction PHP permet de trier un tableau associatif par clé ?",
+        "is_multiple": false,
+        "answers": [
+          {
+            "content": "ksort()",
+            "is_correct": true
+          },
+          {
+            "content": "sort()",
+            "is_correct": false
+          },
+          {
+            "content": "asort()",
+            "is_correct": false
+          },
+          {
+            "content": "array_sort()",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "content": "Comment vérifier si une variable est un tableau en PHP ?",
+        "is_multiple": false,
+        "answers": [
+          {
+            "content": "is_array()",
+            "is_correct": true
+          },
+          {
+            "content": "isset()",
+            "is_correct": false
+          },
+          {
+            "content": "gettype()",
+            "is_correct": false
+          },
+          {
+            "content": "array_check()",
+            "is_correct": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Docker Avancé",
+    "description": "Quiz intermédiaire pour tester vos connaissances sur Docker",
+    "duration": 25,
+    "is_published": true,
+    "image_url": "icons/docker.svg",
+    "image_text": "Docker icon",
+    "themes": [
+      "Docker"
+    ],
+    "category": "DevOps",
+    "questions": [
+      {
+        "content": "Quelle commande permet de construire une image Docker avec un tag spécifique ?",
+        "is_multiple": false,
+        "answers": [
+          {
+            "content": "docker build -t monimage:1.0 .",
+            "is_correct": true
+          },
+          {
+            "content": "docker run -t monimage:1.0",
+            "is_correct": false
+          },
+          {
+            "content": "docker tag monimage:1.0",
+            "is_correct": false
+          },
+          {
+            "content": "docker create monimage:1.0",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "content": "Quel est le but de docker-compose ?",
+        "is_multiple": false,
+        "answers": [
+          {
+            "content": "Orchestrer plusieurs conteneurs avec un fichier YAML",
+            "is_correct": true
+          },
+          {
+            "content": "Construire des images Docker",
+            "is_correct": false
+          },
+          {
+            "content": "Monter un volume spécifique",
+            "is_correct": false
+          },
+          {
+            "content": "Lancer un container en arrière-plan",
+            "is_correct": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Kubernetes Avancé",
+    "description": "Testez vos connaissances sur le déploiement et l'orchestration Kubernetes",
+    "duration": 30,
+    "is_published": true,
+    "image_url": "icons/kubernetes.svg",
+    "image_text": "Kubernetes icon",
+    "themes": [
+      "Kubernetes"
+    ],
+    "category": "DevOps",
+    "questions": [
+      {
+        "content": "Quelle ressource Kubernetes définit l'état souhaité des pods ?",
+        "is_multiple": false,
+        "answers": [
+          {
+            "content": "Deployment",
+            "is_correct": true
+          },
+          {
+            "content": "Service",
+            "is_correct": false
+          },
+          {
+            "content": "ConfigMap",
+            "is_correct": false
+          },
+          {
+            "content": "PodTemplate",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "content": "Quelle commande permet de vérifier l'état des pods dans un namespace spécifique ?",
+        "is_multiple": false,
+        "answers": [
+          {
+            "content": "kubectl get pods -n mon-namespace",
+            "is_correct": true
+          },
+          {
+            "content": "kubectl describe pods",
+            "is_correct": false
+          },
+          {
+            "content": "kubectl ps",
+            "is_correct": false
+          },
+          {
+            "content": "kubectl logs pods",
+            "is_correct": false
+          }
+        ]
+      }
+    ]
+  },
+   {
+    "title": "HTML de Base",
+    "description": "Testez vos connaissances sur les balises HTML essentielles",
+    "duration": 10,
+    "is_published": true,
+    "image_url": "icons/html.svg",
+    "image_text": "HTML icon",
+    "themes": ["HTML"],
+    "category": "Frontend",
+    "difficulty": "Facile",
+    "questions": [
+      {
+        "content": "Quelle balise HTML définit un lien hypertexte ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "<a>", "is_correct": true },
+          { "content": "<link>", "is_correct": false },
+          { "content": "<href>", "is_correct": false },
+          { "content": "<url>", "is_correct": false }
+        ]
+      },
+      {
+        "content": "Quelle balise définit un paragraphe en HTML ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "<p>", "is_correct": true },
+          { "content": "<para>", "is_correct": false },
+          { "content": "<text>", "is_correct": false },
+          { "content": "<paragraph>", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "CSS pour Débutants",
+    "description": "Connaissances de base sur le style et la mise en forme CSS",
+    "duration": 10,
+    "is_published": true,
+    "image_url": "icons/css.svg",
+    "image_text": "CSS icon",
+    "themes": ["CSS"],
+    "category": "Frontend",
+    "difficulty": "Facile",
+    "questions": [
+      {
+        "content": "Quelle propriété CSS change la couleur du texte ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "color", "is_correct": true },
+          { "content": "background-color", "is_correct": false },
+          { "content": "font-color", "is_correct": false },
+          { "content": "text-color", "is_correct": false }
+        ]
+      },
+      {
+        "content": "Quelle propriété permet de changer la taille de la police en CSS ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "font-size", "is_correct": true },
+          { "content": "text-size", "is_correct": false },
+          { "content": "size", "is_correct": false },
+          { "content": "letter-size", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Git pour Débutants",
+    "description": "Vérifie tes connaissances de base sur Git et le versioning",
+    "duration": 15,
+    "is_published": true,
+    "image_url": "icons/git.svg",
+    "image_text": "Git icon",
+    "themes": ["Git"],
+    "category": "DevOps",
+    "difficulty": "Facile",
+    "questions": [
+      {
+        "content": "Quelle commande initialise un dépôt Git local ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "git init", "is_correct": true },
+          { "content": "git start", "is_correct": false },
+          { "content": "git create", "is_correct": false },
+          { "content": "git new", "is_correct": false }
+        ]
+      },
+      {
+        "content": "Quelle commande affiche l'état actuel du dépôt Git ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "git status", "is_correct": true },
+          { "content": "git log", "is_correct": false },
+          { "content": "git info", "is_correct": false },
+          { "content": "git show", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Node.js Basique",
+    "description": "Quiz sur les fondamentaux de Node.js",
+    "duration": 20,
+    "is_published": true,
+    "image_url": "icons/nodejs.svg",
+    "image_text": "Node.js icon",
+    "themes": ["Node.js"],
+    "category": "Backend",
+    "difficulty": "Intermédiaire",
+    "questions": [
+      {
+        "content": "Quel module Node.js permet de créer un serveur HTTP ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "http", "is_correct": true },
+          { "content": "fs", "is_correct": false },
+          { "content": "path", "is_correct": false },
+          { "content": "os", "is_correct": false }
+        ]
+      },
+      {
+        "content": "Quelle commande installe un package Node.js localement ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "npm install nom_du_package", "is_correct": true },
+          { "content": "node install nom_du_package", "is_correct": false },
+          { "content": "npm add nom_du_package", "is_correct": false },
+          { "content": "node get nom_du_package", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "React JS Débutant",
+    "description": "Quiz sur les bases de React et les composants",
+    "duration": 15,
+    "is_published": true,
+    "image_url": "icons/react.svg",
+    "image_text": "React icon",
+    "themes": ["React"],
+    "category": "Frontend",
+    "difficulty": "Intermédiaire",
+    "questions": [
+      {
+        "content": "Quel mot-clé permet de définir un composant fonctionnel en React ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "function", "is_correct": true },
+          { "content": "class", "is_correct": false },
+          { "content": "component", "is_correct": false },
+          { "content": "const", "is_correct": false }
+        ]
+      },
+      {
+        "content": "Comment inclut-on un composant React dans un autre ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "<NomComposant />", "is_correct": true },
+          { "content": "{NomComposant}", "is_correct": false },
+          { "content": "NomComposant()", "is_correct": false },
+          { "content": "<NomComposant>", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "SQL Basique",
+    "description": "Testez vos connaissances des requêtes SQL simples",
+    "duration": 15,
+    "is_published": true,
+    "image_url": "icons/sql.svg",
+    "image_text": "SQL icon",
+    "themes": ["SQL"],
+    "category": "Backend",
+    "difficulty": "Intermédiaire",
+    "questions": [
+      {
+        "content": "Quelle commande SQL permet de sélectionner toutes les données d'une table ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "SELECT * FROM table;", "is_correct": true },
+          { "content": "GET * FROM table;", "is_correct": false },
+          { "content": "SHOW * FROM table;", "is_correct": false },
+          { "content": "FETCH * FROM table;", "is_correct": false }
+        ]
+      },
+      {
+        "content": "Quelle clause SQL permet de filtrer les résultats ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "WHERE", "is_correct": true },
+          { "content": "FILTER", "is_correct": false },
+          { "content": "CONDITION", "is_correct": false },
+          { "content": "HAVING", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Python pour Débutants",
+    "description": "Vérifie tes bases en Python",
+    "duration": 15,
+    "is_published": true,
+    "image_url": "icons/python.svg",
+    "image_text": "Python icon",
+    "themes": ["Python"],
+    "category": "Backend",
+    "difficulty": "Facile",
+    "questions": [
+      {
+        "content": "Quel mot-clé sert à définir une fonction en Python ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "def", "is_correct": true },
+          { "content": "function", "is_correct": false },
+          { "content": "func", "is_correct": false },
+          { "content": "define", "is_correct": false }
+        ]
+      },
+      {
+        "content": "Comment crée-t-on une liste vide en Python ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "[]", "is_correct": true },
+          { "content": "{}", "is_correct": false },
+          { "content": "list()", "is_correct": true },
+          { "content": "()", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Linux Basique",
+    "description": "Connaissances essentielles sur le système Linux et la ligne de commande",
+    "duration": 15,
+    "is_published": true,
+    "image_url": "icons/linux.svg",
+    "image_text": "Linux icon",
+    "themes": ["Linux"],
+    "category": "DevOps",
+    "difficulty": "Facile",
+    "questions": [
+      {
+        "content": "Quelle commande liste les fichiers d'un répertoire en Linux ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "ls", "is_correct": true },
+          { "content": "dir", "is_correct": false },
+          { "content": "list", "is_correct": false },
+          { "content": "show", "is_correct": false }
+        ]
+      },
+      {
+        "content": "Quelle commande permet de changer de répertoire ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "cd", "is_correct": true },
+          { "content": "chdir", "is_correct": false },
+          { "content": "mv", "is_correct": false },
+          { "content": "pwd", "is_correct": false }
+        ]
+      }
+    ]
+  },
+   {
+    "title": "Angular Basique",
+    "description": "Quiz pour tester les connaissances de base sur Angular",
+    "duration": 20,
+    "is_published": true,
+    "image_url": "icons/angular.svg",
+    "image_text": "Angular icon",
+    "themes": ["Angular", "JavaScript"],
+    "category": "Frontend",
+    "difficulty": "Intermédiaire",
+    "questions": [
+      {
+        "content": "Quel décorateur Angular est utilisé pour définir un composant ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "@Component", "is_correct": true },
+          { "content": "@NgModule", "is_correct": false },
+          { "content": "@Injectable", "is_correct": false },
+          { "content": "@Directive", "is_correct": false }
+        ]
+      },
+      {
+        "content": "Quelle commande CLI Angular crée un nouveau projet ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "ng new nom_projet", "is_correct": true },
+          { "content": "angular create nom_projet", "is_correct": false },
+          { "content": "ng init nom_projet", "is_correct": false },
+          { "content": "npm init angular nom_projet", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "React Avancé",
+    "description": "Quiz intermédiaire sur React et les hooks",
+    "duration": 20,
+    "is_published": true,
+    "image_url": "icons/react.svg",
+    "image_text": "React icon",
+    "themes": ["React", "JavaScript"],
+    "category": "Frontend",
+    "difficulty": "Intermédiaire",
+    "questions": [
+      {
+        "content": "Quel hook React permet de gérer l'état dans un composant fonctionnel ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "useState", "is_correct": true },
+          { "content": "useEffect", "is_correct": false },
+          { "content": "useReducer", "is_correct": false },
+          { "content": "useContext", "is_correct": false }
+        ]
+      },
+      {
+        "content": "Quel hook permet d'exécuter du code après chaque rendu ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "useEffect", "is_correct": true },
+          { "content": "useState", "is_correct": false },
+          { "content": "useMemo", "is_correct": false },
+          { "content": "useRef", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Vue.js Débutant",
+    "description": "Quiz pour les bases du framework Vue.js",
+    "duration": 15,
+    "is_published": true,
+    "image_url": "icons/vue.svg",
+    "image_text": "Vue.js icon",
+    "themes": ["Vue.js", "JavaScript"],
+    "category": "Frontend",
+    "difficulty": "Facile",
+    "questions": [
+      {
+        "content": "Quelle directive Vue permet de lier une variable à un élément HTML ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "v-model", "is_correct": true },
+          { "content": "v-bind", "is_correct": false },
+          { "content": "v-for", "is_correct": false },
+          { "content": "v-if", "is_correct": false }
+        ]
+      },
+      {
+        "content": "Comment crée-t-on un composant Vue ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "Vue.component('nom-composant', { ... })", "is_correct": true },
+          { "content": "new Vue('nom-composant')", "is_correct": false },
+          { "content": "component('nom-composant')", "is_correct": false },
+          { "content": "Vue.createComponent()", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "PostgreSQL Basique",
+    "description": "Quiz pour tester les notions de base de PostgreSQL",
+    "duration": 20,
+    "is_published": true,
+    "image_url": "icons/postgresql.svg",
+    "image_text": "PostgreSQL icon",
+    "themes": ["SQL"],
+    "category": "Backend",
+    "difficulty": "Intermédiaire",
+    "questions": [
+      {
+        "content": "Quelle commande permet de créer une base de données en PostgreSQL ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "CREATE DATABASE nom_db;", "is_correct": true },
+          { "content": "CREATE DB nom_db;", "is_correct": false },
+          { "content": "NEW DATABASE nom_db;", "is_correct": false },
+          { "content": "INIT DATABASE nom_db;", "is_correct": false }
+        ]
+      },
+      {
+        "content": "Quelle commande affiche toutes les tables d'une base PostgreSQL ?",
+        "is_multiple": false,
+        "answers": [
+          { "content": "\\dt", "is_correct": true },
+          { "content": "SHOW TABLES;", "is_correct": false },
+          { "content": "LIST TABLES;", "is_correct": false },
+          { "content": "SELECT * FROM tables;", "is_correct": false }
         ]
       }
     ]

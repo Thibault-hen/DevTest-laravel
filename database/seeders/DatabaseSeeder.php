@@ -14,10 +14,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminUserSeeder::class,
             UserSeeder::class,
-            ThemesSeeder::class,
-            TagsSeeder::class,
-            DifficultiesSeeder::class,
-            QuizzesSeeder::class,
+            ThemeSeeder::class,
+            CategorySeeder::class,
+            DifficultySeeder::class,
+            QuizSeeder::class,
         ]);
     }
 }

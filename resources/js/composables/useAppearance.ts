@@ -2,6 +2,10 @@ import { onMounted, ref } from 'vue';
 
 type Appearance = 'light' | 'dark' | 'system';
 
+export function isDark(): boolean {
+    return getStoredAppearance() === ('dark' as Appearance);
+}
+
 export function updateTheme(value: Appearance) {
     if (typeof window === 'undefined') {
         return;
@@ -107,5 +111,6 @@ export function useAppearance() {
         updateAppearance,
         toggleTheme,
         getStoredAppearance,
+        isDark,
     };
 }

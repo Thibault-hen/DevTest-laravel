@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Models\User;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
@@ -10,7 +12,7 @@ test('guests are redirected to the login page', function () {
 });
 
 test('authenticated users with admin role can visit the dashboard', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->setAdmin()->create();
     $this->actingAs($user);
 
     $response = $this->get(route('dashboard'));

@@ -10,6 +10,20 @@ export interface BreadcrumbItem {
     href: string;
 }
 
+export interface HomepageCounter {
+    count: number;
+    label: string;
+    label2: string;
+    icon: LucideIcon | null;
+}
+
+interface TechLogo {
+    name: string;
+    src: string;
+    alt: string;
+    color?: string;
+}
+
 export interface NavItem {
     title: string;
     href: NonNullable<InertiaLinkProps['href']>;

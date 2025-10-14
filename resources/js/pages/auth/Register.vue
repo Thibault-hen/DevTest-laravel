@@ -8,7 +8,17 @@ import { Label } from '@/components/ui/label';
 import AuthBase from '@/layouts/AuthLayout.vue';
 import { login } from '@/routes';
 import { Form, Head } from '@inertiajs/vue3';
-import { LoaderCircle } from 'lucide-vue-next';
+import { Eye, EyeOff, LoaderCircle } from 'lucide-vue-next';
+import { computed, ref } from 'vue';
+
+export type PasswordType = 'password' | 'text';
+
+const isHidePasswordEnabled = ref<boolean>(true);
+const passwordType = computed((): PasswordType => (isHidePasswordEnabled.value ? 'password' : 'text'));
+
+const toggleHidePassword = (): void => {
+    isHidePasswordEnabled.value = !isHidePasswordEnabled.value;
+};
 </script>
 
 <template>
@@ -36,7 +46,19 @@ import { LoaderCircle } from 'lucide-vue-next';
 
                 <div class="grid gap-2">
                     <Label for="password">Password</Label>
-                    <Input id="password" type="password" required :tabindex="3" autocomplete="new-password" name="password" placeholder="Password" />
+                    <div class="relative">
+                        <Input
+                            id="password"
+                            :type="passwordType"
+                            required
+                            :tabindex="3"
+                            autocomplete="new-password"
+                            name="password"
+                            placeholder="Password"
+                        />
+                        <Eye v-if="isHidePasswordEnabled" @click="toggleHidePassword" class="absolute top-2.5 right-2.5" :size="18" />
+                        <EyeOff v-else @click="toggleHidePassword" class="absolute top-2.5 right-2.5" :size="18" />
+                    </div>
                     <InputError :message="errors.password" />
                 </div>
 

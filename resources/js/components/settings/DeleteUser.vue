@@ -4,8 +4,8 @@ import { Form } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 // Components
-import HeadingSmall from '@/components/HeadingSmall.vue';
 import InputError from '@/components/InputError.vue';
+import HeadingSmall from '@/components/shared/HeadingSmall.vue';
 import { Button } from '@/components/ui/button';
 import {
     Dialog,
@@ -75,7 +75,9 @@ const passwordInput = ref<InstanceType<typeof Input> | null>(null);
                                 </Button>
                             </DialogClose>
 
-                            <Button type="submit" variant="destructive" :disabled="processing" data-test="confirm-delete-user-button"> Delete account </Button>
+                            <Button type="submit" variant="destructive" :disabled="processing" data-test="confirm-delete-user-button">
+                                Delete account
+                            </Button>
                         </DialogFooter>
                     </Form>
                 </DialogContent>
