@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->uuid('quiz_id');
             $table->uuid('tag_id');
 
-            $table->foreign('quiz_id')->references('id')->on('quiz')->onDelete('cascade');
+            $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
             $table->foreign('tag_id')->references('id')->on('tag')->onDelete('cascade');
             $table->timestamps();
 

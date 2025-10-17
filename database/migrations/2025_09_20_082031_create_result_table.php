@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('result', function (Blueprint $table) {
+        Schema::create('results', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->timestamp('completed_at')->useCurrent();
             $table->uuid('quiz_id');

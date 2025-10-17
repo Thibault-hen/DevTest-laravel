@@ -14,11 +14,25 @@ use App\Models\Difficulty;
 use App\Models\Quiz;
 use App\Models\Theme;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Cache;
 use Spatie\LaravelData\DataCollection;
 
 class QuizService
 {
+    private const CACHE_KEY = 'quizzes';
+
+    private const CACHE_TTL = 3600;
+
     public function getQuizzesData(): QuizzesData
+    {
+        return Cache::tags(['quiz'])->remember(
+            self::CACHE_KEY,
+            self::CACHE_TTL,
+            fn () => $this->buildQuizzesData()
+        );
+    }
+
+    private function buildQuizzesData(): QuizzesData
     {
         $quizzes = $this->getAllQuizzes();
 
@@ -41,10 +55,20 @@ class QuizService
 
     public function getAllQuizzes(): Collection
     {
-        return Quiz::with('themes', 'category', 'author', 'difficulty', 'ratings')
+        return Quiz::with('themes', 'category', 'author', 'difficulty')
             ->withAvg('ratings', 'score')
             ->withCount('ratings')
             ->latest('created_at')
+            ->get();
+    }
+
+    public function getLatestQuizzes(int $quizzesCount): Collection
+    {
+        return Quiz::with(['difficulty', 'author', 'category', 'themes'])
+            ->withAvg('ratings', 'score')
+            ->withCount('ratings')
+            ->latest('created_at')
+            ->take($quizzesCount)
             ->get();
     }
 }

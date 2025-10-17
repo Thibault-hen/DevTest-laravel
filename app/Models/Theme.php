@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Theme extends Model
 {
     use HasUuids;
-    protected $table = 'theme';
     public function quizzes(): BelongsToMany
     {
         return $this->belongsToMany(Quiz::class, 'quiz_theme', 'theme_id', 'quiz_id');

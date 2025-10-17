@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -25,10 +26,15 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $jsonPath = database_path('data/specializations.json');
+        $specializations = json_decode(File::get($jsonPath), true);
+
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            'email_verified_at' => fake()->randomElement([now(), null]),
+            'avatar' => 'avatar/ezcat.jpg',
+            'specialization' => $specializations[array_rand($specializations)],
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];

@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Answer extends Model
 {
     use HasUuids;
-    protected $table = 'answer';
     public function question(): BelongsTo
     {
         return $this->belongsTo(Question::class);

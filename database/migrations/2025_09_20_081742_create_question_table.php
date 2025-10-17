@@ -10,13 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('question', function (Blueprint $table) {
+        Schema::create('questions', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->text('content');
             $table->boolean('is_multiple')->default(false);
             $table->uuid('quiz_id');
 
-            $table->foreign('quiz_id')->references('id')->on('quiz')->onDelete('cascade');
+            $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
             $table->timestamps();
         });
     }

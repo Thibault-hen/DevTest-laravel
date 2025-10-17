@@ -12,8 +12,6 @@ class Category extends Model
 {
     use HasUuids;
 
-    protected $table = 'category';
-
     public function quizzes(): HasMany
     {
         return $this->hasMany(Quiz::class);

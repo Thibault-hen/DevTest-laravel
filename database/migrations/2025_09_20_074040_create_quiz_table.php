@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('quiz', function (Blueprint $table) {
+        Schema::create('quizzes', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('title');
             $table->string('slug')->unique();
@@ -24,7 +24,7 @@ return new class extends Migration {
 
             $table->index('created_at');
             $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('difficulty_id')->references('id')->on('difficulty')->onDelete('set null');
+            $table->foreign('difficulty_id')->references('id')->on('difficulties')->onDelete('set null');
             $table->timestamps();
         });
     }

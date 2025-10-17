@@ -3,7 +3,7 @@ import { computed, ref, watch } from 'vue';
 
 export const useQuizzes = (props: QuizzesData) => {
   // pagination
-  const ITEMS_PER_PAGE = 8;
+  const ITEMS_PER_PAGE = <number>8;
   const itemsPerPage = ref<number>(ITEMS_PER_PAGE);
   const page = ref<number>(1);
   const totalPages = computed(() => {

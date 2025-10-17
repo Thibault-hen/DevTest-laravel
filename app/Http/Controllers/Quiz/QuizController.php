@@ -4,18 +4,26 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Quiz;
 
+use App\Data\Quiz\QuizData;
 use App\Http\Controllers\Controller;
+use App\Models\Quiz;
 use App\Services\Quiz\QuizService;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class QuizController extends Controller
 {
-    public function index(Request $request, QuizService $quizService): Response
+    public function index(QuizService $quizService): Response
     {
         $quizzesData = $quizService->getQuizzesData();
 
         return Inertia::render('quiz/Quizzes', $quizzesData);
+    }
+
+    public function show(Quiz $quiz)
+    {
+        $quiz = $quiz->loadQuizDetails();
+
+        return Inertia::render('quiz/Quiz', QuizData::from($quiz));
     }
 }

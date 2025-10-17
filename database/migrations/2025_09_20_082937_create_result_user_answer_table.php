@@ -10,13 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('result_user_answer', function (Blueprint $table) {
+        Schema::create('results_users_answers', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('result_id');
             $table->uuid('answer_id');
 
-            $table->foreign('result_id')->references('id')->on('result')->onDelete('cascade');
-            $table->foreign('answer_id')->references('id')->on('answer')->onDelete('cascade');
+            $table->foreign('result_id')->references('id')->on('results')->onDelete('cascade');
+            $table->foreign('answer_id')->references('id')->on('answers')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('theme', function (Blueprint $table) {
+        Schema::create('themes', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('title')->unique();
             $table->timestamps();

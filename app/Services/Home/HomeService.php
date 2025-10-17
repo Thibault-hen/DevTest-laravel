@@ -9,7 +9,7 @@ use App\Data\Quiz\QuizData;
 use App\Models\Quiz;
 use App\Models\Result;
 use App\Models\Theme;
-use Illuminate\Database\Eloquent\Collection;
+use App\Services\Quiz\QuizService;
 use Illuminate\Support\Facades\Cache;
 use Spatie\LaravelData\DataCollection;
 
@@ -20,6 +20,8 @@ class HomeService
     private const CACHE_TTL = 3600;
 
     private const QUIZZES_COUNT = 3;
+
+    public function __construct(public QuizService $quizService) {}
 
     public function getHomeData(): HomeData
     {
@@ -33,7 +35,7 @@ class HomeService
 
     private function buildHomeData(): HomeData
     {
-        $quizzes = $this->getLatestQuizzes();
+        $quizzes = $this->quizService->getLatestQuizzes(self::QUIZZES_COUNT);
 
         return new HomeData(
             quizzes: QuizData::collect($quizzes, DataCollection::class),
@@ -41,15 +43,5 @@ class HomeService
             quizCompletedCount: Result::count(),
             themeCount: Theme::count(),
         );
-    }
-
-    private function getLatestQuizzes(): Collection
-    {
-        return Quiz::with(['difficulty', 'author', 'category', 'themes'])
-            ->withAvg('ratings', 'score')
-            ->withCount('ratings')
-            ->latest('created_at')
-            ->take(self::QUIZZES_COUNT)
-            ->get();
     }
 }

@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes');
+
+Route::prefix('/quizzes')->group(function () {
+    Route::get('/', [QuizController::class, 'index'])->name('quizzes');
+    Route::get('/{quiz:slug}', [QuizController::class, 'show'])->name('quiz')
+        ->where('slug', '[a-z0-9-]+');
+});
 
 Route::get('dashboard', function () {
     return Inertia::render('admin/Dashboard');

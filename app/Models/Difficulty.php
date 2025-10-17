@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Difficulty extends Model
 {
     use HasUuids;
-    protected $table = 'difficulty';
     public function quizzes(): HasMany
     {
         return $this->hasMany(Quiz::class);
