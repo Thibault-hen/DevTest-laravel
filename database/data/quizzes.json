@@ -699,7 +699,17 @@
           { "content": "ng init nom_projet", "is_correct": false },
           { "content": "npm init angular nom_projet", "is_correct": false }
         ]
-      }
+      },
+          {
+      "content": "Quelles sont des propriétés réactives dans Vue ?",
+      "is_multiple": true,
+      "answers": [
+        { "content": "bozo1", "is_correct": true },
+        { "content": "bozo2", "is_correct": true },
+        { "content": "bozo3", "is_correct": false },
+        { "content": "bozo4", "is_correct": false }
+      ]
+    }
     ]
   },
   {
@@ -736,38 +746,218 @@
     ]
   },
   {
-    "title": "Vue.js Débutant",
-    "description": "Quiz pour les bases du framework Vue.js",
-    "duration": 15,
-    "is_published": true,
-    "image_url": "icons/vue.svg",
-    "image_text": "Vue.js icon",
-    "themes": ["Vue.js", "JavaScript"],
-    "category": "Frontend",
-    "difficulty": "Facile",
-    "questions": [
-      {
-        "content": "Quelle directive Vue permet de lier une variable à un élément HTML ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "v-model", "is_correct": true },
-          { "content": "v-bind", "is_correct": false },
-          { "content": "v-for", "is_correct": false },
-          { "content": "v-if", "is_correct": false }
-        ]
-      },
-      {
-        "content": "Comment crée-t-on un composant Vue ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "Vue.component('nom-composant', { ... })", "is_correct": true },
-          { "content": "new Vue('nom-composant')", "is_correct": false },
-          { "content": "component('nom-composant')", "is_correct": false },
-          { "content": "Vue.createComponent()", "is_correct": false }
-        ]
-      }
-    ]
-  },
+  "title": "Vue.js Débutant",
+  "description": "Quiz pour les bases du framework Vue.js",
+  "duration": 15,
+  "is_published": true,
+  "image_url": "icons/vue.svg",
+  "image_text": "Vue.js icon",
+  "themes": ["Vue.js", "JavaScript"],
+  "category": "Frontend",
+  "difficulty": "Facile",
+  "questions": [
+    {
+      "content": "Quelle directive Vue permet de lier une variable à un élément HTML ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": "v-model", "is_correct": true },
+        { "content": "v-bind", "is_correct": false },
+        { "content": "v-for", "is_correct": false },
+        { "content": "v-if", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Comment crée-t-on un composant Vue ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": "Vue.component('nom-composant', { ... })", "is_correct": true },
+        { "content": "new Vue('nom-composant')", "is_correct": false },
+        { "content": "component('nom-composant')", "is_correct": false },
+        { "content": "Vue.createComponent()", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Quelle directive est utilisée pour afficher du texte uniquement si une condition est vraie ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": "v-if", "is_correct": true },
+        { "content": "v-show", "is_correct": false },
+        { "content": "v-for", "is_correct": false },
+        { "content": "v-bind", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Quelle directive permet d'afficher ou masquer un élément sans le supprimer du DOM ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": "v-show", "is_correct": true },
+        { "content": "v-if", "is_correct": false },
+        { "content": "v-on", "is_correct": false },
+        { "content": "v-else", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Quelle syntaxe est correcte pour écouter un événement 'click' ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": "@click=\"maFonction\"", "is_correct": true },
+        { "content": "v-onclick=\"maFonction\"", "is_correct": false },
+        { "content": "on:click=\"maFonction\"", "is_correct": false },
+        { "content": "v-click=\"maFonction\"", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Quelle propriété du composant est utilisée pour recevoir des données depuis le parent ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": "props", "is_correct": true },
+        { "content": "data", "is_correct": false },
+        { "content": "methods", "is_correct": false },
+        { "content": "computed", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Que retourne la fonction 'data()' dans un composant Vue ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": "Un objet contenant les données du composant", "is_correct": true },
+        { "content": "Une fonction de rendu", "is_correct": false },
+        { "content": "Un tableau de propriétés", "is_correct": false },
+        { "content": "Une liste de méthodes", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Quelles sont des directives de base dans Vue ?",
+      "is_multiple": true,
+      "answers": [
+        { "content": "v-if", "is_correct": true },
+        { "content": "v-for", "is_correct": true },
+        { "content": "v-bind", "is_correct": true },
+        { "content": "v-include", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Quelle directive est utilisée pour itérer sur une liste ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": "v-for", "is_correct": true },
+        { "content": "v-loop", "is_correct": false },
+        { "content": "v-each", "is_correct": false },
+        { "content": "v-repeat", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Comment lier dynamiquement une classe CSS à un élément ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": ":class=\"maClasse\"", "is_correct": true },
+        { "content": "v-class=\"maClasse\"", "is_correct": false },
+        { "content": "bind-class=\"maClasse\"", "is_correct": false },
+        { "content": "class.bind=\"maClasse\"", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Quelle est la bonne syntaxe pour afficher une variable dans le template ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": "{{ variable }}", "is_correct": true },
+        { "content": "(( variable ))", "is_correct": false },
+        { "content": "[[ variable ]]", "is_correct": false },
+        { "content": "<%= variable %>", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Que fait la directive 'v-bind' ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": "Lie dynamiquement des attributs HTML à des variables", "is_correct": true },
+        { "content": "Rend un composant interactif", "is_correct": false },
+        { "content": "Affiche du texte conditionnel", "is_correct": false },
+        { "content": "Itère sur des listes", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Que permet de faire la directive 'v-on' ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": "Écouter des événements DOM", "is_correct": true },
+        { "content": "Lier des classes CSS", "is_correct": false },
+        { "content": "Créer un composant", "is_correct": false },
+        { "content": "Afficher une variable", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Dans Vue 3, quelle méthode permet de créer une application ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": "createApp()", "is_correct": true },
+        { "content": "new VueApp()", "is_correct": false },
+        { "content": "Vue.start()", "is_correct": false },
+        { "content": "initApp()", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Quelles sont des propriétés réactives dans Vue ?",
+      "is_multiple": true,
+      "answers": [
+        { "content": "data()", "is_correct": true },
+        { "content": "props", "is_correct": true },
+        { "content": "computed", "is_correct": true },
+        { "content": "mounted", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Quel hook du cycle de vie est appelé juste après que le composant soit inséré dans le DOM ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": "mounted", "is_correct": true },
+        { "content": "created", "is_correct": false },
+        { "content": "beforeMount", "is_correct": false },
+        { "content": "updated", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Quel hook est utilisé pour nettoyer ou détacher des événements avant la destruction du composant ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": "beforeUnmount", "is_correct": true },
+        { "content": "mounted", "is_correct": false },
+        { "content": "created", "is_correct": false },
+        { "content": "updated", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Que permet de faire 'computed' dans un composant Vue ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": "Définir des propriétés calculées dépendant de données réactives", "is_correct": true },
+        { "content": "Déclarer des variables globales", "is_correct": false },
+        { "content": "Créer une méthode asynchrone", "is_correct": false },
+        { "content": "Monter le composant", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Que permet de faire 'watch' dans un composant Vue ?",
+      "is_multiple": false,
+      "answers": [
+        { "content": "Surveiller des changements de valeur pour exécuter une fonction", "is_correct": true },
+        { "content": "Créer un état local", "is_correct": false },
+        { "content": "Monter le composant", "is_correct": false },
+        { "content": "Afficher un élément conditionnellement", "is_correct": false }
+      ]
+    },
+    {
+      "content": "Quelles options sont généralement définies dans un composant Vue ?",
+      "is_multiple": true,
+      "answers": [
+        { "content": "data", "is_correct": true },
+        { "content": "props", "is_correct": true },
+        { "content": "methods", "is_correct": true },
+        { "content": "imports", "is_correct": false }
+      ]
+    }
+  ]
+},
   {
     "title": "PostgreSQL Basique",
     "description": "Quiz pour tester les notions de base de PostgreSQL",

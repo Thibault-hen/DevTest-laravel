@@ -9,6 +9,8 @@ use App\Data\Difficulty\DifficultyData;
 use App\Data\Quiz\QuizData;
 use App\Data\Quiz\QuizzesData;
 use App\Data\Theme\ThemeData;
+use App\Enums\CacheKeys;
+use App\Enums\CacheTags;
 use App\Models\Category;
 use App\Models\Difficulty;
 use App\Models\Quiz;
@@ -19,14 +21,12 @@ use Spatie\LaravelData\DataCollection;
 
 class QuizService
 {
-    private const CACHE_KEY = 'quizzes';
-
     private const CACHE_TTL = 3600;
 
     public function getQuizzesData(): QuizzesData
     {
-        return Cache::tags(['quiz'])->remember(
-            self::CACHE_KEY,
+        return Cache::tags([CacheTags::QUIZ->value])->remember(
+            CacheKeys::QUIZZES->value,
             self::CACHE_TTL,
             fn () => $this->buildQuizzesData()
         );

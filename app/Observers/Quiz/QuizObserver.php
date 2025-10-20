@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace App\Observers\Quiz;
 
+use App\Enums\CacheTags;
 use App\Models\Quiz;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
 class QuizObserver
 {
-    public const CACHE_TAG = 'quiz';
-
     public function saving(Quiz $quiz): void
     {
         if (empty($quiz->slug)) {
@@ -31,6 +30,6 @@ class QuizObserver
 
     private function clearCache(): void
     {
-        Cache::tags([self::CACHE_TAG])->flush();
+        Cache::tags([CacheTags::QUIZ->value])->flush();
     }
 }

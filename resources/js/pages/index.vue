@@ -8,7 +8,6 @@ import AppLayout from '@/layouts/AppLayout.vue';
 import type { HomepageCounter } from '@/types';
 import type { HomeData } from '@/types/generated';
 import { BookOpen, CheckCircle, Tag } from 'lucide-vue-next';
-
 defineOptions({
   layout: AppLayout,
 });
@@ -50,6 +49,7 @@ const counters: HomepageCounter[] = [
         class="grid w-full grid-cols-1 gap-4 md:grid-cols-2 md:place-items-center md:gap-6 xl:grid-cols-3 xl:gap-6 [&>*:nth-child(3)]:md:col-span-2 [&>*:nth-child(3)]:xl:col-span-1"
       >
         <QuizPreviewCard
+          class="w-auto xl:w-full"
           v-for="quiz in props.quizzes"
           :key="quiz.id"
           :quiz="quiz"

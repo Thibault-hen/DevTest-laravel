@@ -1,19 +1,19 @@
 <script setup lang="ts">
+import CategoryBadge from '@/components/quiz/badges/CategoryBadge.vue';
+import DifficultyBadge from '@/components/quiz/badges/DifficultyBadge.vue';
+import ThemeBadge from '@/components/quiz/badges/ThemeBadge.vue';
+import UnavailableBadge from '@/components/quiz/badges/UnavailableBadge.vue';
+import QuizDetailsMeta from '@/components/quiz/QuizDetailsMeta.vue';
 import QuizInfoModal from '@/components/quiz/QuizInfoModal.vue';
-import Ratings from '@/components/quiz/Ratings.vue';
-import StarRating from '@/components/quiz/StarRating.vue';
-import ContentTitle from '@/components/shared/ContentTitle.vue';
-import Badge from '@/components/ui/badge/Badge.vue';
+import Ratings from '@/components/quiz/rating/Ratings.vue';
+import StarRating from '@/components/quiz/rating/StarRating.vue';
 import Button from '@/components/ui/button/Button.vue';
 import Card from '@/components/ui/card/Card.vue';
-import { useAppearance } from '@/composables/useAppearance';
-import { COLORS } from '@/constants/colors';
 import { login } from '@/routes';
 import { QuizData } from '@/types/generated';
 import { Link, usePage } from '@inertiajs/vue3';
-import { BookOpen, Calendar, ChartColumn, Clock, Gauge, Lock, Tag, User } from 'lucide-vue-next';
+import { BookOpen, Lock } from 'lucide-vue-next';
 import { computed, ref } from 'vue';
-
 const page = usePage();
 
 const showQuizInfoModal = ref(false);
@@ -39,14 +39,16 @@ const errorMessage = computed(() => {
   return false;
 });
 
-const { isDark } = useAppearance();
 const props = defineProps<{
   quiz: QuizData;
 }>();
 </script>
 
 <template>
-  <QuizInfoModal v-model="showQuizInfoModal" />
+  <QuizInfoModal
+    v-model="showQuizInfoModal"
+    :quiz-name="props.quiz.slug"
+  />
   <div class="mx-auto min-w-full xl:min-w-5xl xl:max-w-5xl space-y-6">
     <Card class="overflow-hidden p-2 py-6 md:p-6">
       <div class="grid gap-2 lg:gap-6 md:grid-cols-1 lg:grid-cols-3">
@@ -68,31 +70,24 @@ const props = defineProps<{
         <div class="space-y-4 p-6 md:col-span-2">
           <div class="space-y-2">
             <div class="flex items-center gap-2">
-              <Badge
-                class="flex max-w-fit items-center gap-2 rounded-md border p-1 px-2 text-xs text-white shadow drop-shadow md:text-sm"
-                :style="{
-                  backgroundColor: isDark()
-                    ? `${props.quiz.difficulty?.color ?? COLORS.DEFAULT}10`
-                    : (props.quiz.difficulty?.color ?? COLORS.DEFAULT),
-                  borderColor: props.quiz.difficulty?.color ?? COLORS.DEFAULT,
-                  color: isDark() ? (props.quiz.difficulty?.color ?? COLORS.DEFAULT) : '',
-                }"
-                ><Gauge :size="16" />{{ props.quiz.difficulty?.level }}
-              </Badge>
+              <UnavailableBadge v-if="!props.quiz.is_published" />
 
-              <Badge
-                class="flex items-center gap-2 border border-primary bg-primary/70 p-1 px-2 text-xs text-white md:text-sm dark:bg-primary/30"
-                >{{ props.quiz.category?.name }}</Badge
-              >
-              <Badge
-                v-for="theme in props.quiz.themes"
-                :key="theme.id"
-                variant="outline"
-                class="flex items-center gap-2 border p-1 px-2 text-xs md:text-sm"
-              >
-                <Tag :size="16" />{{ theme.title }}
-              </Badge>
+              <DifficultyBadge
+                v-if="props.quiz?.difficulty"
+                :difficulty="props.quiz.difficulty"
+              />
+
+              <CategoryBadge
+                v-if="props.quiz.category"
+                :category="props.quiz.category"
+              />
+
+              <ThemeBadge
+                v-if="props.quiz.themes"
+                :themes="props.quiz.themes"
+              />
             </div>
+
             <div class="flex gap-4 items-center">
               <span class="text-xl font-bold tracking-tight lg:text-2xl">
                 {{ props.quiz.title }}
@@ -111,44 +106,7 @@ const props = defineProps<{
             {{ props.quiz.description || 'Aucune description disponible.' }}
           </p>
 
-          <div class="grid grid-cols-2 gap-6 pt-4 md:grid-cols-3">
-            <div class="flex items-center gap-2 text-sm">
-              <Clock class="h-4 w-4 text-muted-foreground" />
-              <div>
-                <p class="text-xs text-muted-foreground">Durée</p>
-                <p class="font-semibold">~ {{ props.quiz.duration }} min</p>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-2 text-sm">
-              <User class="h-4 w-4 text-muted-foreground" />
-              <div>
-                <p class="text-xs text-muted-foreground">Auteur</p>
-                <p class="font-semibold truncate">{{ props.quiz.author?.name || 'Anonyme' }}</p>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-2 text-sm">
-              <Calendar class="h-4 w-4 text-muted-foreground" />
-              <div>
-                <p class="text-xs text-muted-foreground">Publié</p>
-                <p class="font-semibold">{{ props.quiz.created_at }}</p>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-2 text-sm md:hidden">
-              <ChartColumn class="h-4 w-4 text-muted-foreground" />
-              <div>
-                <p class="text-xs text-muted-foreground">Note</p>
-                <StarRating
-                  :rating="props.quiz.average_rating ?? 0"
-                  :count="props.quiz.ratings_count ?? 0"
-                  :show-count="true"
-                  :show-precision="true"
-                />
-              </div>
-            </div>
-          </div>
+          <QuizDetailsMeta :quiz="props.quiz" />
 
           <div class="pt-4 flex md:justify-center lg:justify-start">
             <div class="space-y-2 flex flex-col md:w-fit w-full">
@@ -195,17 +153,6 @@ const props = defineProps<{
       </div>
     </Card>
 
-    <Card class="p-4">
-      <ContentTitle title="Avis des développeurs ayant passé ce quiz" />
-      <Ratings
-        v-if="props.quiz.ratings"
-        :ratings="props.quiz.ratings"
-      />
-      <span
-        v-else
-        class="text-sm text-muted-foreground text-center"
-        >Aucune évaluation pour ce quiz.</span
-      >
-    </Card>
+    <Ratings :ratings="props.quiz.ratings ?? []" />
   </div>
 </template>

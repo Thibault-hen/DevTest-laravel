@@ -4,17 +4,28 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Quiz\QuizController;
+use App\Http\Controllers\Result\ResultController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::prefix('/quizzes')->group(function () {
+Route::prefix('quizzes')->group(function () {
     Route::get('/', [QuizController::class, 'index'])->name('quizzes');
-    Route::get('/{quiz:slug}', [QuizController::class, 'show'])->name('quiz')
-        ->where('slug', '[a-z0-9-]+');
+    Route::get('/{quiz:slug}', [QuizController::class, 'show'])
+        ->where('slug', '[a-z0-9-]+')
+        ->name('quiz');
+    Route::middleware(['auth', 'verified'])->group(function () {
+        Route::get('/{quiz:slug}/play', [QuizController::class, 'play'])
+            ->where('slug', '[a-z0-9-]+')
+            ->name('quiz.play');
+        Route::post('/{quiz:slug}/result', [ResultController::class, 'store'])
+            ->where('slug', '[a-z0-9-]+')
+            ->name('result.save');
+    });
 });
-
+Route::get('/test', [ResultController::class, 'store'])
+    ->name('result.test');
 Route::get('dashboard', function () {
     return Inertia::render('admin/Dashboard');
 })->middleware(['auth', 'verified', 'admin'])->name('dashboard');

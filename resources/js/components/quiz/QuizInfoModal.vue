@@ -8,11 +8,14 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
+import { play } from '@/routes/quiz';
+import { Link } from '@inertiajs/vue3';
 import { Info } from 'lucide-vue-next';
 import { ref, watch } from 'vue';
 
 const props = defineProps<{
   modelValue: boolean;
+  quizName: string;
 }>();
 
 const emit = defineEmits<{
@@ -41,7 +44,7 @@ watch(open, (val) => emit('update:modelValue', val));
         </DialogTitle>
 
         <DialogDescription class="space-y-4 text-base">
-          <div class="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-4 rounded">
+          <div class="bg-red-500/10 border-l-4 border-red-500 p-4 rounded">
             <p class="font-semibold text-red-800 dark:text-red-300 mb-2">⚠️ Règles importantes du quiz :</p>
             <ul class="list-disc list-inside space-y-2 text-red-700 dark:text-red-400 text-sm">
               <li>Si vous <strong>fermez la page</strong>, le quiz complet sera compté comme nul (0%)</li>
@@ -68,7 +71,9 @@ watch(open, (val) => emit('update:modelValue', val));
           @click="closeDialog"
           >Annuler</Button
         >
-        <Button>Je comprends, commencer le quiz</Button>
+        <Link :href="play(props.quizName).url">
+          <Button>Je comprends, commencer le quiz</Button>
+        </Link>
       </DialogFooter>
     </DialogContent>
   </Dialog>

@@ -88,8 +88,6 @@ class Quiz extends Model
      */
     public function loadForPlaying(): Quiz
     {
-        return $this->load('questions.answers', 'themes', 'difficulty', 'category')
-            ->loadAvg('ratings', 'score')
-            ->loadCount('ratings');
+        return $this->load('questions.answers', 'themes', 'difficulty', 'category', 'author');
     }
 }
