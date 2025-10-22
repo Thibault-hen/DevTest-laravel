@@ -33,7 +33,7 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => fake()->randomElement([now(), null]),
-            'avatar' => 'avatar/ezcat.jpg',
+            'avatar' => 'storage/avatar/ezcat.jpg',
             'specialization' => $specializations[array_rand($specializations)],
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),

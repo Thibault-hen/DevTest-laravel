@@ -16,7 +16,6 @@ class ResultController extends Controller
     {
         $resultData = ResultPostData::validateAndCreate($request->all());
 
-        $test = $resultService->saveResult($quiz, $resultData, auth()->id());
-        dd($test);
+        $resultService->saveResult($quiz, $resultData, auth()->id());
     }
 }

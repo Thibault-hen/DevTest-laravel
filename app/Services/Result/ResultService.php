@@ -12,12 +12,21 @@ use Illuminate\Support\Facades\DB;
 
 class ResultService
 {
+    /**
+     * Calculate the score and save user result with a transaction to ensure
+     * its integrity for a completed quiz.
+     *
+     * @param  \App\Models\Quiz  $quiz  The quiz being completed
+     * @param  \App\Data\Result\ResultPostData  $resultData  The result data to save
+     * @param  string  $userId  The ID of the user completing the quiz
+     */
     public function saveResult(Quiz $quiz, ResultPostData $resultData, string $userId): void
     {
         $correctAnswersCount = $this->getCorrectAnswersCount($resultData);
 
         $score = QuizScore::calculateScore($correctAnswersCount, $resultData->total_time);
 
+        // wrapping result creation into a transaction to ensure its integrity
         DB::transaction(function () use ($quiz, $resultData, $score, $userId) {
             $result = $quiz->results()->create([
                 'completed_in' => $resultData->total_time,
@@ -41,14 +50,11 @@ class ResultService
 
     private function getCorrectAnswersCount(ResultPostData $resultData): int
     {
-        // Get all question IDs - DataCollection already has items() method
         $questions = $resultData->questions->toCollection();
         $questionIds = $questions->pluck('question_id')->toArray();
 
-        // Load ALL correct answers in ONE query, grouped by question
         $correctAnswersByQuestion = $this->getCorrectAnswersByQuestion($questionIds);
 
-        // Check each question - use DataCollection directly
         return $questions->filter(function ($questionData) use ($correctAnswersByQuestion) {
             $questionId = $questionData->question_id;
             $userAnswers = $questionData->answers;
@@ -58,10 +64,9 @@ class ResultService
                 return false;
             }
 
-            // Normalize to array and sort
+            // Normalize to array if single answer
             $userAnswers = is_array($userAnswers) ? $userAnswers : [$userAnswers];
 
-            // Get correct answers for this question and sort
             $correctAnswers = $correctAnswersByQuestion->get($questionId, []);
 
             sort($userAnswers);

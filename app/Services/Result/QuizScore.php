@@ -19,6 +19,12 @@ class QuizScore
         public readonly int $timePenalty,
         public readonly int $finalScore) {}
 
+    /**
+     * Calculate the score based on correct answers and elapsed time with time penalty.
+     *
+     * @param  int  $correctAnswersCount  The number of correct answers
+     * @param  int  $elapsedTime  The time taken to complete the quiz
+     */
     public static function calculateScore(int $correctAnswersCount, int $elapsedTime): self
     {
         $baseScore = $correctAnswersCount * self::POINTS_PER_CORRECT_ANSWER * self::MULTIPLIER;
