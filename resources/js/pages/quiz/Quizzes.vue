@@ -170,6 +170,7 @@ watch(page, () => {
                   <PaginationItem
                     :value="pageItem"
                     as-child
+                    :is-active="index + 1 === page"
                   >
                     <Button
                       class="h-10 w-10 p-0"

@@ -2,6 +2,11 @@ export type AnswerPlayData = {
 id: string;
 content: string;
 };
+export type AnswerResultData = {
+id: string;
+content: string;
+is_correct: boolean;
+};
 export type AuthorData = {
 id: string;
 name: string;
@@ -38,7 +43,13 @@ id: string;
 content: string;
 timer: number;
 is_multiple: boolean;
-answers: Array<AnswerPlayData>;
+shuffled_answers: Array<AnswerPlayData>;
+};
+export type QuestionResultData = {
+id: string;
+content: string;
+timer: number;
+answers: Array<AnswerResultData>;
 };
 export type QuizData = {
 id: string;
@@ -87,9 +98,23 @@ created_at: any | null;
 updated_at: any | null;
 user: UserRatingData | null;
 };
+export type ResultData = {
+id: string;
+score: number;
+completed_in: number;
+correct_answers_count: number;
+completed_at: any | null;
+results: Array<ResultQuestionData>;
+user_answers: Array<AnswerResultData>;
+quiz: QuizData;
+};
 export type ResultPostData = {
 total_time: number;
 questions: Array<QuestionAnswerData>;
+};
+export type ResultQuestionData = {
+question: QuestionResultData;
+is_correct: boolean;
 };
 export type ThemeData = {
 id: string;

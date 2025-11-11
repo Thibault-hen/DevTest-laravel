@@ -8,7 +8,7 @@ class QuizScore
 {
     private const MILLISECONDS_PER_SECOND = 1000;
 
-    private const TIME_PENALTY_SECONDS = 10;
+    private const TIME_PENALTY_SECONDS = 5;
 
     private const MULTIPLIER = 100;
 
@@ -32,8 +32,8 @@ class QuizScore
         // convert from ms to s
         $elapsedSeconds = $elapsedTime / self::MILLISECONDS_PER_SECOND;
 
-        // add a timepenalty for each 10s
-        $timePenalty = (int) ($elapsedSeconds / self::TIME_PENALTY_SECONDS * self::MULTIPLIER);
+        // add a timepenalty for each 5s
+        $timePenalty = (int) ($elapsedSeconds / self::TIME_PENALTY_SECONDS) * self::MULTIPLIER;
 
         $finalScore = (int) max($baseScore - $timePenalty, 0);
 

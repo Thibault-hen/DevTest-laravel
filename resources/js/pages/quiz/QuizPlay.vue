@@ -37,7 +37,7 @@ defineOptions({
 
       <div
         v-if="counter > 0"
-        class="flex flex-col items-center justify-center space-y-4"
+        class="flex flex-col items-center justify-center space-y-4 mt-40"
       >
         <p class="text-lg md:text-xl lg:text-2xl">Le quiz commence dans :</p>
         <NumberFlow

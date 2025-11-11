@@ -88,6 +88,6 @@ class Quiz extends Model
      */
     public function loadForPlaying(): Quiz
     {
-        return $this->load('questions.answers', 'themes', 'difficulty', 'category', 'author');
+        return $this->load('questions.shuffledAnswers', 'themes', 'difficulty', 'category', 'author');
     }
 }

@@ -20,6 +20,6 @@ class QuestionPlayData extends Data
         public bool $is_multiple,
 
         #[DataCollectionOf(AnswerPlayData::class)]
-        public DataCollection $answers
+        public DataCollection $shuffledAnswers
     ) {}
 }

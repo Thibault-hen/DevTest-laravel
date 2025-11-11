@@ -701,7 +701,7 @@
         ]
       },
           {
-      "content": "Quelles sont des propriétés réactives dans Vue ?",
+      "content": "Quelles sont des propriétés réactives dans Angular ?",
       "is_multiple": true,
       "answers": [
         { "content": "bozo1", "is_correct": true },

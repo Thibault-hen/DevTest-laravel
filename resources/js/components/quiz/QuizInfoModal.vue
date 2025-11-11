@@ -37,10 +37,10 @@ watch(open, (val) => emit('update:modelValue', val));
 
 <template>
   <Dialog v-model:open="open">
-    <DialogContent class="max-w-xl">
+    <DialogContent class="max-w-xl p-6">
       <DialogHeader>
-        <DialogTitle class="text-xl font-bold flex gap-2 items-center py-3">
-          <Info class="text-primary p-1.5 h-8 w-8 rounded" /> Attention avant de commencer !
+        <DialogTitle class="font-bold flex gap-2 items-center py-3">
+          <Info class="text-primary p-2 h-8 w-8 bg-primary/10 rounded-full" /> Attention avant de commencer !
         </DialogTitle>
 
         <DialogDescription class="space-y-4 text-base">
@@ -65,14 +65,14 @@ watch(open, (val) => emit('update:modelValue', val));
         </DialogDescription>
       </DialogHeader>
 
-      <DialogFooter class="gap-2 sm:gap-2">
-        <Button
-          variant="outline"
-          @click="closeDialog"
-          >Annuler</Button
-        >
+      <DialogFooter class="gap-2 sm:gap-2 rounded-b-lg">
+        <Button @click="closeDialog">Annuler</Button>
         <Link :href="play(props.quizName).url">
-          <Button>Je comprends, commencer le quiz</Button>
+          <Button
+            variant="primary"
+            class="w-full"
+            >Je comprends, commencer le quiz</Button
+          >
         </Link>
       </DialogFooter>
     </DialogContent>

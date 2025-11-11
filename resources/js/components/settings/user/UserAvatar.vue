@@ -17,7 +17,7 @@ const showAvatar = computed(() => props.user.avatar && props.user.avatar !== '')
 </script>
 
 <template>
-  <Avatar class="h-8 w-8 cursor-pointer overflow-hidden rounded-lg border border-border hover:border-primary">
+  <Avatar class="h-8 w-8 cursor-pointer overflow-hidden rounded-full border border-border hover:border-primary">
     <AvatarImage
       v-if="showAvatar"
       :src="`/${props.user.avatar}`"

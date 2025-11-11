@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import GlobalLoader from '@/components/loader/GlobalLoader.vue';
 import AnswerChoices from '@/components/quiz/play/answer/AnswerChoices.vue';
 import QuestionTimer from '@/components/quiz/play/QuestionTimer.vue';
 import QuizPlayHeader from '@/components/quiz/play/QuizPlayHeader.vue';
@@ -26,6 +27,7 @@ const {
 </script>
 
 <template>
+  <GlobalLoader />
   <div class="mx-auto max-w-4xl space-y-6">
     <QuizPlayHeader
       :quiz="props.quiz"
@@ -41,18 +43,18 @@ const {
         appear
         :key="currentQuestionIndex"
       >
-        <div>
-          <CardHeader>
+        <div class="flex flex-col gap-4">
+          <CardHeader class="border-b">
             <CardTitle class="flex flex-col gap-4">
               <div class="flex justify-between items-start gap-4">
-                <div class="flex flex-col">
+                <div class="flex flex-col gap-6">
                   <Badge
                     class="mb-2 text-sm px-4 w-fit"
                     variant="outline"
                   >
                     Question {{ currentQuestionIndex + 1 }}
                   </Badge>
-                  <h2 class="text-sm md:text-lg lg:text-xl font-bold leading-tight mt-2">
+                  <h2 class="text-sm md:text-lg lg:text-xl font-bold leading-tight">
                     {{ currentQuestion?.content }}
                   </h2>
                 </div>

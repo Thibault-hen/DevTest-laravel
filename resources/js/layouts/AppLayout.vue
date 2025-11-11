@@ -3,6 +3,7 @@ import AppearanceTabs from '@/components/AppearanceTabs.vue';
 import NavUser from '@/components/settings/user/NavUser.vue';
 import AppLogo from '@/components/shared/AppLogo.vue';
 import AppLogoIcon from '@/components/shared/AppLogoIcon.vue';
+import Footer from '@/components/shared/Footer.vue';
 import ThemeToggle from '@/components/ThemeToggle.vue';
 import Button from '@/components/ui/button/Button.vue';
 import Separator from '@/components/ui/separator/Separator.vue';
@@ -42,10 +43,8 @@ withDefaults(defineProps<Props>(), {
   <Toaster
     :theme="getStoredAppearance() ?? 'system'"
     :closeButton="true"
-    :duration="5000"
     class="!bg-red-500"
-    position="bottom-right"
-    :richColors="true"
+    position="top-right"
   />
   <div class="relative flex flex-col items-center p-2 lg:justify-center lg:p-4">
     <!-- Backdrop when mobile SideNav is open -->
@@ -56,24 +55,29 @@ withDefaults(defineProps<Props>(), {
     />
 
     <header
-      class="fixed top-0 z-30 mb-6 w-full border-b bg-transparent px-5 py-2 text-sm backdrop-blur-md not-has-[nav]:hidden lg:px-20 xl:px-36"
+      class="fixed top-0 z-30 mb-6 w-full border-b bg-transparent px-5 py-2 text-sm backdrop-blur-md not-has-[nav]:hidden"
     >
       <!--Nav desktop-->
-      <nav class="flex items-center justify-between gap-4 p-2">
-        <div class="inline-block gap-2">
+      <nav class="flex items-center justify-between lg:justify-around gap-12 p-2">
+        <div class="flex gap-2">
           <AppLogo />
-        </div>
-        <div class="flex items-center gap-2">
-          <div class="hidden lg:inline-block">
+          <div class="hidden lg:flex lg:items-center">
             <Link
               v-for="item in navItems"
               :key="item.title"
               :href="item.href"
               :class="[
-                'title-font hidden cursor-pointer rounded-[0.375rem] px-5 py-1.5 text-xs leading-normal font-semibold tracking-wide uppercase transition-colors duration-200 lg:inline-block',
+                'title-font hidden cursor-pointer rounded-[0.375rem] px-5 py-1.5 text-xs leading-normal font-semibold tracking-wide uppercase transition-colors duration-200 lg:flex',
                 urlIsActive(item.href, page.url) ? 'text-primary' : 'hover:text-primary',
               ]"
             >
+              <component
+                :is="item.icon"
+                v-if="item.icon"
+                :stroke-width="2"
+                :class="urlIsActive(item.href, page.url) ? 'text-primary' : 'hover:text-primary'"
+                class="mr-2 h-4 w-4"
+              />
               {{ item.title }}
             </Link>
             <Link
@@ -84,6 +88,8 @@ withDefaults(defineProps<Props>(), {
               Dashboard
             </Link>
           </div>
+        </div>
+        <div class="flex items-center gap-2">
           <template v-if="!$page.props.auth.user">
             <Link
               :href="login()"
@@ -103,13 +109,18 @@ withDefaults(defineProps<Props>(), {
 
           <Separator
             orientation="vertical"
-            class="mr-4 hidden !h-6 lg:flex"
+            class="mx-4 hidden !h-6 lg:flex"
+            v-if="!$page.props.auth.user"
           />
+
           <ThemeToggle />
+
           <Separator
             orientation="vertical"
             class="mx-4 hidden !h-6 lg:flex"
+            v-if="$page.props.auth.user"
           />
+
           <NavUser
             v-if="$page.props.auth.user"
             :user="$page.props.auth.user"
@@ -212,7 +223,7 @@ withDefaults(defineProps<Props>(), {
       </div>
     </aside>
 
-    <main class="mt-10 w-full p-1 md:p-10 xl:px-20">
+    <main class="mt-10 w-full p-1 md:p-10 xl:px-20 min-h-screen">
       <Transition
         name="page"
         mode="out-in"
@@ -223,6 +234,9 @@ withDefaults(defineProps<Props>(), {
         </div>
       </Transition>
     </main>
+    <div class="w-full md:px-10 xl:px-20">
+      <Footer />
+    </div>
   </div>
 </template>
 

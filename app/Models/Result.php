@@ -17,6 +17,11 @@ class Result extends Model
         'completed_in',
         'score',
         'user_id',
+        'correct_answers_count',
+    ];
+
+    protected $cast = [
+        'completed_at' => 'datetime',
     ];
 
     public $timestamps = false;

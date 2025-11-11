@@ -49,7 +49,7 @@ const emptyStars = MAX_STARS - Math.ceil(props.rating);
     />
 
     <span class="ml-2 text-sm font-bold">
-      {{ props.rating.toFixed(1) }}<template v-if="props.showPrecision">/5</template
+      {{ props.rating.toFixed(1) }}<template v-if="props.showPrecision">/{{ MAX_STARS }}</template
       ><template v-if="props.showCount"> ({{ props.count }})</template>
     </span>
   </div>

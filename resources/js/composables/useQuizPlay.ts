@@ -1,9 +1,9 @@
 import { save } from '@/routes/result';
 import type { QuizPlayData } from '@/types/generated';
 import { QuestionAnswerData, ResultPostData } from '@/types/generated';
+import { errorToast } from '@/utils/toast';
 import { router } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
-import { toast } from 'vue-sonner';
 
 export function useQuizPlay(quiz: QuizPlayData) {
   // State
@@ -18,7 +18,14 @@ export function useQuizPlay(quiz: QuizPlayData) {
   const totalQuestions = computed(() => quiz.questions?.length || 0);
   const progress = computed(() => ((currentQuestionIndex.value + 1) / totalQuestions.value) * 100);
   const isLastQuestion = computed(() => currentQuestionIndex.value === totalQuestions.value - 1);
-  const currentTimer = computed(() => quiz.questions?.[currentQuestionIndex.value]?.timer || 0);
+  const currentTimer = computed({
+    get: () => quiz.questions?.[currentQuestionIndex.value]?.timer || 0,
+    set: (value: number) => {
+      if (quiz.questions && quiz.questions[currentQuestionIndex.value]) {
+        quiz.questions[currentQuestionIndex.value].timer = value;
+      }
+    },
+  });
 
   // Current question's selected answers
   const currentSelectedAnswers = computed({
@@ -30,7 +37,6 @@ export function useQuizPlay(quiz: QuizPlayData) {
     },
   });
 
-  // Methods
   const saveQuestionTime = (questionId: string, elapsedTime: number) => {
     questionTimes.value[questionId] = elapsedTime;
   };
@@ -46,13 +52,10 @@ export function useQuizPlay(quiz: QuizPlayData) {
 
     const currentQuestionId = currentQuestion.value.id;
 
-    // Save elapsed time from timer
     saveQuestionTime(currentQuestionId, elapsedTime);
 
-    // Clear answer (timed out)
     clearCurrentAnswer();
 
-    // Move to next question or submit
     if (!isLastQuestion.value) {
       currentQuestionIndex.value++;
     } else {
@@ -70,10 +73,16 @@ export function useQuizPlay(quiz: QuizPlayData) {
     }
   };
 
+  const formatAnswer = (answer: string | string[] | null): string | string[] | null => {
+    if (Array.isArray(answer) && answer.length === 0) {
+      return null;
+    }
+    return answer === '' ? null : answer;
+  };
+
   const submitQuiz = () => {
     if (quizSubmitted.value) return;
 
-    // Save current question time if not already saved
     if (currentQuestion.value) {
       const currentQuestionId = currentQuestion.value.id;
 
@@ -83,12 +92,14 @@ export function useQuizPlay(quiz: QuizPlayData) {
       }
     }
 
+    currentTimer.value = 0;
+
     const totalTime = Object.values(questionTimes.value).reduce((acc, time) => acc + time, 0);
 
     const questionResults = Object.entries(selectedAnswers.value).map(([questionId, answers]): QuestionAnswerData => {
       return {
         question_id: questionId,
-        answers,
+        answers: formatAnswer(answers),
       };
     });
 
@@ -97,12 +108,10 @@ export function useQuizPlay(quiz: QuizPlayData) {
       total_time: totalTime,
     } as ResultPostData;
 
-    console.log('Submitting quiz results:', resultsData);
     router.post(save(quiz.slug), resultsData, {
+      replace: true,
       onError: (error) => {
-        toast.error('Erreur', {
-          description: "Une erreur est survenue lors de l'enregistrement de vos réponses.",
-        });
+        errorToast('Erreur', "Une erreur est survenue lors de l'enregistrement de vos réponses.");
         console.error(error);
       },
     });

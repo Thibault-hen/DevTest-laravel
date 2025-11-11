@@ -29,12 +29,12 @@ defineEmits<{
     class="space-y-3"
   >
     <Label
-      v-for="answer in question.answers"
+      v-for="answer in question.shuffled_answers"
       :key="answer.id"
       :for="answer.id"
-      class="flex items-center space-x-3 rounded-lg border p-2 md:p-4 transition-colors hover:bg-accent hover:border-primary cursor-pointer w-full"
+      class="flex items-center space-x-3 rounded-lg border p-2 md:p-4 transition-colors dark:hover:bg-accent hover:bg-primary/30 hover:border-primary cursor-pointer w-full"
       :class="{
-        'border-primary bg-primary/5': selectedAnswers === answer.id,
+        'border-primary dark:bg-primary/5 bg-primary/40 text-muted-foreground': selectedAnswers === answer.id,
       }"
     >
       <RadioGroupItem
@@ -50,12 +50,13 @@ defineEmits<{
     class="space-y-3"
   >
     <Label
-      v-for="answer in question.answers"
+      v-for="answer in question.shuffled_answers"
       :key="answer.id"
       :for="answer.id"
-      class="flex items-center space-x-3 rounded-lg border p-2 md:p-4 transition-colors hover:bg-accent hover:border-primary cursor-pointer w-full"
+      class="flex items-center space-x-3 rounded-lg border p-2 md:p-4 transition-colors dark:hover:bg-accent hover:bg-primary/30 hover:border-primary cursor-pointer w-full"
       :class="{
-        'border-primary bg-primary/5': Array.isArray(selectedAnswers) && selectedAnswers.includes(answer.id),
+        'border-primary dark:bg-primary/5 bg-primary/40 text-muted-foreground':
+          Array.isArray(selectedAnswers) && selectedAnswers.includes(answer.id),
       }"
     >
       <Checkbox
@@ -83,6 +84,7 @@ defineEmits<{
   <div class="flex items-center justify-between gap-4 mt-4">
     <Button
       v-if="!isLastQuestion"
+      variant="primary"
       @click="$emit('next')"
       class="gap-2 ml-auto"
       :disabled="
@@ -94,6 +96,7 @@ defineEmits<{
     </Button>
     <Button
       v-else
+      variant="primary"
       @click="$emit('submit')"
       class="gap-2 ml-auto"
       :disabled="!selectedAnswers || (Array.isArray(selectedAnswers) && selectedAnswers.length === 0)"

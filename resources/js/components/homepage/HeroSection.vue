@@ -33,7 +33,11 @@ const info = {
       <div class="space-y-6">
         <p class="text-sm sm:text-base md:text-xl">{{ info.description }}</p>
         <Link :href="quizzes().url">
-          <Button class="px-8 py-3">{{ info.buttonText }}</Button>
+          <Button
+            class="px-8 py-3"
+            variant="primary"
+            >{{ info.buttonText }}</Button
+          >
         </Link>
       </div>
     </div>

@@ -27,7 +27,7 @@ const props = defineProps<{ quiz: QuizData }>();
             v-if="props.quiz.image_url"
             :src="`/${props.quiz.image_url}`"
             :alt="props.quiz.image_text || 'Quiz image'"
-            class="flex h-6 rounded"
+            class="flex h-6 w-6 rounded"
           />
           <CardTitle class="text-sm md:text-base">{{ props.quiz.title }}</CardTitle>
         </div>
@@ -70,9 +70,7 @@ const props = defineProps<{ quiz: QuizData }>();
         </div>
       </CardContent>
 
-      <CardFooter
-        class="flex items-center justify-between rounded-br-sm rounded-bl-sm bg-muted p-2 text-sm text-muted-foreground"
-      >
+      <CardFooter class="flex items-center justify-between rounded-b-xl bg-muted p-2 text-sm text-muted-foreground">
         <span>Par {{ props.quiz.author?.name }}</span>
         <span>{{ props.quiz.created_at }}</span>
       </CardFooter>
