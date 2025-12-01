@@ -11,6 +11,13 @@ class Rating extends Model
 {
     use HasUuids;
 
+    protected $fillable = [
+        'comment',
+        'score',
+        'user_id',
+        'quiz_id',
+    ];
+
     public function quiz()
     {
         return $this->belongsTo(Quiz::class);

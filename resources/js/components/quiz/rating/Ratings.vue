@@ -28,9 +28,13 @@ const props = defineProps<{
         <div class="flex flex-col gap-2">
           <div class="flex sm:items-center gap-2 flex-col sm:flex-row">
             <span class="font-bold text-xs sm:text-sm lg:text-base">{{ rating.user?.name }}</span>
-            <span class="hidden sm:flex">-</span>
+            <span
+              class="hidden sm:flex"
+              v-if="rating.user?.specialization"
+              >-</span
+            >
             <UserRoleBadge
-              v-if="rating.user"
+              v-if="rating.user?.specialization"
               :user="rating.user"
             />
           </div>

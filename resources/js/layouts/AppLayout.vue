@@ -43,7 +43,6 @@ withDefaults(defineProps<Props>(), {
   <Toaster
     :theme="getStoredAppearance() ?? 'system'"
     :closeButton="true"
-    class="!bg-red-500"
     position="top-right"
   />
   <div class="relative flex flex-col items-center p-2 lg:justify-center lg:p-4">

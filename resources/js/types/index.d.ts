@@ -46,7 +46,7 @@ export type AppPageProps<T extends Record<string, unknown> = Record<string, unkn
 };
 
 export interface User {
-  id: number;
+  id: string;
   name: string;
   email: string;
   avatar?: string;
@@ -68,3 +68,10 @@ export interface FeedbackMessage {
 }
 
 export type BreadcrumbItemType = BreadcrumbItem;
+
+export interface RatingErrors {
+  ratingAlreadyExists?: string;
+  comment?: string;
+  score?: string;
+  quiz_id?: string;
+}

@@ -9,13 +9,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Quiz;
 use App\Models\Result;
 use App\Services\Result\ResultService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class ResultController extends Controller
 {
-    public function store(Request $request, Quiz $quiz, ResultService $resultService)
+    public function store(Request $request, Quiz $quiz, ResultService $resultService): RedirectResponse
     {
         $resultData = ResultPostData::validateAndCreate($request->all());
 
@@ -25,10 +26,8 @@ class ResultController extends Controller
             ->with('success', 'Merci d\'avoir participé ! Vos réponses ont été enregistrées avec succès.');
     }
 
-    public function show(Request $request, Result $result, ResultService $resultService): Response
+    public function show(Result $result, ResultService $resultService): Response
     {
-        // TODO: Add authorization check (Policy)
-        // $this->authorize('view', $result);
         $quizSummaryResult = $resultService->getQuizSummaryResult($result);
 
         return Inertia::render('result/Result', [

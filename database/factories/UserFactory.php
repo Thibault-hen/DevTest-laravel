@@ -32,7 +32,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => fake()->randomElement([now(), null]),
+            'email_verified_at' => now(),
             'avatar' => 'storage/avatar/ezcat.jpg',
             'specialization' => $specializations[array_rand($specializations)],
             'password' => static::$password ??= Hash::make('password'),

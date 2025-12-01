@@ -66,7 +66,11 @@ class ResultService
      */
     public function getQuizSummaryResult(Result $result): ResultData
     {
-        $result->load('resultUserAnswers.answer.question', 'quiz.questions.answers');
+        $result->load('resultUserAnswers.answer.question', 'quiz.questions.answers', 'quiz.ratings');
+
+        $userRating = $result->quiz->ratings
+            ->where('user_id', $result->user_id)
+            ->first();
 
         $allQuestions = $result->quiz->questions->keyBy('id');
 
@@ -105,6 +109,7 @@ class ResultService
             'user_answers' => $userAnswers,
             'results' => $questionsList,
             'quiz' => $result->quiz,
+            'user_rating' => $userRating,
         ]);
     }
 }

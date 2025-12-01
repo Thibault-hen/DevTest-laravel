@@ -28,13 +28,7 @@ const canStartQuiz = computed(() => {
 });
 
 const errorMessage = computed(() => {
-  if (!page.props.auth.user) {
-    return true;
-  }
-  if (!page.props.auth.user.email_verified_at) {
-    return true;
-  }
-  if (!props.quiz.is_published) {
+  if (!page.props.auth.user || !page.props.auth.user.email_verified_at || !props.quiz.is_published) {
     return true;
   }
   return false;

@@ -21,11 +21,10 @@ const stats = computed(() => {
 </script>
 
 <template>
-  <Card class="h-fit lg:sticky lg:top-20 max-h-[40vh] lg:max-h-[80vh] overflow-y-auto rounded-sm p-0">
-    <HeadingSmall
-      title="Résumé rapide"
-      class="px-4 pt-4"
-    />
+  <Card
+    class="gap-2 h-fit lg:sticky border-none bg-transparent !shadow-none lg:top-20 max-h-[40vh] lg:max-h-[80vh] overflow-y-auto rounded-sm p-0"
+  >
+    <HeadingSmall title="Résumé rapide" />
 
     <ul class="flex gap-3 flex-col">
       <li
@@ -33,7 +32,7 @@ const stats = computed(() => {
         :key="result.question.id"
         class="flex gap-2.5 items-center group"
       >
-        <span class="p-1 text-xs md:text-sm font-semibold w-8 h-8 flex items-center justify-center shrink-0">
+        <span class="p-1 text-xs md:text-sm font-semibold w-6 h-8 flex items-center justify-center shrink-0">
           {{ index + 1 }}
         </span>
 

@@ -92,11 +92,16 @@ difficulties: Array<DifficultyData>;
 };
 export type RatingData = {
 id: string;
-comment: string;
+comment: string | null;
 score: number;
 created_at: any | null;
 updated_at: any | null;
 user: UserRatingData | null;
+};
+export type RatingPostData = {
+comment: string | null;
+score: number;
+quiz_id: string;
 };
 export type ResultData = {
 id: string;
@@ -107,6 +112,7 @@ completed_at: any | null;
 results: Array<ResultQuestionData>;
 user_answers: Array<AnswerResultData>;
 quiz: QuizData;
+user_rating: RatingData | null;
 };
 export type ResultPostData = {
 total_time: number;
@@ -126,6 +132,6 @@ quizzes_count: number | null;
 export type UserRatingData = {
 id: string;
 name: string;
-specialization: string;
+specialization: string | null;
 avatar: string | null;
 };

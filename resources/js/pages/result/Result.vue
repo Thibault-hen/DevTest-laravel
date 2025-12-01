@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import QuickSummary from '@/components/quiz/result/QuickSummary.vue';
+import RatingModal from '@/components/quiz/result/Rating/RatingModal.vue';
 import ResultDetails from '@/components/quiz/result/ResultDetails.vue';
 import ResultQuestionsAnswers from '@/components/quiz/result/ResultQuestionsAnswers.vue';
 import Breadcrumbs from '@/components/shared/Breadcrumbs.vue';
@@ -55,6 +56,10 @@ watch(
 </script>
 
 <template>
+  <RatingModal
+    v-if="!props.quiz_result.user_rating"
+    :quiz="props.quiz_result.quiz"
+  />
   <section class="flex flex-col px-4 py-6">
     <Breadcrumbs :breadcrumbs="breadcrumbs" />
     <div class="mt-8">
@@ -63,7 +68,6 @@ watch(
         :description="`Voici le détail de vos résultats pour le quiz ${props.quiz_result.quiz.title}`"
       />
     </div>
-
     <section class="flex flex-col xl:flex-row gap-4 mt-4">
       <QuickSummary
         :summary="props.quiz_result.results"

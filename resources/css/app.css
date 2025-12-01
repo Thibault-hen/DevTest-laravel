@@ -200,6 +200,7 @@
     --font-sans:
       'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
       'Noto Color Emoji';
+    scroll-behavior: smooth;
   }
 }
 
@@ -250,6 +251,9 @@ body {
 @layer base {
   * {
     @apply border-border outline-ring/50;
+  }
+  html {
+    overflow-y: scroll;
   }
   body {
     @apply !mb-0 bg-background text-foreground;

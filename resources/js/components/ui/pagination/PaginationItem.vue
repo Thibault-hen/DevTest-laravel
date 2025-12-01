@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<PaginationListItemProps & {
 }>(), {
   size: "icon",
 })
-console.log(props)
+
 const delegatedProps = reactiveOmit(props, "class", "size", "isActive")
 </script>
 

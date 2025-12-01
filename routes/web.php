@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Quiz\QuizController;
+use App\Http\Controllers\Rating\RatingController;
 use App\Http\Controllers\Result\ResultController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -28,6 +29,9 @@ Route::prefix('quizzes')->group(function () {
         Route::post('/{quiz:slug}/result', [ResultController::class, 'store'])
             ->where('slug', '[a-z0-9-]+')
             ->name('result.save');
+
+        Route::post('/rating', [RatingController::class, 'store'])
+            ->name('rating.store');
     });
 });
 

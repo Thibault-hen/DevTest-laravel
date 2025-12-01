@@ -6,6 +6,7 @@ namespace App\Data\Result;
 
 use App\Data\Answer\AnswerResultData;
 use App\Data\Quiz\QuizData;
+use App\Data\Rating\RatingData;
 use Illuminate\Support\Carbon;
 use Spatie\LaravelData\Attributes\DataCollectionOf;
 use Spatie\LaravelData\Attributes\WithCast;
@@ -36,5 +37,6 @@ class ResultData extends Data
         public DataCollection $user_answers,
 
         public QuizData $quiz,
+        public ?RatingData $user_rating
     ) {}
 }
