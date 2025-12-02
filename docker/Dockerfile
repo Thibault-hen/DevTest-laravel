@@ -1,6 +1,6 @@
 FROM php:8.4-fpm
 
-# Install system dependencies
+# System dependencies
 RUN apt-get update && apt-get install -y \
     git curl unzip zip \
     libpng-dev libjpeg-dev libfreetype6-dev \
@@ -9,11 +9,11 @@ RUN apt-get update && apt-get install -y \
     nodejs npm \
  && rm -rf /var/lib/apt/lists/*
 
-# Install PHP extensions
+# PHP
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
  && docker-php-ext-install pdo_pgsql pgsql mbstring exif pcntl bcmath gd
 
-# Redis extension (works with PHP 8.4)
+# Redis
 RUN pecl install redis-6.3.0RC1 \
  && docker-php-ext-enable redis
 

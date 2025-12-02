@@ -35,9 +35,32 @@ Route::prefix('quizzes')->group(function () {
     });
 });
 
-Route::get('dashboard', function () {
-    return Inertia::render('admin/Dashboard');
-})->middleware(['auth', 'verified', 'admin'])->name('dashboard');
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('admin/Dashboard');
+    })->name('admin.dashboard');
+    Route::get('/quizzes', function () {
+        return Inertia::render('admin/Quizzes');
+    })->name('admin.quizzes');
+    Route::get('/themes', function () {
+        return Inertia::render('admin/Themes');
+    })->name('admin.themes');
+    Route::get('/themes', function () {
+        return Inertia::render('admin/Themes');
+    })->name('admin.categories');
+    Route::get('/themes', function () {
+        return Inertia::render('admin/Categories');
+    })->name('admin.categories');
+    Route::get('/difficulties', function () {
+        return Inertia::render('admin/Difficulties');
+    })->name('admin.difficulties');
+    Route::get('/results', function () {
+        return Inertia::render('admin/Results');
+    })->name('admin.results');
+    Route::get('/users', function () {
+        return Inertia::render('admin/Users');
+    })->name('admin.users');
+})->middleware(['auth', 'verified', 'admin']);
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
