@@ -13,7 +13,7 @@ class CategoryData extends Data
 {
     public function __construct(
         public string $id,
-        public string $name,
+        public string $title,
         public ?Carbon $created_at = null,
         public ?Carbon $updated_at = null,
         public ?int $quizzes_count = null,

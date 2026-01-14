@@ -11,6 +11,7 @@ defineOptions({
 const props = withDefaults(defineProps<SidebarMenuButtonProps & {
   tooltip?: string | Component
 }>(), {
+  class: 'transition-all duration-200',
   as: 'button',
   variant: 'default',
   size: 'default',

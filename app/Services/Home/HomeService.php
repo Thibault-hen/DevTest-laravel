@@ -29,7 +29,7 @@ class HomeService
             ->remember(
                 CacheKeys::HOME->value,
                 self::CACHE_TTL,
-                fn () => $this->buildHomeData()
+                $this->buildHomeData(...)
             );
     }
 

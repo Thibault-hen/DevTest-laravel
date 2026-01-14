@@ -20,14 +20,15 @@ return new class extends Migration
             $table->text('description');
             $table->integer('duration')->default(0);
             $table->string('image_url')->nullable();
-            $table->text('image_text')->nullable();
             $table->boolean('is_published')->default(false);
             $table->uuid('author_id');
             $table->uuid('difficulty_id')->nullable();
+            $table->uuid('category_id')->nullable()->after('difficulty_id');
 
             $table->index('created_at');
             $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('difficulty_id')->references('id')->on('difficulties')->onDelete('set null');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
             $table->timestamps();
         });
     }

@@ -22,7 +22,6 @@ const {
   goToNext,
   handleTimeout,
   submitQuiz,
-  timerRef,
 } = useQuizPlay(props.quiz);
 </script>
 

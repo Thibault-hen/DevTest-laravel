@@ -50,8 +50,8 @@ const props = defineProps<{
         <div class="h-full flex items-center justify-center">
           <div v-if="props.quiz.image_url">
             <img
-              :src="`/${props.quiz.image_url}`"
-              :alt="props.quiz.image_text || 'Quiz image'"
+              :src="`${props.quiz.image_url}`"
+              :alt="`${props.quiz.title} image` || 'Quiz image'"
               class="h-32 w-32 lg:h-44 lg:w-44 rounded-md object-fit transition-transform duration-300"
             />
           </div>

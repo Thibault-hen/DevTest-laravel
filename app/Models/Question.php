@@ -13,6 +13,15 @@ class Question extends Model
 {
     use HasUuids;
 
+    protected $fillable = [
+        'content',
+        'is_multiple',
+    ];
+    
+    protected $casts = [
+        'is_multiple' => 'boolean',
+    ];  
+
     public function quiz(): BelongsTo
     {
         return $this->belongsTo(Quiz::class);

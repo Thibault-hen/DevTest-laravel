@@ -16,7 +16,7 @@ class ResultService
     public function __construct(private readonly AnswerChecker $answerChecker) {}
 
     /**
-     * Calculate the score and save user result with a transaction to ensure
+     * Calculate the score and save user result within a transaction to ensure
      * its integrity for a completed quiz.
      *
      * @param  \App\Models\Quiz  $quiz  The quiz being completed

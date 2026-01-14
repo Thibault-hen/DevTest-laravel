@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import UserRoleBadge from '@/components/quiz/badges/UserRoleBadge.vue';
 import StarRating from '@/components/quiz/rating/StarRating.vue';
-import UserAvatar from '@/components/settings/user/UserAvatar.vue';
+import UserRatingAvatar from '@/components/settings/user/UserRatingAvatar.vue';
 import ContentTitle from '@/components/shared/ContentTitle.vue';
 import Card from '@/components/ui/card/Card.vue';
 import { RatingData } from '@/types/generated';
@@ -21,7 +21,7 @@ const props = defineProps<{
       :key="rating.id"
     >
       <div class="flex items-center gap-4">
-        <UserAvatar
+        <UserRatingAvatar
           v-if="rating.user"
           :user="rating.user"
         />

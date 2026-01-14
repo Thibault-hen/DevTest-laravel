@@ -4,6 +4,7 @@ import { ThemeData } from '@/types/generated';
 import { Tag } from 'lucide-vue-next';
 
 const props = defineProps<{ themes: ThemeData[] }>();
+console.log(props.themes);
 </script>
 
 <template>

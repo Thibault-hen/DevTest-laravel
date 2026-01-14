@@ -5,14 +5,14 @@ import { COLORS } from '@/constants/colors';
 import { DifficultyData } from '@/types/generated';
 import { Gauge } from 'lucide-vue-next';
 
-const props = defineProps<{ difficulty: DifficultyData }>();
+const props = defineProps<{ difficulty: DifficultyData | null }>();
 
 const { isDark } = useAppearance();
 </script>
 
 <template>
   <Badge
-    class="font-bold flex max-w-fit items-center gap-2 rounded-md border p-1 px-2 text-xs text-white shadow drop-shadow md:text-sm"
+    class="font-bold flex max-w-fit items-center gap-2 rounded-md border p-1 px-2 text-xs text-white shadow drop-shadow"
     :style="{
       backgroundColor: isDark()
         ? `${props.difficulty?.color ?? COLORS.DEFAULT}10`

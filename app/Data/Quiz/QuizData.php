@@ -7,6 +7,7 @@ namespace App\Data\Quiz;
 use App\Data\Author\AuthorData;
 use App\Data\Category\CategoryData;
 use App\Data\Difficulty\DifficultyData;
+use App\Data\Question\QuestionData;
 use App\Data\Rating\RatingData;
 use App\Data\Theme\ThemeData;
 use Illuminate\Support\Carbon;
@@ -28,7 +29,6 @@ class QuizData extends Data
         public string $description,
         public int $duration,
         public ?string $image_url,
-        public ?string $image_text,
         public bool $is_published,
 
         #[WithTransformer(DateTimeInterfaceTransformer::class, format: 'd-m-Y')]
@@ -49,5 +49,8 @@ class QuizData extends Data
 
         #[MapInputName('ratings_count')]
         public ?int $ratings_count = null,
+
+        #[DataCollectionOf(QuestionData::class)]
+        public ?DataCollection $questions = null,
     ) {}
 }

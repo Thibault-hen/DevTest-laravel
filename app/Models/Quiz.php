@@ -23,9 +23,10 @@ class Quiz extends Model
         'description',
         'duration',
         'image_url',
-        'image_text',
         'is_published',
+        'category_id',
         'difficulty_id',
+        'author_id',
     ];
 
     protected $casts = [

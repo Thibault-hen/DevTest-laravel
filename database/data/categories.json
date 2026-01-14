@@ -1,6 +1,6 @@
 [
-  { "name": "Frontend" },
-  { "name": "Backend" },
-  { "name": "Fullstack" },
-  { "name": "DevOps" }
+  { "title": "Frontend" },
+  { "title": "Backend" },
+  { "title": "Fullstack" },
+  { "title": "DevOps" }
 ]

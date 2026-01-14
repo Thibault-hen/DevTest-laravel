@@ -41,14 +41,14 @@ export const useQuizzes = (props: QuizzesData) => {
     }
 
     if (selectedCategories.value.length > 0) {
-      quizzes = quizzes.filter((quiz) => selectedCategories.value.includes(quiz.category?.name ?? ''));
+      quizzes = quizzes.filter((quiz) => selectedCategories.value.includes(quiz.category?.title ?? ''));
     }
 
     if (searchText.value) {
       quizzes = quizzes.filter(
         (quiz) =>
           quiz.title.toLocaleLowerCase().includes(searchText.value?.toLocaleLowerCase() ?? '') ||
-          quiz.category?.name.toLocaleLowerCase().includes(searchText.value.toLocaleLowerCase()) ||
+          quiz.category?.title.toLocaleLowerCase().includes(searchText.value.toLocaleLowerCase()) ||
           quiz.themes?.some((theme) => theme.title.toLocaleLowerCase().includes(searchText.value.toLocaleLowerCase())),
       );
     }

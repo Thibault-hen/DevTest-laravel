@@ -1,9 +1,22 @@
 <script setup lang="ts">
+import { Toaster } from '@/components/ui/sonner';
+import { useAppearance } from '@/composables/useAppearance';
+import 'vue-sonner/style.css';
 import AdminSidebarLayout from './admin/AdminSidebarLayout.vue';
+
+const { getStoredAppearance } = useAppearance();
 </script>
 
 <template>
-    <AdminSidebarLayout>
-        <slot />
-    </AdminSidebarLayout>
+  <Toaster
+    :theme="getStoredAppearance() ?? 'system'"
+    :closeButton="true"
+    position="top-right"
+  />
+  <AdminSidebarLayout>
+    <template #header-actions>
+      <slot name="header-actions" />
+    </template>
+    <slot />
+  </AdminSidebarLayout>
 </template>

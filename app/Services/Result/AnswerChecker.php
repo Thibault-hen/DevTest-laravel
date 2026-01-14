@@ -42,7 +42,7 @@ class AnswerChecker
             return false;
         }
 
-        // Normalize if single answer (no multiple choice)
+        // Normalize if single answer (no multiple choices)
         $userAnswers = is_array($userAnswers) ? $userAnswers : [$userAnswers];
 
         $correctAnswers = $correctAnswersByQuestion->get($questionId, []);

@@ -1,3 +1,8 @@
+export type AnswerData = {
+id: string;
+content: string;
+is_correct: boolean;
+};
 export type AnswerPlayData = {
 id: string;
 content: string;
@@ -15,10 +20,30 @@ export type CacheKeys = 'quizzes' | 'homepage';
 export type CacheTags = 'quiz';
 export type CategoryData = {
 id: string;
-name: string;
+title: string;
 created_at: any | null;
 updated_at: any | null;
 quizzes_count: number | null;
+};
+export type CreateOrUpdateQuizAnswerData = {
+content: string;
+is_correct: boolean;
+};
+export type CreateOrUpdateQuizData = {
+title: string;
+description: string;
+difficulty_id: string;
+category_id: string;
+themes_ids: Array<any> | null;
+duration: number;
+is_published: boolean;
+icon: any | null;
+questions: Array<CreateOrUpdateQuizQuestionData>;
+};
+export type CreateOrUpdateQuizQuestionData = {
+content: string;
+is_multiple: boolean;
+answers: Array<CreateOrUpdateQuizAnswerData>;
 };
 export type DifficultyData = {
 id: string;
@@ -34,9 +59,19 @@ quiz_count: number;
 quiz_completed_count: number;
 theme_count: number;
 };
+export type PublishQuizData = {
+is_published: boolean;
+};
 export type QuestionAnswerData = {
 question_id: string;
 answers: Array<any> | string | null;
+};
+export type QuestionData = {
+id: string;
+content: string;
+is_multiple: boolean;
+timer: number;
+answers: Array<AnswerData>;
 };
 export type QuestionPlayData = {
 id: string;
@@ -58,7 +93,6 @@ slug: string;
 description: string;
 duration: number;
 image_url: string | null;
-image_text: string | null;
 is_published: boolean;
 created_at: any | null;
 author: AuthorData | null;
@@ -68,6 +102,7 @@ themes: Array<ThemeData> | null;
 ratings: Array<RatingData> | null;
 average_rating: number | null;
 ratings_count: number | null;
+questions: Array<QuestionData> | null;
 };
 export type QuizPlayData = {
 id: string;

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import AppContent from '@/components/AppContent.vue';
-import AppShell from '@/components/AppShell.vue';
-import AppSidebar from '@/components/AppSidebar.vue';
-import AppSidebarHeader from '@/components/AppSidebarHeader.vue';
+import AppContent from '@/components/admin/AppContent.vue';
+import AppShell from '@/components/admin/AppShell.vue';
+import AppSidebar from '@/components/admin/AppSidebar.vue';
+import AppSidebarHeader from '@/components/admin/AppSidebarHeader.vue';
 import { dashboard } from '@/routes/admin';
 import type { BreadcrumbItemType } from '@/types';
 import { type BreadcrumbItem } from '@/types';
@@ -30,7 +30,11 @@ withDefaults(defineProps<Props>(), {
         variant="sidebar"
         class="overflow-x-hidden"
       >
-        <AppSidebarHeader :breadcrumbs="breadcrumbs" />
+        <AppSidebarHeader :breadcrumbs="breadcrumbs">
+          <template #actions>
+            <slot name="header-actions" />
+          </template>
+        </AppSidebarHeader>
         <slot />
       </AppContent>
     </AppShell>

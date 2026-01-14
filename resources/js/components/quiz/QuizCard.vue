@@ -25,8 +25,8 @@ const props = defineProps<{ quiz: QuizData }>();
         <div class="flex items-center justify-center gap-2">
           <img
             v-if="props.quiz.image_url"
-            :src="`/${props.quiz.image_url}`"
-            :alt="props.quiz.image_text || 'Quiz image'"
+            :src="`${props.quiz.image_url}`"
+            :alt="`${props.quiz.title} image` || 'Quiz image'"
             class="flex h-6 w-6 rounded"
           />
           <CardTitle class="text-sm md:text-base">{{ props.quiz.title }}</CardTitle>

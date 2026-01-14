@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Models\Category;
@@ -15,15 +17,16 @@ class CategorySeeder extends Seeder
     {
         $jsonPath = database_path('data/categories.json');
 
-        if (!File::exists($jsonPath)) {
+        if (! File::exists($jsonPath)) {
             $this->command->error("File not found: {$jsonPath}");
+
             return;
         }
 
-        $tags = json_decode(File::get($jsonPath), true);
+        $categories = json_decode(File::get($jsonPath), true);
 
-        foreach ($tags as $tag) {
-            Category::create($tag);
+        foreach ($categories as $category) {
+            Category::create($category);
         }
     }
 }

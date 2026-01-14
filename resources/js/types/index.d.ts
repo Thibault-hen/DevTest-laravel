@@ -1,8 +1,12 @@
 import { InertiaLinkProps } from '@inertiajs/vue3';
 import type { LucideIcon } from 'lucide-vue-next';
-
+import { CreateOrUpdateQuizData } from './generated';
 export interface Auth {
   user: User;
+}
+
+interface CreateOrUpdateQuizFormData extends CreateOrUpdateQuizData {
+  themes_ids: string[];
 }
 
 type FlashMessage = {
@@ -49,11 +53,12 @@ export interface User {
   id: string;
   name: string;
   email: string;
-  avatar?: string;
+  avatar: string | undefined;
   is_admin: boolean;
   email_verified_at: string | null;
   created_at: string;
   updated_at: string;
+  specialization: string;
 }
 
 export interface ResultPercentageDataChart {
@@ -74,4 +79,10 @@ export interface RatingErrors {
   comment?: string;
   score?: string;
   quiz_id?: string;
+}
+
+declare module '@tanstack/vue-table' {
+  interface ColumnMeta<TData, TValue> {
+    title?: string;
+  }
 }
