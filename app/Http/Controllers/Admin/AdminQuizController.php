@@ -15,13 +15,15 @@ use App\Models\Category;
 use App\Models\Difficulty;
 use App\Models\Theme;
 use App\Services\Quiz\QuizService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
 use Spatie\LaravelData\DataCollection;
 
 class AdminQuizController extends Controller
 {
-    public function index(QuizService $quizService)
+    public function index(QuizService $quizService): Response
     {
         $quizzes = $quizService->getAllQuizzes();
         $quizzes = $quizzes->load('questions.answers');
@@ -38,14 +40,15 @@ class AdminQuizController extends Controller
         ]);
     }
 
-    public function store(CreateOrUpdateQuizData $data, QuizService $quizService)
+    public function store(CreateOrUpdateQuizData $data, QuizService $quizService): RedirectResponse
     {
+        dd($data);
         $quizService->createQuiz($data);
 
         return to_route('admin.quizzes');
     }
 
-    public function update(string $quizId, Request $request, QuizService $quizService)
+    public function update(string $quizId, Request $request, QuizService $quizService): RedirectResponse
     {
         $data = CreateOrUpdateQuizData::from([
             ...$request->all(),
@@ -57,14 +60,14 @@ class AdminQuizController extends Controller
         return to_route('admin.quizzes');
     }
 
-    public function destroy(string $quizId, QuizService $quizService)
+    public function destroy(string $quizId, QuizService $quizService): RedirectResponse
     {
         $quizService->deleteQuiz($quizId);
 
         return to_route('admin.quizzes');
     }
 
-    public function setPublished(string $quizId, PublishQuizData $data, QuizService $quizService)
+    public function setPublished(string $quizId, PublishQuizData $data, QuizService $quizService): RedirectResponse
     {
         $quizService->setQuizPublicationStatus($quizId, $data);
 

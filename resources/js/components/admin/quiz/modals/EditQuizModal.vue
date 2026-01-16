@@ -3,7 +3,14 @@ import DifficultyBadge from '@/components/quiz/badges/DifficultyBadge.vue';
 import Button from '@/components/ui/button/Button.vue';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Checkbox from '@/components/ui/checkbox/Checkbox.vue';
-import { Dialog, DialogClose, DialogContent, DialogFooter } from '@/components/ui/dialog';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import Input from '@/components/ui/input/Input.vue';
 import Label from '@/components/ui/label/Label.vue';
 import MultiSelect from '@/components/ui/multi-select/MultiSelect.vue';
@@ -20,6 +27,7 @@ import {
 import Switch from '@/components/ui/switch/Switch.vue';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useQuizAdminForm } from '@/composables/Admin/useQuizAdminForm';
+import { quizConfig } from '@/constants/quizConfig';
 import { CategoryData, DifficultyData, QuizData, ThemeData } from '@/types/generated';
 import { LoaderCircle } from 'lucide-vue-next';
 const model = defineModel<boolean>();
@@ -57,10 +65,12 @@ const handleEdit = (): void => {
         >
           <TabsList class="flex flex-col justify-start bg-transparent items-start">
             <div class="flex flex-col border-b p-2 mb-4 w-full gap-4">
-              <span class="text-lg font-semibold dark:text-white">Editer le quiz {{ props.quiz?.title }}</span>
-              <span class="text-sm text-muted-foreground">
+              <DialogTitle class="text-lg font-semibold dark:text-white"
+                >Editer le quiz {{ props.quiz?.title }}</DialogTitle
+              >
+              <DialogDescription class="text-sm text-muted-foreground">
                 Modifiez les informations du quiz ainsi que les questions et réponses.
-              </span>
+              </DialogDescription>
             </div>
             <TabsTrigger
               value="information"
@@ -117,22 +127,6 @@ const handleEdit = (): void => {
                       class="text-red-500 text-sm"
                     >
                       {{ editForm.errors.description }}
-                    </p>
-                  </div>
-
-                  <div class="grid gap-3">
-                    <Label for="duration">Durée (minutes)</Label>
-                    <Input
-                      id="duration"
-                      v-model="editForm.duration"
-                      type="number"
-                      min="1"
-                    />
-                    <p
-                      v-if="editForm.errors.duration"
-                      class="text-red-500 text-sm"
-                    >
-                      {{ editForm.errors.duration }}
                     </p>
                   </div>
 
@@ -245,14 +239,33 @@ const handleEdit = (): void => {
                     v-for="(question, qIndex) in editForm.questions"
                     :key="qIndex"
                   >
-                    <Label :for="`question-${qIndex}`">Question {{ qIndex + 1 }}</Label>
-                    <div class="absolute right-0 -top-1 flex items-center gap-2">
-                      <span class="text-sm text-muted-foreground">Réponse multiple</span>
-                      <Switch
-                        class="cursor-pointer"
-                        v-model="question.is_multiple"
-                      />
+                    <div class="flex items-center justify-between">
+                      <Label :for="`question-${qIndex}`">Question {{ qIndex + 1 }}</Label>
+                      <div class="flex items-center gap-2">
+                        <div class="flex gap-3">
+                          <Label
+                            :for="`question-${qIndex}-timer`"
+                            class="text-muted-foreground"
+                            >Durée (s)</Label
+                          >
+                          <Input
+                            :id="`question-${qIndex}-timer`"
+                            v-model="question.timer"
+                            placeholder="Entrez la durée en secondes..."
+                            type="number"
+                            :min="quizConfig.MIN_QUESTION_TIMER_S"
+                            :max="quizConfig.MAX_QUESTION_TIMER_S"
+                            class="max-w-[70px]"
+                          />
+                        </div>
+                        <span class="text-sm text-muted-foreground">Réponse multiple</span>
+                        <Switch
+                          class="cursor-pointer"
+                          v-model="question.is_multiple"
+                        />
+                      </div>
                     </div>
+
                     <Input
                       :id="`question-${qIndex}`"
                       v-model="question.content"
@@ -263,6 +276,13 @@ const handleEdit = (): void => {
                       class="text-red-500 text-sm"
                     >
                       {{ editForm.errors[`questions.${qIndex}.content`] }}
+                    </p>
+
+                    <p
+                      v-if="editForm.errors[`questions.${qIndex}.timer`]"
+                      class="text-red-500 text-sm"
+                    >
+                      {{ editForm.errors[`questions.${qIndex}.timer`] }}
                     </p>
                     <div class="grid gap-2">
                       <span class="text-sm font-medium">Réponses (sélectionnez la bonne réponse)</span>

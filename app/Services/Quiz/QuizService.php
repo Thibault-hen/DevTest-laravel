@@ -18,6 +18,7 @@ use App\Models\Difficulty;
 use App\Models\Quiz;
 use App\Models\Theme;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -77,7 +78,7 @@ class QuizService
             ->get();
     }
 
-    private function storeQuizImage(?\Illuminate\Http\UploadedFile $icon, ?string $title): ?string
+    private function storeQuizImage(?UploadedFile $icon, ?string $title): ?string
     {
         if (! $icon) {
             return null;
@@ -89,14 +90,27 @@ class QuizService
         return Storage::url($path);
     }
 
-    public function createQuiz(CreateOrUpdateQuizData $data)
+    private function createQuestions(CreateOrUpdateQuizData $data, Quiz $quiz): void
     {
-        $icon = $data->icon;
-        $imageUrl = null;
+        foreach ($data->questions as $questionData) {
+            $question = $quiz->questions()->create([
+                'content' => $questionData->content,
+                'is_multiple' => $questionData->is_multiple,
+                'timer' => $questionData->timer,
+            ]);
 
-        if ($icon) {
-            $imageUrl = $this->storeQuizImage($icon, $data->title);
+            $question->answers()->createMany(
+                collect($questionData->answers)->map(fn ($answerData) => [
+                    'content' => $answerData['content'],
+                    'is_correct' => $answerData['is_correct'],
+                ])->toArray()
+            );
         }
+    }
+
+    public function createQuiz(CreateOrUpdateQuizData $data): void
+    {
+        $imageUrl = $this->storeQuizImage($data->icon, $data->title);
 
         DB::transaction(function () use ($data, $imageUrl) {
             $quiz = Quiz::create([
@@ -114,35 +128,18 @@ class QuizService
                 $quiz->themes()->sync($data->themes_ids);
             }
 
-            foreach ($data->questions as $questionData) {
-                $question = $quiz->questions()->create([
-                    'content' => $questionData->content,
-                    'is_multiple' => $questionData->is_multiple,
-                ]);
-
-                $question->answers()->createMany(
-                    collect($questionData->answers)->map(fn ($answerData) => [
-                        'content' => $answerData['content'],
-                        'is_correct' => $answerData['is_correct'],
-                    ])->toArray()
-                );
-            }
+            $this->createQuestions($data, $quiz);
         });
     }
 
-    public function updateQuiz(string $quizId, CreateOrUpdateQuizData $data)
+    public function updateQuiz(string $quizId, CreateOrUpdateQuizData $data): void
     {
         $quiz = Quiz::findOrFail($quizId);
 
-        $icon = $data->icon;
-        $imageUrl = $quiz->image_url;
-
-        if ($icon) {
-            $imageUrl = $this->storeQuizImage($icon, $data->title);
-        }
+        $imageUrl = $data->icon ? $this->storeQuizImage($data->icon, $data->title) : $quiz->image_url;
 
         DB::transaction(function () use ($data, $quiz, $imageUrl) {
-            $quiz->update([
+            $quiz->fill([
                 'title' => $data->title,
                 'description' => $data->description,
                 'duration' => $data->duration,
@@ -156,22 +153,10 @@ class QuizService
 
             $quiz->questions()->delete();
 
-            foreach ($data->questions as $questionData) {
-                $question = $quiz->questions()->create([
-                    'content' => $questionData->content,
-                    'is_multiple' => $questionData->is_multiple,
-                ]);
-
-                $question->answers()->createMany(
-                    collect($questionData->answers)->map(fn ($answerData) => [
-                        'content' => $answerData['content'],
-                        'is_correct' => $answerData['is_correct'],
-                    ])->toArray()
-                );
-            }
+            $this->createQuestions($data, $quiz);
         });
     }
-    
+
     public function setQuizPublicationStatus(string $quizId, PublishQuizData $data): void
     {
         $quiz = Quiz::findOrFail($quizId);

@@ -11,20 +11,21 @@ export function useQuizAdminForm(
   themes: ThemeData[] = [],
   quiz?: () => QuizData | null | undefined,
 ) {
-  const form = useForm<CreateOrUpdateQuizFormData>({
-    title: '',
-    description: '',
-    duration: 10,
+  const createForm = useForm<CreateOrUpdateQuizFormData>({
+    title: '442323232',
+    description: '32323232222222222323',
+    duration: quizConfig.QUIZ_MIN_TOTAL_DURATION_M,
     difficulty_id: '',
     is_published: false,
     category_id: '',
     themes_ids: [],
     icon: null,
     questions: Array.from({ length: quizConfig.MIN_QUESTIONS }, () => ({
-      content: '',
+      content: '333232323232',
       is_multiple: false,
+      timer: quizConfig.MIN_QUESTION_TIMER_S,
       answers: Array.from({ length: quizConfig.MIN_ANSWERS_PER_QUESTION }, () => ({
-        content: '',
+        content: '2213323',
         is_correct: false,
       })),
     })),
@@ -33,7 +34,7 @@ export function useQuizAdminForm(
   const editForm = useForm<CreateOrUpdateQuizFormData>({
     title: '',
     description: '',
-    duration: 10,
+    duration: quizConfig.QUIZ_MIN_TOTAL_DURATION_M,
     difficulty_id: '',
     is_published: false,
     category_id: '',
@@ -42,6 +43,7 @@ export function useQuizAdminForm(
     questions: Array.from({ length: quizConfig.MIN_QUESTIONS }, () => ({
       content: '',
       is_multiple: false,
+      timer: quizConfig.MIN_QUESTION_TIMER_S,
       answers: Array.from({ length: quizConfig.MIN_ANSWERS_PER_QUESTION }, () => ({
         content: '',
         is_correct: false,
@@ -56,7 +58,7 @@ export function useQuizAdminForm(
       if (newQuiz) {
         editForm.title = newQuiz.title || '';
         editForm.description = newQuiz.description || '';
-        editForm.duration = newQuiz.duration || 10;
+        editForm.duration = newQuiz.duration || quizConfig.QUIZ_MIN_TOTAL_DURATION_M;
         editForm.difficulty_id = newQuiz.difficulty?.id || '';
         editForm.is_published = newQuiz.is_published || false;
         editForm.category_id = newQuiz.category?.id || '';
@@ -66,6 +68,7 @@ export function useQuizAdminForm(
           newQuiz.questions?.map((question: QuestionData) => ({
             content: question.content,
             is_multiple: question.is_multiple,
+            timer: question.timer,
             answers: question.answers.map((answer: AnswerData) => ({
               content: answer.content,
               is_correct: answer.is_correct,
@@ -74,6 +77,7 @@ export function useQuizAdminForm(
           Array.from({ length: quizConfig.MIN_QUESTIONS }, () => ({
             content: '',
             is_multiple: false,
+            timer: quizConfig.MIN_QUESTION_TIMER_S,
             answers: Array.from({ length: quizConfig.MIN_ANSWERS_PER_QUESTION }, () => ({
               content: '',
               is_correct: false,
@@ -84,37 +88,52 @@ export function useQuizAdminForm(
     { immediate: true },
   );
 
+  const getTotalQuizDurationMin = (questions: QuestionData[]): number => {
+    return Math.floor(questions.reduce((total, question) => total + question.timer, 0) / 60);
+  };
+
   const isQuizInfoFilled = computed(() => {
     return (
-      form.title.trim() !== '' &&
-      form.description.trim() !== '' &&
-      form.difficulty_id.trim() !== '' &&
-      form.category_id.trim() !== '' &&
-      form.duration > 0
+      createForm.title.trim() !== '' &&
+      createForm.description.trim() !== '' &&
+      createForm.difficulty_id.trim() !== '' &&
+      createForm.category_id.trim() !== '' &&
+      createForm.duration > 0
     );
   });
 
   const createQuiz = (): void => {
-    form.post(create().url, {
+    const totalDurationMin = getTotalQuizDurationMin(createForm.questions as QuestionData[]);
+
+    createForm.transform((data) => ({
+      ...data,
+      duration: totalDurationMin,
+    }));
+    console.log('Creating quiz with data:', totalDurationMin);
+    createForm.post(create().url, {
       onSuccess: () => {
         successToast('Succès', 'Quiz créé avec succès.');
         if (closeDialog) closeDialog();
-        form.reset();
+        createForm.reset();
       },
       onError: () => {
-        console.log('Error creating quiz', form.errors);
         errorToast('Erreur', 'Une erreur est survenue lors de la création du quiz.');
       },
-      preserveScroll: true,
     });
   };
 
   const updateQuiz = (quizId: string): void => {
+    const totalDurationMin = getTotalQuizDurationMin(editForm.questions as QuestionData[]);
+
+    editForm.transform((data) => ({
+      ...data,
+      duration: totalDurationMin,
+    }));
     editForm.put(update(quizId).url, {
       onSuccess: () => {
         successToast('Succès', 'Quiz mis à jour avec succès.');
         if (closeDialog) closeDialog();
-        form.reset();
+        editForm.reset();
       },
       onError: () => {
         errorToast('Erreur', 'Une erreur est survenue lors de la mise à jour du quiz.');
@@ -127,7 +146,6 @@ export function useQuizAdminForm(
       onSuccess: () => {
         successToast('Succès', 'Quiz supprimé avec succès.');
         if (closeDialog) closeDialog();
-        form.reset();
       },
       onError: () => {
         errorToast('Erreur', 'Une erreur est survenue lors de la suppression du quiz.');
@@ -168,7 +186,7 @@ export function useQuizAdminForm(
   );
 
   return {
-    form,
+    createForm,
     editForm,
     isQuizInfoFilled,
     createQuiz,

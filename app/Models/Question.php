@@ -16,11 +16,12 @@ class Question extends Model
     protected $fillable = [
         'content',
         'is_multiple',
+        'timer',
     ];
-    
+
     protected $casts = [
         'is_multiple' => 'boolean',
-    ];  
+    ];
 
     public function quiz(): BelongsTo
     {

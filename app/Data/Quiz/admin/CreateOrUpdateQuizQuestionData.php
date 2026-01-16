@@ -21,6 +21,8 @@ class CreateOrUpdateQuizQuestionData extends Data
 
         public bool $is_multiple,
 
+        public int $timer,
+
         #[DataCollectionOf(CreateOrUpdateQuizAnswerData::class)]
         #[Min(4), Max(4)]
         public DataCollection $answers,

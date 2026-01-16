@@ -3,7 +3,14 @@ import DifficultyBadge from '@/components/quiz/badges/DifficultyBadge.vue';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Checkbox from '@/components/ui/checkbox/Checkbox.vue';
-import { Dialog, DialogClose, DialogContent, DialogFooter } from '@/components/ui/dialog';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import MultiSelect from '@/components/ui/multi-select/MultiSelect.vue';
@@ -20,6 +27,7 @@ import {
 import Switch from '@/components/ui/switch/Switch.vue';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useQuizAdminForm } from '@/composables/Admin/useQuizAdminForm';
+import { quizConfig } from '@/constants/quizConfig';
 import type { CategoryData, DifficultyData, ThemeData } from '@/types/generated';
 import { Info, LoaderCircle } from 'lucide-vue-next';
 import { ref, watch } from 'vue';
@@ -35,7 +43,7 @@ const props = defineProps<{
   difficulties: DifficultyData[];
 }>();
 
-const { createQuiz, form, isQuizInfoFilled, themeOptions } = useQuizAdminForm(closeDialog, props.themes);
+const { createQuiz, createForm, isQuizInfoFilled, themeOptions } = useQuizAdminForm(closeDialog, props.themes);
 
 const open = ref(props.modelValue);
 
@@ -64,10 +72,10 @@ watch(open, (val) => emit('update:modelValue', val));
         >
           <TabsList class="flex flex-col justify-start bg-transparent items-start">
             <div class="flex flex-col border-b p-2 mb-4 w-full gap-4">
-              <span class="text-lg font-semibold dark:text-white">Ajouter un nouveau quiz</span>
-              <span class="text-sm text-muted-foreground">
+              <DialogTitle class="text-lg font-semibold dark:text-white">Ajouter un nouveau quiz</DialogTitle>
+              <DialogDescription class="text-sm text-muted-foreground">
                 Remplissez les informations du quiz ainsi que les questions et réponses.
-              </span>
+              </DialogDescription>
             </div>
             <TabsTrigger
               value="information"
@@ -114,13 +122,13 @@ watch(open, (val) => emit('update:modelValue', val));
                     <Label for="title">Titre</Label>
                     <Input
                       id="title"
-                      v-model="form.title"
+                      v-model="createForm.title"
                     />
                     <p
-                      v-if="form.errors.title"
+                      v-if="createForm.errors.title"
                       class="text-red-500 text-sm"
                     >
-                      {{ form.errors.title }}
+                      {{ createForm.errors.title }}
                     </p>
                   </div>
 
@@ -128,29 +136,13 @@ watch(open, (val) => emit('update:modelValue', val));
                     <Label for="description">Description</Label>
                     <Input
                       id="description"
-                      v-model="form.description"
+                      v-model="createForm.description"
                     />
                     <p
-                      v-if="form.errors.description"
+                      v-if="createForm.errors.description"
                       class="text-red-500 text-sm"
                     >
-                      {{ form.errors.description }}
-                    </p>
-                  </div>
-
-                  <div class="grid gap-3">
-                    <Label for="duration">Durée (minutes)</Label>
-                    <Input
-                      id="duration"
-                      v-model="form.duration"
-                      type="number"
-                      min="1"
-                    />
-                    <p
-                      v-if="form.errors.duration"
-                      class="text-red-500 text-sm"
-                    >
-                      {{ form.errors.duration }}
+                      {{ createForm.errors.description }}
                     </p>
                   </div>
 
@@ -158,7 +150,7 @@ watch(open, (val) => emit('update:modelValue', val));
                     <Label for="difficulty">Difficulté</Label>
                     <Select
                       id="difficulty"
-                      v-model="form.difficulty_id"
+                      v-model="createForm.difficulty_id"
                     >
                       <SelectTrigger class="dark:bg-input/30">
                         <SelectValue placeholder="Selectionnez une difficulté" />
@@ -178,10 +170,10 @@ watch(open, (val) => emit('update:modelValue', val));
                       </SelectContent>
                     </Select>
                     <p
-                      v-if="form.errors.difficulty_id"
+                      v-if="createForm.errors.difficulty_id"
                       class="text-red-500 text-sm"
                     >
-                      {{ form.errors.difficulty_id }}
+                      {{ createForm.errors.difficulty_id }}
                     </p>
                   </div>
 
@@ -189,7 +181,7 @@ watch(open, (val) => emit('update:modelValue', val));
                     <Label for="category">Catégorie</Label>
                     <Select
                       id="category"
-                      v-model="form.category_id"
+                      v-model="createForm.category_id"
                     >
                       <SelectTrigger class="dark:bg-input/30">
                         <SelectValue placeholder="Selectionnez une catégorie" />
@@ -208,10 +200,10 @@ watch(open, (val) => emit('update:modelValue', val));
                       </SelectContent>
                     </Select>
                     <p
-                      v-if="form.errors.category_id"
+                      v-if="createForm.errors.category_id"
                       class="text-red-500 text-sm"
                     >
-                      {{ form.errors.category_id }}
+                      {{ createForm.errors.category_id }}
                     </p>
                   </div>
 
@@ -220,7 +212,7 @@ watch(open, (val) => emit('update:modelValue', val));
                       <Label for="themes">Thèmes</Label>
                     </div>
                     <MultiSelect
-                      v-model="form.themes_ids"
+                      v-model="createForm.themes_ids"
                       :options="themeOptions"
                       placeholder="Sélectionnez les thèmes"
                       search-placeholder="Rechercher un thème..."
@@ -236,13 +228,13 @@ watch(open, (val) => emit('update:modelValue', val));
                     <Input
                       id="icon"
                       type="file"
-                      @change="(e: Event) => (form.icon = (e.target as HTMLInputElement).files?.[0] ?? null)"
+                      @change="(e: Event) => (createForm.icon = (e.target as HTMLInputElement).files?.[0] ?? null)"
                     />
                     <p
-                      v-if="form.errors.icon"
+                      v-if="createForm.errors.icon"
                       class="text-red-500 text-sm"
                     >
-                      {{ form.errors.icon }}
+                      {{ createForm.errors.icon }}
                     </p>
                   </div>
                 </CardContent>
@@ -260,16 +252,34 @@ watch(open, (val) => emit('update:modelValue', val));
                 <CardContent class="grid gap-6">
                   <div
                     class="grid gap-3 border-b pb-6 relative last:border-0 last:pb-0"
-                    v-for="(question, qIndex) in form.questions"
+                    v-for="(question, qIndex) in createForm.questions"
                     :key="qIndex"
                   >
-                    <Label :for="`question-${qIndex}`">Question {{ qIndex + 1 }}</Label>
-                    <div class="absolute right-0 -top-1 flex items-center gap-2">
-                      <span class="text-sm text-muted-foreground">Réponse multiple</span>
-                      <Switch
-                        class="cursor-pointer"
-                        v-model="question.is_multiple"
-                      />
+                    <div class="flex items-center justify-between">
+                      <Label :for="`question-${qIndex}`">Question {{ qIndex + 1 }}</Label>
+                      <div class="flex items-center gap-2">
+                        <div class="flex gap-3">
+                          <Label
+                            :for="`question-${qIndex}-timer`"
+                            class="text-muted-foreground"
+                            >Durée (s)</Label
+                          >
+                          <Input
+                            :id="`question-${qIndex}-timer`"
+                            v-model="question.timer"
+                            placeholder="Entrez la durée en secondes..."
+                            type="number"
+                            :min="quizConfig.MIN_QUESTION_TIMER_S"
+                            :max="quizConfig.MAX_QUESTION_TIMER_S"
+                            class="max-w-[70px]"
+                          />
+                        </div>
+                        <span class="text-sm text-muted-foreground">Réponse multiple</span>
+                        <Switch
+                          class="cursor-pointer"
+                          v-model="question.is_multiple"
+                        />
+                      </div>
                     </div>
                     <Input
                       :id="`question-${qIndex}`"
@@ -277,18 +287,18 @@ watch(open, (val) => emit('update:modelValue', val));
                       placeholder="Entrez la question..."
                     />
                     <p
-                      v-if="form.errors[`questions.${qIndex}.content`]"
+                      v-if="createForm.errors[`questions.${qIndex}.content`]"
                       class="text-red-500 text-sm"
                     >
-                      {{ form.errors[`questions.${qIndex}.content`] }}
+                      {{ createForm.errors[`questions.${qIndex}.content`] }}
                     </p>
                     <div class="grid gap-2">
                       <span class="text-sm font-medium">Réponses (sélectionnez la bonne réponse)</span>
                       <p
-                        v-if="form.errors[`questions.${qIndex}.answers`]"
+                        v-if="createForm.errors[`questions.${qIndex}.answers`]"
                         class="text-red-500 text-sm"
                       >
-                        {{ form.errors[`questions.${qIndex}.answers`] }}
+                        {{ createForm.errors[`questions.${qIndex}.answers`] }}
                       </p>
                       <RadioGroup
                         v-if="!question.is_multiple"
@@ -313,7 +323,9 @@ watch(open, (val) => emit('update:modelValue', val));
                             v-model="answer.content"
                             :placeholder="`Réponse ${aIndex + 1}`"
                             class="flex-1"
-                            :class="{ 'border-red-500': form.errors[`questions.${qIndex}.answers.${aIndex}.content`] }"
+                            :class="{
+                              'border-red-500': createForm.errors[`questions.${qIndex}.answers.${aIndex}.content`],
+                            }"
                           />
                         </div>
                       </RadioGroup>
@@ -342,7 +354,7 @@ watch(open, (val) => emit('update:modelValue', val));
               <div class="flex w-full items-center justify-between">
                 <div class="flex items-center gap-2">
                   <Switch
-                    v-model="form.is_published"
+                    v-model="createForm.is_published"
                     class="cursor-pointer"
                   />
                   <span>Publié</span>
@@ -360,10 +372,10 @@ watch(open, (val) => emit('update:modelValue', val));
 
                   <Button
                     type="submit"
-                    :disabled="form.processing"
+                    :disabled="createForm.processing"
                   >
                     <LoaderCircle
-                      v-if="form.processing"
+                      v-if="createForm.processing"
                       class="h-4 w-4 animate-spin"
                     />
                     Créer le quiz

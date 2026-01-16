@@ -43,6 +43,7 @@ questions: Array<CreateOrUpdateQuizQuestionData>;
 export type CreateOrUpdateQuizQuestionData = {
 content: string;
 is_multiple: boolean;
+timer: number;
 answers: Array<CreateOrUpdateQuizAnswerData>;
 };
 export type DifficultyData = {

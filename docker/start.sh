@@ -16,8 +16,8 @@ fi
 # Env
 if [ ! -f .env ]; then
     cp .env.example .env
-    php artisan key:generate --force
 fi
+php artisan key:generate --force
 npm install concurrently --save-dev
 # Migrate & seed
 php artisan migrate:fresh --seed
