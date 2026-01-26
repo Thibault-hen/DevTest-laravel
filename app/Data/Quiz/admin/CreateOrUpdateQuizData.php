@@ -21,6 +21,9 @@ use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 class CreateOrUpdateQuizData extends Data
 {
     public function __construct(
+        #[Uuid]
+        public ?string $id,
+
         #[Min(5), Max(100)]
         public string $title,
 

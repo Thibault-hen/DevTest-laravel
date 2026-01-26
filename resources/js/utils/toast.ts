@@ -2,7 +2,9 @@ import { Check, X } from 'lucide-vue-next';
 import { h } from 'vue';
 import { toast } from 'vue-sonner';
 
-export const successToast = (title = 'Succès', message: string) => {
+export const successToast = (message: string, options?: { title?: string }) => {
+  const title = options?.title || 'Succès';
+
   toast.success(title, {
     description: message,
     duration: 8000,
@@ -11,7 +13,9 @@ export const successToast = (title = 'Succès', message: string) => {
   });
 };
 
-export const errorToast = (title = 'Erreur', message: string) => {
+export const errorToast = (message: string, options?: { title?: string }) => {
+  const title = options?.title || 'Erreur';
+
   toast.error(title, {
     description: message,
     duration: 5000,

@@ -11,6 +11,7 @@ use Spatie\LaravelData\Data;
 use Spatie\LaravelData\DataCollection;
 use Spatie\LaravelData\Support\Validation\ValidationContext;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
+use Closure;
 
 #[TypeScript]
 class CreateOrUpdateQuizQuestionData extends Data
@@ -32,7 +33,7 @@ class CreateOrUpdateQuizQuestionData extends Data
     {
         return [
             'answers' => [
-                function ($attribute, $value, $fail) {
+                function (string $attribute, mixed $value, Closure $fail) {
                     $hasCorrectAnswer = collect($value)->contains(fn ($answer) => $answer['is_correct'] == true || $answer['is_correct'] === '1');
 
                     if (! $hasCorrectAnswer) {

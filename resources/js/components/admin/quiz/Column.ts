@@ -6,7 +6,7 @@ import type { ColumnDef } from '@tanstack/vue-table';
 import { h } from 'vue';
 import PublishSwitch from './PublishSwitch.vue';
 
-export const columns: ColumnDef<QuizData>[] = [
+export const quizColumns: ColumnDef<QuizData>[] = [
   {
     accessorKey: 'title',
     header: () => h('div', 'Titre'),
@@ -66,6 +66,7 @@ export const columns: ColumnDef<QuizData>[] = [
         'div',
         { class: 'flex justify-end' },
         h(PublishSwitch, {
+          key: row.original.id,
           quizId: row.original.id,
           initialValue: row.original.is_published,
         }),

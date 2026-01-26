@@ -65,6 +65,7 @@ class QuizService
             ->withAvg('ratings', 'score')
             ->withCount('ratings')
             ->latest('created_at')
+            ->latest('title')
             ->get();
     }
 
@@ -132,10 +133,8 @@ class QuizService
         });
     }
 
-    public function updateQuiz(string $quizId, CreateOrUpdateQuizData $data): void
+    public function updateQuiz(Quiz $quiz, CreateOrUpdateQuizData $data): void
     {
-        $quiz = Quiz::findOrFail($quizId);
-
         $imageUrl = $data->icon ? $this->storeQuizImage($data->icon, $data->title) : $quiz->image_url;
 
         DB::transaction(function () use ($data, $quiz, $imageUrl) {
@@ -148,6 +147,7 @@ class QuizService
                 'is_published' => $data->is_published,
                 'image_url' => $imageUrl,
             ]);
+            $quiz->save();
 
             $data->themes_ids ? $quiz->themes()->sync($data->themes_ids) : $quiz->themes()->detach();
 
@@ -157,16 +157,14 @@ class QuizService
         });
     }
 
-    public function setQuizPublicationStatus(string $quizId, PublishQuizData $data): void
+    public function setQuizPublicationStatus(Quiz $quiz, PublishQuizData $data): void
     {
-        $quiz = Quiz::findOrFail($quizId);
         $quiz->is_published = $data->is_published;
         $quiz->save();
     }
 
-    public function deleteQuiz(string $quizId): void
+    public function deleteQuiz(Quiz $quiz): void
     {
-        $quiz = Quiz::findOrFail($quizId);
         $quiz->delete();
     }
 }

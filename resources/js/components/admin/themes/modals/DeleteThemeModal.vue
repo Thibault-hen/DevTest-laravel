@@ -9,8 +9,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
-import { useQuizAdminForm } from '@/composables/Admin/useQuizAdminForm';
-import { QuizData } from '@/types/generated';
+import { useThemeAdminForm } from '@/composables/Admin/useThemeAdminForm';
+import { ThemeData } from '@/types/generated';
 import { TriangleAlert } from 'lucide-vue-next';
 
 const model = defineModel<boolean>();
@@ -19,15 +19,15 @@ const closeDialog = (): void => {
   model.value = false;
 };
 
-const { deleteQuiz } = useQuizAdminForm(closeDialog);
+const { deleteTheme } = useThemeAdminForm(closeDialog);
 
 const props = defineProps<{
-  quiz: QuizData | null;
+  theme: ThemeData | null;
 }>();
 
 const handleDelete = (): void => {
-  if (!props.quiz) return;
-  deleteQuiz(props.quiz.id);
+  if (!props.theme) return;
+  deleteTheme(props.theme.id);
 };
 </script>
 
@@ -36,10 +36,10 @@ const handleDelete = (): void => {
     <AlertDialogContent>
       <AlertDialogHeader>
         <AlertDialogTitle class="flex gap-2 items-center">
-          <TriangleAlert class="w-6 h-6 text-destructive" /> Supprimer le quiz {{ props.quiz?.title }} ?
+          <TriangleAlert class="w-6 h-6 text-destructive" /> Supprimer le thème {{ props.theme?.title }} ?
         </AlertDialogTitle>
         <AlertDialogDescription>
-          Cette action est irréversible. Cela supprimera définitivement ce quiz.
+          Cette action est irréversible. Cela supprimera définitivement ce thème.
         </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>

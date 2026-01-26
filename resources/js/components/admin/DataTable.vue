@@ -53,6 +53,9 @@ const table = useVueTable({
   getFilteredRowModel: getFilteredRowModel(),
   getPaginationRowModel: getPaginationRowModel(),
   globalFilterFn,
+  getRowId: (row: TData) => {
+    return (row as { id?: string }).id ?? String(props.data.indexOf(row));
+  },
   state: {
     get globalFilter() {
       return searchText.value;
@@ -105,7 +108,7 @@ const table = useVueTable({
     </div>
 
     <Table>
-      <TableHeader>
+      <TableHeader class="bg-background">
         <TableRow
           v-for="headerGroup in table.getHeaderGroups()"
           :key="headerGroup.id"
@@ -154,7 +157,7 @@ const table = useVueTable({
     </Table>
 
     <div class="flex justify-between items-center">
-      <span class="rounded px-3 py-1 text-xs uppercase font-bold bg-secondary2 border tracking-wider"
+      <span class="rounded px-3 py-1 text-xs uppercase font-bold bg-background border tracking-wider"
         >{{ table.getRowCount() }} résultats</span
       >
       <div class="flex items-center py-4 space-x-2">

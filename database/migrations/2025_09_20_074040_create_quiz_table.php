@@ -26,7 +26,7 @@ return new class extends Migration
             $table->uuid('category_id')->nullable()->after('difficulty_id');
 
             $table->index('created_at');
-            $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('author_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('difficulty_id')->references('id')->on('difficulties')->onDelete('set null');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
             $table->timestamps();

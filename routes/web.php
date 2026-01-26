@@ -2,13 +2,11 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\Admin\AdminQuizController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Quiz\QuizController;
 use App\Http\Controllers\Rating\RatingController;
 use App\Http\Controllers\Result\ResultController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -35,47 +33,6 @@ Route::prefix('quizzes')->group(function () {
             ->name('rating.store');
     });
 });
-
-Route::prefix('admin')
-    ->middleware(['auth', 'verified', 'admin'])
-    ->group(function () {
-        Route::get('/dashboard', function () {
-            return Inertia::render('admin/Dashboard');
-        })->name('admin.dashboard');
-
-        Route::prefix('/quizzes')->group(function () {
-            Route::get('/', [AdminQuizController::class, 'index'])
-                ->name('admin.quizzes');
-            Route::post('/', [AdminQuizController::class, 'store'])
-                ->name('admin.quizzes.create');
-            Route::put('/{quizId}', [AdminQuizController::class, 'update'])
-                ->name('admin.quizzes.update');
-            Route::put('/publish/{quizId}', [AdminQuizController::class, 'setPublished'])
-                ->name('admin.quizzes.publish');
-            Route::delete('/{quizId}', [AdminQuizController::class, 'destroy'])
-                ->name('admin.quizzes.delete');
-        });
-
-        Route::get('/themes', function () {
-            return Inertia::render('admin/Themes');
-        })->name('admin.themes');
-
-        Route::get('/categories', function () {
-            return Inertia::render('admin/Categories');
-        })->name('admin.categories');
-
-        Route::get('/difficulties', function () {
-            return Inertia::render('admin/Difficulties');
-        })->name('admin.difficulties');
-
-        Route::get('/results', function () {
-            return Inertia::render('admin/Results');
-        })->name('admin.results');
-
-        Route::get('/users', function () {
-            return Inertia::render('admin/Users');
-        })->name('admin.users');
-    });
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

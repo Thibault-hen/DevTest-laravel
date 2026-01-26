@@ -22,11 +22,19 @@ const counters: HomepageCounter[] = [
 </script>
 
 <template>
-  <div>
+  <div class="relative overflow-hidden">
+    <div
+      class="pointer-events-none absolute top-0 left-1/4 h-96 w-96 -translate-x-1/2 rounded-full bg-primary/5 blur-3xl"
+    ></div>
+    <div
+      class="pointer-events-none absolute top-40 right-1/4 h-96 w-96 translate-x-1/2 rounded-full bg-primary/5 blur-3xl"
+    ></div>
+
     <HeroSection />
-    <section class="mx-auto py-6">
-      <div class="container mx-auto max-w-4xl px-4">
-        <div class="grid grid-cols-1 place-items-center gap-4 sm:grid-cols-3">
+
+    <section class="relative mx-auto py-16 lg:py">
+      <div class="container mx-auto max-w-6xl px-4">
+        <div class="grid grid-cols-1 place-items-center gap-6 sm:grid-cols-3 lg:gap-8">
           <CountCard
             v-for="(counter, index) in counters"
             :key="index"
@@ -34,26 +42,27 @@ const counters: HomepageCounter[] = [
           />
         </div>
       </div>
-      <div class="max-w-8xl container mx-auto my-14">
+
+      <div class="max-w-8xl container mx-auto mt-20 lg:mt-28">
         <IconAutoScroll />
       </div>
     </section>
 
-    <section class="flex w-full flex-col items-center justify-center gap-8">
+    <section class="relative flex w-full flex-col items-center justify-center gap-12 pb-20 lg:gap-16 lg:pb-32">
       <HeadingSmall
         title="Derniers Quiz"
         description="Découvrez nos derniers quiz disponibles"
         :center="true"
       />
-      <div
-        class="grid w-full grid-cols-1 gap-4 md:grid-cols-2 md:place-items-center md:gap-6 xl:grid-cols-3 xl:gap-6 [&>*:nth-child(3)]:md:col-span-2 [&>*:nth-child(3)]:xl:col-span-1"
-      >
-        <QuizPreviewCard
-          class="w-auto xl:w-full"
-          v-for="quiz in props.quizzes"
-          :key="quiz.id"
-          :quiz="quiz"
-        />
+      <div class="container mx-auto max-w-7xl px-4">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8 xl:grid-cols-3">
+          <QuizPreviewCard
+            v-for="quiz in props.quizzes"
+            :key="quiz.id"
+            :quiz="quiz"
+            class="transition-all duration-300 hover:-translate-y-1"
+          />
+        </div>
       </div>
     </section>
   </div>

@@ -46,6 +46,9 @@ is_multiple: boolean;
 timer: number;
 answers: Array<CreateOrUpdateQuizAnswerData>;
 };
+export type CreateOrUpdateThemeData = {
+title: string;
+};
 export type DifficultyData = {
 id: string;
 level: string;

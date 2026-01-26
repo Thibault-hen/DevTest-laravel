@@ -7,7 +7,7 @@ const props = defineProps<{ category: CategoryData | null }>();
 
 <template>
   <Badge
-    class="flex items-center gap-2 border border-primary bg-primary/70 p-1 px-2 text-xs text-white dark:bg-primary/30"
+    class="flex items-center gap-2 border border-primary bg-primary/70 p-1 px-2 font-bold text-xs text-white dark:bg-primary/30"
     >{{ props.category?.title }}</Badge
   >
 </template>

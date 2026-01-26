@@ -28,14 +28,16 @@ withDefaults(defineProps<Props>(), {
       <AppSidebar />
       <AppContent
         variant="sidebar"
-        class="overflow-x-hidden"
+        class="max-h-screen overflow-y-auto"
       >
         <AppSidebarHeader :breadcrumbs="breadcrumbs">
           <template #actions>
             <slot name="header-actions" />
           </template>
         </AppSidebarHeader>
-        <slot />
+        <div class="bg-secondary2">
+          <slot />
+        </div>
       </AppContent>
     </AppShell>
   </div>

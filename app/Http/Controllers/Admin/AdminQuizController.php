@@ -13,6 +13,7 @@ use App\Data\Theme\ThemeData;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Difficulty;
+use App\Models\Quiz;
 use App\Models\Theme;
 use App\Services\Quiz\QuizService;
 use Illuminate\Http\RedirectResponse;
@@ -42,34 +43,33 @@ class AdminQuizController extends Controller
 
     public function store(CreateOrUpdateQuizData $data, QuizService $quizService): RedirectResponse
     {
-        dd($data);
         $quizService->createQuiz($data);
 
         return to_route('admin.quizzes');
     }
 
-    public function update(string $quizId, Request $request, QuizService $quizService): RedirectResponse
+    public function update(Quiz $quiz, Request $request, QuizService $quizService): RedirectResponse
     {
-        $data = CreateOrUpdateQuizData::from([
+        $data = CreateOrUpdateQuizData::validateAndCreate([
             ...$request->all(),
-            'id' => $quizId,
+            'id' => $quiz->id,
         ]);
 
-        $quizService->updateQuiz($quizId, $data);
+        $quizService->updateQuiz($quiz, $data);
 
         return to_route('admin.quizzes');
     }
 
-    public function destroy(string $quizId, QuizService $quizService): RedirectResponse
+    public function destroy(Quiz $quiz, QuizService $quizService): RedirectResponse
     {
-        $quizService->deleteQuiz($quizId);
+        $quizService->deleteQuiz($quiz);
 
         return to_route('admin.quizzes');
     }
 
-    public function setPublished(string $quizId, PublishQuizData $data, QuizService $quizService): RedirectResponse
+    public function setPublished(Quiz $quiz, PublishQuizData $data, QuizService $quizService): RedirectResponse
     {
-        $quizService->setQuizPublicationStatus($quizId, $data);
+        $quizService->setQuizPublicationStatus($quiz, $data);
 
         return to_route('admin.quizzes');
     }

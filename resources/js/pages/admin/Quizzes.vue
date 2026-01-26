@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import DataTable from '@/components/admin/DataTable.vue';
-import { columns } from '@/components/admin/quiz/Column';
+import { quizColumns } from '@/components/admin/quiz/Column';
 import { AddQuizModal, DeleteQuizModal, EditQuizModal } from '@/components/admin/quiz/modals';
 import Button from '@/components/ui/button/Button.vue';
 import AdminLayout from '@/layouts/AdminLayout.vue';
@@ -26,10 +26,6 @@ const openDeleteModal = (quiz: QuizData): void => {
 const openEditModal = (quiz: QuizData): void => {
   selectedQuiz.value = quiz;
   showEditModal.value = true;
-};
-
-const handleTogglePublish = (): void => {
-  selectedQuiz.value = null;
 };
 
 const props = defineProps<{
@@ -75,7 +71,7 @@ const props = defineProps<{
     <div class="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
       <DataTable
         :data="props.quizzes"
-        :columns="columns"
+        :columns="quizColumns"
         :meta="{ onOpenDelete: openDeleteModal, onOpenEdit: openEditModal }"
       />
     </div>

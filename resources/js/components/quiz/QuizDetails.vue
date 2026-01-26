@@ -76,8 +76,9 @@ const props = defineProps<{
                 :category="props.quiz.category"
               />
               <ThemeBadge
+                v-for="theme in props.quiz.themes"
                 v-if="props.quiz.themes"
-                :themes="props.quiz.themes"
+                :theme="theme"
               />
             </div>
 

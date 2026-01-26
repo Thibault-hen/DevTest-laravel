@@ -1,5 +1,6 @@
+import { update } from '@/actions/App/Http/Controllers/Admin/AdminQuizController';
 import { quizConfig } from '@/constants/quizConfig';
-import { create, deleteMethod, publish, update } from '@/routes/admin/quizzes';
+import { create, deleteMethod, publish } from '@/routes/admin/quizzes';
 import { CreateOrUpdateQuizFormData } from '@/types';
 import { AnswerData, PublishQuizData, QuestionData, QuizData, ThemeData } from '@/types/generated';
 import { errorToast, successToast } from '@/utils/toast';
@@ -12,8 +13,8 @@ export function useQuizAdminForm(
   quiz?: () => QuizData | null | undefined,
 ) {
   const createForm = useForm<CreateOrUpdateQuizFormData>({
-    title: '442323232',
-    description: '32323232222222222323',
+    title: '',
+    description: '',
     duration: quizConfig.QUIZ_MIN_TOTAL_DURATION_M,
     difficulty_id: '',
     is_published: false,
@@ -21,11 +22,11 @@ export function useQuizAdminForm(
     themes_ids: [],
     icon: null,
     questions: Array.from({ length: quizConfig.MIN_QUESTIONS }, () => ({
-      content: '333232323232',
+      content: '',
       is_multiple: false,
       timer: quizConfig.MIN_QUESTION_TIMER_S,
       answers: Array.from({ length: quizConfig.MIN_ANSWERS_PER_QUESTION }, () => ({
-        content: '2213323',
+        content: '',
         is_correct: false,
       })),
     })),
@@ -109,15 +110,15 @@ export function useQuizAdminForm(
       ...data,
       duration: totalDurationMin,
     }));
-    console.log('Creating quiz with data:', totalDurationMin);
+
     createForm.post(create().url, {
       onSuccess: () => {
-        successToast('Succès', 'Quiz créé avec succès.');
+        successToast('Quiz créé avec succès.');
         if (closeDialog) closeDialog();
         createForm.reset();
       },
       onError: () => {
-        errorToast('Erreur', 'Une erreur est survenue lors de la création du quiz.');
+        errorToast('Une erreur est survenue lors de la création du quiz.');
       },
     });
   };
@@ -129,14 +130,15 @@ export function useQuizAdminForm(
       ...data,
       duration: totalDurationMin,
     }));
+
     editForm.put(update(quizId).url, {
       onSuccess: () => {
-        successToast('Succès', 'Quiz mis à jour avec succès.');
+        successToast('Quiz mis à jour avec succès.');
         if (closeDialog) closeDialog();
         editForm.reset();
       },
       onError: () => {
-        errorToast('Erreur', 'Une erreur est survenue lors de la mise à jour du quiz.');
+        errorToast('Une erreur est survenue lors de la mise à jour du quiz.');
       },
     });
   };
@@ -144,11 +146,11 @@ export function useQuizAdminForm(
   const deleteQuiz = (quizId: string): void => {
     editForm.delete(deleteMethod(quizId).url, {
       onSuccess: () => {
-        successToast('Succès', 'Quiz supprimé avec succès.');
+        successToast('Quiz supprimé avec succès.');
         if (closeDialog) closeDialog();
       },
       onError: () => {
-        errorToast('Erreur', 'Une erreur est survenue lors de la suppression du quiz.');
+        errorToast('Une erreur est survenue lors de la suppression du quiz.');
       },
     });
   };
@@ -170,10 +172,10 @@ export function useQuizAdminForm(
         callbacks?.onFinish?.();
       },
       onSuccess: () => {
-        successToast('Succès', 'Le statut de publication du quiz a été mis à jour.');
+        successToast('Le statut de publication du quiz a été mis à jour.');
       },
       onError: () => {
-        errorToast('Erreur', 'Une erreur est survenue lors de la publication du quiz.');
+        errorToast('Une erreur est survenue lors de la publication du quiz.');
       },
     });
   };

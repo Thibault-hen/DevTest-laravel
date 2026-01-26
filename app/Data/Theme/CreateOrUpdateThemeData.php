@@ -1,0 +1,38 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Data\Theme;
+
+use Illuminate\Validation\Rule;
+use Spatie\LaravelData\Attributes\Validation\Unique;
+use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Support\Validation\ValidationContext;
+use Spatie\TypeScriptTransformer\Attributes\TypeScript;
+
+#[TypeScript]
+class CreateOrUpdateThemeData extends Data
+{
+    public function __construct(
+        #[Unique('themes', 'title')]
+        public string $title,
+    ) {}
+
+    public static function rules(?ValidationContext $context = null): array
+    {
+        return [
+            'title' => [
+                Rule::unique('themes', 'title')->ignore($context->payload['id'] ?? null),
+            ],
+        ];
+    }
+
+    public static function messages(...$args): array
+    {
+        return [
+            'title.required' => 'Le titre est obligatoire.',
+            'title.string' => 'Le titre doit être une chaîne de caractères.',
+            'title.unique' => 'Le titre a déjà été pris.',
+        ];
+    }
+}

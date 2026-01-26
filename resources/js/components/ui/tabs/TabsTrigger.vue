@@ -16,11 +16,18 @@ const forwardedProps = useForwardProps(delegatedProps)
   <TabsTrigger
     v-bind="forwardedProps"
     :class="cn(
-      'flex w-full whitespace-nowrap rounded-lg px-4 py-2 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-muted-foreground hover:bg-muted/60 hover:text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm',
+      'group relative inline-flex items-center justify-center whitespace-nowrap px-4 py-2.5 text-sm font-medium transition-all duration-200',
+      'ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+      'disabled:pointer-events-none disabled:opacity-50',
+      'text-muted-foreground hover:text-foreground',
+      'data-[state=active]:text-foreground data-[state=active]:font-semibold',
+      'before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary before:transition-all before:duration-200',
+      'before:scale-x-0 data-[state=active]:before:scale-x-100',
+      'hover:bg-muted/50',
       props.class,
     )"
   >
-    <span class="truncate">
+    <span class="relative z-10 truncate">
       <slot />
     </span>
   </TabsTrigger>

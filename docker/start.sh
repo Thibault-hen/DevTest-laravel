@@ -13,18 +13,19 @@ if [ ! -f node_modules/.bin/vite ]; then
     npm install
 fi
 
-# Env
 if [ ! -f .env ]; then
     cp .env.example .env
 fi
+
 php artisan key:generate --force
 npm install concurrently --save-dev
-# Migrate & seed
 php artisan migrate:fresh --seed
 
-# Storage link
 rm -f public/storage
 php artisan storage:link
+
+chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
 php-fpm &
 
