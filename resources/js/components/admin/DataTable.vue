@@ -108,7 +108,7 @@ const table = useVueTable({
     </div>
 
     <Table>
-      <TableHeader class="bg-background">
+      <TableHeader class="bg-secondary2 dark:bg-background">
         <TableRow
           v-for="headerGroup in table.getHeaderGroups()"
           :key="headerGroup.id"

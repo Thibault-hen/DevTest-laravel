@@ -20,7 +20,7 @@ const props = defineProps<{
           >
             <img
               :src="`/${resultDetail.quiz.image_url}`"
-              :alt="resultDetail.quiz.image_text || 'Quiz image'"
+              :alt="`${resultDetail.quiz.title} Image`"
               class="h-full w-full"
             />
           </div>

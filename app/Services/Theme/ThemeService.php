@@ -11,14 +11,6 @@ use Spatie\LaravelData\DataCollection;
 
 class ThemeService
 {
-    /**
-     * Create a new class instance.
-     */
-    public function __construct()
-    {
-        //
-    }
-
     public function getAllThemes(): DataCollection
     {
         $themes = Theme::all();
@@ -27,21 +19,26 @@ class ThemeService
         return ThemeData::collect($themes, DataCollection::class);
     }
 
-    public function createTheme(CreateOrUpdateThemeData $themeData): void
+    public function createTheme(CreateOrUpdateThemeData $themeData): ThemeData
     {
-        Theme::create([
-            'title' => $themeData->title,
-        ]);
+        $theme = Theme::create($themeData->toArray());
+
+        return ThemeData::from($theme);
     }
 
-    public function updateTheme(Theme $theme, CreateOrUpdateThemeData $themeData): void
+    public function updateTheme(Theme $theme, CreateOrUpdateThemeData $themeData): ThemeData
     {
         $theme->title = $themeData->title;
         $theme->save();
+
+        return ThemeData::from($theme->refresh());
     }
 
-    public function deleteTheme(Theme $theme): void
+    public function deleteTheme(Theme $theme): ThemeData
     {
+        $themeData = ThemeData::from($theme);
         $theme->delete();
+
+        return $themeData;
     }
 }

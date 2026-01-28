@@ -1,8 +1,10 @@
+import QuizzesCountBadge from '@/components/quiz/badges/QuizzesCountBadge.vue';
 import ThemeBadge from '@/components/quiz/badges/ThemeBadge.vue';
 import { ThemeData } from '@/types/generated';
 import type { ColumnDef } from '@tanstack/vue-table';
 import { h } from 'vue';
-import ThemesActions from './ThemesActions.vue';
+import ThemesActions from './ThemeActions.vue';
+
 export const themesColumns: ColumnDef<ThemeData>[] = [
   {
     accessorKey: 'id',
@@ -22,18 +24,10 @@ export const themesColumns: ColumnDef<ThemeData>[] = [
   },
   {
     accessorKey: 'quizzes_count',
-    header: () => h('div', 'Quizzes associés'),
-    meta: { title: 'Quizzes associés' },
+    header: () => h('div', 'Quiz associés'),
+    meta: { title: 'Quiz associés' },
     cell: ({ row }) => {
-      return h(
-        'div',
-        {
-          class:
-            'bg-muted rounded-md min-w-[3rem] border justify-center inline-flex py-1 px-3 font-bold' +
-            ((row.original.quizzes_count ?? 0 > 0) ? ' border-primary' : ''),
-        },
-        row.original.quizzes_count ?? 0,
-      );
+      return h(QuizzesCountBadge, { count: row.original.quizzes_count ?? 0 });
     },
   },
   {

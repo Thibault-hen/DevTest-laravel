@@ -35,7 +35,7 @@ withDefaults(defineProps<Props>(), {
             <slot name="header-actions" />
           </template>
         </AppSidebarHeader>
-        <div class="bg-secondary2">
+        <div class="dark:bg-secondary2 min-h-screen">
           <slot />
         </div>
       </AppContent>

@@ -25,11 +25,11 @@ const props = defineProps<{
   theme: ThemeData | null;
 }>();
 
-const { editForm, editTheme } = useThemeAdminForm(closeDialog, () => props.theme);
+const { editForm, updateTheme } = useThemeAdminForm(closeDialog, () => props.theme);
 
 const handleEdit = () => {
   if (!props.theme) return;
-  editTheme(props.theme.id);
+  updateTheme(props.theme.id);
 };
 </script>
 

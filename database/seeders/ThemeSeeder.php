@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Models\Theme;
@@ -15,8 +17,9 @@ class ThemeSeeder extends Seeder
     {
         $jsonPath = database_path('data/themes.json');
 
-        if (!File::exists($jsonPath)) {
+        if (! File::exists($jsonPath)) {
             $this->command->error("File not found: {$jsonPath}");
+
             return;
         }
 

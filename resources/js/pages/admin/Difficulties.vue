@@ -1,37 +1,65 @@
 <script setup lang="ts">
-import PlaceholderPattern from '@/components/PlaceholderPattern.vue';
+import DataTable from '@/components/admin/DataTable.vue';
+import { difficultyColumns } from '@/components/admin/difficulty/Column';
+import { AddDifficultyModal, DeleteDifficultyModal, EditDifficultyModal } from '@/components/admin/difficulty/modals';
+import Button from '@/components/ui/button/Button.vue';
 import AdminLayout from '@/layouts/AdminLayout.vue';
+import { DifficultyData } from '@/types/generated';
 import { Head } from '@inertiajs/vue3';
-defineOptions({
-  layout: AdminLayout,
-});
+import { Plus } from 'lucide-vue-next';
+import { ref } from 'vue';
+
+const props = defineProps<{ difficulties: DifficultyData[] }>();
+
+const showAddModal = ref(false);
+const showEditModal = ref(false);
+const showDeleteModal = ref(false);
+const selectedDifficulty = ref<DifficultyData | null>(null);
+
+const openAddModal = (): void => {
+  showAddModal.value = true;
+};
+
+const openEditModal = (difficulty: DifficultyData): void => {
+  selectedDifficulty.value = difficulty;
+  showEditModal.value = true;
+};
+
+const openDeleteModal = (difficulty: DifficultyData): void => {
+  selectedDifficulty.value = difficulty;
+  showDeleteModal.value = true;
+};
 </script>
 
 <template>
-  <Head title="Difficultés" />
+  <AdminLayout>
+    <AddDifficultyModal v-model="showAddModal" />
+    <EditDifficultyModal
+      v-model="showEditModal"
+      :difficulty="selectedDifficulty"
+    />
+    <DeleteDifficultyModal
+      v-model="showDeleteModal"
+      :difficulty="selectedDifficulty"
+    />
+    <template #header-actions>
+      <Button
+        size="sm"
+        variant="primary"
+        @click="openAddModal"
+      >
+        <Plus class="w-4 h-4 mr-2" />
+        Ajouter une difficulté
+      </Button>
+    </template>
 
-  <div class="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
-    <div class="grid auto-rows-min gap-4 md:grid-cols-3">
-      <div
-        class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
-      >
-        <PlaceholderPattern />
-      </div>
-      <div
-        class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
-      >
-        <PlaceholderPattern />
-      </div>
-      <div
-        class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
-      >
-        <PlaceholderPattern />
-      </div>
+    <Head title="Difficultés" />
+    <div class="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
+      <DataTable
+        :data="props.difficulties"
+        :columns="difficultyColumns"
+        :meta="{ onOpenEdit: openEditModal, onOpenDelete: openDeleteModal }"
+      />
     </div>
-    <div
-      class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border"
-    >
-      <PlaceholderPattern />
-    </div>
-  </div>
+  </AdminLayout>
 </template>

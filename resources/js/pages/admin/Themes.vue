@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import DataTable from '@/components/admin/DataTable.vue';
-import { themesColumns } from '@/components/admin/themes/Column';
-import AddThemeModal from '@/components/admin/themes/modals/AddThemeModal.vue';
-import DeleteThemeModal from '@/components/admin/themes/modals/DeleteThemeModal.vue';
-import EditThemeModal from '@/components/admin/themes/modals/EditThemeModal.vue';
+import { themesColumns } from '@/components/admin/theme/Column';
+import { AddThemeModal, DeleteThemeModal, EditThemeModal } from '@/components/admin/theme/modals';
 import Button from '@/components/ui/button/Button.vue';
 import AdminLayout from '@/layouts/AdminLayout.vue';
 import { ThemeData } from '@/types/generated';
@@ -27,13 +25,11 @@ const openAddModal = (): void => {
 const openDeleteModal = (theme: ThemeData): void => {
   selectedTheme.value = theme;
   showDeleteModal.value = true;
-  console.log('Deleting theme:', theme);
 };
 
 const openEditModal = (theme: ThemeData): void => {
   selectedTheme.value = theme;
   showEditModal.value = true;
-  console.log('Editing theme:', theme);
 };
 </script>
 

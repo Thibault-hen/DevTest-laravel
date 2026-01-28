@@ -2,7 +2,6 @@
 import Button from '@/components/ui/button/Button.vue';
 import { quizzes } from '@/routes';
 import { Link } from '@inertiajs/vue3';
-import { Pointer } from 'lucide-vue-next';
 const info = {
   appName: 'DevTest',
   description: 'Test tes connaissances en programmation',
@@ -41,10 +40,6 @@ const info = {
         <p class="mx-auto max-w-xl text-md sm:text-lg md:text-xl">
           {{ info.description }}
         </p>
-        <Pointer
-          class="rotate-180 mx-auto animate-bounce"
-          :size="20"
-        />
         <Link :href="quizzes().url">
           <Button
             class="group relative overflow-hidden px-10 py-4 lg:py-5 text-sm shadow-lg transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 lg:text-base"

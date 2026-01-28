@@ -22,7 +22,7 @@ class ResultController extends Controller
 
         $result = $resultService->saveResult($quiz, $resultData, auth()->id());
 
-        return redirect()->route('result.show', ['result' => $result->id])
+        return to_route('result.show', ['result' => $result->id])
             ->with('success', 'Merci d\'avoir participé ! Vos réponses ont été enregistrées avec succès.');
     }
 

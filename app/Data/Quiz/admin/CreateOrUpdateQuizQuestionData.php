@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace App\Data\Quiz\admin;
 
+use Closure;
 use Spatie\LaravelData\Attributes\DataCollectionOf;
+use Spatie\LaravelData\Attributes\MergeValidationRules;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\Min;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\DataCollection;
 use Spatie\LaravelData\Support\Validation\ValidationContext;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
-use Closure;
 
 #[TypeScript]
+#[MergeValidationRules]
 class CreateOrUpdateQuizQuestionData extends Data
 {
     public function __construct(

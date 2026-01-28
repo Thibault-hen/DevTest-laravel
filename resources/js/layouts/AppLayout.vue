@@ -93,14 +93,14 @@ withDefaults(defineProps<Props>(), {
           <template v-if="!$page.props.auth.user">
             <Link
               :href="login()"
-              class="title-font flex cursor-pointer items-center gap-1.5 rounded-[0.375rem] border bg-primary px-3 py-1.5 text-xs leading-normal text-white transition-colors duration-300"
+              class="font-bold flex cursor-pointer items-center gap-1.5 rounded-[0.375rem] border bg-primary px-3 py-1.5 text-xs leading-normal text-white transition-colors duration-300"
             >
               <LogIn class="h-3 w-3 sm:h-4 sm:w-4" />
               <span class="hidden lg:flex">Connexion</span>
             </Link>
             <Link
               :href="register()"
-              class="title-font flex cursor-pointer items-center gap-1.5 rounded-[0.375rem] border px-3 py-1.5 text-xs leading-normal transition-colors duration-300 hover:bg-primary hover:text-white"
+              class="font-bold flex cursor-pointer items-center gap-1.5 rounded-[0.375rem] border px-3 py-1.5 text-xs leading-normal transition-colors duration-300 hover:bg-primary hover:text-white"
             >
               <UserRoundPlus class="h-3 w-3 sm:h-4 sm:w-4" />
               <span class="hidden lg:flex">Inscription</span>

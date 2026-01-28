@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminDifficultyController;
 use App\Http\Controllers\Admin\AdminQuizController;
 use App\Http\Controllers\Admin\AdminThemeController;
 use Illuminate\Support\Facades\Route;
@@ -35,13 +37,27 @@ Route::prefix('/themes')->group(function () {
         ->name('admin.themes.delete');
 });
 
-Route::get('/categories', function () {
-    return Inertia::render('admin/Categories');
-})->name('admin.categories');
+Route::prefix('/categories')->group(function () {
+    Route::get('/', [AdminCategoryController::class, 'index'])
+        ->name('admin.categories');
+    Route::post('/', [AdminCategoryController::class, 'store'])
+        ->name('admin.categories.create');
+    Route::put('/{category}', [AdminCategoryController::class, 'update'])
+        ->name('admin.categories.update');
+    Route::delete('/{category}', [AdminCategoryController::class, 'destroy'])
+        ->name('admin.categories.delete');
+});
 
-Route::get('/difficulties', function () {
-    return Inertia::render('admin/Difficulties');
-})->name('admin.difficulties');
+Route::prefix('/difficulties')->group(function () {
+    Route::get('/', [AdminDifficultyController::class, 'index'])
+        ->name('admin.difficulties');
+    Route::post('/', [AdminDifficultyController::class, 'store'])
+        ->name('admin.difficulties.create');
+    Route::put('/{difficulty}', [AdminDifficultyController::class, 'update'])
+        ->name('admin.difficulties.update');
+    Route::delete('/{difficulty}', [AdminDifficultyController::class, 'destroy'])
+        ->name('admin.difficulties.delete');
+});
 
 Route::get('/results', function () {
     return Inertia::render('admin/Results');

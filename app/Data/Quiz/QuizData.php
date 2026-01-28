@@ -31,7 +31,7 @@ class QuizData extends Data
         public ?string $image_url,
         public bool $is_published,
 
-        #[WithTransformer(DateTimeInterfaceTransformer::class, format: 'd-m-Y')]
+        #[WithTransformer(DateTimeInterfaceTransformer::class, format: 'd-m-Y H:i:s')]
         public ?Carbon $created_at,
 
         public ?AuthorData $author = null,

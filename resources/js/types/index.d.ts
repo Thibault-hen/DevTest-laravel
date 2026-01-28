@@ -5,7 +5,7 @@ export interface Auth {
   user: User;
 }
 
-interface CreateOrUpdateQuizFormData extends CreateOrUpdateQuizData {
+interface CreateOrUpdateQuizFormData extends Omit<CreateOrUpdateQuizData, 'id'> {
   themes_ids: string[];
 }
 

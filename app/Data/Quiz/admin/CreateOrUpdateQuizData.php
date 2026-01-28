@@ -7,6 +7,7 @@ namespace App\Data\Quiz\admin;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Validation\Rule;
 use Spatie\LaravelData\Attributes\DataCollectionOf;
+use Spatie\LaravelData\Attributes\MergeValidationRules;
 use Spatie\LaravelData\Attributes\Validation\Image;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\Mimes;
@@ -18,6 +19,7 @@ use Spatie\LaravelData\Support\Validation\ValidationContext;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
 #[TypeScript]
+#[MergeValidationRules]
 class CreateOrUpdateQuizData extends Data
 {
     public function __construct(

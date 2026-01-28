@@ -25,11 +25,19 @@ created_at: any | null;
 updated_at: any | null;
 quizzes_count: number | null;
 };
+export type CreateOrUpdateCategoryData = {
+title: string;
+};
+export type CreateOrUpdateDifficultyData = {
+level: string;
+color: string | null;
+};
 export type CreateOrUpdateQuizAnswerData = {
 content: string;
 is_correct: boolean;
 };
 export type CreateOrUpdateQuizData = {
+id: string | null;
 title: string;
 description: string;
 difficulty_id: string;

@@ -8,21 +8,21 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { ThemeData } from '@/types/generated';
+import { DifficultyData } from '@/types/generated';
 import { MoreHorizontal, Pencil, Trash2 } from 'lucide-vue-next';
 
 const props = defineProps<{
-  theme: ThemeData;
-  onOpenDelete?: (theme: ThemeData) => void;
-  onOpenEdit?: (theme: ThemeData) => void;
+  difficulty: DifficultyData;
+  onOpenDelete?: (difficulty: DifficultyData) => void;
+  onOpenEdit?: (difficulty: DifficultyData) => void;
 }>();
 
 const handleOpenDelete = (): void => {
-  props.onOpenDelete?.(props.theme);
+  props.onOpenDelete?.(props.difficulty);
 };
 
 const handleOpenEdit = (): void => {
-  props.onOpenEdit?.(props.theme);
+  props.onOpenEdit?.(props.difficulty);
 };
 </script>
 <template>
@@ -41,7 +41,7 @@ const handleOpenEdit = (): void => {
       <DropdownMenuSeparator />
       <DropdownMenuItem @click="handleOpenEdit">
         <Pencil class="mr-2 h-4 w-4" />
-        Editer
+        Modifier
       </DropdownMenuItem>
       <DropdownMenuItem @click="handleOpenDelete">
         <Trash2 class="mr-2 h-4 w-4" />

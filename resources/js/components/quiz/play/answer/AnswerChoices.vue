@@ -8,17 +8,19 @@ import { ArrowRight, Check } from 'lucide-vue-next';
 
 defineProps<{
   question: QuestionPlayData;
-  questionNumber: number;
-  totalQuestions: number;
   isLastQuestion: boolean;
   selectedAnswers: string | string[];
 }>();
 
 defineEmits<{
-  (e: 'update:selectedAnswers', value: string | string[]): void;
-  (e: 'next'): void;
-  (e: 'submit'): void;
+  'update:selectedAnswers': [value: string | string[]];
+  next: [];
+  submit: [];
 }>();
+
+const hasSelection = (answers: string | string[]) => {
+  return Array.isArray(answers) ? answers.length > 0 : !!answers;
+};
 </script>
 
 <template>
@@ -66,14 +68,10 @@ defineEmits<{
           () => {
             const current = Array.isArray(selectedAnswers) ? [...selectedAnswers] : [];
             const isSelected = current.includes(answer.id);
-            if (isSelected) {
-              $emit(
-                'update:selectedAnswers',
-                current.filter((id) => id !== answer.id),
-              );
-            } else {
-              $emit('update:selectedAnswers', [...current, answer.id]);
-            }
+            $emit(
+              'update:selectedAnswers',
+              isSelected ? current.filter((id) => id !== answer.id) : [...current, answer.id],
+            );
           }
         "
       />
@@ -81,15 +79,13 @@ defineEmits<{
     </Label>
   </div>
 
-  <div class="flex items-center justify-between gap-4 mt-4">
+  <div class="flex justify-end mt-4">
     <Button
       v-if="!isLastQuestion"
       variant="primary"
       @click="$emit('next')"
-      class="gap-2 ml-auto"
-      :disabled="
-        question.is_multiple ? !Array.isArray(selectedAnswers) || selectedAnswers.length === 0 : !selectedAnswers
-      "
+      class="gap-2"
+      :disabled="!hasSelection(selectedAnswers)"
     >
       Suivant
       <ArrowRight :size="16" />
@@ -98,8 +94,8 @@ defineEmits<{
       v-else
       variant="primary"
       @click="$emit('submit')"
-      class="gap-2 ml-auto"
-      :disabled="!selectedAnswers || (Array.isArray(selectedAnswers) && selectedAnswers.length === 0)"
+      class="gap-2"
+      :disabled="!hasSelection(selectedAnswers)"
     >
       <Check :size="16" />
       Terminer

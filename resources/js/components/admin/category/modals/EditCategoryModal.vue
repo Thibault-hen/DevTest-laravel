@@ -12,30 +12,39 @@ import {
 } from '@/components/ui/dialog';
 import Input from '@/components/ui/input/Input.vue';
 import Label from '@/components/ui/label/Label.vue';
-import { useThemeAdminForm } from '@/composables/Admin/useThemeAdminForm';
+import { useCategoryAdminForm } from '@/composables/Admin/useCategoryAdminForm';
+import { CategoryData } from '@/types/generated';
 import { LoaderCircle } from 'lucide-vue-next';
-
 const model = defineModel<boolean>();
 
 const closeDialog = (): void => {
   model.value = false;
 };
 
-const { createForm, createTheme } = useThemeAdminForm(closeDialog);
+const props = defineProps<{
+  category: CategoryData | null;
+}>();
+
+const { editForm, updateCategory } = useCategoryAdminForm(closeDialog, () => props.category);
+
+const handleEdit = () => {
+  if (!props.category) return;
+  updateCategory(props.category.id);
+};
 </script>
 
 <template>
   <Dialog v-model:open="model">
     <DialogContent class="sm:max-w-lg p-0">
-      <form @submit.prevent="createTheme">
+      <form @submit.prevent="handleEdit">
         <DialogHeader class="pt-6 px-6">
           <DialogTitle>
             <HeadingSmall
-              title="Ajouter un thème"
-              description="Remplissez les informations du thème que vous souhaitez ajouter"
+              title="Modifier une catégorie"
+              description="Remplissez les informations de la catégorie que vous souhaitez modifier"
             />
             <DialogDescription class="sr-only"
-              >Remplissez les informations du thème que vous souhaitez ajouter</DialogDescription
+              >Remplissez les informations de la catégorie que vous souhaitez modifier</DialogDescription
             >
           </DialogTitle>
         </DialogHeader>
@@ -45,13 +54,13 @@ const { createForm, createTheme } = useThemeAdminForm(closeDialog);
             <Input
               id="title"
               placeholder="Entrez le titre..."
-              v-model="createForm.title"
+              v-model="editForm.title"
             />
             <p
-              v-if="createForm.errors.title"
+              v-if="editForm.errors.title"
               class="text-red-500 text-sm"
             >
-              {{ createForm.errors.title }}
+              {{ editForm.errors.title }}
             </p>
           </fieldset>
         </div>
@@ -70,13 +79,13 @@ const { createForm, createTheme } = useThemeAdminForm(closeDialog);
 
             <Button
               type="submit"
-              :disabled="createForm.processing || !createForm.isDirty"
+              :disabled="editForm.processing || !editForm.isDirty"
             >
               <LoaderCircle
-                v-if="createForm.processing"
+                v-if="editForm.processing"
                 class="h-4 w-4 animate-spin mr-2"
               />
-              Créer le thème
+              Modifier la catégorie
             </Button>
           </div>
         </DialogFooter>

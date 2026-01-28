@@ -4,64 +4,37 @@ import { computed, onBeforeUnmount, ref } from 'vue';
 
 const props = defineProps<{
   duration: number;
-  isLastQuestion?: boolean;
 }>();
 
 const emit = defineEmits<{
-  (e: 'timeout', elapsedTime: number): void;
-  (e: 'finished', elapsedTime: number): void;
+  timeout: [];
 }>();
 
 const countdown = ref(props.duration);
 const initialTime = props.duration;
 
-let startTime = Date.now();
-
-let countdownInterval: number | null = null;
-let firstTick = true;
+let intervalId: number | null = null;
 
 const tick = () => {
-  if (firstTick) {
-    startTime = Date.now();
-    firstTick = false;
-  }
-
   if (countdown.value > 0) {
     countdown.value--;
   } else {
-    handleTimeout();
+    stop();
+    emit('timeout');
   }
 };
 
-// Start interval immediately
-countdownInterval = setInterval(tick, 1000);
-
-const handleTimeout = (): void => {
-  if (countdownInterval) clearInterval(countdownInterval);
-
-  const elapsedTime = Date.now() - startTime;
-
-  if (!props.isLastQuestion) {
-    emit('timeout', elapsedTime); // Auto-advance to next question
-  } else {
-    emit('finished', elapsedTime);
+const stop = () => {
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
   }
 };
 
-// Get elapsed time at any moment (for manual next/submit)
-const getElapsedTime = (): number => {
-  return Date.now() - startTime;
-};
+// Start countdown
+intervalId = setInterval(tick, 1000);
 
-// Expose to parent
-defineExpose({
-  getElapsedTime,
-});
-
-// Cleanup on unmount
-onBeforeUnmount(() => {
-  if (countdownInterval) clearInterval(countdownInterval);
-});
+onBeforeUnmount(stop);
 
 const circleDasharray = computed(() => {
   const circumference = 2 * Math.PI * 45;

@@ -27,7 +27,7 @@ use Spatie\LaravelData\DataCollection;
 
 class QuizService
 {
-    private const CACHE_TTL = 3600;
+    private const int CACHE_TTL = 3600;
 
     public function getQuizzesData(): QuizzesData
     {

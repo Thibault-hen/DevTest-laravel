@@ -5,16 +5,19 @@ declare(strict_types=1);
 namespace App\Data\Theme;
 
 use Illuminate\Validation\Rule;
-use Spatie\LaravelData\Attributes\Validation\Unique;
+use Spatie\LaravelData\Attributes\MergeValidationRules;
+use Spatie\LaravelData\Attributes\Validation\Max;
+use Spatie\LaravelData\Attributes\Validation\Min;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Support\Validation\ValidationContext;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
 #[TypeScript]
+#[MergeValidationRules]
 class CreateOrUpdateThemeData extends Data
 {
     public function __construct(
-        #[Unique('themes', 'title')]
+        #[Min(3), Max(50)]
         public string $title,
     ) {}
 
@@ -33,6 +36,8 @@ class CreateOrUpdateThemeData extends Data
             'title.required' => 'Le titre est obligatoire.',
             'title.string' => 'Le titre doit être une chaîne de caractères.',
             'title.unique' => 'Le titre a déjà été pris.',
+            'title.min' => 'Le titre doit contenir au moins :min caractères.',
+            'title.max' => 'Le titre ne doit pas dépasser :max caractères.',
         ];
     }
 }

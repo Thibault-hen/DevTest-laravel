@@ -1,7 +1,7 @@
-import { create, update } from '@/routes/admin/themes';
+import { create, deleteMethod, update } from '@/routes/admin/themes';
 import { CreateOrUpdateThemeData, ThemeData } from '@/types/generated';
 import { errorToast, successToast } from '@/utils/toast';
-import { useForm } from '@inertiajs/vue3';
+import { router, useForm } from '@inertiajs/vue3';
 import { watch } from 'vue';
 
 export function useThemeAdminForm(closeDialog?: () => void, theme?: () => ThemeData | null | undefined) {
@@ -33,7 +33,7 @@ export function useThemeAdminForm(closeDialog?: () => void, theme?: () => ThemeD
     });
   };
 
-  const editTheme = (themeId: string) => {
+  const updateTheme = (themeId: string) => {
     editForm.put(update(themeId).url, {
       onSuccess: () => {
         if (closeDialog) closeDialog();
@@ -47,7 +47,7 @@ export function useThemeAdminForm(closeDialog?: () => void, theme?: () => ThemeD
   };
 
   const deleteTheme = (themeId: string) => {
-    editForm.delete(update(themeId).url, {
+    router.delete(deleteMethod(themeId).url, {
       onSuccess: () => {
         if (closeDialog) closeDialog();
         successToast('Thème supprimé avec succès.');
@@ -62,7 +62,7 @@ export function useThemeAdminForm(closeDialog?: () => void, theme?: () => ThemeD
     createForm,
     editForm,
     createTheme,
-    editTheme,
+    updateTheme,
     deleteTheme,
   };
 }

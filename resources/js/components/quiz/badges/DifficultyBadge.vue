@@ -20,6 +20,6 @@ const { isDark } = useAppearance();
       borderColor: props.difficulty?.color ?? COLORS.DEFAULT,
       color: isDark() ? (props.difficulty?.color ?? COLORS.DEFAULT) : '',
     }"
-    ><Gauge :size="16" />{{ props.difficulty?.level }}
+    ><Gauge :size="16" />{{ props.difficulty?.level ?? 'Non définie' }}
   </Badge>
 </template>

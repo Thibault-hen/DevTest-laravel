@@ -41,7 +41,7 @@ const handleOpenEdit = (): void => {
       <DropdownMenuSeparator />
       <DropdownMenuItem @click="handleOpenEdit">
         <Pencil class="mr-2 h-4 w-4" />
-        Editer
+        Modifier
       </DropdownMenuItem>
       <DropdownMenuItem @click="handleOpenDelete">
         <Trash2 class="mr-2 h-4 w-4" />

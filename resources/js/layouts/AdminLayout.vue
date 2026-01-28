@@ -11,7 +11,7 @@ const { getStoredAppearance } = useAppearance();
   <Toaster
     :theme="getStoredAppearance() ?? 'system'"
     :closeButton="true"
-    position="top-right"
+    position="bottom-center"
   />
   <AdminSidebarLayout>
     <template #header-actions>

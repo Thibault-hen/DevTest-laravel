@@ -20,11 +20,11 @@ class TrackAnalytics
     public function handle(Request $request, Closure $next): Response
     {
         $startTime = microtime(true);
-        
+
         $response = $next($request);
-        
+
         $duration = (microtime(true) - $startTime) * 1000;
-        
+
         $requestData = [
             'route' => $request->path(),
             'method' => $request->method(),
@@ -37,11 +37,11 @@ class TrackAnalytics
             'ip_address' => $request->ip(),
             'date' => now()->toDateString(),
         ];
-        
+
         dispatch(function () use ($requestData) {
             AnalyticRequest::create($requestData);
         })->afterResponse();
-        
+
         return $response;
     }
 

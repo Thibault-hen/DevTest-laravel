@@ -38,15 +38,9 @@ const props = defineProps<{ quiz: QuizData }>();
           v-if="props.quiz.is_published"
           class="flex gap-2"
         >
-          <DifficultyBadge
-            v-if="props.quiz.difficulty"
-            :difficulty="props.quiz.difficulty"
-          />
+          <DifficultyBadge :difficulty="props.quiz.difficulty" />
 
-          <CategoryBadge
-            v-if="props.quiz.category"
-            :category="props.quiz.category"
-          />
+          <CategoryBadge :category="props.quiz.category" />
         </div>
 
         <div v-else>

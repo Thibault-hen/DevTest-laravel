@@ -16,7 +16,7 @@ const {
   currentQuestionIndex,
   totalQuestions,
   currentSelectedAnswers,
-  currentTimer,
+  questionTimer,
   isLastQuestion,
   progress,
   goToNext,
@@ -60,12 +60,9 @@ const {
 
                 <div class="absolute top-1 right-1 md:top-3 md:right-3">
                   <QuestionTimer
-                    ref="timerRef"
                     :key="`timer-${currentQuestionIndex}`"
-                    :duration="currentTimer"
+                    :duration="questionTimer"
                     @timeout="handleTimeout"
-                    @finished="handleTimeout"
-                    :is-last-question="isLastQuestion"
                   />
                 </div>
               </div>
@@ -84,8 +81,6 @@ const {
             <AnswerChoices
               v-if="currentQuestion"
               :question="currentQuestion"
-              :question-number="currentQuestionIndex + 1"
-              :total-questions="totalQuestions"
               :is-last-question="isLastQuestion"
               v-model:selected-answers="currentSelectedAnswers"
               @next="goToNext"
