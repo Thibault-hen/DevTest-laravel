@@ -1,6 +1,6 @@
 import { InertiaLinkProps } from '@inertiajs/vue3';
 import type { LucideIcon } from 'lucide-vue-next';
-import { CreateOrUpdateQuizData } from './generated';
+import { CreateOrUpdateQuizData, SpecializationData } from './generated';
 export interface Auth {
   user: User;
 }
@@ -58,7 +58,7 @@ export interface User {
   email_verified_at: string | null;
   created_at: string;
   updated_at: string;
-  specialization: string;
+  specialization: SpecializationData;
 }
 
 export interface ResultPercentageDataChart {
