@@ -82,7 +82,7 @@ export interface RatingErrors {
 }
 
 declare module '@tanstack/vue-table' {
-  interface ColumnMeta<TData, TValue> {
+  interface ColumnMeta {
     title?: string;
   }
 }

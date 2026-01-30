@@ -8,7 +8,7 @@ import CardContent from '@/components/ui/card/CardContent.vue';
 import CardFooter from '@/components/ui/card/CardFooter.vue';
 import CardHeader from '@/components/ui/card/CardHeader.vue';
 import CardTitle from '@/components/ui/card/CardTitle.vue';
-import { quiz } from '@/routes';
+import { quiz as quizRoute } from '@/routes';
 import { QuizData } from '@/types/generated';
 import { Link } from '@inertiajs/vue3';
 import { Timer } from 'lucide-vue-next';
@@ -17,7 +17,7 @@ const props = defineProps<{ quiz: QuizData }>();
 </script>
 
 <template>
-  <Link :href="quiz(props.quiz.slug)">
+  <Link :href="quizRoute(props.quiz.slug)">
     <Card
       class="w-full min-w-[340px] cursor-pointer pb-0 transition-all duration-100 ease-in-out hover:scale-[1.01] hover:border-primary"
     >

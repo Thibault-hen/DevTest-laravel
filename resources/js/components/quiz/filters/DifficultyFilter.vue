@@ -16,9 +16,11 @@ const emit = defineEmits<{
 const selectedDifficulty = ref<string[]>([]);
 
 const toggleDifficulty = (level: string) => {
-  selectedDifficulty.value.includes(level)
-    ? (selectedDifficulty.value = selectedDifficulty.value.filter((d) => d !== level))
-    : selectedDifficulty.value.push(level);
+  if (selectedDifficulty.value.includes(level)) {
+    selectedDifficulty.value = selectedDifficulty.value.filter((d) => d !== level);
+  } else {
+    selectedDifficulty.value.push(level);
+  }
   emit('update:difficulty', selectedDifficulty.value);
 };
 </script>

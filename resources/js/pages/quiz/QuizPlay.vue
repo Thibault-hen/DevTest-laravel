@@ -19,7 +19,11 @@ const startQuiz = () => {
 };
 
 const countdownInterval = setInterval(() => {
-  counter.value > 0 ? counter.value-- : startQuiz();
+  if (counter.value > 0) {
+    counter.value--;
+    return;
+  }
+  startQuiz();
 }, 1000);
 
 defineOptions({

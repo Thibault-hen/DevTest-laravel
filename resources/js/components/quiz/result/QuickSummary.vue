@@ -17,7 +17,7 @@ const props = defineProps<{
 
     <ul class="flex gap-3 flex-col">
       <li
-        v-for="(result, index) in summary"
+        v-for="(result, index) in props.summary"
         :key="result.question.id"
         class="flex gap-2.5 items-center group"
       >

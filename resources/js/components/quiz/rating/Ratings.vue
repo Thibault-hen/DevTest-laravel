@@ -12,10 +12,12 @@ const props = defineProps<{
 </script>
 
 <template>
-  <Card class="p-4">
+  <Card
+    class="p-4"
+    v-if="props.ratings.length > 0"
+  >
     <ContentTitle title="Avis des développeurs ayant passé ce quiz" />
     <div
-      v-if="props.ratings"
       class="border-b pb-4 last:border-none space-y-4"
       v-for="rating in props.ratings"
       :key="rating.id"
@@ -28,14 +30,10 @@ const props = defineProps<{
         <div class="flex flex-col gap-2">
           <div class="flex sm:items-center gap-2 flex-col sm:flex-row">
             <span class="font-bold text-xs sm:text-sm lg:text-base">{{ rating.user?.name }}</span>
-            <span
-              class="hidden sm:flex"
-              v-if="rating.user?.specialization"
-              >-</span
-            >
+            <span class="hidden sm:flex">-</span>
             <UserRoleBadge
-              v-if="rating.user?.specialization"
               :specialization="rating.user.specialization"
+              v-if="rating.user?.specialization"
             />
           </div>
           <div class="flex gap-4 items-center">
@@ -53,10 +51,10 @@ const props = defineProps<{
         {{ rating.comment }}
       </p>
     </div>
-    <span
-      v-else
-      class="text-sm text-muted-foreground text-center"
-      >Aucune évaluation pour ce quiz.</span
-    >
   </Card>
+  <span
+    v-else
+    class="text-sm text-muted-foreground text-center"
+    >Aucune évaluation pour ce quiz.</span
+  >
 </template>
