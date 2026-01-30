@@ -35,7 +35,7 @@ const props = defineProps<{
             >
             <UserRoleBadge
               v-if="rating.user?.specialization"
-              :user="rating.user"
+              :specialization="rating.user.specialization"
             />
           </div>
           <div class="flex gap-4 items-center">

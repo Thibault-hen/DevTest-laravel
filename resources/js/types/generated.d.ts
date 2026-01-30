@@ -56,6 +56,9 @@ is_multiple: boolean;
 timer: number;
 answers: Array<CreateOrUpdateQuizAnswerData>;
 };
+export type CreateOrUpdateSpecializationData = {
+name: string;
+};
 export type CreateOrUpdateThemeData = {
 title: string;
 };
@@ -177,6 +180,7 @@ id: string;
 name: string;
 created_at: any | null;
 updated_at: any | null;
+users_count: number | null;
 };
 export type ThemeData = {
 id: string;
@@ -200,6 +204,6 @@ is_admin: boolean;
 export type UserRatingData = {
 id: string;
 name: string;
-specialization: string | null;
+specialization: SpecializationData | null;
 avatar: string | null;
 };

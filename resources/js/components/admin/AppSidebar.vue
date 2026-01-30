@@ -10,7 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { categories, dashboard, difficulties, quizzes, results, themes, users } from '@/routes/admin';
+import { categories, dashboard, difficulties, quizzes, results, specializations, themes, users } from '@/routes/admin';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
 import { Contact, Gauge, GraduationCap, LayoutGridIcon, NotebookText, Tags, Users2 } from 'lucide-vue-next';
@@ -39,6 +39,11 @@ const mainNavItems: NavItem[] = [
     title: 'Difficultés',
     href: difficulties(),
     icon: Gauge,
+  },
+  {
+    title: 'Spécialisations',
+    href: specializations(),
+    icon: GraduationCap,
   },
 ];
 

@@ -6,4 +6,5 @@ export { default as ThemeBadge } from './ThemeBadge.vue';
 export { default as TwoFactorConfirmedBadge } from './TwoFactorConfirmedBadge.vue';
 export { default as UnavailableBadge } from './UnavailableBadge.vue';
 export { default as UserRoleBadge } from './UserRoleBadge.vue';
+export { default as UsersPerSpecCountBadge } from './UsersPerSpecCountBadge.vue';
 export { default as VerifiedEmailBadge } from './VerifiedEmailBadge.vue';

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminDifficultyController;
 use App\Http\Controllers\Admin\AdminQuizController;
 use App\Http\Controllers\Admin\AdminResultController;
+use App\Http\Controllers\Admin\AdminSpecializationController;
 use App\Http\Controllers\Admin\AdminThemeController;
 use App\Http\Controllers\Admin\AdminUserController;
 use Illuminate\Support\Facades\Route;
@@ -73,4 +74,15 @@ Route::prefix('/users')->group(function () {
         ->name('admin.users');
     Route::delete('/{user}', [AdminUserController::class, 'destroy'])
         ->name('admin.users.delete');
+});
+
+Route::prefix('/specializations')->group(function () {
+    Route::get('/', [AdminSpecializationController::class, 'index'])
+        ->name('admin.specializations');
+    Route::post('/', [AdminSpecializationController::class, 'store'])
+        ->name('admin.specializations.create');
+    Route::put('/{specialization}', [AdminSpecializationController::class, 'update'])
+        ->name('admin.specializations.update');
+    Route::delete('/{specialization}', [AdminSpecializationController::class, 'destroy'])
+        ->name('admin.specializations.delete');
 });

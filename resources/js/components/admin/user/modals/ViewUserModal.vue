@@ -32,9 +32,9 @@ const closeDialog = (): void => {
         <DialogTitle>
           <HeadingSmall
             title="Détails utilisateur"
-            description="Voici les informations en détail pour cet utilisateur"
+            description="Voici les informations pour cet utilisateur"
           />
-          <DialogDescription class="sr-only"> Voici les informations en détail pour cet utilisateur </DialogDescription>
+          <DialogDescription class="sr-only"> Voici les informations pour cet utilisateur </DialogDescription>
         </DialogTitle>
       </DialogHeader>
 
@@ -42,7 +42,6 @@ const closeDialog = (): void => {
         class="px-6 py-4 flex flex-col gap-6"
         v-if="props.user"
       >
-        <!-- Avatar + Name + Admin Badge -->
         <div class="flex items-center gap-4">
           <UserAvatar
             :user="props.user"
@@ -62,7 +61,6 @@ const closeDialog = (): void => {
           </div>
         </div>
 
-        <!-- User Info Grid -->
         <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
           <div>
             <span class="text-xs text-muted-foreground">Spécialisation</span>

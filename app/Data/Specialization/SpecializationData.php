@@ -20,5 +20,7 @@ class SpecializationData extends Data
         public ?Carbon $created_at = null,
         #[WithTransformer(DateTimeInterfaceTransformer::class, format: 'd-m-Y H:i:s')]
         public ?Carbon $updated_at = null,
+
+        public ?int $users_count = null,
     ) {}
 }

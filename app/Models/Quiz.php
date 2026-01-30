@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 #[ObservedBy(QuizObserver::class)]
 class Quiz extends Model
 {
-    use HasUuids, HasFactory;
+    use HasFactory, HasUuids;
 
     protected $fillable = [
         'title',
@@ -80,7 +80,7 @@ class Quiz extends Model
      */
     public function loadQuizDetails(): Quiz
     {
-        return $this->load('author', 'difficulty', 'themes', 'category', 'ratings.user')
+        return $this->load('author', 'difficulty', 'themes', 'category', 'ratings.user.specialization')
             ->loadAvg('ratings', 'score')
             ->loadCount('ratings');
     }

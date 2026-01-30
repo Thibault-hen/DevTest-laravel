@@ -45,7 +45,7 @@ const handleDelete = (): void => {
       <AlertDialogFooter>
         <AlertDialogCancel
           variant="outline"
-          @click="model = false"
+          @click="closeDialog"
         >
           Annuler</AlertDialogCancel
         >
