@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import UserRoleBadge from '@/components/quiz/badges/UserRoleBadge.vue';
 import StarRating from '@/components/quiz/rating/StarRating.vue';
 import UserRatingAvatar from '@/components/settings/user/UserRatingAvatar.vue';
+import UserRoleBadge from '@/components/shared/badges/UserRoleBadge.vue';
 import ContentTitle from '@/components/shared/ContentTitle.vue';
 import Card from '@/components/ui/card/Card.vue';
 import { RatingData } from '@/types/generated';

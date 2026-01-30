@@ -20,6 +20,12 @@ class AnswerChecker
             ->map(fn ($answers) => $answers->pluck('id')->toArray());
     }
 
+    /**
+     * Get the count of correct answers from the user's result data.
+     *
+     * @param  \App\Data\Result\ResultPostData  $resultData The result data containing user answers
+     * @return int
+     */
     public function getCorrectAnswersCount(ResultPostData $resultData): int
     {
         $questions = $resultData->questions->toCollection();

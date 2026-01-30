@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import CategoryBadge from '@/components/quiz/badges/CategoryBadge.vue';
-import DifficultyBadge from '@/components/quiz/badges/DifficultyBadge.vue';
+import CategoryBadge from '@/components/shared/badges/CategoryBadge.vue';
+import DifficultyBadge from '@/components/shared/badges/DifficultyBadge.vue';
 import Badge from '@/components/ui/badge/Badge.vue';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Progress from '@/components/ui/progress/Progress.vue';

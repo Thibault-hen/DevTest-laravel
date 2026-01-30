@@ -7,6 +7,7 @@ namespace App\Data\Result;
 use App\Data\Answer\AnswerResultData;
 use App\Data\Quiz\QuizData;
 use App\Data\Rating\RatingData;
+use App\Data\User\UserData;
 use Illuminate\Support\Carbon;
 use Spatie\LaravelData\Attributes\DataCollectionOf;
 use Spatie\LaravelData\Attributes\WithCast;
@@ -27,7 +28,7 @@ class ResultData extends Data
         public int $correct_answers_count,
 
         #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d H:i:s')]
-        #[WithTransformer(DateTimeInterfaceTransformer::class, format: 'd-m-Y')]
+        #[WithTransformer(DateTimeInterfaceTransformer::class, format: 'Y-m-d')]
         public ?Carbon $completed_at,
 
         #[DataCollectionOf(ResultQuestionData::class)]
@@ -37,6 +38,7 @@ class ResultData extends Data
         public DataCollection $user_answers,
 
         public QuizData $quiz,
-        public ?RatingData $user_rating
+        public ?RatingData $user_rating,
+        public ?UserData $user
     ) {}
 }

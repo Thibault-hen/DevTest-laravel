@@ -6,6 +6,7 @@ namespace App\Data\Quiz\admin;
 
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\Min;
+use Spatie\LaravelData\Attributes\Validation\Uuid;
 use Spatie\LaravelData\Data;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
@@ -13,6 +14,8 @@ use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 class CreateOrUpdateQuizAnswerData extends Data
 {
     public function __construct(
+        #[Uuid]
+        public ?string $id,
         #[Min(1), Max(255)]
         public string $content,
 

@@ -4,9 +4,15 @@ import Card from '@/components/ui/card/Card.vue';
 import CardContent from '@/components/ui/card/CardContent.vue';
 import { ResultData } from '@/types/generated';
 import ResultDetailsStats from './ResultDetailsStats.vue';
-const props = defineProps<{
-  resultDetail: ResultData;
-}>();
+const props = withDefaults(
+  defineProps<{
+    resultDetail: ResultData;
+    showReturnButton?: boolean;
+  }>(),
+  {
+    showReturnButton: true,
+  },
+);
 </script>
 
 <template>
@@ -25,7 +31,11 @@ const props = defineProps<{
             />
           </div>
           <span class="absolute top-0 right-0 p-1 bg-background rounded-bl-sm border text-sm font-bold">{{
-            new Date(resultDetail.completed_at).toDateString()
+            new Date(resultDetail.completed_at).toLocaleDateString('fr-FR', {
+              year: 'numeric',
+              day: '2-digit',
+              month: 'long',
+            })
           }}</span>
           <div class="flex-1 min-w-0">
             <h2 class="text-base lg:text-lg font-bold mb-2">
@@ -44,7 +54,10 @@ const props = defineProps<{
           class="w-full"
         />
 
-        <div class="mt-6 lg:mt-8">
+        <div
+          class="mt-6 lg:mt-8"
+          v-if="props.showReturnButton"
+        >
           <Button class="w-full lg:w-auto lg:min-w-[200px]"> Retourner aux quiz </Button>
         </div>
       </div>

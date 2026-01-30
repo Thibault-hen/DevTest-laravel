@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Observers\Quiz\QuizObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -15,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 #[ObservedBy(QuizObserver::class)]
 class Quiz extends Model
 {
-    use HasUuids;
+    use HasUuids, HasFactory;
 
     protected $fillable = [
         'title',
@@ -41,7 +42,7 @@ class Quiz extends Model
 
     public function questions(): HasMany
     {
-        return $this->hasMany(Question::class);
+        return $this->hasMany(Question::class)->oldest('created_at');
     }
 
     public function ratings(): HasMany

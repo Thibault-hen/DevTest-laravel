@@ -36,11 +36,11 @@ const convertToMinutes = (ms: number): string => {
 </script>
 
 <template>
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-    <div class="flex items-center gap-4 p-4 rounded-xl border bg-background">
-      <div class="relative w-12 h-12 md:h-14 md:w-14 flex-shrink-0">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+    <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl border bg-background">
+      <div class="relative w-12 h-12 md:w-14 md:h-14 flex-shrink-0">
         <DonutChart
-          class="w-12 h-12 md:h-14 md:w-14"
+          class="w-12 h-12 md:w-14 md:h-14"
           :donut-arc-width="8"
           index="name"
           :category="'value'"
@@ -53,38 +53,40 @@ const convertToMinutes = (ms: number): string => {
           <span class="text-xs md:text-sm font-bold text-muted-foreground"> {{ answeredPercentage }}% </span>
         </div>
       </div>
-      <div>
-        <p class="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wide mb-1">Score</p>
-        <p class="text-base md:text-lg font-bold">{{ resultDetail.correct_answers_count }}<span>/20</span></p>
-        <div class="flex gap-3 mt-2 text-xs">
+      <div class="min-w-0 flex-1">
+        <p class="text-xs lg:text-sm font-medium text-muted-foreground uppercase tracking-wide mb-1">Score</p>
+        <p class="text-lg lg:text-xl font-bold">
+          {{ resultDetail.correct_answers_count }}<span class="text-muted-foreground">/20</span>
+        </p>
+        <div class="flex flex-wrap gap-2 md:gap-3 mt-2 text-xs">
           <span class="flex items-center gap-1">
-            <span class="w-2 h-2 rounded-full bg-primary"></span>
-            <span class="text-muted-foreground font-bold">{{ resultDetail.correct_answers_count }} </span>
+            <span class="w-2 h-2 rounded-full bg-primary flex-shrink-0"></span>
+            <span class="text-muted-foreground font-bold">{{ resultDetail.correct_answers_count }}</span>
             <Check
-              class="text-primary"
-              :size="18"
+              class="text-primary flex-shrink-0"
+              :size="16"
             />
           </span>
           <span class="flex items-center gap-1">
-            <span class="w-2 h-2 rounded-full bg-red-600"></span>
-            <span class="text-muted-foreground font-bold">{{ 20 - resultDetail.correct_answers_count }} </span>
+            <span class="w-2 h-2 rounded-full bg-red-600 flex-shrink-0"></span>
+            <span class="text-muted-foreground font-bold">{{ 20 - resultDetail.correct_answers_count }}</span>
             <X
-              class="text-red-600"
-              :size="18"
+              class="text-red-600 flex-shrink-0"
+              :size="16"
             />
           </span>
         </div>
       </div>
     </div>
 
-    <div class="flex items-center gap-4 p-4 rounded-xl border bg-background">
+    <div class="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl border bg-background">
       <Timer
-        class="h-10 w-10 md:h-12 md:w-12 text-primary bg-primary/20 rounded-full p-2 md:p-3 border border-primary"
+        class="h-10 w-10 md:h-12 md:w-12 text-primary bg-primary/20 rounded-full p-2.5 md:p-3 border border-primary flex-shrink-0"
         :stroke-width="1.5"
       />
-      <div>
-        <p class="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wide mb-1">Temps écoulé</p>
-        <p class="text-base md:text-lg font-bold">
+      <div class="min-w-0 flex-1">
+        <p class="text-xs lg:text-sm font-medium text-muted-foreground uppercase tracking-wide mb-1">Temps écoulé</p>
+        <p class="text-lg lg:text-xl font-bold">
           {{ convertToMinutes(resultDetail.completed_in) }}
         </p>
         <p class="text-xs text-muted-foreground mt-1">
@@ -93,14 +95,16 @@ const convertToMinutes = (ms: number): string => {
       </div>
     </div>
 
-    <div class="flex items-center gap-4 p-4 rounded-xl border bg-background">
+    <div
+      class="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl border bg-background sm:col-span-2 lg:col-span-1"
+    >
       <ChartNoAxesColumnIncreasing
-        class="h-10 w-10 md:h-12 md:w-12 text-primary bg-primary/20 rounded-full p-2 md:p-3 border border-primary"
+        class="h-10 w-10 lg:h-12 lg:w-12 text-primary bg-primary/20 rounded-full p-2.5 lg:p-3 border border-primary flex-shrink-0"
         :stroke-width="1.5"
       />
-      <div>
-        <p class="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wide mb-1">Précision</p>
-        <p class="text-base md:text-lg font-bold">{{ answeredPercentage }}%</p>
+      <div class="min-w-0 flex-1">
+        <p class="text-xs lg:text-sm font-medium text-muted-foreground uppercase tracking-wide mb-1">Précision</p>
+        <p class="text-lg lg:text-xl font-bold">{{ answeredPercentage }}%</p>
         <p class="text-xs text-muted-foreground mt-1">de réponses correctes</p>
       </div>
     </div>

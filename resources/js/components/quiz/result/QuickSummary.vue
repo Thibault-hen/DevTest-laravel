@@ -3,26 +3,15 @@ import HeadingSmall from '@/components/shared/HeadingSmall.vue';
 import Card from '@/components/ui/card/Card.vue';
 import { ResultQuestionData } from '@/types/generated';
 import { Check, X } from 'lucide-vue-next';
-import { computed } from 'vue';
 
 const props = defineProps<{
   summary: ResultQuestionData[];
 }>();
-
-const stats = computed(() => {
-  const correct = props.summary.filter((r) => r.is_correct).length;
-  const total = props.summary.length;
-  return {
-    correct,
-    incorrect: total - correct,
-    percentage: Math.round((correct / total) * 100),
-  };
-});
 </script>
 
 <template>
   <Card
-    class="gap-2 h-fit lg:sticky border-none bg-transparent !shadow-none lg:top-20 max-h-[40vh] lg:max-h-[80vh] overflow-y-auto rounded-sm p-0"
+    class="gap-2 h-fit xl:sticky border-none bg-transparent !shadow-none xl:top-20 max-h-[40vh] lg:max-h-[80vh] overflow-y-auto rounded-sm p-0"
   >
     <HeadingSmall title="Résumé rapide" />
 

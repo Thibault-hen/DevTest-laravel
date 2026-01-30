@@ -6,7 +6,6 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\File;
 
 class CategorySeeder extends Seeder
 {
@@ -15,18 +14,6 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $jsonPath = database_path('data/categories.json');
-
-        if (! File::exists($jsonPath)) {
-            $this->command->error("File not found: {$jsonPath}");
-
-            return;
-        }
-
-        $categories = json_decode(File::get($jsonPath), true);
-
-        foreach ($categories as $category) {
-            Category::create($category);
-        }
+        Category::factory()->count(4)->create();
     }
 }

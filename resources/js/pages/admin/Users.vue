@@ -1,37 +1,46 @@
 <script setup lang="ts">
-import PlaceholderPattern from '@/components/PlaceholderPattern.vue';
+import DataTable from '@/components/admin/DataTable.vue';
+import { usersColumns } from '@/components/admin/user/Column';
+import { ViewUserModal } from '@/components/admin/user/modals';
 import AdminLayout from '@/layouts/AdminLayout.vue';
+import { UserData } from '@/types/generated';
 import { Head } from '@inertiajs/vue3';
-defineOptions({
-  layout: AdminLayout,
-});
+import { ref } from 'vue';
+
+const props = defineProps<{
+  users: UserData[];
+}>();
+
+const showViewModal = ref(false);
+const showDeleteModal = ref(false);
+const selectedUser = ref<UserData | null>(null);
+
+const openViewModal = (user: UserData): void => {
+  selectedUser.value = user;
+  showViewModal.value = true;
+  console.log('Opening view modal for user:', user);
+};
+
+const openDeleteModal = (user: UserData): void => {
+  selectedUser.value = user;
+  showDeleteModal.value = true;
+};
 </script>
 
 <template>
-  <Head title="Utilisateurs" />
+  <AdminLayout>
+    <ViewUserModal
+      :user="selectedUser"
+      v-model="showViewModal"
+    />
+    <Head title="Utilisateurs" />
 
-  <div class="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
-    <div class="grid auto-rows-min gap-4 md:grid-cols-3">
-      <div
-        class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
-      >
-        <PlaceholderPattern />
-      </div>
-      <div
-        class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
-      >
-        <PlaceholderPattern />
-      </div>
-      <div
-        class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
-      >
-        <PlaceholderPattern />
-      </div>
+    <div class="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
+      <DataTable
+        :data="props.users"
+        :columns="usersColumns"
+        :meta="{ onOpenView: openViewModal, onOpenDelete: openDeleteModal }"
+      />
     </div>
-    <div
-      class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border"
-    >
-      <PlaceholderPattern />
-    </div>
-  </div>
+  </AdminLayout>
 </template>

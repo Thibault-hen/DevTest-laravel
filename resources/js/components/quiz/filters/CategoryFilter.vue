@@ -75,16 +75,16 @@ const resetCategories = (): void => {
         class="flex items-center space-x-3"
       >
         <Checkbox
-          v-if="category?.name"
+          v-if="category?.title"
           :id="category.id"
-          :model-value="isCategorySelected(category.name!)"
-          @update:model-value="() => toggleCategory(category.name)"
+          :model-value="isCategorySelected(category.title!)"
+          @update:model-value="() => toggleCategory(category.title)"
         />
         <Label
           :for="category?.id"
           class="flex cursor-pointer items-center gap-2"
         >
-          {{ category?.name }}
+          {{ category?.title }}
           <Badge class="border border-border bg-background text-black dark:text-white">
             {{ category?.quizzes_count }}
           </Badge>

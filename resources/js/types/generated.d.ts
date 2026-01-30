@@ -33,6 +33,7 @@ level: string;
 color: string | null;
 };
 export type CreateOrUpdateQuizAnswerData = {
+id: string | null;
 content: string;
 is_correct: boolean;
 };
@@ -49,6 +50,7 @@ icon: any | null;
 questions: Array<CreateOrUpdateQuizQuestionData>;
 };
 export type CreateOrUpdateQuizQuestionData = {
+id: string | null;
 content: string;
 is_multiple: boolean;
 timer: number;
@@ -160,6 +162,7 @@ results: Array<ResultQuestionData>;
 user_answers: Array<AnswerResultData>;
 quiz: QuizData;
 user_rating: RatingData | null;
+user: UserData | null;
 };
 export type ResultPostData = {
 total_time: number;
@@ -169,12 +172,30 @@ export type ResultQuestionData = {
 question: QuestionResultData;
 is_correct: boolean;
 };
+export type SpecializationData = {
+id: string;
+name: string;
+created_at: any | null;
+updated_at: any | null;
+};
 export type ThemeData = {
 id: string;
 title: string;
 created_at: any | null;
 updated_at: any | null;
 quizzes_count: number | null;
+};
+export type UserData = {
+id: string;
+name: string;
+email: string;
+specialization: SpecializationData | null;
+avatar: string | null;
+created_at: any | null;
+updated_at: any | null;
+email_verified_at: string | null;
+two_factor_confirmed_at: string | null;
+is_admin: boolean;
 };
 export type UserRatingData = {
 id: string;

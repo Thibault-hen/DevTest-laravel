@@ -9,6 +9,7 @@ use App\Data\Result\ResultData;
 use App\Data\Result\ResultPostData;
 use App\Models\Quiz;
 use App\Models\Result;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class ResultService
@@ -61,9 +62,25 @@ class ResultService
             ->toArray();
     }
 
-    /**
-     * get a short summary of the questions with a boolean indicating if answered correctly
-     */
+    public function getAllQuizSummaryResults(): Collection
+    {
+        $results = Result::with('resultUserAnswers.answer.question', 'quiz.questions.answers', 'user')->get();
+
+        $data = $results->map(function ($result) {
+            $summaryData = $this->buildQuizSummary($result);
+
+            return ResultData::from([
+                ...$result->toArray(),
+                'user_answers' => $summaryData['user_answers'],
+                'results' => $summaryData['result'],
+                'quiz' => $result->quiz,
+                'user' => $result->user,
+            ]);
+        });
+
+        return $data;
+    }
+
     public function getQuizSummaryResult(Result $result): ResultData
     {
         $result->load('resultUserAnswers.answer.question', 'quiz.questions.answers', 'quiz.ratings');
@@ -72,6 +89,24 @@ class ResultService
             ->where('user_id', $result->user_id)
             ->first();
 
+        $summaryData = $this->buildQuizSummary($result);
+
+        return ResultData::from([
+            ...$result->toArray(),
+            'user_answers' => $summaryData['user_answers'],
+            'results' => $summaryData['result'],
+            'quiz' => $result->quiz,
+            'user_rating' => $userRating,
+        ]);
+    }
+
+    /**
+     * get a complete summary of the quiz result including question details and correctness.
+     *
+     * @return array<string, mixed>
+     */
+    private function buildQuizSummary(Result $result): array
+    {
         $allQuestions = $result->quiz->questions->keyBy('id');
 
         $answeredQuestions = collect($result->resultUserAnswers)
@@ -104,12 +139,9 @@ class ResultService
             ->values()
             ->toArray();
 
-        return ResultData::from([
-            ...$result->toArray(),
+        return [
+            'result' => $questionsList,
             'user_answers' => $userAnswers,
-            'results' => $questionsList,
-            'quiz' => $result->quiz,
-            'user_rating' => $userRating,
-        ]);
+        ];
     }
 }

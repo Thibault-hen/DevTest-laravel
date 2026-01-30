@@ -22,10 +22,12 @@ export function useQuizAdminForm(
     themes_ids: [],
     icon: null,
     questions: Array.from({ length: quizConfig.MIN_QUESTIONS }, () => ({
+      id: null,
       content: '',
       is_multiple: false,
       timer: quizConfig.MIN_QUESTION_TIMER_S,
       answers: Array.from({ length: quizConfig.MIN_ANSWERS_PER_QUESTION }, () => ({
+        id: null,
         content: '',
         is_correct: false,
       })),
@@ -42,10 +44,12 @@ export function useQuizAdminForm(
     themes_ids: [],
     icon: null,
     questions: Array.from({ length: quizConfig.MIN_QUESTIONS }, () => ({
+      id: null,
       content: '',
       is_multiple: false,
       timer: quizConfig.MIN_QUESTION_TIMER_S,
       answers: Array.from({ length: quizConfig.MIN_ANSWERS_PER_QUESTION }, () => ({
+        id: null,
         content: '',
         is_correct: false,
       })),
@@ -67,19 +71,23 @@ export function useQuizAdminForm(
         editForm.icon = null;
         editForm.questions =
           newQuiz.questions?.map((question: QuestionData) => ({
+            id: question.id || null,
             content: question.content,
             is_multiple: question.is_multiple,
             timer: question.timer,
             answers: question.answers.map((answer: AnswerData) => ({
+              id: answer.id || null,
               content: answer.content,
               is_correct: answer.is_correct,
             })),
           })) ||
           Array.from({ length: quizConfig.MIN_QUESTIONS }, () => ({
+            id: null,
             content: '',
             is_multiple: false,
             timer: quizConfig.MIN_QUESTION_TIMER_S,
             answers: Array.from({ length: quizConfig.MIN_ANSWERS_PER_QUESTION }, () => ({
+              id: null,
               content: '',
               is_correct: false,
             })),
@@ -138,6 +146,7 @@ export function useQuizAdminForm(
         editForm.reset();
       },
       onError: () => {
+        console.log(editForm.errors);
         errorToast('Une erreur est survenue lors de la mise à jour du quiz.');
       },
     });

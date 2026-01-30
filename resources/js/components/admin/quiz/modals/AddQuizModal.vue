@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DifficultyBadge from '@/components/quiz/badges/DifficultyBadge.vue';
+import DifficultyBadge from '@/components/shared/badges/DifficultyBadge.vue';
 import HeadingSmall from '@/components/shared/HeadingSmall.vue';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';

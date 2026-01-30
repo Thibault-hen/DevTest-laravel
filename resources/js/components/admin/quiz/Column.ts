@@ -1,6 +1,6 @@
 import QuizActions from '@/components/admin/quiz/QuizActions.vue';
-import CategoryBadge from '@/components/quiz/badges/CategoryBadge.vue';
-import DifficultyBadge from '@/components/quiz/badges/DifficultyBadge.vue';
+import CategoryBadge from '@/components/shared/badges/CategoryBadge.vue';
+import DifficultyBadge from '@/components/shared/badges/DifficultyBadge.vue';
 import { QuizData } from '@/types/generated';
 import type { ColumnDef } from '@tanstack/vue-table';
 import { h } from 'vue';

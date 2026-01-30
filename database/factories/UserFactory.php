@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Models\Specialization;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -26,15 +26,15 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $jsonPath = database_path('data/specializations.json');
-        $specializations = json_decode(File::get($jsonPath), true);
+        $specializations = Specialization::all()->pluck('id')->toArray();
 
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
+            'two_factor_confirmed_at' => $this->faker->boolean(50) ? now() : null,
             'avatar' => 'storage/avatar/ezcat.jpg',
-            'specialization' => $specializations[array_rand($specializations)],
+            'specialization_id' => $this->faker->randomElement($specializations),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import CategoryBadge from '@/components/quiz/badges/CategoryBadge.vue';
-import DifficultyBadge from '@/components/quiz/badges/DifficultyBadge.vue';
-import ThemeBadge from '@/components/quiz/badges/ThemeBadge.vue';
-import UnavailableBadge from '@/components/quiz/badges/UnavailableBadge.vue';
 import QuizDetailsMeta from '@/components/quiz/QuizDetailsMeta.vue';
 import QuizInfoModal from '@/components/quiz/QuizInfoModal.vue';
 import Ratings from '@/components/quiz/rating/Ratings.vue';
 import StarRating from '@/components/quiz/rating/StarRating.vue';
+import CategoryBadge from '@/components/shared/badges/CategoryBadge.vue';
+import DifficultyBadge from '@/components/shared/badges/DifficultyBadge.vue';
+import ThemeBadge from '@/components/shared/badges/ThemeBadge.vue';
+import UnavailableBadge from '@/components/shared/badges/UnavailableBadge.vue';
 import Button from '@/components/ui/button/Button.vue';
 import Card from '@/components/ui/card/Card.vue';
 import { login } from '@/routes';
@@ -50,7 +50,7 @@ const props = defineProps<{
         <div class="h-full flex items-center justify-center">
           <div v-if="props.quiz.image_url">
             <img
-              :src="`${props.quiz.image_url}`"
+              :src="`/${props.quiz.image_url}`"
               :alt="`${props.quiz.title} image` || 'Quiz image'"
               class="h-32 w-32 lg:h-44 lg:w-44 rounded-md object-fit transition-transform duration-300"
             />

@@ -8,19 +8,16 @@ use App\Data\Rating\RatingPostData;
 use App\Http\Controllers\Controller;
 use App\Services\Rating\RatingService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class RatingController extends Controller
 {
-    public function store(Request $request, RatingService $ratingService): RedirectResponse
+    public function store(RatingPostData $data, RatingService $ratingService): RedirectResponse
     {
-        $validated = RatingPostData::validateAndCreate($request->all());
-
-        if ($ratingService->hasUserRatedQuiz(auth()->id(), $validated->quiz_id)) {
+        if ($ratingService->hasUserRatedQuiz(auth()->id(), $data->quiz_id)) {
             return back()->withErrors(['ratingAlreadyExists' => 'Vous avez déjà évalué ce quiz.']);
         }
 
-        $ratingService->createRating($validated);
+        $ratingService->createRating($data);
 
         return back()->with('success', 'Merci pour votre évaluation !');
     }

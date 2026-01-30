@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import CategoryBadge from '@/components/quiz/badges/CategoryBadge.vue';
-import DifficultyBadge from '@/components/quiz/badges/DifficultyBadge.vue';
-import UnavailableBadge from '@/components/quiz/badges/UnavailableBadge.vue';
 import StarRating from '@/components/quiz/rating/StarRating.vue';
+import CategoryBadge from '@/components/shared/badges/CategoryBadge.vue';
+import DifficultyBadge from '@/components/shared/badges/DifficultyBadge.vue';
+import UnavailableBadge from '@/components/shared/badges/UnavailableBadge.vue';
 import Card from '@/components/ui/card/Card.vue';
 import CardContent from '@/components/ui/card/CardContent.vue';
 import CardFooter from '@/components/ui/card/CardFooter.vue';
@@ -19,13 +19,13 @@ const props = defineProps<{ quiz: QuizData }>();
 <template>
   <Link :href="quiz(props.quiz.slug)">
     <Card
-      class="w-full min-w-[340px] cursor-pointer pb-0 transition-all duration-200 ease-in-out hover:scale-[1.03] hover:border-primary"
+      class="w-full min-w-[340px] cursor-pointer pb-0 transition-all duration-100 ease-in-out hover:scale-[1.01] hover:border-primary"
     >
       <CardHeader class="flex">
         <div class="flex items-center justify-center gap-2">
           <img
             v-if="props.quiz.image_url"
-            :src="`${props.quiz.image_url}`"
+            :src="`/${props.quiz.image_url}`"
             :alt="`${props.quiz.title} image` || 'Quiz image'"
             class="flex h-6 w-6 rounded"
           />

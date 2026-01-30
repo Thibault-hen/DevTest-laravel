@@ -25,6 +25,7 @@ const countdownInterval = setInterval(() => {
 defineOptions({
   layout: AppLayout,
 });
+console.log(props);
 </script>
 
 <template>

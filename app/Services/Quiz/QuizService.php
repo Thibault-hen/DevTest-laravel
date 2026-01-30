@@ -151,9 +151,28 @@ class QuizService
 
             $data->themes_ids ? $quiz->themes()->sync($data->themes_ids) : $quiz->themes()->detach();
 
-            $quiz->questions()->delete();
+            // $quiz->questions()->delete();
 
-            $this->createQuestions($data, $quiz);
+            collect($data->questions)->map(function ($questionData) use ($quiz) {
+                $question = $quiz->questions()->updateOrCreate(
+                    ['id' => $questionData['id'] ?? null],
+                    [
+                        'content' => $questionData['content'],
+                        'is_multiple' => $questionData['is_multiple'],
+                        'timer' => $questionData['timer'],
+                    ]
+                );
+
+                foreach ($questionData['answers'] as $answerData) {
+                    $question->answers()->updateOrCreate(
+                        ['id' => $answerData['id'] ?? null],
+                        [
+                            'content' => $answerData['content'],
+                            'is_correct' => $answerData['is_correct'],
+                        ]
+                    );
+                }
+            });
         });
     }
 

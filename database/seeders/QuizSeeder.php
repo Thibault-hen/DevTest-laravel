@@ -87,7 +87,7 @@ class QuizSeeder extends Seeder
         $totalQuestions = Question::count();
         $totalAnswers = Answer::count();
 
-        $this->command->info('✅ Seeding completed.');
+        $this->command->info('Seeding completed.');
         $this->command->info("{$totalQuizzes} quizzes created");
         $this->command->info("{$totalQuestions} questions created");
         $this->command->info("{$totalAnswers} answers created");

@@ -48,7 +48,7 @@ watch(
   () => pageProps.flash?.success,
   (newMessage) => {
     if (newMessage) {
-      successToast('Quiz terminé', newMessage);
+      successToast(newMessage, { title: 'Quiz terminé' });
     }
   },
   { immediate: true },

@@ -5,7 +5,9 @@ declare(strict_types=1);
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminDifficultyController;
 use App\Http\Controllers\Admin\AdminQuizController;
+use App\Http\Controllers\Admin\AdminResultController;
 use App\Http\Controllers\Admin\AdminThemeController;
+use App\Http\Controllers\Admin\AdminUserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -59,10 +61,16 @@ Route::prefix('/difficulties')->group(function () {
         ->name('admin.difficulties.delete');
 });
 
-Route::get('/results', function () {
-    return Inertia::render('admin/Results');
-})->name('admin.results');
+Route::prefix('/results')->group(function () {
+    Route::get('/', [AdminResultController::class, 'index'])
+        ->name('admin.results');
+    Route::delete('/{result}', [AdminResultController::class, 'destroy'])
+        ->name('admin.results.delete');
+});
 
-Route::get('/users', function () {
-    return Inertia::render('admin/Users');
-})->name('admin.users');
+Route::prefix('/users')->group(function () {
+    Route::get('/', [AdminUserController::class, 'index'])
+        ->name('admin.users');
+    Route::delete('/{user}', [AdminUserController::class, 'destroy'])
+        ->name('admin.users.delete');
+});

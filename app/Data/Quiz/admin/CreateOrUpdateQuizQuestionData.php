@@ -9,6 +9,7 @@ use Spatie\LaravelData\Attributes\DataCollectionOf;
 use Spatie\LaravelData\Attributes\MergeValidationRules;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\Min;
+use Spatie\LaravelData\Attributes\Validation\Uuid;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\DataCollection;
 use Spatie\LaravelData\Support\Validation\ValidationContext;
@@ -19,11 +20,14 @@ use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 class CreateOrUpdateQuizQuestionData extends Data
 {
     public function __construct(
+        #[Uuid]
+        public ?string $id,
         #[Min(5), Max(255)]
         public string $content,
 
         public bool $is_multiple,
 
+        #[Min(5), Max(60)]
         public int $timer,
 
         #[DataCollectionOf(CreateOrUpdateQuizAnswerData::class)]
@@ -54,6 +58,8 @@ class CreateOrUpdateQuizQuestionData extends Data
             'content.required' => 'Le contenu de la question est requis.',
             'answers.min' => 'Une question doit contenir au moins :min réponses.',
             'answers.max' => 'Une question ne peut pas contenir plus de :max réponses.',
+            'timer.min' => 'Le temps alloué à la question doit être au moins de :min secondes.',
+            'timer.max' => 'Le temps alloué à la question ne peut pas dépasser :max secondes.',
         ];
     }
 }

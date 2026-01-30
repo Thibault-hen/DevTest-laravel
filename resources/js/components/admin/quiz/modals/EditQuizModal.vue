@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DifficultyBadge from '@/components/quiz/badges/DifficultyBadge.vue';
+import DifficultyBadge from '@/components/shared/badges/DifficultyBadge.vue';
 import HeadingSmall from '@/components/shared/HeadingSmall.vue';
 import Button from '@/components/ui/button/Button.vue';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -271,7 +271,6 @@ const handleEdit = (): void => {
                             v-model="question.timer"
                             placeholder="15"
                             type="number"
-                            :min="quizConfig.MIN_QUESTION_TIMER_S"
                             :max="quizConfig.MAX_QUESTION_TIMER_S"
                             class="w-16"
                           />

@@ -1,5 +1,5 @@
-import DifficultyBadge from '@/components/quiz/badges/DifficultyBadge.vue';
-import QuizzesCountBadge from '@/components/quiz/badges/QuizzesCountBadge.vue';
+import DifficultyBadge from '@/components/shared/badges/DifficultyBadge.vue';
+import QuizzesCountBadge from '@/components/shared/badges/QuizzesCountBadge.vue';
 import { DifficultyData } from '@/types/generated';
 import type { ColumnDef } from '@tanstack/vue-table';
 import { h } from 'vue';
@@ -19,7 +19,7 @@ export const difficultyColumns: ColumnDef<DifficultyData>[] = [
     header: () => h('div', 'Difficulté'),
     meta: { title: 'Difficulté' },
     cell: ({ row }) => {
-      return h(DifficultyBadge, { class: 'font-medium', difficulty: row.original }, row.original.level);
+      return h(DifficultyBadge, { class: 'font-medium', difficulty: row.original });
     },
   },
   {
@@ -36,6 +36,14 @@ export const difficultyColumns: ColumnDef<DifficultyData>[] = [
     meta: { title: 'Créé le' },
     cell: ({ row }) => {
       return h('div', { class: 'font-medium' }, row.original.created_at);
+    },
+  },
+  {
+    accessorKey: 'updated_at',
+    header: () => h('div', 'Mis à jour le'),
+    meta: { title: 'Mis à jour le' },
+    cell: ({ row }) => {
+      return h('div', { class: 'font-medium' }, row.original.updated_at);
     },
   },
   {

@@ -15,14 +15,12 @@ import { store } from '@/routes/rating';
 import type { RatingErrors } from '@/types';
 import { QuizData, RatingPostData } from '@/types/generated';
 import { errorToast, successToast } from '@/utils/toast';
-import { useForm, usePage } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3';
 import { ref, watch } from 'vue';
 
 const props = defineProps<{
   quiz: QuizData;
 }>();
-
-const page = usePage();
 
 const MAX_LENGTH = 300;
 
@@ -60,14 +58,14 @@ const closeDialog = (): void => {
 const handleSubmit = (): void => {
   form.post(store().url, {
     onSuccess() {
-      successToast('Merci', 'Votre évaluation a bien été enregistrée');
+      successToast('Votre évaluation a bien été enregistrée', { title: 'Merci' });
       closeDialog();
     },
     onError(errors: RatingErrors) {
       if (errors.ratingAlreadyExists) {
-        return errorToast('Erreur', errors.ratingAlreadyExists);
+        return errorToast(errors.ratingAlreadyExists);
       }
-      errorToast('Erreur', "Une erreur est survenue lors de la création de l'évaluation.");
+      errorToast("Une erreur est survenue lors de la création de l'évaluation.", { title: 'Erreur' });
     },
   });
 };
@@ -96,7 +94,7 @@ const handleSubmit = (): void => {
               >
               <Textarea
                 id="comment"
-                :v-model="form.comment ?? ''"
+                v-model="form.comment!"
               />
               <span class="text-sm self-end">{{ remainingCharacters }} caractères restants</span>
             </div>
