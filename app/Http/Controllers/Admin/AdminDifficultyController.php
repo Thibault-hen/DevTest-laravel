@@ -15,37 +15,39 @@ use Inertia\Response;
 
 class AdminDifficultyController extends Controller
 {
-    public function index(DifficultyService $difficultyService): Response
+    public function __construct(private readonly DifficultyService $difficultyService) {}
+
+    public function index(): Response
     {
-        $difficulties = $difficultyService->getAllDifficulties();
+        $difficulties = $this->difficultyService->getAllDifficulties();
 
         return Inertia::render('admin/Difficulties', [
             'difficulties' => $difficulties,
         ]);
     }
 
-    public function store(CreateOrUpdateDifficultyData $data, DifficultyService $difficultyService): RedirectResponse
+    public function store(CreateOrUpdateDifficultyData $data): RedirectResponse
     {
-        $difficultyService->createDifficulty($data);
+        $this->difficultyService->createDifficulty($data);
 
         return to_route('admin.difficulties');
     }
 
-    public function update(Difficulty $difficulty, Request $request, DifficultyService $difficultyService): RedirectResponse
+    public function update(Difficulty $difficulty, Request $request): RedirectResponse
     {
         $data = CreateOrUpdateDifficultyData::validateAndCreate([
             ...$request->all(),
             'id' => $difficulty->id,
         ]);
 
-        $difficultyService->updateDifficulty($data, $difficulty);
+        $this->difficultyService->updateDifficulty($data, $difficulty);
 
         return to_route('admin.difficulties');
     }
 
-    public function destroy(DifficultyService $difficultyService, Difficulty $difficulty): RedirectResponse
+    public function destroy(Difficulty $difficulty): RedirectResponse
     {
-        $difficultyService->deleteDifficulty($difficulty);
+        $this->difficultyService->deleteDifficulty($difficulty);
 
         return to_route('admin.difficulties');
     }

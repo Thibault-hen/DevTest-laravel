@@ -2,36 +2,27 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Result;
+namespace App\Checkers;
 
 use App\Data\Result\ResultPostData;
-use App\Models\Answer;
+use App\Queries\Result\GetCorrectAnswersByQuestionQuery;
 use Illuminate\Support\Collection;
 
-class AnswerChecker
+final class AnswerChecker
 {
-    private function getCorrectAnswersByQuestion(array $questionIds): Collection
-    {
-        return Answer::query()
-            ->whereIn('question_id', $questionIds)
-            ->where('is_correct', true)
-            ->get()
-            ->groupBy('question_id')
-            ->map(fn ($answers) => $answers->pluck('id')->toArray());
-    }
+    public function __construct(private readonly GetCorrectAnswersByQuestionQuery $getCorrectAnswersByQuestionQuery) {}
 
     /**
-     * Get the count of correct answers from the user's result data.
+     * Get correct answers count from the user's result data.
      *
-     * @param  \App\Data\Result\ResultPostData  $resultData The result data containing user answers
-     * @return int
+     * @param  \App\Data\Result\ResultPostData  $resultData  The result data containing user answers
      */
-    public function getCorrectAnswersCount(ResultPostData $resultData): int
+    public function __invoke(ResultPostData $resultData): int
     {
         $questions = $resultData->questions->toCollection();
         $questionIds = $questions->pluck('question_id')->toArray();
 
-        $correctAnswersByQuestion = $this->getCorrectAnswersByQuestion($questionIds);
+        $correctAnswersByQuestion = $this->getCorrectAnswersByQuestionQuery->execute($questionIds);
 
         return $questions->filter(fn ($questionData) => $this->isCorrect(
             $questionData->question_id,

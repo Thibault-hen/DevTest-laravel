@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services\Quiz;
 
+use App\Actions\Quiz\CreateQuizAction;
+use App\Actions\Quiz\UpdateQuizAction;
 use App\Data\Category\CategoryData;
 use App\Data\Difficulty\DifficultyData;
 use App\Data\Quiz\admin\CreateOrUpdateQuizData;
@@ -13,167 +15,53 @@ use App\Data\Quiz\QuizzesData;
 use App\Data\Theme\ThemeData;
 use App\Enums\CacheKeys;
 use App\Enums\CacheTags;
-use App\Models\Category;
-use App\Models\Difficulty;
 use App\Models\Quiz;
-use App\Models\Theme;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\UploadedFile;
+use App\Queries\Quiz\GetAllQuizzesQuery;
+use App\Queries\Quiz\GetMetaDataQuery;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Spatie\LaravelData\DataCollection;
 
 class QuizService
 {
     private const int CACHE_TTL = 3600;
 
-    public function getQuizzesData(): QuizzesData
+    public function __construct(
+        private readonly GetAllQuizzesQuery $getAllQuizzesQuery,
+        private readonly GetMetaDataQuery $getMetaDataQuery,
+        private readonly CreateQuizAction $createQuizAction,
+        private readonly UpdateQuizAction $updateQuizAction,
+    ) {}
+
+    public function getQuizzesData(bool $withQuestions = false): QuizzesData
     {
         return Cache::tags([CacheTags::QUIZ->value])->remember(
-            CacheKeys::QUIZZES->value,
+            $withQuestions ? CacheKeys::QUIZZES_WITH_QUESTIONS->value : CacheKeys::QUIZZES->value,
             self::CACHE_TTL,
-            fn () => $this->buildQuizzesData()
+            fn () => $this->buildQuizzesData($withQuestions)
         );
     }
 
-    private function buildQuizzesData(): QuizzesData
+    private function buildQuizzesData(bool $withQuestions): QuizzesData
     {
-        $quizzes = $this->getAllQuizzes();
-
-        $themes = Theme::all();
-        $themes->loadCount('quizzes');
-
-        $categories = Category::all();
-        $categories->loadCount('quizzes');
-
-        $difficulties = Difficulty::all();
-        $difficulties->loadCount('quizzes');
+        $quizzes = $this->getAllQuizzesQuery->execute($withQuestions);
+        $metaData = $this->getMetaDataQuery->execute();
 
         return new QuizzesData(
             quizzes: QuizData::collect($quizzes, DataCollection::class),
-            themes: ThemeData::collect($themes, DataCollection::class),
-            categories: CategoryData::collect($categories, DataCollection::class),
-            difficulties: DifficultyData::collect($difficulties, DataCollection::class),
+            themes: ThemeData::collect($metaData['themes'], DataCollection::class),
+            categories: CategoryData::collect($metaData['categories'], DataCollection::class),
+            difficulties: DifficultyData::collect($metaData['difficulties'], DataCollection::class),
         );
-    }
-
-    public function getAllQuizzes(): Collection
-    {
-        return Quiz::with('themes', 'category', 'author', 'difficulty')
-            ->withAvg('ratings', 'score')
-            ->withCount('ratings')
-            ->latest('created_at')
-            ->latest('title')
-            ->get();
-    }
-
-    public function getLatestQuizzes(int $quizzesCount): Collection
-    {
-        return Quiz::with(['difficulty', 'author', 'category', 'themes'])
-            ->withAvg('ratings', 'score')
-            ->withCount('ratings')
-            ->latest('created_at')
-            ->take($quizzesCount)
-            ->get();
-    }
-
-    private function storeQuizImage(?UploadedFile $icon, ?string $title): ?string
-    {
-        if (! $icon) {
-            return null;
-        }
-
-        $fileName = Str::slug(($title ?? 'quiz-icon').'-'.time()).'.'.$icon->guessExtension();
-        $path = $icon->storeAs('icons', $fileName, 'public');
-
-        return Storage::url($path);
-    }
-
-    private function createQuestions(CreateOrUpdateQuizData $data, Quiz $quiz): void
-    {
-        foreach ($data->questions as $questionData) {
-            $question = $quiz->questions()->create([
-                'content' => $questionData->content,
-                'is_multiple' => $questionData->is_multiple,
-                'timer' => $questionData->timer,
-            ]);
-
-            $question->answers()->createMany(
-                collect($questionData->answers)->map(fn ($answerData) => [
-                    'content' => $answerData['content'],
-                    'is_correct' => $answerData['is_correct'],
-                ])->toArray()
-            );
-        }
     }
 
     public function createQuiz(CreateOrUpdateQuizData $data): void
     {
-        $imageUrl = $this->storeQuizImage($data->icon, $data->title);
-
-        DB::transaction(function () use ($data, $imageUrl) {
-            $quiz = Quiz::create([
-                'title' => $data->title,
-                'description' => $data->description,
-                'duration' => $data->duration,
-                'difficulty_id' => $data->difficulty_id,
-                'category_id' => $data->category_id,
-                'is_published' => $data->is_published,
-                'image_url' => $imageUrl,
-                'author_id' => auth()->id(),
-            ]);
-
-            if (! empty($data->themes_ids)) {
-                $quiz->themes()->sync($data->themes_ids);
-            }
-
-            $this->createQuestions($data, $quiz);
-        });
+        $this->createQuizAction->handle($data);
     }
 
     public function updateQuiz(Quiz $quiz, CreateOrUpdateQuizData $data): void
     {
-        $imageUrl = $data->icon ? $this->storeQuizImage($data->icon, $data->title) : $quiz->image_url;
-
-        DB::transaction(function () use ($data, $quiz, $imageUrl) {
-            $quiz->fill([
-                'title' => $data->title,
-                'description' => $data->description,
-                'duration' => $data->duration,
-                'difficulty_id' => $data->difficulty_id,
-                'category_id' => $data->category_id,
-                'is_published' => $data->is_published,
-                'image_url' => $imageUrl,
-            ]);
-            $quiz->save();
-
-            $data->themes_ids ? $quiz->themes()->sync($data->themes_ids) : $quiz->themes()->detach();
-
-            // $quiz->questions()->delete();
-
-            collect($data->questions)->map(function ($questionData) use ($quiz) {
-                $question = $quiz->questions()->updateOrCreate(
-                    ['id' => $questionData['id'] ?? null],
-                    [
-                        'content' => $questionData['content'],
-                        'is_multiple' => $questionData['is_multiple'],
-                        'timer' => $questionData['timer'],
-                    ]
-                );
-
-                foreach ($questionData['answers'] as $answerData) {
-                    $question->answers()->updateOrCreate(
-                        ['id' => $answerData['id'] ?? null],
-                        [
-                            'content' => $answerData['content'],
-                            'is_correct' => $answerData['is_correct'],
-                        ]
-                    );
-                }
-            });
-        });
+        $this->updateQuizAction->handle($quiz, $data);
     }
 
     public function setQuizPublicationStatus(Quiz $quiz, PublishQuizData $data): void

@@ -75,9 +75,6 @@ class Quiz extends Model
         return $this->is_published;
     }
 
-    /**
-     * Load quiz details for viewing (show page - before playing)
-     */
     public function loadQuizDetails(): Quiz
     {
         return $this->load('author', 'difficulty', 'themes', 'category', 'ratings.user.specialization')
@@ -85,9 +82,6 @@ class Quiz extends Model
             ->loadCount('ratings');
     }
 
-    /**
-     * Load quiz with questions and answers for playing
-     */
     public function loadForPlaying(): Quiz
     {
         return $this->load('questions.shuffledAnswers', 'themes', 'difficulty', 'category', 'author');

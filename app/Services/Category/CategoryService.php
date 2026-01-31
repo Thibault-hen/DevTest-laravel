@@ -7,14 +7,16 @@ namespace App\Services\Category;
 use App\Data\Category\CategoryData;
 use App\Data\Category\CreateOrUpdateCategoryData;
 use App\Models\Category;
+use App\Queries\Category\GetAllCategoriesQuery;
 use Illuminate\Support\Collection;
 
 class CategoryService
 {
+    public function __construct(private readonly GetAllCategoriesQuery $getAllCategoriesQuery) {}
+
     public function getAllCategories(): Collection
     {
-        $categories = Category::all();
-        $categories->loadCount('quizzes');
+        $categories = $this->getAllCategoriesQuery->execute();
 
         return CategoryData::collect($categories);
     }

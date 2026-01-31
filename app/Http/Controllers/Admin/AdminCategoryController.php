@@ -15,37 +15,39 @@ use Inertia\Response;
 
 class AdminCategoryController extends Controller
 {
-    public function index(CategoryService $categoryService): Response
+    public function __construct(private readonly CategoryService $categoryService) {}
+
+    public function index(): Response
     {
-        $categories = $categoryService->getAllCategories();
+        $categories = $this->categoryService->getAllCategories();
 
         return Inertia::render('admin/Categories', [
             'categories' => $categories,
         ]);
     }
 
-    public function store(CreateOrUpdateCategoryData $data, CategoryService $categoryService): RedirectResponse
+    public function store(CreateOrUpdateCategoryData $data): RedirectResponse
     {
-        $categoryService->createCategory($data);
+        $this->categoryService->createCategory($data);
 
         return to_route('admin.categories');
     }
 
-    public function update(Category $category, Request $request, CategoryService $categoryService): RedirectResponse
+    public function update(Category $category, Request $request): RedirectResponse
     {
         $data = CreateOrUpdateCategoryData::validateAndCreate([
             ...$request->all(),
             'id' => $category->id,
         ]);
 
-        $categoryService->updateCategory($category, $data);
+        $this->categoryService->updateCategory($category, $data);
 
         return to_route('admin.categories');
     }
 
-    public function destroy(Category $category, CategoryService $categoryService): RedirectResponse
+    public function destroy(Category $category): RedirectResponse
     {
-        $categoryService->deleteCategory($category);
+        $this->categoryService->deleteCategory($category);
 
         return to_route('admin.categories');
     }

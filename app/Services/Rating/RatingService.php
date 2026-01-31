@@ -6,15 +6,15 @@ namespace App\Services\Rating;
 
 use App\Data\Rating\RatingPostData;
 use App\Models\Rating;
+use App\Queries\Rating\HasUserRatedQuizQuery;
 
 class RatingService
 {
+    public function __construct(private readonly HasUserRatedQuizQuery $hasUserRatedQuizQuery) {}
+
     public function hasUserRatedQuiz(string $userId, string $quizId): bool
     {
-        return Rating::query()
-            ->where('user_id', $userId)
-            ->where('quiz_id', $quizId)
-            ->exists();
+        return $this->hasUserRatedQuizQuery->execute($userId, $quizId);
     }
 
     public function createRating(RatingPostData $data): Rating

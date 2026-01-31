@@ -28,9 +28,10 @@ describe('Quiz Submission', function () {
 
         $resultData = new ResultPostData(
             60,
-            new DataCollection(QuestionAnswerData::class, [
-                new QuestionAnswerData($question->id, [$correctAnswer->id]),
-            ])
+            new DataCollection(QuestionAnswerData::class,
+                [
+                    new QuestionAnswerData($question->id, [$correctAnswer->id]),
+                ])
         );
 
         $result = app(ResultService::class)->saveResult($quiz, $resultData, $user->id);

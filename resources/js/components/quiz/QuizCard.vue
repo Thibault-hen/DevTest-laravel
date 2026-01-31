@@ -25,7 +25,7 @@ const props = defineProps<{ quiz: QuizData }>();
         <div class="flex items-center justify-center gap-2">
           <img
             v-if="props.quiz.image_url"
-            :src="`/${props.quiz.image_url}`"
+            :src="props.quiz.image_url?.startsWith('/') ? props.quiz.image_url : '/' + props.quiz.image_url"
             :alt="`${props.quiz.title} image` || 'Quiz image'"
             class="flex h-6 w-6 rounded"
           />

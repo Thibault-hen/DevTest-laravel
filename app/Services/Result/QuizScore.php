@@ -6,13 +6,13 @@ namespace App\Services\Result;
 
 class QuizScore
 {
-    private const MILLISECONDS_PER_SECOND = 1000;
+    private const int MILLISECONDS_PER_SECOND = 1000;
 
-    private const TIME_PENALTY_SECONDS = 5;
+    private const int TIME_PENALTY_SECONDS = 5;
 
-    private const MULTIPLIER = 100;
+    private const int MULTIPLIER = 100;
 
-    private const POINTS_PER_CORRECT_ANSWER = 10;
+    private const int POINTS_PER_CORRECT_ANSWER = 10;
 
     public function __construct(
         public readonly int $baseScore,

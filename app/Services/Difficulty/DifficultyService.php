@@ -7,14 +7,16 @@ namespace App\Services\Difficulty;
 use App\Data\Difficulty\CreateOrUpdateDifficultyData;
 use App\Data\Difficulty\DifficultyData;
 use App\Models\Difficulty;
+use App\Queries\Difficulty\GetAllDifficultiesQuery;
 use Illuminate\Support\Collection;
 
 final class DifficultyService
 {
+    public function __construct(private readonly GetAllDifficultiesQuery $getAllDifficultiesQuery) {}
+
     public function getAllDifficulties(): Collection
     {
-        $difficulties = Difficulty::all();
-        $difficulties->loadCount('quizzes');
+        $difficulties = $this->getAllDifficultiesQuery->execute();
 
         return DifficultyData::collect($difficulties);
     }

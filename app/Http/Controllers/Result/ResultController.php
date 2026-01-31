@@ -16,19 +16,21 @@ use Inertia\Response;
 
 class ResultController extends Controller
 {
-    public function store(Request $request, Quiz $quiz, ResultService $resultService): RedirectResponse
+    public function __construct(private readonly ResultService $resultService) {}
+
+    public function store(Request $request, Quiz $quiz): RedirectResponse
     {
         $resultData = ResultPostData::validateAndCreate($request->all());
 
-        $result = $resultService->saveResult($quiz, $resultData, auth()->id());
+        $result = $this->resultService->saveResult($quiz, $resultData, auth()->id());
 
         return to_route('result.show', ['result' => $result->id])
             ->with('success', 'Merci d\'avoir participé ! Vos réponses ont été enregistrées avec succès.');
     }
 
-    public function show(Result $result, ResultService $resultService): Response
+    public function show(Result $result): Response
     {
-        $quizSummaryResult = $resultService->getQuizSummaryResult($result);
+        $quizSummaryResult = $this->resultService->getQuizSummaryResult($result);
 
         return Inertia::render('result/Result', [
             'quiz_result' => $quizSummaryResult,

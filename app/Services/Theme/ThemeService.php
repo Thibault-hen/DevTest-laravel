@@ -7,14 +7,16 @@ namespace App\Services\Theme;
 use App\Data\Theme\CreateOrUpdateThemeData;
 use App\Data\Theme\ThemeData;
 use App\Models\Theme;
+use App\Queries\Theme\GetAllThemeQuery;
 use Spatie\LaravelData\DataCollection;
 
 class ThemeService
 {
+    public function __construct(private readonly GetAllThemeQuery $getAllThemeQuery) {}
+
     public function getAllThemes(): DataCollection
     {
-        $themes = Theme::all();
-        $themes->loadCount('quizzes');
+        $themes = $this->getAllThemeQuery->execute();
 
         return ThemeData::collect($themes, DataCollection::class);
     }

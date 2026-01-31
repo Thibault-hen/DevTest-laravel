@@ -8,13 +8,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Result;
 use App\Services\Result\ResultService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class AdminResultController extends Controller
 {
-    public function index(Request $request, ResultService $resultService): Response
+    public function index(ResultService $resultService): Response
     {
         $results = $resultService->getAllQuizSummaryResults();
 
