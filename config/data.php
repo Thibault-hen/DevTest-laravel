@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 
 return [
@@ -15,7 +17,7 @@ return [
      * convert the date to the correct timezone. If set to null no timezone will
      * be passed.
      */
-    'date_timezone' => null,
+    'date_timezone' => 'Europe/Paris',
 
     /*
      * It is possible to enable certain features of the package, these would otherwise

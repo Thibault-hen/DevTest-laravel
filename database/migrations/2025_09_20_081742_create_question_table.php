@@ -1,22 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('question', function (Blueprint $table) {
+        Schema::create('questions', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->text('content');
             $table->boolean('is_multiple')->default(false);
             $table->uuid('quiz_id');
 
-            $table->foreign('quiz_id')->references('id')->on('quiz')->onDelete('cascade');
+            $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
             $table->timestamps();
         });
     }

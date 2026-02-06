@@ -47,7 +47,7 @@ class QuizSeeder extends Seeder
 
         $difficulties = Difficulty::pluck('id');
         $themeIds = Theme::pluck('id', 'title');
-        $categories = Category::pluck('id', 'name');
+        $categories = Category::pluck('id', 'title');
 
         foreach ($quizzes as $quizData) {
             $quiz = Quiz::create([
@@ -56,7 +56,6 @@ class QuizSeeder extends Seeder
                 'duration' => $quizData['duration'],
                 'is_published' => $quizData['is_published'],
                 'image_url' => $quizData['image_url'] ?? null,
-                'image_text' => $quizData['image_text'] ?? null,
                 'author_id' => $users->random()->id,
                 'difficulty_id' => $difficulties->random(),
                 'category_id' => isset($quizData['category']) ? $categories[$quizData['category']] : $categories->random(),
@@ -88,7 +87,7 @@ class QuizSeeder extends Seeder
         $totalQuestions = Question::count();
         $totalAnswers = Answer::count();
 
-        $this->command->info('✅ Seeding completed.');
+        $this->command->info('Seeding completed.');
         $this->command->info("{$totalQuizzes} quizzes created");
         $this->command->info("{$totalQuestions} questions created");
         $this->command->info("{$totalAnswers} answers created");

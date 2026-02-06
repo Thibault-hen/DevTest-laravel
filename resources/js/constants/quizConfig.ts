@@ -1,0 +1,14 @@
+export const quizConfig = {
+  MIN_QUESTIONS: 20,
+  MIN_ANSWERS_PER_QUESTION: 4,
+  MIN_QUESTION_TIMER_S: 5,
+  MAX_QUESTION_TIMER_S: 60,
+  QUIZ_MIN_TOTAL_DURATION_M: 10,
+} as const;
+
+export const QUIZ_RESULT_TRESHHOLDS = {
+  EXCELLENT: 14,
+  GOOD: 10,
+  AVERAGE: 6,
+  POOR: 0,
+} as const;

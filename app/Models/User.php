@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -14,7 +16,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasUuids, HasFactory, Notifiable, TwoFactorAuthenticatable;
+    use HasFactory, HasUuids, Notifiable, TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -25,6 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'specialization_id',
     ];
 
     /**
@@ -35,6 +38,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password',
         'remember_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
     ];
 
     /**
@@ -47,12 +52,13 @@ class User extends Authenticatable implements MustVerifyEmail
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'two_factor_confirmed_at' => 'datetime',
         ];
     }
 
     public function isAdmin(): bool
     {
-        return $this->is_admin;
+        return (bool) $this->is_admin;
     }
 
     public function quizzes(): HasMany
@@ -63,5 +69,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function results(): HasMany
     {
         return $this->hasMany(Result::class);
+    }
+
+    public function specialization()
+    {
+        return $this->belongsTo(Specialization::class);
     }
 }

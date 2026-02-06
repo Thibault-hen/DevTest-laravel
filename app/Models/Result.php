@@ -1,17 +1,35 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
+use App\Observers\ResultObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+#[ObservedBy(ResultObserver::class)]
 class Result extends Model
 {
-    use HasUuids;
+    use HasFactory, HasUuids;
 
-    protected $table = 'result';
+    protected $fillable = [
+        'completed_in',
+        'score',
+        'user_id',
+        'correct_answers_count',
+    ];
+
+    protected $cast = [
+        'completed_at' => 'datetime',
+    ];
+
+    public $timestamps = false;
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -26,5 +44,4 @@ class Result extends Model
     {
         return $this->hasMany(ResultUserAnswer::class, 'result_id');
     }
-
 }

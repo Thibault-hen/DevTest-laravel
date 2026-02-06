@@ -21,6 +21,7 @@ import { home, quizzes } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
 import { QuizzesData } from '@/types/generated';
 import { ChevronRight, ChevronUp, Search, X } from 'lucide-vue-next';
+import { watch } from 'vue';
 const props = defineProps<QuizzesData>();
 
 const {
@@ -53,6 +54,10 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 defineOptions({
   layout: AppLayout,
+});
+
+watch(page, () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 </script>
 
@@ -165,6 +170,7 @@ defineOptions({
                   <PaginationItem
                     :value="pageItem"
                     as-child
+                    :is-active="index + 1 === page"
                   >
                     <Button
                       class="h-10 w-10 p-0"
