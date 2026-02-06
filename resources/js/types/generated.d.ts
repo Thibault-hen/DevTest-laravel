@@ -16,7 +16,7 @@ export type AuthorData = {
 id: string;
 name: string;
 };
-export type CacheKeys = 'quizzes' | 'homepage';
+export type CacheKeys = 'quizzes' | 'quizzes_with_questions' | 'homepage';
 export type CacheTags = 'quiz';
 export type CategoryData = {
 id: string;
@@ -104,6 +104,7 @@ timer: number;
 answers: Array<AnswerResultData>;
 };
 export type QuizData = {
+created_at_formatted: string | null;
 id: string;
 title: string;
 slug: string;

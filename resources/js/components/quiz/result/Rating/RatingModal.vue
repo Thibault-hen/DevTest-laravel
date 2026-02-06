@@ -65,7 +65,7 @@ const handleSubmit = (): void => {
       if (errors.ratingAlreadyExists) {
         return errorToast(errors.ratingAlreadyExists);
       }
-      errorToast("Une erreur est survenue lors de la création de l'évaluation.", { title: 'Erreur' });
+      errorToast("Une erreur est survenue lors de la création de l'évaluation.");
     },
   });
 };

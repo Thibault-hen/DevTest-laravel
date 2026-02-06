@@ -11,6 +11,7 @@ use App\Data\Question\QuestionData;
 use App\Data\Rating\RatingData;
 use App\Data\Theme\ThemeData;
 use Illuminate\Support\Carbon;
+use Spatie\LaravelData\Attributes\Computed;
 use Spatie\LaravelData\Attributes\DataCollectionOf;
 use Spatie\LaravelData\Attributes\MapInputName;
 use Spatie\LaravelData\Attributes\WithTransformer;
@@ -22,6 +23,9 @@ use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 #[TypeScript]
 class QuizData extends Data
 {
+    #[Computed]
+    public ?string $created_at_formatted = null;
+
     public function __construct(
         public string $id,
         public string $title,
@@ -52,5 +56,7 @@ class QuizData extends Data
 
         #[DataCollectionOf(QuestionData::class)]
         public ?DataCollection $questions = null,
-    ) {}
+    ) {
+        $this->created_at_formatted = $this->created_at?->format('d-m-Y');
+    }
 }

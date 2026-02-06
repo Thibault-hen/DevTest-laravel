@@ -81,6 +81,10 @@ export interface RatingErrors {
   quiz_id?: string;
 }
 
+export interface UserProfileErrors {
+  cannotDeleteSelf?: string;
+}
+
 declare module '@tanstack/vue-table' {
   interface ColumnMeta {
     title?: string;

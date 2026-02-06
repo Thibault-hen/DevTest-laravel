@@ -122,8 +122,8 @@ export function useQuizAdminForm(
     createForm.post(create().url, {
       onSuccess: () => {
         successToast('Quiz créé avec succès.');
-        if (closeDialog) closeDialog();
         createForm.reset();
+        if (closeDialog) closeDialog();
       },
       onError: () => {
         errorToast('Une erreur est survenue lors de la création du quiz.');
@@ -146,7 +146,6 @@ export function useQuizAdminForm(
         editForm.reset();
       },
       onError: () => {
-        console.log(editForm.errors);
         errorToast('Une erreur est survenue lors de la mise à jour du quiz.');
       },
     });

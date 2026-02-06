@@ -11,7 +11,7 @@ final class GetAllDifficultiesQuery
 {
     public function execute(): Collection
     {
-        $difficulties = Difficulty::with('quizzes')->get();
+        $difficulties = Difficulty::withCount('quizzes')->get();
 
         return $difficulties;
     }

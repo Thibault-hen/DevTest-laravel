@@ -23,12 +23,11 @@ export const useCategoryAdminForm = (closeDialog?: () => void, category?: () => 
   const createCategory = () => {
     createForm.post(create().url, {
       onSuccess: () => {
-        if (closeDialog) closeDialog();
         createForm.reset();
         successToast('Catégorie créée avec succès.');
+        if (closeDialog) closeDialog();
       },
       onError: () => {
-        if (closeDialog) closeDialog();
         errorToast('Une erreur est survenue lors de la création de la catégorie.');
       },
     });
@@ -37,9 +36,9 @@ export const useCategoryAdminForm = (closeDialog?: () => void, category?: () => 
   const updateCategory = (categoryId: string) => {
     editForm.put(update(categoryId).url, {
       onSuccess: () => {
-        if (closeDialog) closeDialog();
         editForm.reset();
         successToast('Catégorie mise à jour avec succès.');
+        if (closeDialog) closeDialog();
       },
       onError: () => {
         errorToast('Une erreur est survenue lors de la mise à jour de la catégorie.');
@@ -50,8 +49,8 @@ export const useCategoryAdminForm = (closeDialog?: () => void, category?: () => 
   const deleteCategory = (categoryId: string) => {
     router.delete(deleteMethod(categoryId).url, {
       onSuccess: () => {
-        if (closeDialog) closeDialog();
         successToast('La catégorie a été supprimée avec succès.');
+        if (closeDialog) closeDialog();
       },
       onError: () => {
         errorToast('Une erreur est survenue lors de la suppression de la catégorie.');

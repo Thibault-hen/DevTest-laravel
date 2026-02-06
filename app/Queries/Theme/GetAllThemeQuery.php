@@ -11,7 +11,7 @@ final class GetAllThemeQuery
 {
     public function execute(): Collection
     {
-        $themes = Theme::with('quizzes')->get();
+        $themes = Theme::withCount('quizzes')->get();
 
         return $themes;
     }

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Quiz;
 use App\Models\Result;
 use App\Services\Result\ResultService;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -16,6 +17,8 @@ use Inertia\Response;
 
 class ResultController extends Controller
 {
+    use AuthorizesRequests;
+
     public function __construct(private readonly ResultService $resultService) {}
 
     public function store(Request $request, Quiz $quiz): RedirectResponse
@@ -30,6 +33,8 @@ class ResultController extends Controller
 
     public function show(Result $result): Response
     {
+        $this->authorize('view', $result);
+
         $quizSummaryResult = $this->resultService->getQuizSummaryResult($result);
 
         return Inertia::render('result/Result', [

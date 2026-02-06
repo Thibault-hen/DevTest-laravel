@@ -45,7 +45,7 @@ const handleOpenEdit = (): void => {
       </DropdownMenuItem>
       <DropdownMenuItem @click="handleOpenDelete">
         <Trash2 class="mr-2 h-4 w-4" />
-        Modifier
+        Supprimer
       </DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>

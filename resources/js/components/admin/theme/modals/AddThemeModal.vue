@@ -70,13 +70,14 @@ const { createForm, createTheme } = useThemeAdminForm(closeDialog);
 
             <Button
               type="submit"
+              variant="primary"
+              class="px-8 min-w-[150px]"
               :disabled="createForm.processing"
             >
-              <LoaderCircle
-                v-if="createForm.processing"
-                class="h-4 w-4 animate-spin mr-2"
-              />
-              Créer le thème
+              <template v-if="createForm.processing">
+                <LoaderCircle class="animate-spin w-5 h-5" />
+              </template>
+              <template v-else> Créer le thème </template>
             </Button>
           </div>
         </DialogFooter>

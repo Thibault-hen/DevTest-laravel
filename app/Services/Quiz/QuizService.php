@@ -13,8 +13,8 @@ use App\Data\Quiz\admin\PublishQuizData;
 use App\Data\Quiz\QuizData;
 use App\Data\Quiz\QuizzesData;
 use App\Data\Theme\ThemeData;
-use App\Enums\CacheKeys;
-use App\Enums\CacheTags;
+use App\Enums\CacheKey;
+use App\Enums\CacheTag;
 use App\Models\Quiz;
 use App\Queries\Quiz\GetAllQuizzesQuery;
 use App\Queries\Quiz\GetMetaDataQuery;
@@ -34,11 +34,11 @@ class QuizService
 
     public function getQuizzesData(bool $withQuestions = false): QuizzesData
     {
-        return Cache::tags([CacheTags::QUIZ->value])->remember(
-            $withQuestions ? CacheKeys::QUIZZES_WITH_QUESTIONS->value : CacheKeys::QUIZZES->value,
-            self::CACHE_TTL,
-            fn () => $this->buildQuizzesData($withQuestions)
-        );
+        return Cache::tags([CacheTag::QUIZ->value])
+            ->remember($withQuestions ? CacheKey::QUIZZES_WITH_QUESTIONS->value : CacheKey::QUIZZES->value,
+                self::CACHE_TTL,
+                fn () => $this->buildQuizzesData($withQuestions)
+            );
     }
 
     private function buildQuizzesData(bool $withQuestions): QuizzesData

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import DataTable from '@/components/admin/DataTable.vue';
 import { usersColumns } from '@/components/admin/user/Column';
-import { ViewUserModal } from '@/components/admin/user/modals';
+import { DeleteUserModal, ViewUserModal } from '@/components/admin/user/modals';
 import AdminLayout from '@/layouts/AdminLayout.vue';
 import { UserData } from '@/types/generated';
 import { Head } from '@inertiajs/vue3';
@@ -18,7 +18,6 @@ const selectedUser = ref<UserData | null>(null);
 const openViewModal = (user: UserData): void => {
   selectedUser.value = user;
   showViewModal.value = true;
-  console.log('Opening view modal for user:', user);
 };
 
 const openDeleteModal = (user: UserData): void => {
@@ -32,6 +31,11 @@ const openDeleteModal = (user: UserData): void => {
     <ViewUserModal
       :user="selectedUser"
       v-model="showViewModal"
+    />
+    <DeleteUserModal
+      v-if="selectedUser"
+      :user="selectedUser"
+      v-model="showDeleteModal"
     />
     <Head title="Utilisateurs" />
 

@@ -23,8 +23,6 @@ const openDeleteModal = (result: ResultData): void => {
   selectedResult.value = result;
   showDeleteModal.value = true;
 };
-
-console.log(props.results);
 </script>
 
 <template>

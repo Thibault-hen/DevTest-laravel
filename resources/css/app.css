@@ -206,7 +206,6 @@
     scroll-behavior: smooth;
   }
 }
-
 /* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
   width: 8px;
@@ -253,9 +252,6 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
-  html:has([data-state='open'][data-slot='dialog']) {
-    overflow: hidden;
-  }
   body {
     @apply !mb-0 bg-background text-foreground;
   }
@@ -263,6 +259,7 @@ body {
   .toast-background {
     @apply !bg-red-500;
   }
+
   .title-font {
     font-family: 'Zalando Sans Expanded', sans-serif;
   }

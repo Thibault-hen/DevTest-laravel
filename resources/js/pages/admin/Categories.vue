@@ -9,6 +9,8 @@ import { Head } from '@inertiajs/vue3';
 import { Plus } from 'lucide-vue-next';
 import { ref } from 'vue';
 
+const props = defineProps<{ categories: CategoryData[] }>();
+
 const showAddModal = ref(false);
 const showDeleteModal = ref(false);
 const showEditModal = ref(false);
@@ -27,8 +29,6 @@ const openEditModal = (category: CategoryData): void => {
   selectedCategory.value = category;
   showEditModal.value = true;
 };
-
-const props = defineProps<{ categories: CategoryData[] }>();
 </script>
 
 <template>

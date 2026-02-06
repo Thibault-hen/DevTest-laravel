@@ -4,57 +4,41 @@
     "description": "Un quiz simple pour vérifier tes bases en PHP",
     "duration": 10,
     "is_published": true,
-    "image_url": "storage/icons/php.svg",
-    "image_text": "PHP icon",
+    "image_url": "icons/php.svg",
     "themes": [
       "PHP"
     ],
     "category": "Backend",
-    "questions": [
-      {
-        "content": "Quelle est l'extension des fichiers PHP ?",
-        "is_multiple": false,
-        "answers": [
-          {
-            "content": ".php",
-            "is_correct": true
-          },
-          {
-            "content": ".html",
-            "is_correct": false
-          },
-          {
-            "content": ".js",
-            "is_correct": false
-          },
-          {
-            "content": ".phtml",
-            "is_correct": false
-          }
-        ]
-      },
-      {
-        "content": "Quel mot-clé sert à définir une fonction en PHP ?",
-        "is_multiple": false,
-        "answers": [
-          {
-            "content": "function",
-            "is_correct": true
-          },
-          {
-            "content": "def",
-            "is_correct": false
-          },
-          {
-            "content": "func",
-            "is_correct": false
-          },
-          {
-            "content": "declare",
-            "is_correct": false
-          }
-        ]
-      }
+    "difficulty": "Facile",
+    "questions" : [
+      { "content": "Quelle nouveauté ES6 permet de déclarer des variables à portée de bloc ?", "is_multiple": false, "timer": 32, "answers": [ { "content": "let", "is_correct": true }, { "content": "var", "is_correct": false }, { "content": "const", "is_correct": false }, { "content": "blockvar", "is_correct": false } ] },
+      { "content": "Quelle syntaxe permet de créer une fonction fléchée ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "()=>{}", "is_correct": true }, { "content": "function(){}", "is_correct": false }, { "content": "->{}", "is_correct": false }, { "content": "=>{}", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de créer une constante ?", "is_multiple": false, "timer": 27, "answers": [ { "content": "const", "is_correct": true }, { "content": "let", "is_correct": false }, { "content": "var", "is_correct": false }, { "content": "constant", "is_correct": false } ] },
+      { "content": "Quelle nouveauté permet de déstructurer un objet ?", "is_multiple": false, "timer": 36, "answers": [ { "content": "Destructuring assignment", "is_correct": true }, { "content": "Object.assign", "is_correct": false }, { "content": "Object destruct", "is_correct": false }, { "content": "Spread operator", "is_correct": false } ] },
+      { "content": "Quel opérateur permet de fusionner deux tableaux ?", "is_multiple": false, "timer": 59, "answers": [ { "content": "... (spread)", "is_correct": true }, { "content": "+", "is_correct": false }, { "content": "concat", "is_correct": false }, { "content": "merge", "is_correct": false } ] },
+      { "content": "Quelle nouveauté permet d’itérer sur les clés d’un objet ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "Object.keys()", "is_correct": true }, { "content": "for...in", "is_correct": false }, { "content": "Object.entries()", "is_correct": false }, { "content": "Object.values()", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de créer une classe ?", "is_multiple": false, "timer": 25, "answers": [ { "content": "class", "is_correct": true }, { "content": "function", "is_correct": false }, { "content": "object", "is_correct": false }, { "content": "constructor", "is_correct": false } ] },
+      { "content": "Quelle nouveauté permet de créer des modules ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "import/export", "is_correct": true }, { "content": "require/module.exports", "is_correct": false }, { "content": "include/define", "is_correct": false }, { "content": "module.create", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de créer une promesse ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "Promise", "is_correct": true }, { "content": "Async", "is_correct": false }, { "content": "Await", "is_correct": false }, { "content": "promiseNew", "is_correct": false } ] },
+      { "content": "Quelle nouveauté permet d’attendre la résolution d’une promesse ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "async/await", "is_correct": true }, { "content": "then/catch", "is_correct": false }, { "content": "Promise.resolve", "is_correct": false }, { "content": "Promise.wait", "is_correct": false } ] },
+      { "content": "Quel opérateur permet de vérifier l’égalité stricte ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "===", "is_correct": true }, { "content": "==", "is_correct": false }, { "content": "=", "is_correct": false }, { "content": "!==", "is_correct": false } ] },
+      { "content": "Quelle nouveauté permet de gérer les valeurs par défaut des paramètres de fonction ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "Default parameters", "is_correct": true }, { "content": "Optional parameters", "is_correct": false }, { "content": "Parameter defaults", "is_correct": false }, { "content": "Function.defaults", "is_correct": false } ] },
+      { "content": "Quel opérateur permet de vérifier si une variable est définie ?", "is_multiple": false, "timer": 29, "answers": [ { "content": "typeof", "is_correct": true }, { "content": "isset", "is_correct": false }, { "content": "defined", "is_correct": false }, { "content": "exists", "is_correct": false } ] },
+      { "content": "Quelle nouveauté permet de parcourir les éléments d’un tableau ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "for...of", "is_correct": true }, { "content": "for...in", "is_correct": false }, { "content": "Array.forEach", "is_correct": false }, { "content": "Array.map", "is_correct": false } ] },
+      { "content": "Quel opérateur permet de vérifier l’inégalité stricte ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "!==", "is_correct": true }, { "content": "!=", "is_correct": false }, { "content": "=", "is_correct": false }, { "content": "!==", "is_correct": false } ] },
+      { "content": "Quelle nouveauté permet de cloner un objet ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "Object.assign()", "is_correct": true }, { "content": "Object.clone()", "is_correct": false }, { "content": "Object.copy()", "is_correct": false }, { "content": "Object.duplicate()", "is_correct": false } ] },
+      { "content": "Quel opérateur permet de fusionner deux objets ?", "is_multiple": false, "timer": 34, "answers": [ { "content": "... (spread)", "is_correct": true }, { "content": "+", "is_correct": false }, { "content": "merge", "is_correct": false }, { "content": "Object.assign", "is_correct": false } ] },
+      { "content": "Quelle nouveauté permet de gérer les exceptions ?", "is_multiple": false, "timer": 42, "answers": [ { "content": "try/catch", "is_correct": true }, { "content": "throw", "is_correct": false }, { "content": "error handling", "is_correct": false }, { "content": "exception", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de créer une méthode statique ?", "is_multiple": false, "timer": 29, "answers": [ { "content": "static", "is_correct": true }, { "content": "method", "is_correct": false }, { "content": "class", "is_correct": false }, { "content": "function", "is_correct": false } ] },
+      { "content": "Quelle nouveauté permet de parcourir les valeurs d’un objet ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "Object.values()", "is_correct": true }, { "content": "Object.keys()", "is_correct": false }, { "content": "Object.entries()", "is_correct": false }, { "content": "for...of", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de définir une constante ?", "timer": 57, "is_multiple": false, "answers": [ { "content": "define", "is_correct": true }, { "content": "const", "is_correct": false }, { "content": "static", "is_correct": false }, { "content": "constant", "is_correct": false } ] },
+      { "content": "Quelle fonction permet de supprimer un élément d'un tableau ?", "timer": 35, "is_multiple": false, "answers": [ { "content": "unset", "is_correct": true }, { "content": "remove", "is_correct": false }, { "content": "delete", "is_correct": false }, { "content": "splice", "is_correct": false } ] },
+      { "content": "Quel est le résultat de true && false en PHP ?", "timer": 49, "is_multiple": false, "answers": [ { "content": "false", "is_correct": true }, { "content": "true", "is_correct": false }, { "content": "1", "is_correct": false }, { "content": "0", "is_correct": false } ] },
+      { "content": "Quelle fonction permet de transformer une chaîne en majuscules ?", "timer": 29, "is_multiple": false, "answers": [ { "content": "strtoupper", "is_correct": true }, { "content": "toUpperCase", "is_correct": false }, { "content": "upper", "is_correct": false }, { "content": "capitalize", "is_correct": false } ] },
+      { "content": "Quel est le type de retour de la fonction strpos ?", "timer": 46, "is_multiple": false, "answers": [ { "content": "int ou false", "is_correct": true }, { "content": "string", "is_correct": false }, { "content": "bool", "is_correct": false }, { "content": "array", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de terminer une boucle immédiatement ?", "timer": 24, "is_multiple": false, "answers": [ { "content": "break", "is_correct": true }, { "content": "continue", "is_correct": false }, { "content": "exit", "is_correct": false }, { "content": "stop", "is_correct": false } ] },
+      { "content": "Quelle fonction permet de récupérer la date actuelle ?", "timer": 55, "is_multiple": false, "answers": [ { "content": "date", "is_correct": true }, { "content": "now", "is_correct": false }, { "content": "getDate", "is_correct": false }, { "content": "currentDate", "is_correct": false } ] },
+      { "content": "Quel est le mot-clé pour hériter d'une classe ?", "timer": 31, "is_multiple": false, "answers": [ { "content": "extends", "is_correct": true }, { "content": "inherits", "is_correct": false }, { "content": "super", "is_correct": false }, { "content": "parent", "is_correct": false } ] }
     ]
   },
   {
@@ -62,57 +46,31 @@
     "description": "Vérifie si tu connais les bases de Docker et de la containerisation",
     "duration": 20,
     "is_published": true,
-    "image_url": "storage/icons/docker.svg",
-    "image_text": "Docker icon",
+    "image_url": "icons/docker.svg",
     "themes": [
       "Docker"
     ],
     "category": "DevOps",
     "questions": [
-      {
-        "content": "Quel fichier définit les instructions pour construire une image Docker ?",
-        "is_multiple": false,
-        "answers": [
-          {
-            "content": "Dockerfile",
-            "is_correct": true
-          },
-          {
-            "content": "docker-compose.yml",
-            "is_correct": false
-          },
-          {
-            "content": "Containerfile",
-            "is_correct": false
-          },
-          {
-            "content": "Makefile",
-            "is_correct": false
-          }
-        ]
-      },
-      {
-        "content": "Quelle commande permet de voir les containers en cours d'exécution ?",
-        "is_multiple": false,
-        "answers": [
-          {
-            "content": "docker ps",
-            "is_correct": true
-          },
-          {
-            "content": "docker run",
-            "is_correct": false
-          },
-          {
-            "content": "docker start",
-            "is_correct": false
-          },
-          {
-            "content": "docker logs",
-            "is_correct": false
-          }
-        ]
-      }
+      { "content": "Quel fichier définit les instructions pour construire une image Docker ?", "is_multiple": false, "timer": 34, "answers": [ { "content": "Dockerfile", "is_correct": true }, { "content": "docker-compose.yml", "is_correct": false }, { "content": "Containerfile", "is_correct": false }, { "content": "Makefile", "is_correct": false } ] },
+      { "content": "Quelle commande permet de voir les containers en cours d'exécution ?", "is_multiple": false, "timer": 47, "answers": [ { "content": "docker ps", "is_correct": true }, { "content": "docker run", "is_correct": false }, { "content": "docker start", "is_correct": false }, { "content": "docker logs", "is_correct": false } ] },
+      { "content": "Quelle commande permet de lancer un container en arrière-plan ?", "is_multiple": false, "timer": 59, "answers": [ { "content": "docker run -d", "is_correct": true }, { "content": "docker start -d", "is_correct": false }, { "content": "docker exec -d", "is_correct": false }, { "content": "docker up -d", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker pull' ?", "is_multiple": false, "timer": 22, "answers": [ { "content": "Télécharger une image depuis un registre", "is_correct": true }, { "content": "Créer un container", "is_correct": false }, { "content": "Supprimer une image", "is_correct": false }, { "content": "Afficher les logs", "is_correct": false } ] },
+      { "content": "Quel port est exposé par défaut par un container nginx ?", "is_multiple": false, "timer": 51, "answers": [ { "content": "80", "is_correct": true }, { "content": "8080", "is_correct": false }, { "content": "443", "is_correct": false }, { "content": "3000", "is_correct": false } ] },
+      { "content": "Quelle commande supprime un container arrêté ?", "is_multiple": false, "timer": 28, "answers": [ { "content": "docker rm", "is_correct": true }, { "content": "docker rmi", "is_correct": false }, { "content": "docker remove", "is_correct": false }, { "content": "docker delete", "is_correct": false } ] },
+      { "content": "Quel fichier permet d'orchestrer plusieurs services Docker ?", "is_multiple": false, "timer": 39, "answers": [ { "content": "docker-compose.yml", "is_correct": true }, { "content": "Dockerfile", "is_correct": false }, { "content": "compose.json", "is_correct": false }, { "content": "services.yml", "is_correct": false } ] },
+      { "content": "Quelle commande affiche les images Docker locales ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "docker images", "is_correct": true }, { "content": "docker ps -a", "is_correct": false }, { "content": "docker list", "is_correct": false }, { "content": "docker show", "is_correct": false } ] },
+      { "content": "Quel est le rôle de 'docker exec' ?", "is_multiple": false, "timer": 56, "answers": [ { "content": "Exécuter une commande dans un container en cours d'exécution", "is_correct": true }, { "content": "Créer un nouveau container", "is_correct": false }, { "content": "Afficher les logs", "is_correct": false }, { "content": "Supprimer un container", "is_correct": false } ] },
+      { "content": "Quelle commande permet de stopper tous les containers ?", "is_multiple": false, "timer": 25, "answers": [ { "content": "docker stop $(docker ps -q)", "is_correct": true }, { "content": "docker kill all", "is_correct": false }, { "content": "docker end *", "is_correct": false }, { "content": "docker halt all", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker logs' ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "Afficher les logs d'un container", "is_correct": true }, { "content": "Afficher les images", "is_correct": false }, { "content": "Afficher les volumes", "is_correct": false }, { "content": "Afficher les réseaux", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker rmi' ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "Supprimer une image", "is_correct": true }, { "content": "Supprimer un container", "is_correct": false }, { "content": "Supprimer un volume", "is_correct": false }, { "content": "Supprimer un réseau", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker volume ls' ?", "is_multiple": false, "timer": 36, "answers": [ { "content": "Lister les volumes", "is_correct": true }, { "content": "Lister les containers", "is_correct": false }, { "content": "Lister les images", "is_correct": false }, { "content": "Lister les réseaux", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker network ls' ?", "is_multiple": false, "timer": 60, "answers": [ { "content": "Lister les réseaux", "is_correct": true }, { "content": "Lister les containers", "is_correct": false }, { "content": "Lister les images", "is_correct": false }, { "content": "Lister les volumes", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker inspect' ?", "is_multiple": false, "timer": 27, "answers": [ { "content": "Afficher les détails d'un objet Docker", "is_correct": true }, { "content": "Afficher les logs", "is_correct": false }, { "content": "Afficher les ports", "is_correct": false }, { "content": "Afficher les volumes", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker-compose up' ?", "is_multiple": false, "timer": 32, "answers": [ { "content": "Démarrer tous les services définis dans le fichier docker-compose.yml", "is_correct": true }, { "content": "Créer une image", "is_correct": false }, { "content": "Afficher les logs", "is_correct": false }, { "content": "Supprimer un service", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker-compose down' ?", "is_multiple": false, "timer": 48, "answers": [ { "content": "Arrêter et supprimer les services, réseaux et volumes créés par docker-compose up", "is_correct": true }, { "content": "Démarrer les services", "is_correct": false }, { "content": "Afficher les logs", "is_correct": false }, { "content": "Créer une image", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker tag' ?", "is_multiple": false, "timer": 21, "answers": [ { "content": "Ajouter un tag à une image", "is_correct": true }, { "content": "Ajouter un tag à un container", "is_correct": false }, { "content": "Ajouter un tag à un volume", "is_correct": false }, { "content": "Ajouter un tag à un réseau", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker save' ?", "is_multiple": false, "timer": 58, "answers": [ { "content": "Exporter une image vers un fichier tar", "is_correct": true }, { "content": "Sauvegarder un container", "is_correct": false }, { "content": "Sauvegarder un volume", "is_correct": false }, { "content": "Sauvegarder un réseau", "is_correct": false } ] }
     ]
   },
   {
@@ -120,57 +78,31 @@
     "description": "Questions de base sur le langage JavaScript",
     "duration": 15,
     "is_published": false,
-    "image_url": "storage/icons/javascript.svg",
-    "image_text": "JavaScript icon",
+    "image_url": "icons/javascript.svg",
     "themes": [
       "JavaScript"
     ],
     "category": "Frontend",
     "questions": [
-      {
-        "content": "Quel mot-clé permet de déclarer une variable réassignable en ES6 ?",
-        "is_multiple": false,
-        "answers": [
-          {
-            "content": "let",
-            "is_correct": true
-          },
-          {
-            "content": "var",
-            "is_correct": false
-          },
-          {
-            "content": "const",
-            "is_correct": false
-          },
-          {
-            "content": "mutable",
-            "is_correct": false
-          }
-        ]
-      },
-      {
-        "content": "Que retourne typeof null en JavaScript ?",
-        "is_multiple": false,
-        "answers": [
-          {
-            "content": "\"object\"",
-            "is_correct": true
-          },
-          {
-            "content": "\"null\"",
-            "is_correct": false
-          },
-          {
-            "content": "\"undefined\"",
-            "is_correct": false
-          },
-          {
-            "content": "\"number\"",
-            "is_correct": false
-          }
-        ]
-      }
+      { "content": "Quel mot-clé permet de déclarer une variable réassignable en ES6 ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "let", "is_correct": true }, { "content": "var", "is_correct": false }, { "content": "const", "is_correct": false }, { "content": "mutable", "is_correct": false } ] },
+      { "content": "Que retourne typeof null en JavaScript ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "\"object\"", "is_correct": true }, { "content": "\"null\"", "is_correct": false }, { "content": "\"undefined\"", "is_correct": false }, { "content": "\"number\"", "is_correct": false } ] },
+      { "content": "Quel est le type de NaN ?", "is_multiple": false, "timer": 27, "answers": [ { "content": "number", "is_correct": true }, { "content": "NaN", "is_correct": false }, { "content": "undefined", "is_correct": false }, { "content": "object", "is_correct": false } ] },
+      { "content": "Quelle méthode permet d'ajouter un élément à la fin d'un tableau ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "push", "is_correct": true }, { "content": "pop", "is_correct": false }, { "content": "shift", "is_correct": false }, { "content": "unshift", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de supprimer le premier élément d'un tableau ?", "is_multiple": false, "timer": 32, "answers": [ { "content": "shift", "is_correct": true }, { "content": "pop", "is_correct": false }, { "content": "splice", "is_correct": false }, { "content": "remove", "is_correct": false } ] },
+      { "content": "Comment déclare-t-on une fonction fléchée ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "()=>{}", "is_correct": true }, { "content": "function(){}", "is_correct": false }, { "content": "def(){}", "is_correct": false }, { "content": "fn(){}", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de transformer une chaîne en nombre ?", "is_multiple": false, "timer": 36, "answers": [ { "content": "parseInt", "is_correct": true }, { "content": "toString", "is_correct": false }, { "content": "split", "is_correct": false }, { "content": "join", "is_correct": false } ] },
+      { "content": "Quelle est la valeur de 'false == 0' ?", "is_multiple": false, "timer": 25, "answers": [ { "content": "true", "is_correct": true }, { "content": "false", "is_correct": false }, { "content": "undefined", "is_correct": false }, { "content": "Erreur", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de parcourir chaque élément d'un tableau ?", "is_multiple": false, "timer": 29, "answers": [ { "content": "forEach", "is_correct": true }, { "content": "map", "is_correct": false }, { "content": "filter", "is_correct": false }, { "content": "reduce", "is_correct": false } ] },
+      { "content": "Quelle est la portée d'une variable déclarée avec 'let' ?", "is_multiple": false, "timer": 60, "answers": [ { "content": "Bloc", "is_correct": true }, { "content": "Fonction", "is_correct": false }, { "content": "Globale", "is_correct": false }, { "content": "Script", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de fusionner deux tableaux ?", "is_multiple": false, "timer": 22, "answers": [ { "content": "concat", "is_correct": true }, { "content": "merge", "is_correct": false }, { "content": "join", "is_correct": false }, { "content": "push", "is_correct": false } ] },
+      { "content": "Quelle est la valeur de 'typeof undefined' ?", "is_multiple": false, "timer": 49, "answers": [ { "content": "undefined", "is_correct": true }, { "content": "null", "is_correct": false }, { "content": "object", "is_correct": false }, { "content": "string", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de filtrer un tableau ?", "is_multiple": false, "timer": 34, "answers": [ { "content": "filter", "is_correct": true }, { "content": "map", "is_correct": false }, { "content": "reduce", "is_correct": false }, { "content": "find", "is_correct": false } ] },
+      { "content": "Quelle est la valeur de 'null == undefined' ?", "is_multiple": false, "timer": 56, "answers": [ { "content": "true", "is_correct": true }, { "content": "false", "is_correct": false }, { "content": "undefined", "is_correct": false }, { "content": "Erreur", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de transformer un objet en JSON ?", "is_multiple": false, "timer": 23, "answers": [ { "content": "JSON.stringify", "is_correct": true }, { "content": "JSON.parse", "is_correct": false }, { "content": "toString", "is_correct": false }, { "content": "stringify", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de transformer du JSON en objet ?", "is_multiple": false, "timer": 59, "answers": [ { "content": "JSON.parse", "is_correct": true }, { "content": "JSON.stringify", "is_correct": false }, { "content": "parseInt", "is_correct": false }, { "content": "toObject", "is_correct": false } ] },
+      { "content": "Quelle est la valeur de 'typeof []' ?", "is_multiple": false, "timer": 27, "answers": [ { "content": "object", "is_correct": true }, { "content": "array", "is_correct": false }, { "content": "list", "is_correct": false }, { "content": "undefined", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de trouver un élément dans un tableau ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "find", "is_correct": true }, { "content": "filter", "is_correct": false }, { "content": "map", "is_correct": false }, { "content": "reduce", "is_correct": false } ] },
+      { "content": "Quelle est la valeur de '1 + \"2\"' ?", "is_multiple": false, "timer": 46, "answers": [ { "content": "12", "is_correct": true }, { "content": "3", "is_correct": false }, { "content": "Erreur", "is_correct": false }, { "content": "NaN", "is_correct": false } ] }
     ]
   },
   {
@@ -178,57 +110,31 @@
     "description": "Quiz intermédiaire sur les nouvelles fonctionnalités de JavaScript",
     "duration": 20,
     "is_published": true,
-    "image_url": "storage/icons/javascript.svg",
-    "image_text": "JavaScript icon",
+    "image_url": "icons/javascript.svg",
     "themes": [
       "JavaScript"
     ],
     "category": "Frontend",
     "questions": [
-      {
-        "content": "Quelle méthode transforme un tableau en chaîne de caractères ?",
-        "is_multiple": false,
-        "answers": [
-          {
-            "content": "join()",
-            "is_correct": true
-          },
-          {
-            "content": "split()",
-            "is_correct": false
-          },
-          {
-            "content": "map()",
-            "is_correct": false
-          },
-          {
-            "content": "reduce()",
-            "is_correct": false
-          }
-        ]
-      },
-      {
-        "content": "Que fait l’opérateur '??' en JavaScript ?",
-        "is_multiple": false,
-        "answers": [
-          {
-            "content": "Renvoie la valeur de droite si la gauche est null ou undefined",
-            "is_correct": true
-          },
-          {
-            "content": "Renvoie la valeur de gauche si elle est falsy",
-            "is_correct": false
-          },
-          {
-            "content": "Concatène deux valeurs",
-            "is_correct": false
-          },
-          {
-            "content": "Crée une nouvelle variable",
-            "is_correct": false
-          }
-        ]
-      }
+      { "content": "Quelle méthode transforme un tableau en chaîne de caractères ?", "is_multiple": false, "timer": 32, "answers": [ { "content": "join()", "is_correct": true }, { "content": "split()", "is_correct": false }, { "content": "map()", "is_correct": false }, { "content": "reduce()", "is_correct": false } ] },
+      { "content": "Que fait l’opérateur '??' en JavaScript ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "Renvoie la valeur de droite si la gauche est null ou undefined", "is_correct": true }, { "content": "Renvoie la valeur de gauche si elle est falsy", "is_correct": false }, { "content": "Concatène deux valeurs", "is_correct": false }, { "content": "Crée une nouvelle variable", "is_correct": false } ] },
+      { "content": "Quelle est la différence entre 'let' et 'var' ?", "is_multiple": false, "timer": 27, "answers": [ { "content": "let a une portée de bloc, var une portée de fonction", "is_correct": true }, { "content": "let est global, var est local", "is_correct": false }, { "content": "let ne peut pas être réassigné", "is_correct": false }, { "content": "Aucune différence", "is_correct": false } ] },
+      { "content": "Que retourne [...'abc'] ?", "is_multiple": false, "timer": 36, "answers": [ { "content": "['a','b','c']", "is_correct": true }, { "content": "['abc']", "is_correct": false }, { "content": "['a b c']", "is_correct": false }, { "content": "Erreur", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de copier un tableau en ES6 ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "spread operator", "is_correct": true }, { "content": "copy()", "is_correct": false }, { "content": "clone()", "is_correct": false }, { "content": "assign()", "is_correct": false } ] },
+      { "content": "Que fait l’opérateur '...' dans une déclaration de fonction ?", "is_multiple": false, "timer": 25, "answers": [ { "content": "Permet de recevoir un nombre variable d’arguments", "is_correct": true }, { "content": "Concatène deux tableaux", "is_correct": false }, { "content": "Crée une promesse", "is_correct": false }, { "content": "Déclare une variable globale", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de vérifier si un tableau contient une valeur ?", "is_multiple": false, "timer": 60, "answers": [ { "content": "includes()", "is_correct": true }, { "content": "has()", "is_correct": false }, { "content": "contains()", "is_correct": false }, { "content": "find()", "is_correct": false } ] },
+      { "content": "Que fait Object.assign({}, obj) ?", "is_multiple": false, "timer": 22, "answers": [ { "content": "Crée une copie superficielle de obj", "is_correct": true }, { "content": "Fusionne deux objets", "is_correct": false }, { "content": "Supprime les propriétés de obj", "is_correct": false }, { "content": "Crée un objet vide", "is_correct": false } ] },
+      { "content": "Quelle est la valeur par défaut d’un paramètre non fourni en ES6 ?", "is_multiple": false, "timer": 29, "answers": [ { "content": "undefined", "is_correct": true }, { "content": "null", "is_correct": false }, { "content": "0", "is_correct": false }, { "content": "''", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de transformer un tableau d’objets en un seul objet ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "reduce()", "is_correct": true }, { "content": "map()", "is_correct": false }, { "content": "filter()", "is_correct": false }, { "content": "join()", "is_correct": false } ] },
+      { "content": "Que fait l’opérateur '?.' ?", "is_multiple": false, "timer": 55, "answers": [ { "content": "Permet d’accéder à une propriété optionnelle sans erreur", "is_correct": true }, { "content": "Crée une promesse", "is_correct": false }, { "content": "Déclare une variable", "is_correct": false }, { "content": "Fusionne deux objets", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de transformer une Map en tableau ?", "is_multiple": false, "timer": 31, "answers": [ { "content": "Array.from()", "is_correct": true }, { "content": "toArray()", "is_correct": false }, { "content": "map()", "is_correct": false }, { "content": "from()", "is_correct": false } ] },
+      { "content": "Que fait la syntaxe const [a, b] = [1, 2] ?", "is_multiple": false, "timer": 23, "answers": [ { "content": "Déstructure le tableau en variables a et b", "is_correct": true }, { "content": "Crée un tableau", "is_correct": false }, { "content": "Fusionne deux tableaux", "is_correct": false }, { "content": "Crée un objet", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de trouver la première valeur qui satisfait un test ?", "is_multiple": false, "timer": 46, "answers": [ { "content": "find()", "is_correct": true }, { "content": "filter()", "is_correct": false }, { "content": "map()", "is_correct": false }, { "content": "reduce()", "is_correct": false } ] },
+      { "content": "Que fait la syntaxe const {a, b} = obj ?", "is_multiple": false, "timer": 24, "answers": [ { "content": "Déstructure l’objet en variables a et b", "is_correct": true }, { "content": "Crée un objet", "is_correct": false }, { "content": "Fusionne deux objets", "is_correct": false }, { "content": "Crée un tableau", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de transformer un Set en tableau ?", "is_multiple": false, "timer": 55, "answers": [ { "content": "Array.from()", "is_correct": true }, { "content": "toArray()", "is_correct": false }, { "content": "set()", "is_correct": false }, { "content": "from()", "is_correct": false } ] },
+      { "content": "Que fait la syntaxe ...arr dans un appel de fonction ?", "is_multiple": false, "timer": 29, "answers": [ { "content": "Décompose le tableau en arguments individuels", "is_correct": true }, { "content": "Concatène deux tableaux", "is_correct": false }, { "content": "Crée une promesse", "is_correct": false }, { "content": "Déclare une variable globale", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de vérifier si une chaîne commence par un certain texte ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "startsWith()", "is_correct": true }, { "content": "beginWith()", "is_correct": false }, { "content": "hasPrefix()", "is_correct": false }, { "content": "starts()", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de vérifier si une chaîne se termine par un certain texte ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "endsWith()", "is_correct": true }, { "content": "finishWith()", "is_correct": false }, { "content": "hasSuffix()", "is_correct": false }, { "content": "ends()", "is_correct": false } ] }
     ]
   },
   {
@@ -236,57 +142,32 @@
     "description": "Approfondissement des fonctions et tableaux en PHP",
     "duration": 15,
     "is_published": true,
-    "image_url": "storage/icons/php.svg",
-    "image_text": "PHP icon",
+    "image_url": "icons/php.svg",
     "themes": [
       "PHP"
     ],
     "category": "Backend",
     "questions": [
-      {
-        "content": "Quelle fonction PHP permet de trier un tableau associatif par clé ?",
-        "is_multiple": false,
-        "answers": [
-          {
-            "content": "ksort()",
-            "is_correct": true
-          },
-          {
-            "content": "sort()",
-            "is_correct": false
-          },
-          {
-            "content": "asort()",
-            "is_correct": false
-          },
-          {
-            "content": "array_sort()",
-            "is_correct": false
-          }
-        ]
-      },
-      {
-        "content": "Comment vérifier si une variable est un tableau en PHP ?",
-        "is_multiple": false,
-        "answers": [
-          {
-            "content": "is_array()",
-            "is_correct": true
-          },
-          {
-            "content": "isset()",
-            "is_correct": false
-          },
-          {
-            "content": "gettype()",
-            "is_correct": false
-          },
-          {
-            "content": "array_check()",
-            "is_correct": false
-          }
-        ]
-      }
+      { "content": "Quelle fonction PHP permet de trier un tableau associatif par clé ?", "is_multiple": false, "timer": 32, "answers": [ { "content": "ksort()", "is_correct": true }, { "content": "sort()", "is_correct": false }, { "content": "asort()", "is_correct": false }, { "content": "array_sort()", "is_correct": false } ] },
+      { "content": "Comment vérifier si une variable est un tableau en PHP ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "is_array()", "is_correct": true }, { "content": "isset()", "is_correct": false }, { "content": "gettype()", "is_correct": false }, { "content": "array_check()", "is_correct": false } ] },
+      { "content": "Quelle fonction permet de fusionner deux tableaux ?", "is_multiple": false, "timer": 28, "answers": [ { "content": "array_merge()", "is_correct": true }, { "content": "merge()", "is_correct": false }, { "content": "concat()", "is_correct": false }, { "content": "join()", "is_correct": false } ] },
+      { "content": "Quel opérateur permet de vérifier l'identité stricte ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "===", "is_correct": true }, { "content": "==", "is_correct": false }, { "content": "=", "is_correct": false }, { "content": "!==", "is_correct": false } ] },
+      { "content": "Quelle fonction permet de supprimer le dernier élément d'un tableau ?", "is_multiple": false, "timer": 36, "answers": [ { "content": "array_pop()", "is_correct": true }, { "content": "array_shift()", "is_correct": false }, { "content": "unset()", "is_correct": false }, { "content": "remove()", "is_correct": false } ] },
+      { "content": "Quelle fonction retourne la clé d'une valeur dans un tableau ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "array_search()", "is_correct": true }, { "content": "array_key()", "is_correct": false }, { "content": "search()", "is_correct": false }, { "content": "find_key()", "is_correct": false } ] },
+      { "content": "Quelle fonction permet de compter les éléments d'un tableau multidimensionnel ?", "is_multiple": false, "timer": 25, "answers": [ { "content": "count($array, COUNT_RECURSIVE)", "is_correct": true }, { "content": "sizeof()", "is_correct": false }, { "content": "array_count()", "is_correct": false }, { "content": "deep_count()", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de définir une fonction anonyme ?", "is_multiple": false, "timer": 39, "answers": [ { "content": "function", "is_correct": true }, { "content": "closure", "is_correct": false }, { "content": "lambda", "is_correct": false }, { "content": "anonymous", "is_correct": false } ] },
+      { "content": "Quelle fonction permet de parcourir un tableau avec une fonction de rappel ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "array_map()", "is_correct": true }, { "content": "foreach()", "is_correct": false }, { "content": "map()", "is_correct": false }, { "content": "forEach()", "is_correct": false } ] },
+      { "content": "Quelle fonction retourne la différence entre deux tableaux ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "array_diff()", "is_correct": true }, { "content": "diff()", "is_correct": false }, { "content": "array_subtract()", "is_correct": false }, { "content": "subtract()", "is_correct": false } ] },
+      { "content": "Quelle fonction permet de trier un tableau par valeur ?", "is_multiple": false, "timer": 28, "answers": [ { "content": "asort()", "is_correct": true }, { "content": "ksort()", "is_correct": false }, { "content": "sort()", "is_correct": false }, { "content": "usort()", "is_correct": false } ] },
+      { "content": "Quelle fonction retourne les clés d'un tableau ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "array_keys()", "is_correct": true }, { "content": "keys()", "is_correct": false }, { "content": "get_keys()", "is_correct": false }, { "content": "key_list()", "is_correct": false } ] },
+      { "content": "Quelle fonction retourne les valeurs d'un tableau ?", "is_multiple": false, "timer": 36, "answers": [ { "content": "array_values()", "is_correct": true }, { "content": "values()", "is_correct": false }, { "content": "get_values()", "is_correct": false }, { "content": "value_list()", "is_correct": false } ] },
+      { "content": "Quelle fonction permet de filtrer un tableau ?", "is_multiple": false, "timer": 25, "answers": [ { "content": "array_filter()", "is_correct": true }, { "content": "filter()", "is_correct": false }, { "content": "array_map()", "is_correct": false }, { "content": "map()", "is_correct": false } ] },
+      { "content": "Quelle fonction permet de vérifier si une clé existe dans un tableau ?", "is_multiple": false, "timer": 39, "answers": [ { "content": "array_key_exists()", "is_correct": true }, { "content": "key_exists()", "is_correct": false }, { "content": "has_key()", "is_correct": false }, { "content": "exists()", "is_correct": false } ] },
+      { "content": "Quelle fonction permet de retourner un tableau associatif inversé ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "array_flip()", "is_correct": true }, { "content": "array_reverse()", "is_correct": false }, { "content": "flip()", "is_correct": false }, { "content": "reverse()", "is_correct": false } ] },
+      { "content": "Quelle fonction permet de découper un tableau en morceaux ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "array_chunk()", "is_correct": true }, { "content": "chunk()", "is_correct": false }, { "content": "split()", "is_correct": false }, { "content": "slice()", "is_correct": false } ] },
+      { "content": "Quelle fonction permet de fusionner récursivement des tableaux ?", "is_multiple": false, "timer": 28, "answers": [ { "content": "array_merge_recursive()", "is_correct": true }, { "content": "array_merge()", "is_correct": false }, { "content": "merge_recursive()", "is_correct": false }, { "content": "merge()", "is_correct": false } ] },
+      { "content": "Quelle fonction permet de supprimer une clé d'un tableau ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "unset()", "is_correct": true }, { "content": "remove()", "is_correct": false }, { "content": "delete()", "is_correct": false }, { "content": "splice()", "is_correct": false } ] },
+      { "content": "Quelle fonction permet de vérifier si une variable est vide ?", "is_multiple": false, "timer": 36, "answers": [ { "content": "empty()", "is_correct": true }, { "content": "is_null()", "is_correct": false }, { "content": "isset()", "is_correct": false }, { "content": "is_empty()", "is_correct": false } ] }
     ]
   },
   {
@@ -294,57 +175,32 @@
     "description": "Quiz intermédiaire pour tester vos connaissances sur Docker",
     "duration": 25,
     "is_published": true,
-    "image_url": "storage/icons/docker.svg",
-    "image_text": "Docker icon",
+    "image_url": "icons/docker.svg",
     "themes": [
       "Docker"
     ],
     "category": "DevOps",
     "questions": [
-      {
-        "content": "Quelle commande permet de construire une image Docker avec un tag spécifique ?",
-        "is_multiple": false,
-        "answers": [
-          {
-            "content": "docker build -t monimage:1.0 .",
-            "is_correct": true
-          },
-          {
-            "content": "docker run -t monimage:1.0",
-            "is_correct": false
-          },
-          {
-            "content": "docker tag monimage:1.0",
-            "is_correct": false
-          },
-          {
-            "content": "docker create monimage:1.0",
-            "is_correct": false
-          }
-        ]
-      },
-      {
-        "content": "Quel est le but de docker-compose ?",
-        "is_multiple": false,
-        "answers": [
-          {
-            "content": "Orchestrer plusieurs conteneurs avec un fichier YAML",
-            "is_correct": true
-          },
-          {
-            "content": "Construire des images Docker",
-            "is_correct": false
-          },
-          {
-            "content": "Monter un volume spécifique",
-            "is_correct": false
-          },
-          {
-            "content": "Lancer un container en arrière-plan",
-            "is_correct": false
-          }
-        ]
-      }
+      { "content": "Quelle commande permet de construire une image Docker avec un tag spécifique ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "docker build -t monimage:1.0 .", "is_correct": true }, { "content": "docker run -t monimage:1.0", "is_correct": false }, { "content": "docker tag monimage:1.0", "is_correct": false }, { "content": "docker create monimage:1.0", "is_correct": false } ] },
+      { "content": "Quel est le but de docker-compose ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "Orchestrer plusieurs conteneurs avec un fichier YAML", "is_correct": true }, { "content": "Construire des images Docker", "is_correct": false }, { "content": "Monter un volume spécifique", "is_correct": false }, { "content": "Lancer un container en arrière-plan", "is_correct": false } ] },
+      { "content": "Quelle commande permet de créer un réseau Docker ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "docker network create", "is_correct": true }, { "content": "docker create network", "is_correct": false }, { "content": "docker net new", "is_correct": false }, { "content": "docker network new", "is_correct": false } ] },
+      { "content": "Quel est le rôle de l’option --build dans docker-compose up ?", "is_multiple": false, "timer": 28, "answers": [ { "content": "Reconstruit les images avant de démarrer les services", "is_correct": true }, { "content": "Supprime les containers", "is_correct": false }, { "content": "Arrête les services", "is_correct": false }, { "content": "Affiche les logs", "is_correct": false } ] },
+      { "content": "Quelle commande permet de supprimer tous les containers arrêtés ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "docker container prune", "is_correct": true }, { "content": "docker rm all", "is_correct": false }, { "content": "docker prune", "is_correct": false }, { "content": "docker stop all", "is_correct": false } ] },
+      { "content": "Quel est le rôle de l’option --volumes dans docker-compose down ?", "is_multiple": false, "timer": 36, "answers": [ { "content": "Supprime aussi les volumes associés", "is_correct": true }, { "content": "Supprime les images", "is_correct": false }, { "content": "Supprime les réseaux", "is_correct": false }, { "content": "Supprime les logs", "is_correct": false } ] },
+      { "content": "Quelle commande permet de voir l’espace disque utilisé par Docker ?", "is_multiple": false, "timer": 25, "answers": [ { "content": "docker system df", "is_correct": true }, { "content": "docker disk usage", "is_correct": false }, { "content": "docker info", "is_correct": false }, { "content": "docker space", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker export' ?", "is_multiple": false, "timer": 39, "answers": [ { "content": "Exporter le système de fichiers d’un container", "is_correct": true }, { "content": "Exporter une image", "is_correct": false }, { "content": "Exporter un volume", "is_correct": false }, { "content": "Exporter un réseau", "is_correct": false } ] },
+      { "content": "Quelle commande permet de renommer un container ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "docker rename", "is_correct": true }, { "content": "docker mv", "is_correct": false }, { "content": "docker name", "is_correct": false }, { "content": "docker container rename", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker inspect' ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "Afficher les détails d’un objet Docker", "is_correct": true }, { "content": "Afficher les logs", "is_correct": false }, { "content": "Afficher les ports", "is_correct": false }, { "content": "Afficher les volumes", "is_correct": false } ] },
+      { "content": "Quelle commande permet de créer un volume Docker ?", "is_multiple": false, "timer": 36, "answers": [ { "content": "docker volume create", "is_correct": true }, { "content": "docker create volume", "is_correct": false }, { "content": "docker vol new", "is_correct": false }, { "content": "docker volume new", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker-compose logs' ?", "is_multiple": false, "timer": 25, "answers": [ { "content": "Afficher les logs des services", "is_correct": true }, { "content": "Afficher les images", "is_correct": false }, { "content": "Afficher les volumes", "is_correct": false }, { "content": "Afficher les réseaux", "is_correct": false } ] },
+      { "content": "Quelle commande permet de mettre à jour une image Docker ?", "is_multiple": false, "timer": 39, "answers": [ { "content": "docker pull", "is_correct": true }, { "content": "docker update", "is_correct": false }, { "content": "docker upgrade", "is_correct": false }, { "content": "docker refresh", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker-compose build' ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "Construire les images des services définis dans le fichier docker-compose.yml", "is_correct": true }, { "content": "Démarrer les services", "is_correct": false }, { "content": "Afficher les logs", "is_correct": false }, { "content": "Supprimer un service", "is_correct": false } ] },
+      { "content": "Quelle commande permet de lister les réseaux Docker ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "docker network ls", "is_correct": true }, { "content": "docker ls network", "is_correct": false }, { "content": "docker list networks", "is_correct": false }, { "content": "docker networks", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker-compose config' ?", "is_multiple": false, "timer": 36, "answers": [ { "content": "Valider et afficher la configuration du fichier docker-compose.yml", "is_correct": true }, { "content": "Afficher les logs", "is_correct": false }, { "content": "Afficher les images", "is_correct": false }, { "content": "Afficher les volumes", "is_correct": false } ] },
+      { "content": "Quelle commande permet de supprimer toutes les images non utilisées ?", "is_multiple": false, "timer": 25, "answers": [ { "content": "docker image prune", "is_correct": true }, { "content": "docker prune images", "is_correct": false }, { "content": "docker rmi all", "is_correct": false }, { "content": "docker image rm all", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker-compose restart' ?", "is_multiple": false, "timer": 39, "answers": [ { "content": "Redémarrer tous les services définis dans le fichier docker-compose.yml", "is_correct": true }, { "content": "Arrêter les services", "is_correct": false }, { "content": "Afficher les logs", "is_correct": false }, { "content": "Supprimer un service", "is_correct": false } ] },
+      { "content": "Quelle commande permet de voir les variables d’environnement d’un container ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "docker inspect", "is_correct": true }, { "content": "docker env", "is_correct": false }, { "content": "docker show env", "is_correct": false }, { "content": "docker container env", "is_correct": false } ] },
+      { "content": "Quel est le rôle de la commande 'docker-compose scale' ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "Changer le nombre d’instances d’un service", "is_correct": true }, { "content": "Changer le port d’un service", "is_correct": false }, { "content": "Changer le nom d’un service", "is_correct": false }, { "content": "Changer l’image d’un service", "is_correct": false } ] }
     ]
   },
   {
@@ -352,57 +208,32 @@
     "description": "Testez vos connaissances sur le déploiement et l'orchestration Kubernetes",
     "duration": 30,
     "is_published": true,
-    "image_url": "storage/icons/kubernetes.svg",
-    "image_text": "Kubernetes icon",
+    "image_url": "icons/kubernetes.svg",
     "themes": [
       "Kubernetes"
     ],
     "category": "DevOps",
     "questions": [
-      {
-        "content": "Quelle ressource Kubernetes définit l'état souhaité des pods ?",
-        "is_multiple": false,
-        "answers": [
-          {
-            "content": "Deployment",
-            "is_correct": true
-          },
-          {
-            "content": "Service",
-            "is_correct": false
-          },
-          {
-            "content": "ConfigMap",
-            "is_correct": false
-          },
-          {
-            "content": "PodTemplate",
-            "is_correct": false
-          }
-        ]
-      },
-      {
-        "content": "Quelle commande permet de vérifier l'état des pods dans un namespace spécifique ?",
-        "is_multiple": false,
-        "answers": [
-          {
-            "content": "kubectl get pods -n mon-namespace",
-            "is_correct": true
-          },
-          {
-            "content": "kubectl describe pods",
-            "is_correct": false
-          },
-          {
-            "content": "kubectl ps",
-            "is_correct": false
-          },
-          {
-            "content": "kubectl logs pods",
-            "is_correct": false
-          }
-        ]
-      }
+      { "content": "Quelle ressource Kubernetes définit l'état souhaité des pods ?", "is_multiple": false, "answers": [ { "content": "Deployment", "is_correct": true }, { "content": "Service", "is_correct": false }, { "content": "ConfigMap", "is_correct": false }, { "content": "PodTemplate", "is_correct": false } ] },
+      { "content": "Quelle commande permet de vérifier l'état des pods dans un namespace spécifique ?", "is_multiple": false, "answers": [ { "content": "kubectl get pods -n mon-namespace", "is_correct": true }, { "content": "kubectl describe pods", "is_correct": false }, { "content": "kubectl ps", "is_correct": false }, { "content": "kubectl logs pods", "is_correct": false } ] },
+      { "content": "Quelle ressource permet de stocker des variables d'environnement dans Kubernetes ?", "is_multiple": false, "answers": [ { "content": "ConfigMap", "is_correct": true }, { "content": "Secret", "is_correct": false }, { "content": "Deployment", "is_correct": false }, { "content": "Service", "is_correct": false } ] },
+      { "content": "Quelle commande permet de déployer une application à partir d'un fichier YAML ?", "is_multiple": false, "answers": [ { "content": "kubectl apply -f fichier.yaml", "is_correct": true }, { "content": "kubectl run fichier.yaml", "is_correct": false }, { "content": "kubectl create fichier.yaml", "is_correct": false }, { "content": "kubectl deploy fichier.yaml", "is_correct": false } ] },
+      { "content": "Quelle ressource permet d'exposer un service à l'extérieur du cluster ?", "is_multiple": false, "answers": [ { "content": "Ingress", "is_correct": true }, { "content": "Service", "is_correct": false }, { "content": "Pod", "is_correct": false }, { "content": "ConfigMap", "is_correct": false } ] },
+      { "content": "Quelle commande permet de voir les logs d'un pod ?", "is_multiple": false, "answers": [ { "content": "kubectl logs nom-du-pod", "is_correct": true }, { "content": "kubectl get logs", "is_correct": false }, { "content": "kubectl describe logs", "is_correct": false }, { "content": "kubectl pod logs", "is_correct": false } ] },
+      { "content": "Quelle ressource permet de stocker des informations sensibles ?", "is_multiple": false, "answers": [ { "content": "Secret", "is_correct": true }, { "content": "ConfigMap", "is_correct": false }, { "content": "Deployment", "is_correct": false }, { "content": "Pod", "is_correct": false } ] },
+      { "content": "Quelle commande permet de supprimer un pod ?", "is_multiple": false, "answers": [ { "content": "kubectl delete pod nom-du-pod", "is_correct": true }, { "content": "kubectl remove pod nom-du-pod", "is_correct": false }, { "content": "kubectl destroy pod nom-du-pod", "is_correct": false }, { "content": "kubectl erase pod nom-du-pod", "is_correct": false } ] },
+      { "content": "Quelle ressource permet de gérer le stockage persistant ?", "is_multiple": false, "answers": [ { "content": "PersistentVolume", "is_correct": true }, { "content": "ConfigMap", "is_correct": false }, { "content": "Deployment", "is_correct": false }, { "content": "Pod", "is_correct": false } ] },
+      { "content": "Quelle commande permet de lister tous les services ?", "is_multiple": false, "answers": [ { "content": "kubectl get services", "is_correct": true }, { "content": "kubectl list services", "is_correct": false }, { "content": "kubectl show services", "is_correct": false }, { "content": "kubectl describe services", "is_correct": false } ] },
+      { "content": "Quelle ressource permet de gérer le scaling automatique ?", "is_multiple": false, "answers": [ { "content": "HorizontalPodAutoscaler", "is_correct": true }, { "content": "Deployment", "is_correct": false }, { "content": "Service", "is_correct": false }, { "content": "Pod", "is_correct": false } ] },
+      { "content": "Quelle commande permet de mettre à jour une image de déploiement ?", "is_multiple": false, "answers": [ { "content": "kubectl set image deployment/nom-deploy", "is_correct": true }, { "content": "kubectl update image", "is_correct": false }, { "content": "kubectl change image", "is_correct": false }, { "content": "kubectl edit image", "is_correct": false } ] },
+      { "content": "Quelle ressource permet de définir des règles d'accès réseau ?", "is_multiple": false, "answers": [ { "content": "NetworkPolicy", "is_correct": true }, { "content": "Service", "is_correct": false }, { "content": "Pod", "is_correct": false }, { "content": "ConfigMap", "is_correct": false } ] },
+      { "content": "Quelle commande permet de voir la configuration d'un pod ?", "is_multiple": false, "answers": [ { "content": "kubectl describe pod nom-du-pod", "is_correct": true }, { "content": "kubectl get pod nom-du-pod", "is_correct": false }, { "content": "kubectl show pod nom-du-pod", "is_correct": false }, { "content": "kubectl config pod nom-du-pod", "is_correct": false } ] },
+      { "content": "Quelle ressource permet de gérer des jobs ponctuels ?", "is_multiple": false, "answers": [ { "content": "Job", "is_correct": true }, { "content": "Deployment", "is_correct": false }, { "content": "Service", "is_correct": false }, { "content": "Pod", "is_correct": false } ] },
+      { "content": "Quelle commande permet de créer un namespace ?", "is_multiple": false, "answers": [ { "content": "kubectl create namespace nom", "is_correct": true }, { "content": "kubectl new namespace nom", "is_correct": false }, { "content": "kubectl add namespace nom", "is_correct": false }, { "content": "kubectl namespace create nom", "is_correct": false } ] },
+      { "content": "Quelle ressource permet de gérer des tâches planifiées ?", "is_multiple": false, "answers": [ { "content": "CronJob", "is_correct": true }, { "content": "Job", "is_correct": false }, { "content": "Deployment", "is_correct": false }, { "content": "Service", "is_correct": false } ] },
+      { "content": "Quelle commande permet de voir les événements d'un cluster ?", "is_multiple": false, "answers": [ { "content": "kubectl get events", "is_correct": true }, { "content": "kubectl show events", "is_correct": false }, { "content": "kubectl describe events", "is_correct": false }, { "content": "kubectl events", "is_correct": false } ] },
+      { "content": "Quelle ressource permet de gérer la configuration d'une application ?", "is_multiple": false, "answers": [ { "content": "ConfigMap", "is_correct": true }, { "content": "Secret", "is_correct": false }, { "content": "Deployment", "is_correct": false }, { "content": "Pod", "is_correct": false } ] },
+      { "content": "Quelle commande permet de redémarrer un pod ?", "is_multiple": false, "answers": [ { "content": "kubectl delete pod nom-du-pod", "is_correct": true }, { "content": "kubectl restart pod nom-du-pod", "is_correct": false }, { "content": "kubectl reload pod nom-du-pod", "is_correct": false }, { "content": "kubectl refresh pod nom-du-pod", "is_correct": false } ] }
     ]
   },
    {
@@ -410,32 +241,31 @@
     "description": "Testez vos connaissances sur les balises HTML essentielles",
     "duration": 10,
     "is_published": true,
-    "image_url": "storage/icons/html.svg",
-    "image_text": "HTML icon",
+    "image_url": "icons/html.svg",
     "themes": ["HTML"],
     "category": "Frontend",
     "difficulty": "Facile",
     "questions": [
-      {
-        "content": "Quelle balise HTML définit un lien hypertexte ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "<a>", "is_correct": true },
-          { "content": "<link>", "is_correct": false },
-          { "content": "<href>", "is_correct": false },
-          { "content": "<url>", "is_correct": false }
-        ]
-      },
-      {
-        "content": "Quelle balise définit un paragraphe en HTML ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "<p>", "is_correct": true },
-          { "content": "<para>", "is_correct": false },
-          { "content": "<text>", "is_correct": false },
-          { "content": "<paragraph>", "is_correct": false }
-        ]
-      }
+      { "content": "Quelle balise HTML définit un lien hypertexte ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "<a>", "is_correct": true }, { "content": "<link>", "is_correct": false }, { "content": "<href>", "is_correct": false }, { "content": "<url>", "is_correct": false } ] },
+      { "content": "Quelle balise définit un paragraphe en HTML ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "<p>", "is_correct": true }, { "content": "<para>", "is_correct": false }, { "content": "<text>", "is_correct": false }, { "content": "<paragraph>", "is_correct": false } ] },
+      { "content": "Quelle balise définit un titre principal ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "<h1>", "is_correct": true }, { "content": "<title>", "is_correct": false }, { "content": "<header>", "is_correct": false }, { "content": "<head>", "is_correct": false } ] },
+      { "content": "Quelle balise permet d'insérer une image ?", "is_multiple": false, "timer": 28, "answers": [ { "content": "<img>", "is_correct": true }, { "content": "<image>", "is_correct": false }, { "content": "<src>", "is_correct": false }, { "content": "<pic>", "is_correct": false } ] },
+      { "content": "Quelle balise permet de créer une liste à puces ?", "is_multiple": false, "timer": 59, "answers": [ { "content": "<ul>", "is_correct": true }, { "content": "<ol>", "is_correct": false }, { "content": "<li>", "is_correct": false }, { "content": "<list>", "is_correct": false } ] },
+      { "content": "Quelle balise permet de créer une liste ordonnée ?", "is_multiple": false, "timer": 22, "answers": [ { "content": "<ol>", "is_correct": true }, { "content": "<ul>", "is_correct": false }, { "content": "<li>", "is_correct": false }, { "content": "<list>", "is_correct": false } ] },
+      { "content": "Quelle balise permet de créer un élément de liste ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "<li>", "is_correct": true }, { "content": "<ul>", "is_correct": false }, { "content": "<ol>", "is_correct": false }, { "content": "<item>", "is_correct": false } ] },
+      { "content": "Quelle balise permet de mettre du texte en gras ?", "is_multiple": false, "timer": 33, "answers": [ { "content": "<strong>", "is_correct": true }, { "content": "<b>", "is_correct": false }, { "content": "<em>", "is_correct": false }, { "content": "<bold>", "is_correct": false } ] },
+      { "content": "Quelle balise permet de mettre du texte en italique ?", "is_multiple": false, "timer": 26, "answers": [ { "content": "<em>", "is_correct": true }, { "content": "<i>", "is_correct": false }, { "content": "<italic>", "is_correct": false }, { "content": "<it>", "is_correct": false } ] },
+      { "content": "Quelle balise permet de créer un saut de ligne ?", "is_multiple": false, "timer": 60, "answers": [ { "content": "<br>", "is_correct": true }, { "content": "<lb>", "is_correct": false }, { "content": "<break>", "is_correct": false }, { "content": "<nl>", "is_correct": false } ] },
+      { "content": "Quelle balise permet de créer un formulaire ?", "is_multiple": false, "timer": 23, "answers": [ { "content": "<form>", "is_correct": true }, { "content": "<input>", "is_correct": false }, { "content": "<fieldset>", "is_correct": false }, { "content": "<label>", "is_correct": false } ] },
+      { "content": "Quelle balise permet de saisir du texte dans un formulaire ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "<input>", "is_correct": true }, { "content": "<form>", "is_correct": false }, { "content": "<textarea>", "is_correct": false }, { "content": "<text>", "is_correct": false } ] },
+      { "content": "Quelle balise permet de créer un tableau ?", "is_multiple": false, "timer": 57, "answers": [ { "content": "<table>", "is_correct": true }, { "content": "<tab>", "is_correct": false }, { "content": "<tr>", "is_correct": false }, { "content": "<td>", "is_correct": false } ] },
+      { "content": "Quelle balise permet de créer une cellule de tableau ?", "is_multiple": false, "timer": 35, "answers": [ { "content": "<td>", "is_correct": true }, { "content": "<tr>", "is_correct": false }, { "content": "<table>", "is_correct": false }, { "content": "<cell>", "is_correct": false } ] },
+      { "content": "Quelle balise permet de créer une ligne de tableau ?", "is_multiple": false, "timer": 49, "answers": [ { "content": "<tr>", "is_correct": true }, { "content": "<td>", "is_correct": false }, { "content": "<table>", "is_correct": false }, { "content": "<row>", "is_correct": false } ] },
+      { "content": "Quelle balise permet d’ajouter un titre à un tableau ?", "is_multiple": false, "timer": 29, "answers": [ { "content": "<caption>", "is_correct": true }, { "content": "<title>", "is_correct": false }, { "content": "<thead>", "is_correct": false }, { "content": "<header>", "is_correct": false } ] },
+      { "content": "Quelle balise permet de grouper l’en-tête d’un tableau ?", "is_multiple": false, "timer": 46, "answers": [ { "content": "<thead>", "is_correct": true }, { "content": "<header>", "is_correct": false }, { "content": "<head>", "is_correct": false }, { "content": "<th>", "is_correct": false } ] },
+      { "content": "Quelle balise permet de grouper le pied d’un tableau ?", "is_multiple": false, "timer": 24, "answers": [ { "content": "<tfoot>", "is_correct": true }, { "content": "<footer>", "is_correct": false }, { "content": "<foot>", "is_correct": false }, { "content": "<th>", "is_correct": false } ] },
+      { "content": "Quelle balise permet de grouper le corps d’un tableau ?", "is_multiple": false, "timer": 55, "answers": [ { "content": "<tbody>", "is_correct": true }, { "content": "<body>", "is_correct": false }, { "content": "<main>", "is_correct": false }, { "content": "<section>", "is_correct": false } ] },
+      { "content": "Quelle balise permet de créer une case à cocher ?", "is_multiple": false, "timer": 31, "answers": [ { "content": "<input type=\"checkbox\">", "is_correct": true }, { "content": "<checkbox>", "is_correct": false }, { "content": "<input type=\"check\">", "is_correct": false }, { "content": "<input checkbox>", "is_correct": false } ] }
     ]
   },
   {
@@ -443,32 +273,31 @@
     "description": "Connaissances de base sur le style et la mise en forme CSS",
     "duration": 10,
     "is_published": true,
-    "image_url": "storage/icons/css.svg",
-    "image_text": "CSS icon",
+    "image_url": "icons/css.svg",
     "themes": ["CSS"],
     "category": "Frontend",
     "difficulty": "Facile",
     "questions": [
-      {
-        "content": "Quelle propriété CSS change la couleur du texte ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "color", "is_correct": true },
-          { "content": "background-color", "is_correct": false },
-          { "content": "font-color", "is_correct": false },
-          { "content": "text-color", "is_correct": false }
-        ]
-      },
-      {
-        "content": "Quelle propriété permet de changer la taille de la police en CSS ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "font-size", "is_correct": true },
-          { "content": "text-size", "is_correct": false },
-          { "content": "size", "is_correct": false },
-          { "content": "letter-size", "is_correct": false }
-        ]
-      }
+      { "content": "Quelle propriété CSS change la couleur du texte ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "color", "is_correct": true }, { "content": "background-color", "is_correct": false }, { "content": "font-color", "is_correct": false }, { "content": "text-color", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de changer la taille de la police en CSS ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "font-size", "is_correct": true }, { "content": "text-size", "is_correct": false }, { "content": "size", "is_correct": false }, { "content": "letter-size", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de mettre un texte en gras ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "font-weight", "is_correct": true }, { "content": "font-style", "is_correct": false }, { "content": "bold", "is_correct": false }, { "content": "weight", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de souligner un texte ?", "is_multiple": false, "timer": 28, "answers": [ { "content": "text-decoration", "is_correct": true }, { "content": "underline", "is_correct": false }, { "content": "font-underline", "is_correct": false }, { "content": "decoration", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de changer la couleur de fond ?", "is_multiple": false, "timer": 59, "answers": [ { "content": "background-color", "is_correct": true }, { "content": "color", "is_correct": false }, { "content": "bg-color", "is_correct": false }, { "content": "background", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de centrer un texte ?", "is_multiple": false, "timer": 22, "answers": [ { "content": "text-align", "is_correct": true }, { "content": "align", "is_correct": false }, { "content": "center", "is_correct": false }, { "content": "font-align", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de mettre une image de fond ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "background-image", "is_correct": true }, { "content": "image-background", "is_correct": false }, { "content": "bg-image", "is_correct": false }, { "content": "background", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de définir la marge extérieure ?", "is_multiple": false, "timer": 33, "answers": [ { "content": "margin", "is_correct": true }, { "content": "padding", "is_correct": false }, { "content": "border", "is_correct": false }, { "content": "space", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de définir la marge intérieure ?", "is_multiple": false, "timer": 26, "answers": [ { "content": "padding", "is_correct": true }, { "content": "margin", "is_correct": false }, { "content": "border", "is_correct": false }, { "content": "space", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de définir une bordure ?", "is_multiple": false, "timer": 60, "answers": [ { "content": "border", "is_correct": true }, { "content": "outline", "is_correct": false }, { "content": "border-style", "is_correct": false }, { "content": "line", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de définir le rayon des coins ?", "is_multiple": false, "timer": 23, "answers": [ { "content": "border-radius", "is_correct": true }, { "content": "radius", "is_correct": false }, { "content": "corner-radius", "is_correct": false }, { "content": "border-corner", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de définir l’opacité d’un élément ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "opacity", "is_correct": true }, { "content": "transparent", "is_correct": false }, { "content": "alpha", "is_correct": false }, { "content": "visibility", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de cacher un élément ?", "is_multiple": false, "timer": 57, "answers": [ { "content": "display: none", "is_correct": true }, { "content": "visibility: hidden", "is_correct": false }, { "content": "hidden", "is_correct": false }, { "content": "hide", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de changer la police ?", "is_multiple": false, "timer": 35, "answers": [ { "content": "font-family", "is_correct": true }, { "content": "font", "is_correct": false }, { "content": "font-type", "is_correct": false }, { "content": "typeface", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de mettre un texte en italique ?", "is_multiple": false, "timer": 49, "answers": [ { "content": "font-style", "is_correct": true }, { "content": "font-italic", "is_correct": false }, { "content": "italic", "is_correct": false }, { "content": "style", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de souligner un texte ?", "is_multiple": false, "timer": 34, "answers": [ { "content": "text-decoration: underline", "is_correct": true }, { "content": "underline", "is_correct": false }, { "content": "font-underline", "is_correct": false }, { "content": "decoration", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de mettre une ombre portée ?", "is_multiple": false, "timer": 56, "answers": [ { "content": "box-shadow", "is_correct": true }, { "content": "shadow", "is_correct": false }, { "content": "text-shadow", "is_correct": false }, { "content": "shadow-box", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de changer la casse du texte ?", "is_multiple": false, "timer": 27, "answers": [ { "content": "text-transform", "is_correct": true }, { "content": "text-case", "is_correct": false }, { "content": "case", "is_correct": false }, { "content": "transform", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de définir l’espacement entre les lettres ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "letter-spacing", "is_correct": true }, { "content": "word-spacing", "is_correct": false }, { "content": "spacing", "is_correct": false }, { "content": "font-spacing", "is_correct": false } ] },
+      { "content": "Quelle propriété permet de définir l’espacement entre les mots ?", "is_multiple": false, "timer": 46, "answers": [ { "content": "word-spacing", "is_correct": true }, { "content": "letter-spacing", "is_correct": false }, { "content": "spacing", "is_correct": false }, { "content": "font-spacing", "is_correct": false } ] }
     ]
   },
   {
@@ -476,32 +305,29 @@
     "description": "Vérifie tes connaissances de base sur Git et le versioning",
     "duration": 15,
     "is_published": true,
-    "image_url": "storage/icons/git.svg",
-    "image_text": "Git icon",
+    "image_url": "icons/git.svg",
     "themes": ["Git"],
     "category": "DevOps",
     "difficulty": "Facile",
     "questions": [
-      {
-        "content": "Quelle commande initialise un dépôt Git local ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "git init", "is_correct": true },
-          { "content": "git start", "is_correct": false },
-          { "content": "git create", "is_correct": false },
-          { "content": "git new", "is_correct": false }
-        ]
-      },
-      {
-        "content": "Quelle commande affiche l'état actuel du dépôt Git ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "git status", "is_correct": true },
-          { "content": "git log", "is_correct": false },
-          { "content": "git info", "is_correct": false },
-          { "content": "git show", "is_correct": false }
-        ]
-      }
+      { "content": "Quelle commande initialise un dépôt Git local ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "git init", "is_correct": true }, { "content": "git start", "is_correct": false }, { "content": "git create", "is_correct": false }, { "content": "git new", "is_correct": false } ] },
+      { "content": "Quelle commande affiche l'état actuel du dépôt Git ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "git status", "is_correct": true }, { "content": "git log", "is_correct": false }, { "content": "git info", "is_correct": false }, { "content": "git show", "is_correct": false } ] },
+      { "content": "Quelle commande permet d’ajouter un fichier à l’index ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "git add", "is_correct": true }, { "content": "git stage", "is_correct": false }, { "content": "git commit", "is_correct": false }, { "content": "git push", "is_correct": false } ] },
+      { "content": "Quelle commande permet de valider les modifications ?", "is_multiple": false, "timer": 28, "answers": [ { "content": "git commit", "is_correct": true }, { "content": "git add", "is_correct": false }, { "content": "git push", "is_correct": false }, { "content": "git save", "is_correct": false } ] },
+      { "content": "Quelle commande permet d’envoyer les modifications sur le serveur distant ?", "is_multiple": false, "timer": 59, "answers": [ { "content": "git push", "is_correct": true }, { "content": "git pull", "is_correct": false }, { "content": "git send", "is_correct": false }, { "content": "git upload", "is_correct": false } ] },
+      { "content": "Quelle commande permet de récupérer les modifications du serveur distant ?", "is_multiple": false, "timer": 22, "answers": [ { "content": "git pull", "is_correct": true }, { "content": "git push", "is_correct": false }, { "content": "git fetch", "is_correct": false }, { "content": "git update", "is_correct": false } ] },
+      { "content": "Quelle commande permet de voir l’historique des commits ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "git log", "is_correct": true }, { "content": "git history", "is_correct": false }, { "content": "git show", "is_correct": false }, { "content": "git status", "is_correct": false } ] },
+      { "content": "Quelle commande permet de créer une nouvelle branche ?", "is_multiple": false, "timer": 33, "answers": [ { "content": "git branch", "is_correct": true }, { "content": "git new branch", "is_correct": false }, { "content": "git checkout", "is_correct": false }, { "content": "git create branch", "is_correct": false } ] },
+      { "content": "Quelle commande permet de changer de branche ?", "is_multiple": false, "timer": 26, "answers": [ { "content": "git checkout", "is_correct": true }, { "content": "git switch", "is_correct": false }, { "content": "git change", "is_correct": false }, { "content": "git move", "is_correct": false } ] },
+      { "content": "Quelle commande permet de fusionner deux branches ?", "is_multiple": false, "timer": 60, "answers": [ { "content": "git merge", "is_correct": true }, { "content": "git join", "is_correct": false }, { "content": "git combine", "is_correct": false }, { "content": "git union", "is_correct": false } ] },
+      { "content": "Quelle commande permet de cloner un dépôt distant ?", "is_multiple": false, "timer": 23, "answers": [ { "content": "git clone", "is_correct": true }, { "content": "git copy", "is_correct": false }, { "content": "git fetch", "is_correct": false }, { "content": "git download", "is_correct": false } ] },
+      { "content": "Quelle commande permet de supprimer un fichier du dépôt ?", "is_multiple": false, "timer": 46, "answers": [ { "content": "git rm", "is_correct": true }, { "content": "git delete", "is_correct": false }, { "content": "git remove", "is_correct": false }, { "content": "git del", "is_correct": false } ] },
+      { "content": "Quelle commande permet d’annuler les modifications d’un fichier ?", "is_multiple": false, "timer": 24, "answers": [ { "content": "git checkout -- fichier", "is_correct": true }, { "content": "git revert fichier", "is_correct": false }, { "content": "git reset fichier", "is_correct": false }, { "content": "git undo fichier", "is_correct": false } ] },
+      { "content": "Quelle commande permet de voir les différences entre deux commits ?", "is_multiple": false, "timer": 55, "answers": [ { "content": "git diff", "is_correct": true }, { "content": "git compare", "is_correct": false }, { "content": "git show", "is_correct": false }, { "content": "git status", "is_correct": false } ] },
+      { "content": "Quelle commande permet de configurer l’utilisateur Git ?", "is_multiple": false, "timer": 31, "answers": [ { "content": "git config", "is_correct": true }, { "content": "git setup", "is_correct": false }, { "content": "git user", "is_correct": false }, { "content": "git init", "is_correct": false } ] },
+      { "content": "Quelle commande permet de voir les dépôts distants ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "git remote -v", "is_correct": true }, { "content": "git remote", "is_correct": false }, { "content": "git show remote", "is_correct": false }, { "content": "git list remote", "is_correct": false } ] },
+      { "content": "Quelle commande permet de supprimer une branche ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "git branch -d", "is_correct": true }, { "content": "git delete branch", "is_correct": false }, { "content": "git remove branch", "is_correct": false }, { "content": "git branch --delete", "is_correct": false } ] },
+      { "content": "Quelle commande permet de réinitialiser l’index et le répertoire de travail ?", "is_multiple": false, "timer": 36, "answers": [ { "content": "git reset --hard", "is_correct": true }, { "content": "git reset", "is_correct": false }, { "content": "git revert", "is_correct": false }, { "content": "git clean", "is_correct": false } ] }
     ]
   },
   {
@@ -509,32 +335,30 @@
     "description": "Quiz sur les fondamentaux de Node.js",
     "duration": 20,
     "is_published": true,
-    "image_url": "storage/icons/nodejs.svg",
-    "image_text": "Node.js icon",
+    "image_url": "icons/nodejs.svg",
     "themes": ["Node.js"],
     "category": "Backend",
     "difficulty": "Intermédiaire",
     "questions": [
-      {
-        "content": "Quel module Node.js permet de créer un serveur HTTP ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "http", "is_correct": true },
-          { "content": "fs", "is_correct": false },
-          { "content": "path", "is_correct": false },
-          { "content": "os", "is_correct": false }
-        ]
-      },
-      {
-        "content": "Quelle commande installe un package Node.js localement ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "npm install nom_du_package", "is_correct": true },
-          { "content": "node install nom_du_package", "is_correct": false },
-          { "content": "npm add nom_du_package", "is_correct": false },
-          { "content": "node get nom_du_package", "is_correct": false }
-        ]
-      }
+      { "content": "Quel module Node.js permet de créer un serveur HTTP ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "http", "is_correct": true }, { "content": "fs", "is_correct": false }, { "content": "path", "is_correct": false }, { "content": "os", "is_correct": false } ] },
+      { "content": "Quelle commande installe un package Node.js localement ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "npm install nom_du_package", "is_correct": true }, { "content": "node install nom_du_package", "is_correct": false }, { "content": "npm add nom_du_package", "is_correct": false }, { "content": "node get nom_du_package", "is_correct": false } ] },
+      { "content": "Quel module permet de manipuler le système de fichiers ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "fs", "is_correct": true }, { "content": "http", "is_correct": false }, { "content": "os", "is_correct": false }, { "content": "path", "is_correct": false } ] },
+      { "content": "Quelle commande lance un script Node.js ?", "is_multiple": false, "timer": 28, "answers": [ { "content": "node script.js", "is_correct": true }, { "content": "npm run script.js", "is_correct": false }, { "content": "run script.js", "is_correct": false }, { "content": "nodejs script.js", "is_correct": false } ] },
+      { "content": "Quel module permet de manipuler les chemins de fichiers ?", "is_multiple": false, "timer": 59, "answers": [ { "content": "path", "is_correct": true }, { "content": "fs", "is_correct": false }, { "content": "os", "is_correct": false }, { "content": "http", "is_correct": false } ] },
+      { "content": "Quelle commande initialise un projet Node.js ?", "is_multiple": false, "timer": 22, "answers": [ { "content": "npm init", "is_correct": true }, { "content": "node init", "is_correct": false }, { "content": "npm start", "is_correct": false }, { "content": "init npm", "is_correct": false } ] },
+      { "content": "Quel fichier contient la liste des dépendances d’un projet Node.js ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "package.json", "is_correct": true }, { "content": "node_modules", "is_correct": false }, { "content": "index.js", "is_correct": false }, { "content": "npm.json", "is_correct": false } ] },
+      { "content": "Quelle commande met à jour un package ?", "is_multiple": false, "timer": 33, "answers": [ { "content": "npm update", "is_correct": true }, { "content": "npm upgrade", "is_correct": false }, { "content": "node update", "is_correct": false }, { "content": "npm refresh", "is_correct": false } ] },
+      { "content": "Quel module permet de lire les variables d’environnement ?", "is_multiple": false, "timer": 26, "answers": [ { "content": "process", "is_correct": true }, { "content": "env", "is_correct": false }, { "content": "os", "is_correct": false }, { "content": "config", "is_correct": false } ] },
+      { "content": "Quelle commande désinstalle un package ?", "is_multiple": false, "timer": 60, "answers": [ { "content": "npm uninstall", "is_correct": true }, { "content": "npm remove", "is_correct": false }, { "content": "node uninstall", "is_correct": false }, { "content": "npm delete", "is_correct": false } ] },
+      { "content": "Quel module permet de créer un serveur WebSocket ?", "is_multiple": false, "timer": 23, "answers": [ { "content": "ws", "is_correct": true }, { "content": "http", "is_correct": false }, { "content": "socket", "is_correct": false }, { "content": "websocket", "is_correct": false } ] },
+      { "content": "Quelle commande affiche la version de Node.js ?", "is_multiple": false, "timer": 46, "answers": [ { "content": "node -v", "is_correct": true }, { "content": "npm -v", "is_correct": false }, { "content": "node version", "is_correct": false }, { "content": "npm version", "is_correct": false } ] },
+      { "content": "Quel module permet de gérer les processus enfants ?", "is_multiple": false, "timer": 29, "answers": [ { "content": "child_process", "is_correct": true }, { "content": "process", "is_correct": false }, { "content": "os", "is_correct": false }, { "content": "fs", "is_correct": false } ] },
+      { "content": "Quelle commande permet d’installer un package en tant que dépendance de développement ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "npm install --save-dev", "is_correct": true }, { "content": "npm install --dev", "is_correct": false }, { "content": "npm add --dev", "is_correct": false }, { "content": "npm dev install", "is_correct": false } ] },
+      { "content": "Quel module permet de compresser des fichiers ?", "is_multiple": false, "timer": 55, "answers": [ { "content": "zlib", "is_correct": true }, { "content": "fs", "is_correct": false }, { "content": "os", "is_correct": false }, { "content": "http", "is_correct": false } ] },
+      { "content": "Quelle commande exécute les tests définis dans le projet ?", "is_multiple": false, "timer": 29, "answers": [ { "content": "npm test", "is_correct": true }, { "content": "node test", "is_correct": false }, { "content": "npm run test", "is_correct": false }, { "content": "test", "is_correct": false } ] },
+      { "content": "Quel module permet de crypter des données ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "crypto", "is_correct": true }, { "content": "fs", "is_correct": false }, { "content": "os", "is_correct": false }, { "content": "http", "is_correct": false } ] },
+      { "content": "Quelle commande permet de lister les packages installés ?", "is_multiple": false, "timer": 46, "answers": [ { "content": "npm list", "is_correct": true }, { "content": "npm show", "is_correct": false }, { "content": "npm packages", "is_correct": false }, { "content": "npm get", "is_correct": false } ] },
+      { "content": "Quel module permet de gérer les événements ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "events", "is_correct": true }, { "content": "event", "is_correct": false }, { "content": "emitter", "is_correct": false }, { "content": "listener", "is_correct": false } ] }
     ]
   },
   {
@@ -542,32 +366,31 @@
     "description": "Quiz sur les bases de React et les composants",
     "duration": 15,
     "is_published": true,
-    "image_url": "storage/icons/react.svg",
-    "image_text": "React icon",
+    "image_url": "icons/react.svg",
     "themes": ["React"],
     "category": "Frontend",
     "difficulty": "Intermédiaire",
     "questions": [
-      {
-        "content": "Quel mot-clé permet de définir un composant fonctionnel en React ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "function", "is_correct": true },
-          { "content": "class", "is_correct": false },
-          { "content": "component", "is_correct": false },
-          { "content": "const", "is_correct": false }
-        ]
-      },
-      {
-        "content": "Comment inclut-on un composant React dans un autre ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "<NomComposant />", "is_correct": true },
-          { "content": "{NomComposant}", "is_correct": false },
-          { "content": "NomComposant()", "is_correct": false },
-          { "content": "<NomComposant>", "is_correct": false }
-        ]
-      }
+      { "content": "Quel mot-clé permet de définir un composant fonctionnel en React ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "function", "is_correct": true }, { "content": "class", "is_correct": false }, { "content": "component", "is_correct": false }, { "content": "const", "is_correct": false } ] },
+      { "content": "Comment inclut-on un composant React dans un autre ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "<NomComposant />", "is_correct": true }, { "content": "{NomComposant}", "is_correct": false }, { "content": "NomComposant()", "is_correct": false }, { "content": "<NomComposant>", "is_correct": false } ] },
+      { "content": "Quel hook permet de gérer l’état local ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "useState", "is_correct": true }, { "content": "useEffect", "is_correct": false }, { "content": "useContext", "is_correct": false }, { "content": "useReducer", "is_correct": false } ] },
+      { "content": "Quel hook permet d’exécuter du code après le rendu ?", "is_multiple": false, "timer": 28, "answers": [ { "content": "useEffect", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useMemo", "is_correct": false }, { "content": "useRef", "is_correct": false } ] },
+      { "content": "Quelle syntaxe permet de passer une prop ?", "is_multiple": false, "timer": 59, "answers": [ { "content": "<Composant prop=\"valeur\" />", "is_correct": true }, { "content": "<Composant :prop=\"valeur\" />", "is_correct": false }, { "content": "<Composant {prop}=\"valeur\" />", "is_correct": false }, { "content": "<Composant prop==\"valeur\" />", "is_correct": false } ] },
+      { "content": "Quel attribut permet de donner une clé unique à un élément dans une liste ?", "is_multiple": false, "timer": 22, "answers": [ { "content": "key", "is_correct": true }, { "content": "id", "is_correct": false }, { "content": "ref", "is_correct": false }, { "content": "name", "is_correct": false } ] },
+      { "content": "Quel hook permet d’accéder à une référence DOM ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "useRef", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useEffect", "is_correct": false }, { "content": "useMemo", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de rendre un composant React ?", "is_multiple": false, "timer": 33, "answers": [ { "content": "ReactDOM.render", "is_correct": true }, { "content": "React.render", "is_correct": false }, { "content": "render", "is_correct": false }, { "content": "ReactComponent.render", "is_correct": false } ] },
+      { "content": "Quel hook permet de mémoriser une valeur calculée ?", "is_multiple": false, "timer": 26, "answers": [ { "content": "useMemo", "is_correct": true }, { "content": "useEffect", "is_correct": false }, { "content": "useState", "is_correct": false }, { "content": "useRef", "is_correct": false } ] },
+      { "content": "Quel hook permet de créer un contexte global ?", "is_multiple": false, "timer": 60, "answers": [ { "content": "useContext", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useEffect", "is_correct": false }, { "content": "useReducer", "is_correct": false } ] },
+      { "content": "Quelle extension de fichier est utilisée pour les composants React ?", "is_multiple": false, "timer": 23, "answers": [ { "content": ".jsx", "is_correct": true }, { "content": ".js", "is_correct": false }, { "content": ".tsx", "is_correct": false }, { "content": ".vue", "is_correct": false } ] },
+      { "content": "Quel hook permet de gérer un reducer ?", "is_multiple": false, "timer": 46, "answers": [ { "content": "useReducer", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useEffect", "is_correct": false }, { "content": "useMemo", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de créer un composant classe ?", "is_multiple": false, "timer": 24, "answers": [ { "content": "extends React.Component", "is_correct": true }, { "content": "extends Component", "is_correct": false }, { "content": "class extends React", "is_correct": false }, { "content": "extends React.Class", "is_correct": false } ] },
+      { "content": "Quel attribut permet de donner un style en ligne ?", "is_multiple": false, "timer": 55, "answers": [ { "content": "style", "is_correct": true }, { "content": "css", "is_correct": false }, { "content": "className", "is_correct": false }, { "content": "styles", "is_correct": false } ] },
+      { "content": "Quel attribut permet d’ajouter une classe CSS ?", "is_multiple": false, "timer": 29, "answers": [ { "content": "className", "is_correct": true }, { "content": "class", "is_correct": false }, { "content": "css", "is_correct": false }, { "content": "style", "is_correct": false } ] },
+      { "content": "Quel hook permet de déclencher une action lors d’un changement de prop ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "useEffect", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useMemo", "is_correct": false }, { "content": "useRef", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de retourner le JSX d’un composant ?", "is_multiple": false, "timer": 46, "answers": [ { "content": "return", "is_correct": true }, { "content": "render", "is_correct": false }, { "content": "output", "is_correct": false }, { "content": "jsx", "is_correct": false } ] },
+      { "content": "Quel hook permet de forcer un nouveau rendu ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "useState", "is_correct": true }, { "content": "useEffect", "is_correct": false }, { "content": "useMemo", "is_correct": false }, { "content": "useRef", "is_correct": false } ] },
+      { "content": "Quel hook permet de mémoriser une fonction ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "useCallback", "is_correct": true }, { "content": "useMemo", "is_correct": false }, { "content": "useEffect", "is_correct": false }, { "content": "useRef", "is_correct": false } ] },
+      { "content": "Quel hook permet de gérer un effet secondaire ?", "is_multiple": false, "timer": 36, "answers": [ { "content": "useEffect", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useMemo", "is_correct": false }, { "content": "useRef", "is_correct": false } ] }
     ]
   },
   {
@@ -575,32 +398,30 @@
     "description": "Testez vos connaissances des requêtes SQL simples",
     "duration": 15,
     "is_published": true,
-    "image_url": "storage/icons/sql.svg",
-    "image_text": "SQL icon",
+    "image_url": "icons/sql.svg",
     "themes": ["SQL"],
     "category": "Backend",
     "difficulty": "Intermédiaire",
     "questions": [
-      {
-        "content": "Quelle commande SQL permet de sélectionner toutes les données d'une table ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "SELECT * FROM table;", "is_correct": true },
-          { "content": "GET * FROM table;", "is_correct": false },
-          { "content": "SHOW * FROM table;", "is_correct": false },
-          { "content": "FETCH * FROM table;", "is_correct": false }
-        ]
-      },
-      {
-        "content": "Quelle clause SQL permet de filtrer les résultats ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "WHERE", "is_correct": true },
-          { "content": "FILTER", "is_correct": false },
-          { "content": "CONDITION", "is_correct": false },
-          { "content": "HAVING", "is_correct": false }
-        ]
-      }
+      { "content": "Quelle commande SQL permet de sélectionner toutes les données d'une table ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "SELECT * FROM table;", "is_correct": true }, { "content": "GET * FROM table;", "is_correct": false }, { "content": "SHOW * FROM table;", "is_correct": false }, { "content": "FETCH * FROM table;", "is_correct": false } ] },
+      { "content": "Quelle clause SQL permet de filtrer les résultats ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "WHERE", "is_correct": true }, { "content": "FILTER", "is_correct": false }, { "content": "CONDITION", "is_correct": false }, { "content": "HAVING", "is_correct": false } ] },
+      { "content": "Quelle commande permet d’insérer une ligne ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "INSERT INTO", "is_correct": true }, { "content": "ADD TO", "is_correct": false }, { "content": "UPDATE INTO", "is_correct": false }, { "content": "PUT INTO", "is_correct": false } ] },
+      { "content": "Quelle commande permet de modifier une ligne ?", "is_multiple": false, "timer": 28, "answers": [ { "content": "UPDATE", "is_correct": true }, { "content": "MODIFY", "is_correct": false }, { "content": "CHANGE", "is_correct": false }, { "content": "ALTER", "is_correct": false } ] },
+      { "content": "Quelle commande permet de supprimer une ligne ?", "is_multiple": false, "timer": 59, "answers": [ { "content": "DELETE", "is_correct": true }, { "content": "REMOVE", "is_correct": false }, { "content": "DROP", "is_correct": false }, { "content": "ERASE", "is_correct": false } ] },
+      { "content": "Quelle clause permet de regrouper les résultats ?", "is_multiple": false, "timer": 22, "answers": [ { "content": "GROUP BY", "is_correct": true }, { "content": "ORDER BY", "is_correct": false }, { "content": "GROUP", "is_correct": false }, { "content": "BY GROUP", "is_correct": false } ] },
+      { "content": "Quelle clause permet de trier les résultats ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "ORDER BY", "is_correct": true }, { "content": "SORT BY", "is_correct": false }, { "content": "GROUP BY", "is_correct": false }, { "content": "BY ORDER", "is_correct": false } ] },
+      { "content": "Quelle fonction retourne le nombre de lignes ?", "is_multiple": false, "timer": 27, "answers": [ { "content": "COUNT", "is_correct": true }, { "content": "SUM", "is_correct": false }, { "content": "TOTAL", "is_correct": false }, { "content": "NUMBER", "is_correct": false } ] },
+      { "content": "Quelle fonction retourne la somme d’une colonne ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "SUM", "is_correct": true }, { "content": "COUNT", "is_correct": false }, { "content": "TOTAL", "is_correct": false }, { "content": "ADD", "is_correct": false } ] },
+      { "content": "Quelle fonction retourne la valeur maximale d’une colonne ?", "is_multiple": false, "timer": 49, "answers": [ { "content": "MAX", "is_correct": true }, { "content": "MIN", "is_correct": false }, { "content": "TOP", "is_correct": false }, { "content": "HIGHEST", "is_correct": false } ] },
+      { "content": "Quelle fonction retourne la valeur minimale d’une colonne ?", "is_multiple": false, "timer": 36, "answers": [ { "content": "MIN", "is_correct": true }, { "content": "MAX", "is_correct": false }, { "content": "LOWEST", "is_correct": false }, { "content": "BOTTOM", "is_correct": false } ] },
+      { "content": "Quelle clause permet de filtrer les groupes ?", "is_multiple": false, "timer": 25, "answers": [ { "content": "HAVING", "is_correct": true }, { "content": "WHERE", "is_correct": false }, { "content": "GROUP BY", "is_correct": false }, { "content": "FILTER", "is_correct": false } ] },
+      { "content": "Quelle commande permet de créer une table ?", "is_multiple": false, "timer": 58, "answers": [ { "content": "CREATE TABLE", "is_correct": true }, { "content": "NEW TABLE", "is_correct": false }, { "content": "ADD TABLE", "is_correct": false }, { "content": "MAKE TABLE", "is_correct": false } ] },
+      { "content": "Quelle commande permet de supprimer une table ?", "is_multiple": false, "timer": 34, "answers": [ { "content": "DROP TABLE", "is_correct": true }, { "content": "DELETE TABLE", "is_correct": false }, { "content": "REMOVE TABLE", "is_correct": false }, { "content": "ERASE TABLE", "is_correct": false } ] },
+      { "content": "Quelle commande permet de modifier la structure d’une table ?", "is_multiple": false, "timer": 42, "answers": [ { "content": "ALTER TABLE", "is_correct": true }, { "content": "UPDATE TABLE", "is_correct": false }, { "content": "MODIFY TABLE", "is_correct": false }, { "content": "CHANGE TABLE", "is_correct": false } ] },
+      { "content": "Quelle clause permet de limiter le nombre de résultats ?", "is_multiple": false, "timer": 29, "answers": [ { "content": "LIMIT", "is_correct": true }, { "content": "TOP", "is_correct": false }, { "content": "MAX", "is_correct": false }, { "content": "ROWNUM", "is_correct": false } ] },
+      { "content": "Quelle commande permet de donner un alias à une colonne ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "AS", "is_correct": true }, { "content": "ALIAS", "is_correct": false }, { "content": "NAME", "is_correct": false }, { "content": "RENAME", "is_correct": false } ] },
+      { "content": "Quelle commande permet de sélectionner des valeurs distinctes ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "SELECT DISTINCT", "is_correct": true }, { "content": "SELECT UNIQUE", "is_correct": false }, { "content": "SELECT ONLY", "is_correct": false }, { "content": "SELECT SINGLE", "is_correct": false } ] },
+      { "content": "Quelle commande permet de joindre deux tables ?", "is_multiple": false, "timer": 46, "answers": [ { "content": "JOIN", "is_correct": true }, { "content": "MERGE", "is_correct": false }, { "content": "COMBINE", "is_correct": false }, { "content": "LINK", "is_correct": false } ] }
     ]
   },
   {
@@ -608,32 +429,31 @@
     "description": "Vérifie tes bases en Python",
     "duration": 15,
     "is_published": true,
-    "image_url": "storage/icons/python.svg",
-    "image_text": "Python icon",
+    "image_url": "icons/python.svg",
     "themes": ["Python"],
     "category": "Backend",
     "difficulty": "Facile",
     "questions": [
-      {
-        "content": "Quel mot-clé sert à définir une fonction en Python ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "def", "is_correct": true },
-          { "content": "function", "is_correct": false },
-          { "content": "func", "is_correct": false },
-          { "content": "define", "is_correct": false }
-        ]
-      },
-      {
-        "content": "Comment crée-t-on une liste vide en Python ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "[]", "is_correct": true },
-          { "content": "{}", "is_correct": false },
-          { "content": "list()", "is_correct": true },
-          { "content": "()", "is_correct": false }
-        ]
-      }
+      { "content": "Quel mot-clé sert à définir une fonction en Python ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "def", "is_correct": true }, { "content": "function", "is_correct": false }, { "content": "func", "is_correct": false }, { "content": "define", "is_correct": false } ] },
+      { "content": "Comment crée-t-on une liste vide en Python ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "[]", "is_correct": true }, { "content": "{}", "is_correct": false }, { "content": "list()", "is_correct": true }, { "content": "()", "is_correct": false } ] },
+      { "content": "Quel symbole est utilisé pour les commentaires ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "#", "is_correct": true }, { "content": "//", "is_correct": false }, { "content": "--", "is_correct": false }, { "content": "%", "is_correct": false } ] },
+      { "content": "Quelle fonction affiche du texte à l’écran ?", "is_multiple": false, "timer": 28, "answers": [ { "content": "print", "is_correct": true }, { "content": "echo", "is_correct": false }, { "content": "console.log", "is_correct": false }, { "content": "write", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de créer une boucle ?", "is_multiple": false, "timer": 59, "answers": [ { "content": "for", "is_correct": true }, { "content": "loop", "is_correct": false }, { "content": "repeat", "is_correct": false }, { "content": "while", "is_correct": false } ] },
+      { "content": "Quelle fonction retourne la longueur d’une liste ?", "is_multiple": false, "timer": 22, "answers": [ { "content": "len", "is_correct": true }, { "content": "length", "is_correct": false }, { "content": "count", "is_correct": false }, { "content": "size", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de quitter une boucle ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "break", "is_correct": true }, { "content": "continue", "is_correct": false }, { "content": "exit", "is_correct": false }, { "content": "stop", "is_correct": false } ] },
+      { "content": "Quel type de variable est retourné par input() ?", "is_multiple": false, "timer": 33, "answers": [ { "content": "str", "is_correct": true }, { "content": "int", "is_correct": false }, { "content": "float", "is_correct": false }, { "content": "bool", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de définir une condition ?", "is_multiple": false, "timer": 26, "answers": [ { "content": "if", "is_correct": true }, { "content": "when", "is_correct": false }, { "content": "case", "is_correct": false }, { "content": "cond", "is_correct": false } ] },
+      { "content": "Quelle fonction permet de convertir une chaîne en entier ?", "is_multiple": false, "timer": 60, "answers": [ { "content": "int", "is_correct": true }, { "content": "str", "is_correct": false }, { "content": "float", "is_correct": false }, { "content": "bool", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de définir une classe ?", "is_multiple": false, "timer": 23, "answers": [ { "content": "class", "is_correct": true }, { "content": "object", "is_correct": false }, { "content": "struct", "is_correct": false }, { "content": "define", "is_correct": false } ] },
+      { "content": "Quelle méthode retourne la représentation chaîne d’un objet ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "__str__", "is_correct": true }, { "content": "toString", "is_correct": false }, { "content": "str", "is_correct": false }, { "content": "stringify", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet d’importer un module ?", "is_multiple": false, "timer": 57, "answers": [ { "content": "import", "is_correct": true }, { "content": "include", "is_correct": false }, { "content": "require", "is_correct": false }, { "content": "use", "is_correct": false } ] },
+      { "content": "Quelle fonction retourne le type d’une variable ?", "is_multiple": false, "timer": 35, "answers": [ { "content": "type", "is_correct": true }, { "content": "typeof", "is_correct": false }, { "content": "gettype", "is_correct": false }, { "content": "classof", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de gérer les exceptions ?", "is_multiple": false, "timer": 49, "answers": [ { "content": "try", "is_correct": true }, { "content": "catch", "is_correct": false }, { "content": "except", "is_correct": false }, { "content": "error", "is_correct": false } ] },
+      { "content": "Quelle méthode permet d’ajouter un élément à une liste ?", "is_multiple": false, "timer": 29, "answers": [ { "content": "append", "is_correct": true }, { "content": "add", "is_correct": false }, { "content": "push", "is_correct": false }, { "content": "insert", "is_correct": false } ] },
+      { "content": "Quelle méthode permet de supprimer un élément d’une liste ?", "is_multiple": false, "timer": 46, "answers": [ { "content": "remove", "is_correct": true }, { "content": "delete", "is_correct": false }, { "content": "pop", "is_correct": false }, { "content": "del", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de définir une fonction anonyme ?", "is_multiple": false, "timer": 24, "answers": [ { "content": "lambda", "is_correct": true }, { "content": "function", "is_correct": false }, { "content": "def", "is_correct": false }, { "content": "anon", "is_correct": false } ] },
+      { "content": "Quelle fonction retourne la valeur absolue d’un nombre ?", "is_multiple": false, "timer": 55, "answers": [ { "content": "abs", "is_correct": true }, { "content": "absolute", "is_correct": false }, { "content": "fabs", "is_correct": false }, { "content": "absval", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de passer à l’itération suivante dans une boucle ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "continue", "is_correct": true }, { "content": "break", "is_correct": false }, { "content": "next", "is_correct": false }, { "content": "skip", "is_correct": false } ] }
     ]
   },
   {
@@ -641,32 +461,30 @@
     "description": "Connaissances essentielles sur le système Linux et la ligne de commande",
     "duration": 15,
     "is_published": true,
-    "image_url": "storage/icons/linux.svg",
-    "image_text": "Linux icon",
+    "image_url": "icons/linux.svg",
     "themes": ["Linux"],
     "category": "DevOps",
     "difficulty": "Facile",
     "questions": [
-      {
-        "content": "Quelle commande liste les fichiers d'un répertoire en Linux ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "ls", "is_correct": true },
-          { "content": "dir", "is_correct": false },
-          { "content": "list", "is_correct": false },
-          { "content": "show", "is_correct": false }
-        ]
-      },
-      {
-        "content": "Quelle commande permet de changer de répertoire ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "cd", "is_correct": true },
-          { "content": "chdir", "is_correct": false },
-          { "content": "mv", "is_correct": false },
-          { "content": "pwd", "is_correct": false }
-        ]
-      }
+      { "content": "Quelle commande liste les fichiers d'un répertoire en Linux ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "ls", "is_correct": true }, { "content": "dir", "is_correct": false }, { "content": "list", "is_correct": false }, { "content": "show", "is_correct": false } ] },
+      { "content": "Quelle commande permet de changer de répertoire ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "cd", "is_correct": true }, { "content": "chdir", "is_correct": false }, { "content": "mv", "is_correct": false }, { "content": "pwd", "is_correct": false } ] },
+      { "content": "Quelle commande affiche le chemin du répertoire courant ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "pwd", "is_correct": true }, { "content": "ls", "is_correct": false }, { "content": "cd", "is_correct": false }, { "content": "dir", "is_correct": false } ] },
+      { "content": "Quelle commande permet de copier un fichier ?", "is_multiple": false, "timer": 28, "answers": [ { "content": "cp", "is_correct": true }, { "content": "copy", "is_correct": false }, { "content": "mv", "is_correct": false }, { "content": "duplicate", "is_correct": false } ] },
+      { "content": "Quelle commande permet de déplacer un fichier ?", "is_multiple": false, "timer": 59, "answers": [ { "content": "mv", "is_correct": true }, { "content": "move", "is_correct": false }, { "content": "cp", "is_correct": false }, { "content": "rename", "is_correct": false } ] },
+      { "content": "Quelle commande permet de supprimer un fichier ?", "is_multiple": false, "timer": 22, "answers": [ { "content": "rm", "is_correct": true }, { "content": "delete", "is_correct": false }, { "content": "remove", "is_correct": false }, { "content": "erase", "is_correct": false } ] },
+      { "content": "Quelle commande permet de créer un répertoire ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "mkdir", "is_correct": true }, { "content": "md", "is_correct": false }, { "content": "create", "is_correct": false }, { "content": "newdir", "is_correct": false } ] },
+      { "content": "Quelle commande permet de supprimer un répertoire ?", "is_multiple": false, "timer": 33, "answers": [ { "content": "rmdir", "is_correct": true }, { "content": "rm", "is_correct": false }, { "content": "delete", "is_correct": false }, { "content": "removedir", "is_correct": false } ] },
+      { "content": "Quelle commande permet d’afficher le contenu d’un fichier ?", "is_multiple": false, "timer": 26, "answers": [ { "content": "cat", "is_correct": true }, { "content": "show", "is_correct": false }, { "content": "display", "is_correct": false }, { "content": "print", "is_correct": false } ] },
+      { "content": "Quelle commande permet de rechercher un mot dans un fichier ?", "is_multiple": false, "timer": 60, "answers": [ { "content": "grep", "is_correct": true }, { "content": "find", "is_correct": false }, { "content": "search", "is_correct": false }, { "content": "look", "is_correct": false } ] },
+      { "content": "Quelle commande permet de voir les processus en cours ?", "is_multiple": false, "timer": 23, "answers": [ { "content": "ps", "is_correct": true }, { "content": "top", "is_correct": false }, { "content": "jobs", "is_correct": false }, { "content": "proc", "is_correct": false } ] },
+      { "content": "Quelle commande permet de tuer un processus ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "kill", "is_correct": true }, { "content": "end", "is_correct": false }, { "content": "stop", "is_correct": false }, { "content": "terminate", "is_correct": false } ] },
+      { "content": "Quelle commande permet de changer les permissions d’un fichier ?", "is_multiple": false, "timer": 46, "answers": [ { "content": "chmod", "is_correct": true }, { "content": "chown", "is_correct": false }, { "content": "perm", "is_correct": false }, { "content": "setperm", "is_correct": false } ] },
+      { "content": "Quelle commande permet de changer le propriétaire d’un fichier ?", "is_multiple": false, "timer": 24, "answers": [ { "content": "chown", "is_correct": true }, { "content": "chmod", "is_correct": false }, { "content": "owner", "is_correct": false }, { "content": "setowner", "is_correct": false } ] },
+      { "content": "Quelle commande permet de voir l’espace disque utilisé ?", "is_multiple": false, "timer": 55, "answers": [ { "content": "df", "is_correct": true }, { "content": "du", "is_correct": false }, { "content": "ls", "is_correct": false }, { "content": "space", "is_correct": false } ] },
+      { "content": "Quelle commande permet de voir l’espace disque d’un dossier ?", "is_multiple": false, "timer": 29, "answers": [ { "content": "du", "is_correct": true }, { "content": "df", "is_correct": false }, { "content": "ls", "is_correct": false }, { "content": "space", "is_correct": false } ] },
+      { "content": "Quelle commande permet de voir l’historique des commandes ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "history", "is_correct": true }, { "content": "log", "is_correct": false }, { "content": "cmdlog", "is_correct": false }, { "content": "commands", "is_correct": false } ] },
+      { "content": "Quelle commande permet de redémarrer le système ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "reboot", "is_correct": true }, { "content": "restart", "is_correct": false }, { "content": "shutdown", "is_correct": false }, { "content": "reset", "is_correct": false } ] },
+      { "content": "Quelle commande permet d’arrêter le système ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "shutdown", "is_correct": true }, { "content": "stop", "is_correct": false }, { "content": "halt", "is_correct": false }, { "content": "poweroff", "is_correct": false } ] }
     ]
   },
    {
@@ -674,42 +492,31 @@
     "description": "Quiz pour tester les connaissances de base sur Angular",
     "duration": 20,
     "is_published": true,
-    "image_url": "storage/icons/angular.svg",
-    "image_text": "Angular icon",
+    "image_url": "icons/angular.svg",
     "themes": ["Angular", "JavaScript"],
     "category": "Frontend",
     "difficulty": "Intermédiaire",
     "questions": [
-      {
-        "content": "Quel décorateur Angular est utilisé pour définir un composant ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "@Component", "is_correct": true },
-          { "content": "@NgModule", "is_correct": false },
-          { "content": "@Injectable", "is_correct": false },
-          { "content": "@Directive", "is_correct": false }
-        ]
-      },
-      {
-        "content": "Quelle commande CLI Angular crée un nouveau projet ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "ng new nom_projet", "is_correct": true },
-          { "content": "angular create nom_projet", "is_correct": false },
-          { "content": "ng init nom_projet", "is_correct": false },
-          { "content": "npm init angular nom_projet", "is_correct": false }
-        ]
-      },
-          {
-      "content": "Quelles sont des propriétés réactives dans Angular ?",
-      "is_multiple": true,
-      "answers": [
-        { "content": "bozo1", "is_correct": true },
-        { "content": "bozo2", "is_correct": true },
-        { "content": "bozo3", "is_correct": false },
-        { "content": "bozo4", "is_correct": false }
-      ]
-    }
+      { "content": "Quel décorateur Angular est utilisé pour définir un composant ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "@Component", "is_correct": true }, { "content": "@NgModule", "is_correct": false }, { "content": "@Injectable", "is_correct": false }, { "content": "@Directive", "is_correct": false } ] },
+      { "content": "Quelle commande CLI Angular crée un nouveau projet ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "ng new nom_projet", "is_correct": true }, { "content": "angular create nom_projet", "is_correct": false }, { "content": "ng init nom_projet", "is_correct": false }, { "content": "npm init angular nom_projet", "is_correct": false } ] },
+      { "content": "Quel décorateur permet d’injecter un service ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "@Injectable", "is_correct": true }, { "content": "@Component", "is_correct": false }, { "content": "@NgModule", "is_correct": false }, { "content": "@Directive", "is_correct": false } ] },
+      { "content": "Quel fichier contient la configuration principale d’un projet Angular ?", "is_multiple": false, "timer": 28, "answers": [ { "content": "angular.json", "is_correct": true }, { "content": "package.json", "is_correct": false }, { "content": "main.ts", "is_correct": false }, { "content": "app.module.ts", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de déclarer une variable dans un template ?", "is_multiple": false, "timer": 59, "answers": [ { "content": "let", "is_correct": true }, { "content": "var", "is_correct": false }, { "content": "const", "is_correct": false }, { "content": "declare", "is_correct": false } ] },
+      { "content": "Quel opérateur permet de lier une propriété dans un template ?", "is_multiple": false, "timer": 22, "answers": [ { "content": "[]", "is_correct": true }, { "content": "()", "is_correct": false }, { "content": "{}", "is_correct": false }, { "content": "<>", "is_correct": false } ] },
+      { "content": "Quel opérateur permet de lier un événement dans un template ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "()", "is_correct": true }, { "content": "[]", "is_correct": false }, { "content": "{}", "is_correct": false }, { "content": "<>", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de créer un module ?", "is_multiple": false, "timer": 33, "answers": [ { "content": "NgModule", "is_correct": true }, { "content": "Module", "is_correct": false }, { "content": "AppModule", "is_correct": false }, { "content": "Component", "is_correct": false } ] },
+      { "content": "Quel fichier contient le composant racine ?", "is_multiple": false, "timer": 26, "answers": [ { "content": "app.component.ts", "is_correct": true }, { "content": "main.ts", "is_correct": false }, { "content": "index.html", "is_correct": false }, { "content": "root.ts", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet d’injecter un service dans un composant ?", "is_multiple": false, "timer": 60, "answers": [ { "content": "constructor", "is_correct": true }, { "content": "inject", "is_correct": false }, { "content": "provide", "is_correct": false }, { "content": "service", "is_correct": false } ] },
+      { "content": "Quel décorateur permet de créer une directive personnalisée ?", "is_multiple": false, "timer": 23, "answers": [ { "content": "@Directive", "is_correct": true }, { "content": "@Component", "is_correct": false }, { "content": "@Injectable", "is_correct": false }, { "content": "@NgModule", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de déclarer une propriété d’entrée ?", "is_multiple": false, "timer": 46, "answers": [ { "content": "@Input", "is_correct": true }, { "content": "@Output", "is_correct": false }, { "content": "@Prop", "is_correct": false }, { "content": "@Provide", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de déclarer une propriété de sortie ?", "is_multiple": false, "timer": 24, "answers": [ { "content": "@Output", "is_correct": true }, { "content": "@Input", "is_correct": false }, { "content": "@Prop", "is_correct": false }, { "content": "@Provide", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de créer un service ?", "is_multiple": false, "timer": 55, "answers": [ { "content": "Injectable", "is_correct": true }, { "content": "Service", "is_correct": false }, { "content": "Provider", "is_correct": false }, { "content": "Factory", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de créer une route ?", "is_multiple": false, "timer": 29, "answers": [ { "content": "RouterModule", "is_correct": true }, { "content": "Route", "is_correct": false }, { "content": "NgRoute", "is_correct": false }, { "content": "AppRoute", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de naviguer entre les routes ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "routerLink", "is_correct": true }, { "content": "navigate", "is_correct": false }, { "content": "routeTo", "is_correct": false }, { "content": "goTo", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de créer un pipe personnalisé ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "@Pipe", "is_correct": true }, { "content": "@Component", "is_correct": false }, { "content": "@Directive", "is_correct": false }, { "content": "@NgModule", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de créer un guard ?", "is_multiple": false, "timer": 46, "answers": [ { "content": "CanActivate", "is_correct": true }, { "content": "Guard", "is_correct": false }, { "content": "RouteGuard", "is_correct": false }, { "content": "Protect", "is_correct": false } ] },
+      { "content": "Quel mot-clé permet de créer un resolver ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "Resolve", "is_correct": true }, { "content": "Resolver", "is_correct": false }, { "content": "ResolveGuard", "is_correct": false }, { "content": "Guard", "is_correct": false } ] },
+      { "content": "Quelles sont des propriétés réactives dans Angular ?", "is_multiple": true, "timer": 53, "answers": [ { "content": "@Input", "is_correct": true }, { "content": "@Output", "is_correct": true }, { "content": "@ViewChild", "is_correct": false }, { "content": "@ContentChild", "is_correct": false } ] }
     ]
   },
   {
@@ -717,32 +524,30 @@
     "description": "Quiz intermédiaire sur React et les hooks",
     "duration": 20,
     "is_published": true,
-    "image_url": "storage/icons/react.svg",
-    "image_text": "React icon",
+    "image_url": "icons/react.svg",
     "themes": ["React", "JavaScript"],
     "category": "Frontend",
     "difficulty": "Intermédiaire",
     "questions": [
-      {
-        "content": "Quel hook React permet de gérer l'état dans un composant fonctionnel ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "useState", "is_correct": true },
-          { "content": "useEffect", "is_correct": false },
-          { "content": "useReducer", "is_correct": false },
-          { "content": "useContext", "is_correct": false }
-        ]
-      },
-      {
-        "content": "Quel hook permet d'exécuter du code après chaque rendu ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "useEffect", "is_correct": true },
-          { "content": "useState", "is_correct": false },
-          { "content": "useMemo", "is_correct": false },
-          { "content": "useRef", "is_correct": false }
-        ]
-      }
+      { "content": "Quel hook React permet de gérer l'état dans un composant fonctionnel ?", "is_multiple": false, "timer": 42, "answers": [ { "content": "useState", "is_correct": true }, { "content": "useEffect", "is_correct": false }, { "content": "useReducer", "is_correct": false }, { "content": "useContext", "is_correct": false } ] },
+      { "content": "Quel hook permet d'exécuter du code après chaque rendu ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "useEffect", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useMemo", "is_correct": false }, { "content": "useRef", "is_correct": false } ] },
+      { "content": "Quel hook permet de mémoriser une fonction ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "useCallback", "is_correct": true }, { "content": "useMemo", "is_correct": false }, { "content": "useEffect", "is_correct": false }, { "content": "useRef", "is_correct": false } ] },
+      { "content": "Quel hook permet de créer un contexte ?", "is_multiple": false, "timer": 29, "answers": [ { "content": "useContext", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useEffect", "is_correct": false }, { "content": "useReducer", "is_correct": false } ] },
+      { "content": "Quel hook permet de gérer un reducer ?", "is_multiple": false, "timer": 46, "answers": [ { "content": "useReducer", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useEffect", "is_correct": false }, { "content": "useMemo", "is_correct": false } ] },
+      { "content": "Quel hook permet de mémoriser une valeur calculée ?", "is_multiple": false, "timer": 24, "answers": [ { "content": "useMemo", "is_correct": true }, { "content": "useCallback", "is_correct": false }, { "content": "useEffect", "is_correct": false }, { "content": "useRef", "is_correct": false } ] },
+      { "content": "Quel hook permet d’accéder à une référence DOM ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "useRef", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useEffect", "is_correct": false }, { "content": "useMemo", "is_correct": false } ] },
+      { "content": "Quel hook permet de forcer un nouveau rendu ?", "is_multiple": false, "timer": 55, "answers": [ { "content": "useState", "is_correct": true }, { "content": "useEffect", "is_correct": false }, { "content": "useMemo", "is_correct": false }, { "content": "useRef", "is_correct": false } ] },
+      { "content": "Quel hook permet de déclencher une action lors d’un changement de prop ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "useEffect", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useMemo", "is_correct": false }, { "content": "useRef", "is_correct": false } ] },
+      { "content": "Quel hook permet de gérer un effet secondaire ?", "is_multiple": false, "timer": 36, "answers": [ { "content": "useEffect", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useMemo", "is_correct": false }, { "content": "useRef", "is_correct": false } ] },
+      { "content": "Quel hook permet de créer un contexte global ?", "is_multiple": false, "timer": 23, "answers": [ { "content": "useContext", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useEffect", "is_correct": false }, { "content": "useReducer", "is_correct": false } ] },
+      { "content": "Quel hook permet de gérer un état complexe ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "useReducer", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useEffect", "is_correct": false }, { "content": "useMemo", "is_correct": false } ] },
+      { "content": "Quel hook permet de mémoriser une fonction de rappel ?", "is_multiple": false, "timer": 49, "answers": [ { "content": "useCallback", "is_correct": true }, { "content": "useMemo", "is_correct": false }, { "content": "useEffect", "is_correct": false }, { "content": "useRef", "is_correct": false } ] },
+      { "content": "Quel hook permet de gérer un effet asynchrone ?", "is_multiple": false, "timer": 29, "answers": [ { "content": "useEffect", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useMemo", "is_correct": false }, { "content": "useRef", "is_correct": false } ] },
+      { "content": "Quel hook permet de gérer un état global ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "useContext", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useEffect", "is_correct": false }, { "content": "useReducer", "is_correct": false } ] },
+      { "content": "Quel hook permet de gérer un effet sur un tableau ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "useEffect", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useMemo", "is_correct": false }, { "content": "useRef", "is_correct": false } ] },
+      { "content": "Quel hook permet de gérer un effet sur un objet ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "useEffect", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useMemo", "is_correct": false }, { "content": "useRef", "is_correct": false } ] },
+      { "content": "Quel hook permet de gérer un effet sur une fonction ?", "is_multiple": false, "timer": 24, "answers": [ { "content": "useEffect", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useMemo", "is_correct": false }, { "content": "useRef", "is_correct": false } ] },
+      { "content": "Quel hook permet de gérer un effet sur une valeur primitive ?", "is_multiple": false, "timer": 55, "answers": [ { "content": "useEffect", "is_correct": true }, { "content": "useState", "is_correct": false }, { "content": "useMemo", "is_correct": false }, { "content": "useRef", "is_correct": false } ] }
     ]
   },
   {
@@ -750,8 +555,7 @@
   "description": "Quiz pour les bases du framework Vue.js",
   "duration": 15,
   "is_published": true,
-  "image_url": "storage/icons/vue.svg",
-  "image_text": "Vue.js icon",
+  "image_url": "icons/vue.svg",
   "themes": ["Vue.js", "JavaScript"],
   "category": "Frontend",
   "difficulty": "Facile",
@@ -963,32 +767,30 @@
     "description": "Quiz pour tester les notions de base de PostgreSQL",
     "duration": 20,
     "is_published": true,
-    "image_url": "storage/icons/postgresql.svg",
-    "image_text": "PostgreSQL icon",
+    "image_url": "icons/postgresql.svg",
     "themes": ["SQL"],
     "category": "Backend",
     "difficulty": "Intermédiaire",
     "questions": [
-      {
-        "content": "Quelle commande permet de créer une base de données en PostgreSQL ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "CREATE DATABASE nom_db;", "is_correct": true },
-          { "content": "CREATE DB nom_db;", "is_correct": false },
-          { "content": "NEW DATABASE nom_db;", "is_correct": false },
-          { "content": "INIT DATABASE nom_db;", "is_correct": false }
-        ]
-      },
-      {
-        "content": "Quelle commande affiche toutes les tables d'une base PostgreSQL ?",
-        "is_multiple": false,
-        "answers": [
-          { "content": "\\dt", "is_correct": true },
-          { "content": "SHOW TABLES;", "is_correct": false },
-          { "content": "LIST TABLES;", "is_correct": false },
-          { "content": "SELECT * FROM tables;", "is_correct": false }
-        ]
-      }
+      { "content": "Quelle commande permet de créer une base de données en PostgreSQL ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "CREATE DATABASE nom_db;", "is_correct": true }, { "content": "CREATE DB nom_db;", "is_correct": false }, { "content": "NEW DATABASE nom_db;", "is_correct": false }, { "content": "INIT DATABASE nom_db;", "is_correct": false } ] },
+      { "content": "Quelle commande affiche toutes les tables d'une base PostgreSQL ?", "is_multiple": false, "timer": 53, "answers": [ { "content": "\\dt", "is_correct": true }, { "content": "SHOW TABLES;", "is_correct": false }, { "content": "LIST TABLES;", "is_correct": false }, { "content": "SELECT * FROM tables;", "is_correct": false } ] },
+      { "content": "Quelle commande permet de se connecter à une base ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "\\c nom_db", "is_correct": true }, { "content": "CONNECT nom_db", "is_correct": false }, { "content": "USE nom_db", "is_correct": false }, { "content": "OPEN nom_db", "is_correct": false } ] },
+      { "content": "Quelle commande affiche les bases de données ?", "is_multiple": false, "timer": 28, "answers": [ { "content": "\\l", "is_correct": true }, { "content": "SHOW DATABASES;", "is_correct": false }, { "content": "LIST DATABASES;", "is_correct": false }, { "content": "SELECT * FROM databases;", "is_correct": false } ] },
+      { "content": "Quelle commande affiche la structure d’une table ?", "is_multiple": false, "timer": 59, "answers": [ { "content": "\\d nom_table", "is_correct": true }, { "content": "DESCRIBE nom_table;", "is_correct": false }, { "content": "SHOW COLUMNS FROM nom_table;", "is_correct": false }, { "content": "INFO nom_table;", "is_correct": false } ] },
+      { "content": "Quelle commande permet d’ajouter un utilisateur ?", "is_multiple": false, "timer": 22, "answers": [ { "content": "CREATE USER nom;", "is_correct": true }, { "content": "ADD USER nom;", "is_correct": false }, { "content": "NEW USER nom;", "is_correct": false }, { "content": "USER ADD nom;", "is_correct": false } ] },
+      { "content": "Quelle commande permet de donner un mot de passe à un utilisateur ?", "is_multiple": false, "timer": 44, "answers": [ { "content": "ALTER USER nom WITH PASSWORD 'mdp';", "is_correct": true }, { "content": "SET PASSWORD FOR nom;", "is_correct": false }, { "content": "USER PASSWORD nom;", "is_correct": false }, { "content": "CHANGE PASSWORD nom;", "is_correct": false } ] },
+      { "content": "Quelle commande permet de supprimer une base ?", "is_multiple": false, "timer": 27, "answers": [ { "content": "DROP DATABASE nom_db;", "is_correct": true }, { "content": "DELETE DATABASE nom_db;", "is_correct": false }, { "content": "REMOVE DATABASE nom_db;", "is_correct": false }, { "content": "ERASE DATABASE nom_db;", "is_correct": false } ] },
+      { "content": "Quelle commande permet de supprimer une table ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "DROP TABLE nom_table;", "is_correct": true }, { "content": "DELETE TABLE nom_table;", "is_correct": false }, { "content": "REMOVE TABLE nom_table;", "is_correct": false }, { "content": "ERASE TABLE nom_table;", "is_correct": false } ] },
+      { "content": "Quelle commande permet de modifier une table ?", "is_multiple": false, "timer": 49, "answers": [ { "content": "ALTER TABLE nom_table", "is_correct": true }, { "content": "MODIFY TABLE nom_table", "is_correct": false }, { "content": "CHANGE TABLE nom_table", "is_correct": false }, { "content": "UPDATE TABLE nom_table", "is_correct": false } ] },
+      { "content": "Quelle commande permet d’ajouter une colonne ?", "is_multiple": false, "timer": 36, "answers": [ { "content": "ALTER TABLE nom_table ADD COLUMN", "is_correct": true }, { "content": "ADD COLUMN TO nom_table", "is_correct": false }, { "content": "INSERT COLUMN nom_table", "is_correct": false }, { "content": "NEW COLUMN nom_table", "is_correct": false } ] },
+      { "content": "Quelle commande permet de supprimer une colonne ?", "is_multiple": false, "timer": 25, "answers": [ { "content": "ALTER TABLE nom_table DROP COLUMN", "is_correct": true }, { "content": "REMOVE COLUMN nom_table", "is_correct": false }, { "content": "DELETE COLUMN nom_table", "is_correct": false }, { "content": "ERASE COLUMN nom_table", "is_correct": false } ] },
+      { "content": "Quelle commande permet de renommer une table ?", "is_multiple": false, "timer": 58, "answers": [ { "content": "ALTER TABLE nom_table RENAME TO nouveau_nom", "is_correct": true }, { "content": "RENAME TABLE nom_table TO nouveau_nom", "is_correct": false }, { "content": "CHANGE TABLE nom_table TO nouveau_nom", "is_correct": false }, { "content": "UPDATE TABLE nom_table TO nouveau_nom", "is_correct": false } ] },
+      { "content": "Quelle commande permet de lister les utilisateurs ?", "is_multiple": false, "timer": 34, "answers": [ { "content": "\\du", "is_correct": true }, { "content": "SHOW USERS;", "is_correct": false }, { "content": "LIST USERS;", "is_correct": false }, { "content": "SELECT * FROM users;", "is_correct": false } ] },
+      { "content": "Quelle commande permet de donner des droits à un utilisateur ?", "is_multiple": false, "timer": 42, "answers": [ { "content": "GRANT", "is_correct": true }, { "content": "ALLOW", "is_correct": false }, { "content": "PERMIT", "is_correct": false }, { "content": "AUTHORIZE", "is_correct": false } ] },
+      { "content": "Quelle commande permet de retirer des droits à un utilisateur ?", "is_multiple": false, "timer": 29, "answers": [ { "content": "REVOKE", "is_correct": true }, { "content": "REMOVE", "is_correct": false }, { "content": "DELETE", "is_correct": false }, { "content": "DENY", "is_correct": false } ] },
+      { "content": "Quelle commande permet d’exécuter une requête SQL depuis un fichier ?", "is_multiple": false, "timer": 37, "answers": [ { "content": "\\i fichier.sql", "is_correct": true }, { "content": "RUN fichier.sql", "is_correct": false }, { "content": "EXECUTE fichier.sql", "is_correct": false }, { "content": "IMPORT fichier.sql", "is_correct": false } ] },
+      { "content": "Quelle commande permet de quitter psql ?", "is_multiple": false, "timer": 38, "answers": [ { "content": "\\q", "is_correct": true }, { "content": "EXIT", "is_correct": false }, { "content": "QUIT", "is_correct": false }, { "content": "LEAVE", "is_correct": false } ] },
+      { "content": "Quelle commande permet de voir la version de PostgreSQL ?", "is_multiple": false, "timer": 41, "answers": [ { "content": "SELECT version();", "is_correct": true }, { "content": "SHOW VERSION;", "is_correct": false }, { "content": "VERSION;", "is_correct": false }, { "content": "GET VERSION;", "is_correct": false } ] }
     ]
   }
 ]

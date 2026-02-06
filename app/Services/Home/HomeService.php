@@ -6,8 +6,8 @@ namespace App\Services\Home;
 
 use App\Data\Home\HomeData;
 use App\Data\Quiz\QuizData;
-use App\Enums\CacheKeys;
-use App\Enums\CacheTags;
+use App\Enums\CacheKey;
+use App\Enums\CacheTag;
 use App\Queries\Home\GetHomeStatsQuery;
 use App\Queries\Quiz\GetLatestQuizzesQuery;
 use Illuminate\Support\Facades\Cache;
@@ -24,9 +24,9 @@ class HomeService
 
     public function getHomeData(): HomeData
     {
-        return Cache::tags([CacheTags::QUIZ->value])
+        return Cache::tags([CacheTag::QUIZ->value])
             ->remember(
-                CacheKeys::HOME->value,
+                CacheKey::HOME->value,
                 self::CACHE_TTL,
                 $this->buildHomeData(...)
             );

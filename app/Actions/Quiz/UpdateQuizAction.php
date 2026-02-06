@@ -8,7 +8,7 @@ use App\Data\Quiz\admin\CreateOrUpdateQuizData;
 use App\Models\Quiz;
 use DB;
 
-class UpdateQuizAction
+final class UpdateQuizAction
 {
     public function __construct(
         private readonly StoreQuizImageAction $storeQuizImageAction,

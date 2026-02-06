@@ -66,7 +66,7 @@ const props = defineProps<{ quiz: QuizData }>();
 
       <CardFooter class="flex items-center justify-between rounded-b-xl bg-muted p-2 text-sm text-muted-foreground">
         <span>Par {{ props.quiz.author?.name }}</span>
-        <span>{{ props.quiz.created_at }}</span>
+        <span>{{ props.quiz.created_at_formatted ?? '' }}</span>
       </CardFooter>
     </Card>
   </Link>

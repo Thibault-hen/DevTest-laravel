@@ -9,14 +9,14 @@ import { Head } from '@inertiajs/vue3';
 import { Plus } from 'lucide-vue-next';
 import { ref } from 'vue';
 
+const props = defineProps<{
+  themes: ThemeData[];
+}>();
+
 const showAddModal = ref(false);
 const showDeleteModal = ref(false);
 const showEditModal = ref(false);
 const selectedTheme = ref<ThemeData | null>(null);
-
-const props = defineProps<{
-  themes: ThemeData[];
-}>();
 
 const openAddModal = (): void => {
   showAddModal.value = true;

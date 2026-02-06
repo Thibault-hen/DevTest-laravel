@@ -11,7 +11,7 @@ final class GetAllCategoriesQuery
 {
     public function execute(): Collection
     {
-        $categories = Category::with('quizzes')->get();
+        $categories = Category::withCount('quizzes')->get();
 
         return $categories;
     }

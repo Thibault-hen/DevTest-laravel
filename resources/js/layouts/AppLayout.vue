@@ -58,82 +58,87 @@ withDefaults(defineProps<Props>(), {
       class="fixed top-0 z-30 mb-6 w-full border-b bg-transparent px-5 py-2 text-sm backdrop-blur-md not-has-[nav]:hidden"
     >
       <!--Nav desktop-->
-      <nav class="flex items-center justify-between lg:justify-around gap-12 p-2">
-        <div class="flex gap-2">
+      <nav class="flex items-center justify-between lg:justify-around gap-6 p-2.5">
+        <div class="flex items-center gap-8">
           <AppLogo />
-          <div class="hidden lg:flex lg:items-center">
+
+          <div class="hidden lg:flex items-center gap-1">
             <Link
               v-for="item in navItems"
               :key="item.title"
               :href="item.href"
               :class="[
-                'title-font hidden cursor-pointer rounded-[0.375rem] px-5 py-1.5 text-xs leading-normal font-semibold tracking-wide uppercase transition-colors duration-200 lg:flex',
-                urlIsActive(item.href, page.url) ? 'text-primary' : 'hover:text-primary',
+                'border-b-2 border-transparent flex font-medium items-center gap-2 px-4 py-2 text-sm uppercase tracking-wide transition-colors',
+                urlIsActive(item.href, page.url) ? 'text-primary !border-primary' : 'hover:text-primary',
               ]"
             >
               <component
                 :is="item.icon"
                 v-if="item.icon"
+                class="w-4 h-4"
                 :stroke-width="2"
-                :class="urlIsActive(item.href, page.url) ? 'text-primary' : 'hover:text-primary'"
-                class="mr-2 h-4 w-4"
               />
               {{ item.title }}
             </Link>
+
             <Link
-              v-if="$page.props.auth.user && $page.props.auth.user.is_admin"
+              v-if="$page.props.auth.user?.is_admin"
               :href="dashboard()"
-              class="title-font inline-block cursor-pointer rounded-[0.375rem] px-5 py-1.5 text-xs leading-normal font-semibold tracking-wide uppercase transition-colors duration-200 hover:text-primary"
+              class="flex items-center px-4 py-2 text-sm font-medium uppercase tracking-wide rounded-lg transition-colors hover:text-primary"
             >
               Dashboard
             </Link>
           </div>
         </div>
-        <div class="flex items-center gap-2">
+
+        <div class="flex items-center gap-3">
           <template v-if="!$page.props.auth.user">
             <Link
               :href="login()"
-              class="font-bold flex cursor-pointer items-center gap-1.5 rounded-[0.375rem] border bg-primary px-3 py-1.5 text-xs leading-normal text-white transition-colors duration-300"
+              class="flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded bg-primary text-white transition-all hover:bg-primary/90"
             >
-              <LogIn class="h-3 w-3 sm:h-4 sm:w-4" />
-              <span class="hidden lg:flex">Connexion</span>
+              <LogIn class="w-4 h-4" />
+              <span class="hidden sm:inline">Connexion</span>
             </Link>
+
             <Link
               :href="register()"
-              class="font-bold flex cursor-pointer items-center gap-1.5 rounded-[0.375rem] border px-3 py-1.5 text-xs leading-normal transition-colors duration-300 hover:bg-primary hover:text-white"
+              class="flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded border border-primary text-primary transition-all hover:bg-primary hover:text-white"
             >
-              <UserRoundPlus class="h-3 w-3 sm:h-4 sm:w-4" />
-              <span class="hidden lg:flex">Inscription</span>
+              <UserRoundPlus class="w-4 h-4" />
+              <span class="hidden sm:inline">Inscription</span>
             </Link>
-          </template>
 
-          <Separator
-            orientation="vertical"
-            class="mx-4 hidden !h-6 lg:flex"
-            v-if="!$page.props.auth.user"
-          />
+            <Separator
+              orientation="vertical"
+              class="hidden lg:block h-6 mx-2"
+            />
+          </template>
 
           <ThemeToggle />
 
-          <Separator
-            orientation="vertical"
-            class="mx-4 hidden !h-6 lg:flex"
-            v-if="$page.props.auth.user"
-          />
+          <template v-if="$page.props.auth.user">
+            <Separator
+              orientation="vertical"
+              class="hidden lg:block h-6 mx-2"
+            />
+            <NavUser :user="$page.props.auth.user" />
+          </template>
 
-          <NavUser
-            v-if="$page.props.auth.user"
-            :user="$page.props.auth.user"
-          />
-
-          <!-- Hamburger menu mobile -->
           <Button
-            class="flex cursor-pointer rounded-md lg:hidden"
-            size="sm"
+            variant="ghost"
+            size="icon"
+            class="lg:hidden"
             @click="toggleSideNav()"
           >
-            <Menu v-if="!isOpen" />
-            <X v-else />
+            <Menu
+              v-if="!isOpen"
+              class="w-5 h-5"
+            />
+            <X
+              v-else
+              class="w-5 h-5"
+            />
           </Button>
         </div>
       </nav>

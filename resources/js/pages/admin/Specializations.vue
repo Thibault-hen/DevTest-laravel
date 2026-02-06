@@ -12,6 +12,7 @@ import { SpecializationData } from '@/types/generated';
 import { Head } from '@inertiajs/vue3';
 import { Plus } from 'lucide-vue-next';
 import { ref } from 'vue';
+
 const props = defineProps<{ specializations: SpecializationData[] }>();
 
 const showAddModal = ref(false);

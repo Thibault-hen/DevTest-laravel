@@ -24,12 +24,14 @@ export const useSpecializationAdminForm = (
   const createSpecialization = (): void => {
     createForm.post(create().url, {
       onSuccess: () => {
-        if (closeDialog) closeDialog();
         createForm.reset();
         successToast('Spécialisation créée avec succès.');
       },
       onError: () => {
         errorToast('Une erreur est survenue lors de la création de la spécialisation.');
+      },
+      onFinish: () => {
+        if (closeDialog) closeDialog();
       },
     });
   };
@@ -37,9 +39,9 @@ export const useSpecializationAdminForm = (
   const updateSpecialization = (specializationId: string): void => {
     editForm.put(update(specializationId).url, {
       onSuccess: () => {
-        if (closeDialog) closeDialog();
         editForm.reset();
         successToast('Spécialisation mise à jour avec succès.');
+        if (closeDialog) closeDialog();
       },
       onError: () => {
         errorToast('Une erreur est survenue lors de la mise à jour de la spécialisation.');
@@ -50,8 +52,8 @@ export const useSpecializationAdminForm = (
   const deleteSpecialization = (specializationId: string): void => {
     router.delete(deleteMethod(specializationId).url, {
       onSuccess: () => {
-        if (closeDialog) closeDialog();
         successToast('Spécialisation à bien été supprimée.');
+        if (closeDialog) closeDialog();
       },
       onError: () => {
         errorToast('Une erreur est survenue lors de la suppression de la spécialisation.');

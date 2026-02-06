@@ -20,7 +20,7 @@ class AdminQuizController extends Controller
 
     public function index(): Response
     {
-        $quizzesData = $this->quizService->getQuizzesData(withQuestions: true);
+        $quizzesData = $this->quizService->getQuizzesData(true);
 
         return Inertia::render('admin/Quizzes', $quizzesData);
     }

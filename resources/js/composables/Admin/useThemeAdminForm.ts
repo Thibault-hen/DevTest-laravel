@@ -23,9 +23,9 @@ export function useThemeAdminForm(closeDialog?: () => void, theme?: () => ThemeD
   const createTheme = () => {
     createForm.post(create().url, {
       onSuccess: () => {
-        if (closeDialog) closeDialog();
         createForm.reset();
         successToast('Thème créé avec succès.');
+        if (closeDialog) closeDialog();
       },
       onError: () => {
         errorToast('Une erreur est survenue lors de la création du thème.');
@@ -36,9 +36,9 @@ export function useThemeAdminForm(closeDialog?: () => void, theme?: () => ThemeD
   const updateTheme = (themeId: string) => {
     editForm.put(update(themeId).url, {
       onSuccess: () => {
-        if (closeDialog) closeDialog();
         editForm.reset();
         successToast('Thème modifié avec succès.');
+        if (closeDialog) closeDialog();
       },
       onError: () => {
         errorToast('Une erreur est survenue lors de la modification du thème.');
@@ -49,8 +49,8 @@ export function useThemeAdminForm(closeDialog?: () => void, theme?: () => ThemeD
   const deleteTheme = (themeId: string) => {
     router.delete(deleteMethod(themeId).url, {
       onSuccess: () => {
-        if (closeDialog) closeDialog();
         successToast('Thème supprimé avec succès.');
+        if (closeDialog) closeDialog();
       },
       onError: () => {
         errorToast('Une erreur est survenue lors de la suppression du thème.');

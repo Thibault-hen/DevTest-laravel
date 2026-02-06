@@ -14,6 +14,13 @@ const showDeleteModal = ref(false);
 const showEditModal = ref(false);
 const selectedQuiz = ref<QuizData | null>(null);
 
+const props = defineProps<{
+  quizzes: QuizData[];
+  themes: ThemeData[];
+  categories: CategoryData[];
+  difficulties: DifficultyData[];
+}>();
+
 const openAddModal = (): void => {
   showAddModal.value = true;
 };
@@ -27,13 +34,6 @@ const openEditModal = (quiz: QuizData): void => {
   selectedQuiz.value = quiz;
   showEditModal.value = true;
 };
-
-const props = defineProps<{
-  quizzes: QuizData[];
-  themes: ThemeData[];
-  categories: CategoryData[];
-  difficulties: DifficultyData[];
-}>();
 </script>
 
 <template>

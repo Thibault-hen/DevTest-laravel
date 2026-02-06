@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Data\Category;
 
 use Illuminate\Validation\Rule;
+use Spatie\LaravelData\Attributes\MergeValidationRules;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\Min;
 use Spatie\LaravelData\Attributes\Validation\Unique;
@@ -13,6 +14,7 @@ use Spatie\LaravelData\Support\Validation\ValidationContext;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
 #[TypeScript]
+#[MergeValidationRules]
 class CreateOrUpdateCategoryData extends Data
 {
     public function __construct(

@@ -3,7 +3,9 @@ import Button from '@/components/ui/button/Button.vue';
 import Card from '@/components/ui/card/Card.vue';
 import CardContent from '@/components/ui/card/CardContent.vue';
 import { ResultData } from '@/types/generated';
+import { Calendar } from 'lucide-vue-next';
 import ResultDetailsStats from './ResultDetailsStats.vue';
+
 const props = withDefaults(
   defineProps<{
     resultDetail: ResultData;
@@ -30,13 +32,18 @@ const props = withDefaults(
               class="h-full w-full"
             />
           </div>
-          <span class="absolute top-0 right-0 p-1 bg-background rounded-bl-sm border text-sm font-bold">{{
-            new Date(resultDetail.completed_at).toLocaleDateString('fr-FR', {
-              year: 'numeric',
-              day: '2-digit',
-              month: 'long',
-            })
-          }}</span>
+          <span
+            class="flex gap-2 items-center absolute top-0 right-0 p-1 bg-background rounded-bl-sm border text-xs font-bold uppercase px-4"
+          >
+            <Calendar :size="14" />
+            {{
+              new Date(resultDetail.completed_at).toLocaleDateString('fr-FR', {
+                year: 'numeric',
+                day: '2-digit',
+                month: 'long',
+              })
+            }}</span
+          >
           <div class="flex-1 min-w-0">
             <h2 class="text-base lg:text-lg font-bold mb-2">
               {{ resultDetail.quiz.title }}
