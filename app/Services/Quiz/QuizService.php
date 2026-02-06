@@ -11,6 +11,7 @@ use App\Data\Difficulty\DifficultyData;
 use App\Data\Quiz\admin\CreateOrUpdateQuizData;
 use App\Data\Quiz\admin\PublishQuizData;
 use App\Data\Quiz\QuizData;
+use App\Data\Quiz\QuizPlayData;
 use App\Data\Quiz\QuizzesData;
 use App\Data\Theme\ThemeData;
 use App\Enums\CacheKey;
@@ -52,6 +53,26 @@ class QuizService
             categories: CategoryData::collect($metaData['categories'], DataCollection::class),
             difficulties: DifficultyData::collect($metaData['difficulties'], DataCollection::class),
         );
+    }
+
+    public function getQuizDetails(Quiz $quiz): QuizData
+    {
+        return QuizData::from(
+            Cache::tags([CacheTag::QUIZ->value])
+                ->remember(CacheKey::QUIZ_DETAILS->value."_{$quiz->id}",
+                    self::CACHE_TTL,
+                    fn () => $quiz->loadQuizDetails()
+                ));
+    }
+
+    public function getQuizPlay(Quiz $quiz): QuizPlayData
+    {
+        return QuizPlayData::from(
+            Cache::tags([CacheTag::QUIZ->value])
+                ->remember(CacheKey::QUIZ_PLAY->value."_{$quiz->id}",
+                    self::CACHE_TTL,
+                    fn () => $quiz->loadForPlaying()
+                ));
     }
 
     public function createQuiz(CreateOrUpdateQuizData $data): void

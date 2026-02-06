@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Models\Category;
+use App\Models\Difficulty;
 use App\Models\Quiz;
 use App\Models\User;
-use App\Models\Difficulty;
-use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -21,9 +21,10 @@ class QuizFactory extends Factory
     public function definition(): array
     {
         $title = $this->faker->unique()->sentence(3);
+
         return [
             'title' => $title,
-            'slug' => Str::slug($title) . '-' . Str::random(5),
+            'slug' => Str::slug($title).'-'.Str::random(5),
             'description' => $this->faker->paragraph(),
             'duration' => $this->faker->numberBetween(5, 60),
             'image_url' => null,
@@ -32,5 +33,12 @@ class QuizFactory extends Factory
             'difficulty_id' => Difficulty::factory(),
             'category_id' => Category::factory(),
         ];
+    }
+
+    public function unpublished(): Factory
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_published' => false,
+        ]);
     }
 }

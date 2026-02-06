@@ -2,13 +2,16 @@
 import AuthLayout from '@/layouts/auth/AuthCardLayout.vue';
 
 defineProps<{
-    title?: string;
-    description?: string;
+  title?: string;
+  description?: string;
 }>();
 </script>
 
 <template>
-    <AuthLayout :title="title" :description="description">
-        <slot />
-    </AuthLayout>
+  <AuthLayout
+    :title="title"
+    :description="description"
+  >
+    <slot />
+  </AuthLayout>
 </template>

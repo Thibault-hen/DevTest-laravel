@@ -19,10 +19,12 @@
 
 ## Administrateur
 
-| EN TANT QUE | JE SOUHAITE                            | AFIN DE                                       |
-| ----------- | -------------------------------------- | --------------------------------------------- |
-| ADMIN       | ajouter/éditer/supprimer un quiz       | gérer les quiz disponibles                    |
-| ADMIN       | ajouter/éditer/supprimer un thème      | gérer les thèmes disponibles                  |
-| ADMIN       | ajouter/éditer/supprimer une questions | gérer les questions d'un quiz                 |
-| ADMIN       | ajouter/éditer/supprimer une réponse   | gérer les réponses d'une question             |
-| ADMIN       | afficher les résultats                 | consulter les résultats d'un ou des candidats |
+| EN TANT QUE | JE SOUHAITE                             | AFIN DE                                       |
+| ----------- | --------------------------------------- | --------------------------------------------- |
+| ADMIN       | ajouter/éditer/supprimer un quiz        | gérer les quiz disponibles                    |
+| ADMIN       | ajouter/éditer/supprimer un thème       | gérer les thèmes disponibles                  |
+| ADMIN       | ajouter/éditer/supprimer une catégorie  | gérer les catégories disponibles              |
+| ADMIN       | ajouter/éditer/supprimer une spé        | gérer les spécialisations disponibles         |
+| ADMIN       | éditer/supprimer un utilisateur         | gérer les utilisateurs disponibles            |
+| ADMIN       | ajouter/éditer/supprimer une difficulté | gérer les difficultés disponibles             |
+| ADMIN       | afficher les résultats                  | consulter les résultats d'un ou des candidats |

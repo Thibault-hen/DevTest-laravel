@@ -2,15 +2,18 @@
 
 declare(strict_types=1);
 
-namespace App\Observers\Quiz;
+namespace App\Observers;
 
-use App\Enums\CacheTag;
 use App\Models\Quiz;
-use Illuminate\Support\Facades\Cache;
+use App\Services\Cache\QuizCacheManager;
 use Illuminate\Support\Str;
 
 class QuizObserver
 {
+    public function __construct(
+        private readonly QuizCacheManager $cacheManager,
+    ) {}
+
     public function saving(Quiz $quiz): void
     {
         if (empty($quiz->slug)) {
@@ -20,16 +23,11 @@ class QuizObserver
 
     public function saved(): void
     {
-        $this->clearCache();
+        $this->cacheManager->clear();
     }
 
     public function deleted(): void
     {
-        $this->clearCache();
-    }
-
-    private function clearCache(): void
-    {
-        Cache::tags([CacheTag::QUIZ->value])->flush();
+        $this->cacheManager->clear();
     }
 }

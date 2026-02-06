@@ -2,10 +2,9 @@
 import CategoryBadge from '@/components/shared/badges/CategoryBadge.vue';
 import DifficultyBadge from '@/components/shared/badges/DifficultyBadge.vue';
 import Badge from '@/components/ui/badge/Badge.vue';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Progress from '@/components/ui/progress/Progress.vue';
 import { QuizPlayData } from '@/types/generated';
-import { Clock } from 'lucide-vue-next';
+import { Clock, Image as ImageIcon } from 'lucide-vue-next';
 
 const props = defineProps<{
   quiz: QuizPlayData;
@@ -16,54 +15,53 @@ const props = defineProps<{
 </script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <div class="flex items-start justify-between gap-4">
-        <div class="space-y-4 flex-1">
-          <div class="flex flex-wrap items-center gap-1.5">
-            <DifficultyBadge
-              v-if="props.quiz.difficulty"
-              :difficulty="props.quiz.difficulty"
-            />
-            <CategoryBadge
-              v-if="props.quiz.category"
-              :category="props.quiz.category"
-            />
-            <Badge
-              variant="outline"
-              class="p-1.5"
-            >
-              <Clock />
-              ~ {{ props.quiz.duration }} min
-            </Badge>
-          </div>
-          <CardTitle class="text-base md:text-xl lg:text-2xl flex items-center gap-2">
-            <img
-              v-if="quiz.image_url"
-              :src="`/${quiz.image_url}`"
-              :alt="quiz.image_text || 'Quiz image'"
-              class="flex h-6 rounded"
-            />{{ props.quiz.title }}</CardTitle
+  <div class="space-y-4">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div class="space-y-1">
+        <div class="flex flex-wrap items-center gap-2">
+          <DifficultyBadge
+            v-if="props.quiz.difficulty"
+            :difficulty="props.quiz.difficulty"
+            class="shadow-sm"
+          />
+          <CategoryBadge
+            v-if="props.quiz.category"
+            :category="props.quiz.category"
+            class="shadow-sm"
+          />
+          <Badge
+            variant="secondary"
+            class="gap-1.5 px-2.5 shadow-sm border border-border rounded-md py-1"
           >
-          <CardDescription>{{ props.quiz.description }}</CardDescription>
+            <Clock class="h-3.5 w-3.5" />
+            <span>~{{ props.quiz.duration }} min</span>
+          </Badge>
         </div>
-        <div class="flex items-center gap-2 text-sm text-muted-foreground">
-          <!--timer-->
-        </div>
-      </div>
-    </CardHeader>
 
-    <CardContent>
-      <div class="space-y-2">
-        <div class="flex items-center justify-between text-sm">
-          <span class="font-medium">Progression</span>
-          <span class="text-muted-foreground"> Question {{ currentQuestionIndex + 1 }} sur {{ totalQuestions }} </span>
-        </div>
+        <h1 class="text-xl font-bold tracking-tight md:text-2xl flex items-center gap-2 mt-2">
+          <img
+            v-if="quiz.image_url"
+            :src="`/${quiz.image_url}`"
+            :alt="quiz.image_text || 'Quiz image'"
+            class="h-10 w-10 rounded-md object-cover"
+          />
+          <ImageIcon
+            v-else
+            class="h-5 w-5 text-muted-foreground mr-1"
+          />
+          {{ props.quiz.title }}
+        </h1>
+      </div>
+
+      <div class="flex flex-col items-end gap-2 min-w-[200px]">
+        <span class="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+          Progression {{ currentQuestionIndex + 1 }} / {{ totalQuestions }}
+        </span>
         <Progress
           :model-value="progress"
-          class="h-2"
+          class="h-2 w-full border"
         />
       </div>
-    </CardContent>
-  </Card>
+    </div>
+  </div>
 </template>

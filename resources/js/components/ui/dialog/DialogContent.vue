@@ -35,12 +35,12 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
           props.class,
         )"
     >
-<DialogClose
-  class="bg-secondary cursor-pointer absolute right-0 -top-8 rounded-md p-2 opacity-70 ring-offset-background transition-opacity hover:opacity-100 hover:bg-accent focus:outline-none disabled:pointer-events-none"
->
-  <X class="h-3 w-3" />
-  <span class="sr-only">Close</span>
-</DialogClose>
+    <DialogClose
+      class="group cursor-pointer absolute right-0 -top-8 rounded-md p-2 opacity-70 ring-offset-background transition-opacity focus:outline-none disabled:pointer-events-none"
+      aria-label="Fermer">
+    <X class="h-3 w-3 text-white group-hover:text-primary" :stroke-width="3"/>
+    <span class="sr-only">Close</span>
+    </DialogClose>
       <slot />
     </DialogContent>
   </DialogPortal>

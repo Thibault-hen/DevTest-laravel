@@ -64,10 +64,9 @@ describe('Result Page', function () {
         $quiz = Quiz::factory()->create();
         $result = Result::factory()->for($quiz)->for($user)->create();
 
-        $this->actingAs($otherUser);
-        $response = $this->get(route('result.show', ['result' => $result->id]));
-
-        expect($response->status())->toBe(403);
+        $this->actingAs($otherUser)
+            ->get(route('result.show', ['result' => $result->id]))
+            ->assertForbidden();
     });
 
     it('should allow admin users to view anyone\'s result', function () {
@@ -76,9 +75,8 @@ describe('Result Page', function () {
         $quiz = Quiz::factory()->create();
         $result = Result::factory()->for($quiz)->for($user)->create();
 
-        $this->actingAs($adminUser);
-        $response = $this->get(route('result.show', ['result' => $result->id]));
-
-        expect($response->status())->toBe(200);
+        $this->actingAs($adminUser)
+            ->get(route('result.show', ['result' => $result->id]))
+            ->assertOk();
     });
 });

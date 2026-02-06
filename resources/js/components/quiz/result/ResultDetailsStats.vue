@@ -53,12 +53,8 @@ const convertToMinutes = (ms: number): string => {
       </div>
       <div class="min-w-0 flex-1">
         <p class="text-xs lg:text-sm font-medium text-muted-foreground uppercase tracking-wide mb-1">Score</p>
-        <p class="text-lg lg:text-xl font-bold">
-          {{ resultDetail.correct_answers_count
-          }}<span class="text-muted-foreground">/{{ quizConfig.MIN_QUESTIONS }}</span>
-        <p class="text-xs text-muted-foreground mt-1">
-          {{ resultDetail.score }} pts
-          </p>
+        <p class="text-lg lg:text-xl font-bold flex flex-col">
+          <span class="text-sm md:text-base lg:text-lg font-bold text-white"> {{ resultDetail.score }} pts </span>
         </p>
         <div class="flex flex-wrap gap-2 md:gap-3 mt-2 text-xs">
           <span class="flex items-center gap-1">

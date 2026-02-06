@@ -4,34 +4,41 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Quiz;
 
-use App\Data\Quiz\QuizData;
-use App\Data\Quiz\QuizPlayData;
 use App\Http\Controllers\Controller;
 use App\Models\Quiz;
 use App\Services\Quiz\QuizService;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class QuizController extends Controller
 {
-    public function index(QuizService $quizService): Response
+    use AuthorizesRequests;
+
+    public function __construct(
+        private readonly QuizService $quizService,
+    ) {}
+
+    public function index(): Response
     {
-        $quizzesData = $quizService->getQuizzesData();
+        $quizzesData = $this->quizService->getQuizzesData();
 
         return Inertia::render('quiz/Quizzes', $quizzesData);
     }
 
     public function show(Quiz $quiz): Response
     {
-        $quizDetails = $quiz->loadQuizDetails();
+        $quizDetails = $this->quizService->getQuizDetails($quiz);
 
-        return Inertia::render('quiz/Quiz', QuizData::from($quizDetails));
+        return Inertia::render('quiz/Quiz', $quizDetails);
     }
 
-    public function play(Quiz $quiz)
+    public function play(Quiz $quiz): Response
     {
-        $quizDetails = $quiz->loadForPlaying();
+        $this->authorize('play', $quiz);
 
-        return Inertia::render('quiz/QuizPlay', QuizPlayData::from($quizDetails));
+        $quizDetails = $this->quizService->getQuizPlay($quiz);
+
+        return Inertia::render('quiz/QuizPlay', $quizDetails);
     }
 }

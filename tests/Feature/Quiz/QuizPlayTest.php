@@ -53,4 +53,16 @@ describe('Quiz Play', function () {
         expect($quizDetails->questions)->toHaveCount(20);
         expect($quizDetails->questions->first()->answers)->toHaveCount(4);
     });
+
+    it('should not allow access to unpublished quiz', function () {
+        $user = User::factory()->create();
+
+        $this->actingAs($user);
+
+        $quiz = Quiz::factory()->unpublished()->create();
+
+        $response = $this->get(route('quiz.play', $quiz));
+
+        $response->assertForbidden();
+    });
 });

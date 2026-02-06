@@ -104,6 +104,7 @@ const handleSubmit = (): void => {
         <DialogFooter class="gap-2 sm:gap-2 rounded-b-lg mt-4">
           <Button
             type="button"
+            variant="outline"
             @click="closeDialog"
             >Retour</Button
           >

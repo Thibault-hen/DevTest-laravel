@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import Button from '@/components/ui/button/Button.vue';
-import { Checkbox } from '@/components/ui/checkbox';
-import Label from '@/components/ui/label/Label.vue';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { QuestionPlayData } from '@/types/generated';
-import { ArrowRight, Check } from 'lucide-vue-next';
+import { ArrowRight, Check, Circle, Square } from 'lucide-vue-next';
 
 defineProps<{
   question: QuestionPlayData;
@@ -12,7 +9,7 @@ defineProps<{
   selectedAnswers: string | string[];
 }>();
 
-defineEmits<{
+const emit = defineEmits<{
   'update:selectedAnswers': [value: string | string[]];
   next: [];
   submit: [];
@@ -21,84 +18,102 @@ defineEmits<{
 const hasSelection = (answers: string | string[]) => {
   return Array.isArray(answers) ? answers.length > 0 : !!answers;
 };
+
+const isSelected = (answerId: string, currentSelection: string | string[]) => {
+  if (Array.isArray(currentSelection)) {
+    return currentSelection.includes(answerId);
+  }
+  return currentSelection === answerId;
+};
+
+const toggleSelection = (answerId: string, isMultiple: boolean, currentSelection: string | string[]) => {
+  if (!isMultiple) {
+    emit('update:selectedAnswers', answerId);
+    return;
+  }
+
+  const list = Array.isArray(currentSelection) ? [...currentSelection] : [];
+  if (list.includes(answerId)) {
+    emit(
+      'update:selectedAnswers',
+      list.filter((id) => id !== answerId),
+    );
+  } else {
+    emit('update:selectedAnswers', [...list, answerId]);
+  }
+};
 </script>
 
 <template>
-  <RadioGroup
-    v-if="!question.is_multiple"
-    :model-value="selectedAnswers"
-    @update:model-value="$emit('update:selectedAnswers', $event)"
-    class="space-y-3"
-  >
-    <Label
-      v-for="answer in question.shuffled_answers"
-      :key="answer.id"
-      :for="answer.id"
-      class="flex items-center space-x-3 rounded-lg border p-2 md:p-4 transition-colors dark:hover:bg-accent hover:bg-primary/30 hover:border-primary cursor-pointer w-full"
-      :class="{
-        'border-primary dark:bg-primary/5 bg-primary/40 text-muted-foreground': selectedAnswers === answer.id,
-      }"
-    >
-      <RadioGroupItem
-        :id="answer.id"
-        :value="answer.id"
-      />
-      <span class="flex-1 text-sm md:text-base">{{ answer.content }}</span>
-    </Label>
-  </RadioGroup>
+  <div class="space-y-6">
+    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      <button
+        v-for="answer in question.shuffled_answers"
+        :key="answer.id"
+        @click="toggleSelection(answer.id, question.is_multiple, selectedAnswers)"
+        class="cursor-pointer group shadow-xs relative dark:bg-background flex items-center gap-4 rounded-xl border-1 !border-border p-4 text-left transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 hover:!bg-accent/15"
+        :class="[
+          isSelected(answer.id, selectedAnswers)
+            ? 'border-primary bg-primary/5 shadow-[0_0_0_1px_rgba(var(--primary)_/_1)]'
+            : 'border-muted hover:border-primary/50 bg-card',
+        ]"
+      >
+        <div
+          class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border transition-colors duration-200"
+          :class="[
+            isSelected(answer.id, selectedAnswers)
+              ? 'border-primary bg-primary text-primary-foreground'
+              : 'border-muted-foreground/30 group-hover:border-primary',
+          ]"
+        >
+          <template v-if="question.is_multiple">
+            <Check
+              v-if="isSelected(answer.id, selectedAnswers)"
+              class="h-4 w-4"
+            />
+            <Square
+              v-else
+              class="h-4 w-4 text-transparent"
+            />
+          </template>
+          <template v-else>
+            <Check
+              v-if="isSelected(answer.id, selectedAnswers)"
+              class="h-4 w-4"
+            />
+            <Circle
+              v-else
+              class="h-4 w-4 text-transparent"
+            />
+          </template>
+        </div>
 
-  <div
-    v-else
-    class="space-y-3"
-  >
-    <Label
-      v-for="answer in question.shuffled_answers"
-      :key="answer.id"
-      :for="answer.id"
-      class="flex items-center space-x-3 rounded-lg border p-2 md:p-4 transition-colors dark:hover:bg-accent hover:bg-primary/30 hover:border-primary cursor-pointer w-full"
-      :class="{
-        'border-primary dark:bg-primary/5 bg-primary/40 text-muted-foreground':
-          Array.isArray(selectedAnswers) && selectedAnswers.includes(answer.id),
-      }"
-    >
-      <Checkbox
-        :id="answer.id"
-        :model-value="Array.isArray(selectedAnswers) && selectedAnswers.includes(answer.id)"
-        @update:model-value="
-          () => {
-            const current = Array.isArray(selectedAnswers) ? [...selectedAnswers] : [];
-            const isSelected = current.includes(answer.id);
-            $emit(
-              'update:selectedAnswers',
-              isSelected ? current.filter((id) => id !== answer.id) : [...current, answer.id],
-            );
-          }
-        "
-      />
-      <span class="flex-1 text-sm md:text-base">{{ answer.content }}</span>
-    </Label>
-  </div>
+        <span class="font-medium leading-snug text-sm md:text-base">
+          {{ answer.content }}
+        </span>
+      </button>
+    </div>
 
-  <div class="flex justify-end mt-4">
-    <Button
-      v-if="!isLastQuestion"
-      variant="primary"
-      @click="$emit('next')"
-      class="gap-2"
-      :disabled="!hasSelection(selectedAnswers)"
-    >
-      Suivant
-      <ArrowRight :size="16" />
-    </Button>
-    <Button
-      v-else
-      variant="primary"
-      @click="$emit('submit')"
-      class="gap-2"
-      :disabled="!hasSelection(selectedAnswers)"
-    >
-      <Check :size="16" />
-      Terminer
-    </Button>
+    <div class="flex justify-end pt-4">
+      <Button
+        v-if="!isLastQuestion"
+        @click="$emit('next')"
+        class="group min-w-[140px] gap-2"
+        :disabled="!hasSelection(selectedAnswers)"
+      >
+        Suivant
+        <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />
+      </Button>
+
+      <Button
+        v-else
+        @click="$emit('submit')"
+        class="group min-w-[140px] gap-2 animate-pulse"
+        :disabled="!hasSelection(selectedAnswers)"
+      >
+        <Check class="h-4 w-4" />
+        Terminer
+      </Button>
+    </div>
   </div>
 </template>

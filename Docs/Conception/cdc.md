@@ -37,3 +37,21 @@ BDD: PostgreSQL
 ## 4. Spécifications techniques
 
 Architecture : Monolithe SSR Laravel & Inertia VueJS
+
+### MVP
+
+- Authentification (Inscription, Connexion, Déconnexion)
+- Visualisation des quiz par thème
+- Participation aux quiz (QCM)
+- Résultats détaillés à la fin de chaque quiz
+- Système de calcul de score basé sur les réponses correctes et temps écoulé
+- Système de commentaires et évaluation pour les quiz
+- Espace administrateur pour la gestion des quiz, thèmes, catégories, difficultés, résultats et utilisateurs
+
+### Fonctionnalités futures
+
+- Classement des utilisateurs sur un leaderboard
+- Système de notifications pour les nouveaux quiz et résultats
+- Gestion avancée des utilisateurs (rôles, permissions)
+- Espace utilisateur avec statistiques personnelles
+- Espace administrateur avec statistiques globales et export des données

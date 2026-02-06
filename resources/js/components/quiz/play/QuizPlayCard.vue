@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import GlobalLoader from '@/components/loader/GlobalLoader.vue';
 import AnswerChoices from '@/components/quiz/play/answer/AnswerChoices.vue';
 import QuestionTimer from '@/components/quiz/play/QuestionTimer.vue';
 import QuizPlayHeader from '@/components/quiz/play/QuizPlayHeader.vue';
-import Badge from '@/components/ui/badge/Badge.vue';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
+import Separator from '@/components/ui/separator/Separator.vue';
 import { useQuizPlay } from '@/composables/useQuizPlay';
 import type { QuizPlayData } from '@/types/generated';
 import { Check } from 'lucide-vue-next';
@@ -26,8 +25,7 @@ const {
 </script>
 
 <template>
-  <GlobalLoader />
-  <div class="mx-auto max-w-4xl space-y-6">
+  <div class="mx-auto w-full max-w-4xl space-y-8">
     <QuizPlayHeader
       :quiz="props.quiz"
       :total-questions="totalQuestions"
@@ -35,30 +33,35 @@ const {
       :current-question-index="currentQuestionIndex"
     />
 
-    <Card class="relative">
+    <div class="relative">
       <Transition
-        name="fade"
+        name="slide-fade"
         mode="out-in"
-        appear
-        :key="currentQuestionIndex"
       >
-        <div class="flex flex-col gap-4">
-          <CardHeader class="border-b">
-            <CardTitle class="flex flex-col gap-4">
-              <div class="flex justify-between items-start gap-4">
-                <div class="flex flex-col gap-6">
-                  <Badge
-                    class="mb-2 text-sm px-4 w-fit"
-                    variant="outline"
+        <Card
+          v-if="currentQuestion"
+          :key="currentQuestion.id"
+          class="overflow-visible border shadow-none backdrop-blur-sm md:bg-card md:shadow-sm md:border md:border-border"
+        >
+          <CardContent class="p-4 md:p-6 lg:p-10 space-y-10">
+            <div class="relative flex flex-col gap-6">
+              <div class="flex items-start justify-between gap-6">
+                <div class="max-w-2xl">
+                  <div
+                    v-if="currentQuestion.is_multiple"
+                    class="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary uppercase tracking-wide"
                   >
-                    Question {{ currentQuestionIndex + 1 }}
-                  </Badge>
-                  <h2 class="text-sm md:text-lg lg:text-xl font-bold leading-tight">
-                    {{ currentQuestion?.content }}
+                    <Check class="h-3 w-3" />
+                    Plusieurs réponses possibles
+                  </div>
+                  <span class="text-sm">Question {{ currentQuestionIndex + 1 }} sur {{ totalQuestions }}</span>
+
+                  <h2 class="text-lg font-bold leading-tight tracking-tight md:text-2xl text-pretty text-foreground">
+                    {{ currentQuestion.content }}
                   </h2>
                 </div>
 
-                <div class="absolute top-1 right-1 md:top-3 md:right-3">
+                <div class="hidden shrink-0 md:block">
                   <QuestionTimer
                     :key="`timer-${currentQuestionIndex}`"
                     :duration="questionTimer"
@@ -67,44 +70,46 @@ const {
                 </div>
               </div>
 
-              <div
-                v-if="currentQuestion?.is_multiple"
-                class="text-sm text-muted-foreground flex items-center gap-2"
-              >
-                <Check :size="16" />
-                Plusieurs réponses possibles
+              <div class="self-end md:hidden">
+                <QuestionTimer
+                  :key="`timer-mobile-${currentQuestionIndex}`"
+                  :duration="questionTimer"
+                  @timeout="handleTimeout"
+                />
               </div>
-            </CardTitle>
-          </CardHeader>
+            </div>
 
-          <CardContent>
-            <AnswerChoices
-              v-if="currentQuestion"
-              :question="currentQuestion"
-              :is-last-question="isLastQuestion"
-              v-model:selected-answers="currentSelectedAnswers"
-              @next="goToNext"
-              @submit="submitQuiz"
-            />
+            <Separator class="bg-primary" />
+
+            <div class="pt-2">
+              <AnswerChoices
+                :question="currentQuestion"
+                :is-last-question="isLastQuestion"
+                v-model:selected-answers="currentSelectedAnswers"
+                @next="goToNext"
+                @submit="submitQuiz"
+              />
+            </div>
           </CardContent>
-        </div>
+        </Card>
       </Transition>
-    </Card>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.5s ease;
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.fade-enter-to,
-.fade-leave-from {
-  opacity: 1;
-}
-
-.fade-enter-from {
+.slide-fade-enter-from {
   opacity: 0;
+  transform: translateX(20px);
+}
+
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
 }
 </style>

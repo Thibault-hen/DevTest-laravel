@@ -34,20 +34,26 @@ defineProps<Props>();
   </DropdownMenuLabel>
   <DropdownMenuSeparator />
   <DropdownMenuGroup>
-    <DropdownMenuItem :as-child="true">
+    <DropdownMenuItem
+      :as-child="true"
+      class="group"
+    >
       <Link
         class="block w-full"
         :href="edit()"
         prefetch
         as="button"
       >
-        <Settings class="mr-2 h-4 w-4" />
+        <Settings class="mr-2 h-4 w-4 text-black dark:text-white group-hover:text-white" />
         Paramètres
       </Link>
     </DropdownMenuItem>
   </DropdownMenuGroup>
   <DropdownMenuSeparator />
-  <DropdownMenuItem :as-child="true">
+  <DropdownMenuItem
+    :as-child="true"
+    class="group"
+  >
     <Link
       class="block w-full"
       :href="logout()"
@@ -55,7 +61,7 @@ defineProps<Props>();
       as="button"
       data-test="logout-button"
     >
-      <LogOut class="mr-2 h-4 w-4" />
+      <LogOut class="mr-2 h-4 w-4 text-black dark:text-white group-hover:text-white" />
       Se déconnecter
     </Link>
   </DropdownMenuItem>

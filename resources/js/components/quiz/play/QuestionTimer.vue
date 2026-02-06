@@ -12,7 +12,6 @@ const emit = defineEmits<{
 
 const countdown = ref(props.duration);
 const initialTime = props.duration;
-
 let intervalId: number | null = null;
 
 const tick = () => {
@@ -31,50 +30,57 @@ const stop = () => {
   }
 };
 
-// Start countdown
 intervalId = setInterval(tick, 1000);
-
 onBeforeUnmount(stop);
 
-const circleDasharray = computed(() => {
-  const circumference = 2 * Math.PI * 45;
-  const progress = (countdown.value / initialTime) * circumference;
-  return `${progress} ${circumference}`;
+const progressPercentage = computed(() => {
+  return (countdown.value / initialTime) * 100;
+});
+
+const progressColor = computed(() => {
+  const p = progressPercentage.value;
+  if (p > 50) return 'text-primary';
+  if (p > 20) return 'text-yellow-500';
+  return 'text-destructive';
 });
 </script>
 
 <template>
-  <div class="circular-countdown w-12 h-12 lg:w-14 lg:h-14">
-    <svg
-      fill="var(--color-background)"
-      viewBox="0 0 100 100"
-      class="base-timer"
-    >
+  <div class="relative flex h-14 w-14 items-center justify-center">
+    <!-- SVG Ring -->
+    <svg class="absolute inset-0 h-full w-full -rotate-90 transform overflow-visible">
+      <!-- Background Track -->
       <circle
-        class="base-timer__circle"
-        cx="50"
-        cy="50"
-        r="44"
-      ></circle>
-      <path
-        :stroke-dasharray="circleDasharray"
-        class="base-timer__path-remaining"
-        stroke="var(--color-primary)"
-        d="
-          M 50, 50
-          m -45, 0
-          a 45,45 0 1,0 90,0
-          a 45,45 0 1,0 -90,0
-        "
-      ></path>
+        class="text-muted/20"
+        stroke="currentColor"
+        stroke-width="5"
+        fill="transparent"
+        r="24"
+        cx="50%"
+        cy="50%"
+      />
+
+      <!-- Progress Arc -->
+      <circle
+        :class="['transition-all duration-1000 ease-linear', progressColor]"
+        stroke="currentColor"
+        stroke-width="5"
+        fill="transparent"
+        r="24"
+        cx="50%"
+        cy="50%"
+        :stroke-dasharray="2 * Math.PI * 24"
+        :stroke-dashoffset="((100 - progressPercentage) / 100) * (2 * Math.PI * 24)"
+      />
     </svg>
+
+    <!-- Number Display -->
     <NumberFlow
-      class="base-timer__label text-sm md:text-lg lg:text-xl font-bold leading-tight transition-all duration-100"
+      class="text-lg font-bold"
+      :class="progressColor"
       :value="countdown"
       :plugins="[continuous]"
-      :spin-timing="{
-        duration: 100,
-      }"
+      :spin-timing="{ duration: 100 }"
     />
   </div>
 </template>

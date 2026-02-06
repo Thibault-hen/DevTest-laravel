@@ -54,7 +54,11 @@ watch(open, (val) => emit('update:modelValue', val));
       </DialogHeader>
 
       <DialogFooter class="gap-2 sm:gap-2 rounded-b-lg">
-        <Button @click="closeDialog">Annuler</Button>
+        <Button
+          @click="closeDialog"
+          variant="outline"
+          >Annuler</Button
+        >
         <Link :href="play(props.quizName).url">
           <Button
             variant="primary"
