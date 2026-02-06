@@ -25,7 +25,7 @@ const closeDialog = (): void => {
 
 <template>
   <Dialog v-model:open="model">
-    <DialogContent class="sm:max-w-xl p-0 lg:min-w-3xl max-h-[90vh] overflow-y-auto">
+    <DialogContent class="sm:max-w-xl p-0 lg:min-w-4xl max-h-[90vh] overflow-y-auto">
       <DialogHeader class="pt-6 px-6">
         <DialogTitle>
           <HeadingSmall

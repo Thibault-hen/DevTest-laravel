@@ -2,7 +2,9 @@
 import Button from '@/components/ui/button/Button.vue';
 import Card from '@/components/ui/card/Card.vue';
 import CardContent from '@/components/ui/card/CardContent.vue';
+import { quizzes } from '@/routes';
 import { ResultData } from '@/types/generated';
+import { Link } from '@inertiajs/vue3';
 import { Calendar } from 'lucide-vue-next';
 import ResultDetailsStats from './ResultDetailsStats.vue';
 
@@ -65,7 +67,9 @@ const props = withDefaults(
           class="mt-6 lg:mt-8"
           v-if="props.showReturnButton"
         >
-          <Button class="w-full lg:w-auto lg:min-w-[200px]"> Retourner aux quiz </Button>
+          <Button class="w-full lg:w-auto lg:min-w-[200px]">
+            <Link :href="quizzes().url"> Retourner aux quiz </Link>
+          </Button>
         </div>
       </div>
     </CardContent>

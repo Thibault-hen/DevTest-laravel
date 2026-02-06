@@ -7,35 +7,46 @@ import { Check, X } from 'lucide-vue-next';
 const props = defineProps<{
   summary: ResultQuestionData[];
 }>();
+
+const correctCount = props.summary.filter((r) => r.is_correct).length;
+const totalCount = props.summary.length;
+const percentage = Math.round((correctCount / totalCount) * 100);
 </script>
 
 <template>
-  <Card
-    class="overflow-auto scrollbar-hidden gap-2 h-fit xl:sticky border-none bg-transparent !shadow-none xl:top-20 max-h-[40vh] lg:max-h-[80vh] rounded-sm p-0"
-  >
-    <div>
-      <HeadingSmall title="Résumé rapide" />
+  <Card class="overflow-auto scrollbar-hidden gap-4 h-fit xl:sticky xl:top-20 max-h-[40vh] lg:max-h-[80vh] p-4 md:p-6">
+    <div class="space-y-4">
+      <div>
+        <HeadingSmall title="Résumé rapide" />
+        <p class="text-sm text-muted-foreground mt-1">
+          {{ correctCount }}/{{ totalCount }} correctes ({{ percentage }}%)
+        </p>
+      </div>
 
-      <ul class="flex gap-3 flex-col">
+      <ul class="flex gap-2 flex-col">
         <li
           v-for="(result, index) in props.summary"
           :key="result.question.id"
-          class="flex gap-2.5 items-center group"
+          class="border border-transparent hover:border-primary flex gap-3 items-center p-2 rounded-lg hover:dark:bg-accent transition-colors cursor-pointer group"
         >
-          <span class="p-1 text-xs md:text-sm font-semibold w-6 h-8 flex items-center justify-center shrink-0">
+          <span
+            class="border text-xs font-medium w-6 h-6 flex items-center justify-center shrink-0 rounded-full bg-muted"
+          >
             {{ index + 1 }}
           </span>
 
           <div
-            class="w-6 h-6 shrink-0 flex items-center justify-center rounded-full transition-transform group-hover:scale-110"
-            :class="result.is_correct ? 'bg-green-600' : 'bg-red-500'"
+            class="w-5 h-5 shrink-0 flex items-center justify-center rounded-full"
+            :class="result.is_correct ? 'bg-green-600' : 'bg-red-600'"
           >
             <component
               :is="result.is_correct ? Check : X"
-              class="text-white w-4 h-4"
+              class="w-3 h-3"
+              :stroke-width="4"
             />
           </div>
-          <span class="truncate text-xs md:text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+
+          <span class="truncate text-sm transition-colors flex-1 group-hover:dark:text-white">
             {{ result.question.content }}
           </span>
         </li>
@@ -45,7 +56,6 @@ const props = defineProps<{
 </template>
 
 <style scoped>
-/* Remove scoped or use deep selector */
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }

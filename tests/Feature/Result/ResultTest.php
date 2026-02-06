@@ -57,4 +57,28 @@ describe('Result Page', function () {
         expect($data->quiz)->not->toBeNull();
         expect($data->user_answers)->toHaveCount(1);
     });
+
+    it('should only allow result owner to view the result', function () {
+        $user = User::factory()->create();
+        $otherUser = User::factory()->create();
+        $quiz = Quiz::factory()->create();
+        $result = Result::factory()->for($quiz)->for($user)->create();
+
+        $this->actingAs($otherUser);
+        $response = $this->get(route('result.show', ['result' => $result->id]));
+
+        expect($response->status())->toBe(403);
+    });
+
+    it('should allow admin users to view anyone\'s result', function () {
+        $user = User::factory()->create();
+        $adminUser = User::factory()->setAdmin()->create();
+        $quiz = Quiz::factory()->create();
+        $result = Result::factory()->for($quiz)->for($user)->create();
+
+        $this->actingAs($adminUser);
+        $response = $this->get(route('result.show', ['result' => $result->id]));
+
+        expect($response->status())->toBe(200);
+    });
 });

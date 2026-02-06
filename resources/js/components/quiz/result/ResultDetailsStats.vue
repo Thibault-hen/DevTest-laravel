@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { DonutChart } from '@/components/ui/chart-donut';
+import { quizConfig } from '@/constants/quizConfig';
 import { ResultPercentageDataChart } from '@/types';
 import { ResultData } from '@/types/generated';
 import { ChartNoAxesColumnIncreasing, Check, Timer, X } from 'lucide-vue-next';
@@ -49,14 +50,15 @@ const convertToMinutes = (ms: number): string => {
           :show-legend="false"
           :show-tooltip="false"
         />
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <span class="text-xs md:text-sm font-bold text-muted-foreground"> {{ answeredPercentage }}% </span>
-        </div>
       </div>
       <div class="min-w-0 flex-1">
         <p class="text-xs lg:text-sm font-medium text-muted-foreground uppercase tracking-wide mb-1">Score</p>
         <p class="text-lg lg:text-xl font-bold">
-          {{ resultDetail.correct_answers_count }}<span class="text-muted-foreground">/20</span>
+          {{ resultDetail.correct_answers_count
+          }}<span class="text-muted-foreground">/{{ quizConfig.MIN_QUESTIONS }}</span>
+        <p class="text-xs text-muted-foreground mt-1">
+          {{ resultDetail.score }} pts
+          </p>
         </p>
         <div class="flex flex-wrap gap-2 md:gap-3 mt-2 text-xs">
           <span class="flex items-center gap-1">
@@ -90,7 +92,7 @@ const convertToMinutes = (ms: number): string => {
           {{ convertToMinutes(resultDetail.completed_in) }}
         </p>
         <p class="text-xs text-muted-foreground mt-1">
-          {{ Math.round(resultDetail.completed_in / 1000 / 20) }}s par question
+          {{ Math.round(resultDetail.completed_in / 1000 / quizConfig.MIN_QUESTIONS) }}s par question
         </p>
       </div>
     </div>
